@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kIb-KM-fgz">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <development version="7000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--个人中心-->
+        <scene sceneID="xCf-Sp-fes">
+            <objects>
+                <viewController id="kIb-KM-fgz" userLabel="个人中心" customClass="LGMyProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6E8-0u-Ccz"/>
+                        <viewControllerLayoutGuide type="bottom" id="lyI-Mu-ZdW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6VF-0i-j7U">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="comment-bar-bg" translatesAutoresizingMaskIntoConstraints="NO" id="Grp-FS-TcH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1cC-fG-gb6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9AE-Dy-njT"/>
+                                </constraints>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yGI-Ig-745">
+                                <rect key="frame" x="0.0" y="40" width="375" height="627"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="yGI-Ig-745" firstAttribute="top" secondItem="1cC-fG-gb6" secondAttribute="bottom" id="4iL-R3-2zp"/>
+                            <constraint firstAttribute="trailing" secondItem="yGI-Ig-745" secondAttribute="trailing" id="IBV-Gj-zrJ"/>
+                            <constraint firstItem="1cC-fG-gb6" firstAttribute="leading" secondItem="6VF-0i-j7U" secondAttribute="leading" id="Lkf-32-ofL"/>
+                            <constraint firstItem="1cC-fG-gb6" firstAttribute="top" secondItem="6E8-0u-Ccz" secondAttribute="bottom" constant="-20" id="Z45-Sq-Ldi"/>
+                            <constraint firstItem="Grp-FS-TcH" firstAttribute="width" secondItem="1cC-fG-gb6" secondAttribute="width" id="aPq-Ug-hop"/>
+                            <constraint firstItem="Grp-FS-TcH" firstAttribute="centerX" secondItem="1cC-fG-gb6" secondAttribute="centerX" id="c1w-ul-CVy"/>
+                            <constraint firstItem="Grp-FS-TcH" firstAttribute="height" secondItem="1cC-fG-gb6" secondAttribute="height" id="dkd-uT-QgO"/>
+                            <constraint firstItem="lyI-Mu-ZdW" firstAttribute="top" secondItem="yGI-Ig-745" secondAttribute="bottom" id="eIm-01-tMm"/>
+                            <constraint firstAttribute="trailing" secondItem="1cC-fG-gb6" secondAttribute="trailing" id="nZU-S1-r61"/>
+                            <constraint firstItem="yGI-Ig-745" firstAttribute="leading" secondItem="6VF-0i-j7U" secondAttribute="leading" id="ybB-Dq-Yv1"/>
+                            <constraint firstItem="Grp-FS-TcH" firstAttribute="centerY" secondItem="1cC-fG-gb6" secondAttribute="centerY" id="ylT-aQ-aV4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="新闻" id="btl-HO-fN3"/>
+                    <connections>
+                        <outlet property="contentView" destination="yGI-Ig-745" id="rub-Xw-aFB"/>
+                        <outlet property="titleView" destination="1cC-fG-gb6" id="uuc-Gv-4wJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s34-iT-wcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="284.5" y="191.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="comment-bar-bg" width="320" height="49"/>
+    </resources>
+</document>

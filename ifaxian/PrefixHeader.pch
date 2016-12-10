@@ -1,0 +1,26 @@
+//
+//  PrefixHeader.pch
+//  ifaxian
+//
+//  Created by ming on 16/11/17.
+//  Copyright © 2016年 ming. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import "LGAdditions.h"
+
+// 日志输出
+#ifdef DEBUG // 开发阶段-DEBUG阶段:使用Log
+#define LGGLog(...) NSLog(__VA_ARGS__)
+#else // 发布阶段-上线阶段:移除Log
+#define LGLog(...)
+#endif
+
+// 方法输出
+#define LGLogFunc XMGLog(@"%s", __func__);
+// 弱引用
+#define XMGWeakSelf __weak typeof(self) weakSelf = self;
+
+
+#endif /* PrefixHeader_pch */

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="k8R-0G-JMz" customClass="LGDiscoverHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="219"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mrk-Sq-z64">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="219"/>
+                </scrollView>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Lhq-oG-Vfo">
+                    <rect key="frame" x="141" y="182" width="39" height="37"/>
+                </pageControl>
+            </subviews>
+            <color key="backgroundColor" red="0.69411764710000001" green="0.25882352939999997" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Lhq-oG-Vfo" secondAttribute="bottom" id="B9W-Fx-rmr"/>
+                <constraint firstItem="Mrk-Sq-z64" firstAttribute="top" secondItem="k8R-0G-JMz" secondAttribute="top" id="H7E-3z-11U"/>
+                <constraint firstAttribute="bottom" secondItem="Mrk-Sq-z64" secondAttribute="bottom" id="ZSv-KC-M4Q"/>
+                <constraint firstItem="Lhq-oG-Vfo" firstAttribute="centerX" secondItem="k8R-0G-JMz" secondAttribute="centerX" id="hIk-5N-D8I"/>
+                <constraint firstAttribute="trailing" secondItem="Mrk-Sq-z64" secondAttribute="trailing" id="k22-5D-Azj"/>
+                <constraint firstItem="Mrk-Sq-z64" firstAttribute="leading" secondItem="k8R-0G-JMz" secondAttribute="leading" id="v5u-Vz-lB3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="pageView" destination="Lhq-oG-Vfo" id="D84-vp-MVQ"/>
+                <outlet property="scroView" destination="Mrk-Sq-z64" id="8AG-yM-oxS"/>
+            </connections>
+            <point key="canvasLocation" x="173" y="269.5"/>
+        </view>
+    </objects>
+</document>

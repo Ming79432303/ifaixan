@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="3pF-pW-0oE" customClass="LGScrollContenView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uXX-14-1Yy">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJo-OM-wLT">
+                    <rect key="frame" x="135" y="40" width="45" height="18"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="IjP-ed-Tee"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMd-th-yhM">
+                    <rect key="frame" x="190" y="41" width="37" height="17"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcC-mG-mWe">
+                    <rect key="frame" x="10" y="78" width="355" height="22"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="highlightedColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="GcC-mG-mWe" secondAttribute="trailing" constant="10" id="1Yp-i0-BC5"/>
+                <constraint firstItem="GcC-mG-mWe" firstAttribute="centerX" secondItem="3pF-pW-0oE" secondAttribute="centerX" id="ALC-ou-g4e"/>
+                <constraint firstItem="GcC-mG-mWe" firstAttribute="top" secondItem="mJo-OM-wLT" secondAttribute="bottom" constant="20" id="EFJ-RC-AUd"/>
+                <constraint firstItem="mJo-OM-wLT" firstAttribute="top" secondItem="3pF-pW-0oE" secondAttribute="top" constant="40" id="Nrj-b2-Y96"/>
+                <constraint firstItem="GcC-mG-mWe" firstAttribute="leading" secondItem="3pF-pW-0oE" secondAttribute="leading" constant="10" id="SFJ-iH-FWg"/>
+                <constraint firstItem="eMd-th-yhM" firstAttribute="centerY" secondItem="mJo-OM-wLT" secondAttribute="centerY" id="beN-T4-7aj"/>
+                <constraint firstItem="uXX-14-1Yy" firstAttribute="top" secondItem="3pF-pW-0oE" secondAttribute="top" id="cWc-Zo-kc7"/>
+                <constraint firstItem="mJo-OM-wLT" firstAttribute="centerX" secondItem="3pF-pW-0oE" secondAttribute="centerX" constant="-30" id="iPX-Jf-2hz"/>
+                <constraint firstItem="eMd-th-yhM" firstAttribute="leading" secondItem="mJo-OM-wLT" secondAttribute="trailing" constant="10" id="kcM-zo-063"/>
+                <constraint firstAttribute="bottom" secondItem="uXX-14-1Yy" secondAttribute="bottom" id="ofv-yw-isi"/>
+                <constraint firstItem="uXX-14-1Yy" firstAttribute="leading" secondItem="3pF-pW-0oE" secondAttribute="leading" id="sgg-Ni-Oed"/>
+                <constraint firstAttribute="trailing" secondItem="uXX-14-1Yy" secondAttribute="trailing" id="sm2-tv-t7e"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="ALC-ou-g4e"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="categoryButton" destination="mJo-OM-wLT" id="KnU-Ld-vi9"/>
+                <outlet property="imageView" destination="uXX-14-1Yy" id="oLS-q0-ceV"/>
+                <outlet property="timeLable" destination="eMd-th-yhM" id="GbB-Kd-nlm"/>
+                <outlet property="titileLable" destination="GcC-mG-mWe" id="lfb-3N-rog"/>
+            </connections>
+            <point key="canvasLocation" x="197.5" y="31"/>
+        </view>
+    </objects>
+</document>

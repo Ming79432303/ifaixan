@@ -1,0 +1,77 @@
+//
+//  PrefixHeader.pch
+//  ifaxian
+//
+//  Created by ming on 16/11/17.
+//  Copyright © 2016年 ming. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import "LGAdditions.h"
+#import "UIBarButtonItem+LGExtension.h"
+#import "UIView+Frame.h"
+#import <Masonry.h>
+#import <SVProgressHUD.h>
+#import "LGNetWorkingManager.h"
+#import "LGNetWorkingManager+LGExtension.h"
+#import "MJExtension.h"
+#import "LGConst.h"
+#import "LGRefreshFooter.h"
+#import "LGRefreshHeader.h"
+#import "NSString+LGRegularExpressions.h"
+#import <POP.h>
+#import "NSString+LGRequestBasiPath.h"
+#import <ReactiveCocoa.h>
+#import "LGHTTPSessionManager.h"
+#import "UIImageView+WebCache.h"
+#import "LGHTTPSessionManager.h"
+#import "UIImageView+LGUIimageView.h"
+
+// 日志输出
+#ifdef DEBUG // 开发阶段-DEBUG阶段:使用Log
+#define LGLog(...) NSLog(__VA_ARGS__)
+#else // 发布阶段-上线阶段:移除Log
+#define LGLog(...)
+#endif
+
+// 方法输出
+#define LGLogFunc LGLog(@"%s", __func__);
+// 弱引用
+#define LGWeakSelf __weak typeof(self) weakSelf = self;
+
+// 屏幕尺寸
+#define LGScreenH [UIScreen mainScreen].bounds.size.height
+#define LGScreenW [UIScreen mainScreen].bounds.size.width
+/**
+ *  通用尺寸
+ */
+
+#define Margin 10;
+#define minMargin
+#define LGnavBarH 64
+#define LGstatusBarH 20
+#define LGtabBarH 49
+#define LGBasiRequestUrl  @"http://112.74.45.39"
+#define LGbuckeUrl @"http://79432303.oss-cn-shanghai.aliyuncs.com/"
+/**
+ *
+ 
+ *
+ */
+//9张图的宽高
+#define LGTowImageItemWH (LGScreenW - 4 * LGCommonMargin - LGCommonSmallMargin)/2
+#define LGImageItemWH (LGScreenW - 4 * LGCommonMargin - 2 * LGCommonSmallMargin)/3
+
+#define LGHomeImageViewItemWH  (LGScreenW - 2 * (LGCommonMargin + LGCommonMinMargin))/3
+
+/**
+ *  统一背景颜色
+ */
+#define LGCommonColor    [UIColor lg_colorWithRed:239 green:240 blue:240]
+
+#define LGfilePath [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"status"]
+
+
+
+#endif /* PrefixHeader_pch */

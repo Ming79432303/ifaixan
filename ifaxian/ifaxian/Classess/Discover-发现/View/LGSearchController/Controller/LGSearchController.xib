@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LGSearchController">
+            <connections>
+                <outlet property="activityView" destination="bkw-hP-BoY" id="EWc-xa-xml"/>
+                <outlet property="searchHeaderView" destination="HvS-q3-5Sx" id="Vsr-v6-ywe"/>
+                <outlet property="tableView" destination="4WF-1e-hvP" id="1gm-xk-8hF"/>
+                <outlet property="titleLable" destination="YSc-ap-qgP" id="laG-IU-Af8"/>
+                <outlet property="view" destination="F1T-T4-VYn" id="gVf-f7-fcr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="F1T-T4-VYn">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4WF-1e-hvP">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HvS-q3-5Sx">
+                    <rect key="frame" x="0.0" y="0.0" width="608" height="64"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="bkw-hP-BoY">
+                            <rect key="frame" x="20" y="22" width="20" height="20"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSc-ap-qgP">
+                            <rect key="frame" x="50" y="22" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="3LS-Bh-54v"/>
+                        <constraint firstItem="YSc-ap-qgP" firstAttribute="leading" secondItem="bkw-hP-BoY" secondAttribute="trailing" constant="10" id="Wx6-E6-BQw"/>
+                        <constraint firstItem="bkw-hP-BoY" firstAttribute="leading" secondItem="HvS-q3-5Sx" secondAttribute="leading" constant="20" id="kHL-qM-3xC"/>
+                        <constraint firstItem="YSc-ap-qgP" firstAttribute="centerY" secondItem="bkw-hP-BoY" secondAttribute="centerY" id="mcB-5n-oSh"/>
+                        <constraint firstItem="bkw-hP-BoY" firstAttribute="centerY" secondItem="HvS-q3-5Sx" secondAttribute="centerY" id="vJk-a3-xda"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="4WF-1e-hvP" secondAttribute="trailing" id="3nU-XA-HKt"/>
+                <constraint firstAttribute="trailing" secondItem="HvS-q3-5Sx" secondAttribute="trailing" constant="-8" id="GvF-BO-DOo"/>
+                <constraint firstItem="HvS-q3-5Sx" firstAttribute="leading" secondItem="F1T-T4-VYn" secondAttribute="leading" id="Sy2-E6-0nX"/>
+                <constraint firstItem="4WF-1e-hvP" firstAttribute="leading" secondItem="F1T-T4-VYn" secondAttribute="leading" id="UNa-08-ZmV"/>
+                <constraint firstItem="4WF-1e-hvP" firstAttribute="top" secondItem="F1T-T4-VYn" secondAttribute="top" id="Wg4-vL-lqx"/>
+                <constraint firstAttribute="bottom" secondItem="4WF-1e-hvP" secondAttribute="bottom" id="gx3-Ww-L6j"/>
+                <constraint firstItem="HvS-q3-5Sx" firstAttribute="top" secondItem="F1T-T4-VYn" secondAttribute="top" id="m7P-x0-Ihv"/>
+            </constraints>
+            <point key="canvasLocation" x="532" y="274"/>
+        </view>
+    </objects>
+</document>

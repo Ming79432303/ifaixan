@@ -1,0 +1,32 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'ifaxian' do
+  # Uncomment this line if you're using Swift or would like to use dynamic frameworks
+   #use_frameworks!
+
+  # Pods for ifaxian
+
+  target 'ifaxianTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'ifaxianUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+pod "AFNetworking"
+pod "SDWebImage"
+pod "FMDB"
+pod "SVProgressHUD"
+pod "pop"
+pod "MJRefresh"
+pod "MJExtension"
+pod "DACircularProgress"
+pod 'Masonry'
+pod 'WordPress-iOS-Editor'
+pod "AliyunOSSiOS"
+pod 'ReactiveCocoa','2.5'
+pod 'YYImage'
+end
