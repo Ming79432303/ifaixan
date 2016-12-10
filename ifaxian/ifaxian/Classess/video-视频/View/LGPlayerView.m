@@ -9,10 +9,11 @@
 #import "LGPlayerView.h"
 #import <AVFoundation/AVFoundation.h>
 #import "SVProgressHUD.h"
+#import "LGFullController.h"
 @interface LGPlayerView()
 
 
-@property (weak, nonatomic) IBOutlet UIButton *fullStarButton;
+
 
 //已经播放的时间
 @property (weak, nonatomic) IBOutlet UILabel *playingTimeLable;
@@ -48,6 +49,7 @@
 @property(assign,nonatomic) CGFloat lastProgress;
 
 /** 全屏播放控制器 */
+@property(nonatomic,strong)LGFullController *fullVc;
 
 
 /** 播放完毕遮盖View */
@@ -60,6 +62,7 @@
 
 
 @implementation LGPlayerView
+
 
 
 //创建定时器
@@ -178,7 +181,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.toolView.alpha = 0;
     }];
-    NSLog(@"timer显示或者隐藏");
+
 }
 -(void)removeShowTime
 {
@@ -213,13 +216,17 @@
             [self.activityView startAnimating];
         }else{
             [self.activityView stopAnimating];
+            if (self.starOrStopVideo.selected) {
+                 [self.player play];
+            }
+           
         }
         
         
         
     }else if ([keyPath isEqualToString:@"status"]){
         if (playerItem.status == AVPlayerItemStatusReadyToPlay){
-            NSLog(@"playerItem is ready");
+           
              [self.activityView stopAnimating];
             self.failView.hidden = YES;
             
@@ -251,12 +258,18 @@
 /** 更新slider和timeLabel */
 - (void)updateProgressInfo
 {
+    LGLog(@"定时器");
     NSTimeInterval currentTime = CMTimeGetSeconds(self.player.currentTime);
     NSTimeInterval durationTime = CMTimeGetSeconds(self.player.currentItem.duration);
     if (durationTime > 0) {
         
         self.playingTimeLable.text = [self timeToStringWithTimeInterval:currentTime];
         self.totalTimeLable.text = [self timeToStringWithTimeInterval:durationTime];
+    }
+    if (![self lg_intersectWithView:self.window]) {
+      
+        [self.superview removeFromSuperview];
+        [self removeFromSuperview];
     }
     self.videoSlider.value = CMTimeGetSeconds(self.player.currentTime) / CMTimeGetSeconds(self.player.currentItem.duration);
     if ( self.lastProgress == self.videoSlider.value ) {
@@ -271,7 +284,7 @@
     if (self.videoSlider.value == 1) {
         [self removeProgressTimer];
         self.converView.hidden = NO;
-        NSLog(@"播放完了");
+     
     }
     
 }
@@ -361,10 +374,16 @@
 
 }
 - (IBAction)failReplayButton:(id)sender {
- 
-    
-    
+
     // imageView上添加playerLayer
+    if (self.delegate) {
+        [self.delegate playerFailuretoreplay:self];
+        [self replay:nil];
+        LGLog(@"重新播放");
+    }
+   
+    
+    
 
 }
 - (void)removeFromSuperview{
@@ -380,5 +399,49 @@
     [self.playerItem removeObserver:self forKeyPath:@"status"];
 
 }
+
+- (IBAction)fullViewBtnClick:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
+    [self videoplayViewSwitchOrientation:sender.selected];
+    
+}
+
+/** 弹出全屏播放器 */
+- (void)videoplayViewSwitchOrientation:(BOOL)isFull
+{
+    NSLog(@"%zd1212121212",isFull);
+    if (isFull) {
+        [self.contrainerViewController presentViewController:self.fullVc animated:NO completion:^{
+            [self.fullVc.view addSubview:self];
+            self.center = self.fullVc.view.center;
+            
+            [UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+                self.frame = self.fullVc.view.bounds;
+            } completion:nil];
+        }];
+    } else {
+        [self.fullVc dismissViewControllerAnimated:NO completion:^{
+            [self.contrainerView addSubview:self];
+            
+            [UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+                self.frame = self.contrainerView.bounds;
+            } completion:nil];
+        }];
+    }
+}
+
+
+#pragma mark - 懒加载代码
+
+- (LGFullController *)fullVc{
+    
+    if (_fullVc == nil) {
+        _fullVc = [[LGFullController alloc] init];
+    }
+    return _fullVc;
+    
+}
+
 
 @end

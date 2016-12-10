@@ -60,7 +60,7 @@
                             <rect key="frame" x="270" y="10" width="50" height="40"/>
                             <state key="normal" image="mini_launchFullScreen_btn"/>
                             <connections>
-                                <action selector="fullScreen:" destination="nUk-cm-a9A" eventType="touchUpInside" id="Jfk-Ix-Qdi"/>
+                                <action selector="fullViewBtnClick:" destination="nUk-cm-a9A" eventType="touchUpInside" id="6D9-BL-NrW"/>
                             </connections>
                         </button>
                     </subviews>
@@ -175,7 +175,6 @@
                 <outlet property="bacImagView" destination="b1U-cc-FqC" id="d6y-26-5s7"/>
                 <outlet property="converView" destination="4Lr-2b-Bfc" id="e7W-JH-hd5"/>
                 <outlet property="failView" destination="N92-hr-hz3" id="ZjI-Bl-tBa"/>
-                <outlet property="fullScreen" destination="dt7-go-fHR" id="Z0p-n3-uSj"/>
                 <outlet property="fullStarButton" destination="BQn-CG-Be2" id="Bwu-dz-0gz"/>
                 <outlet property="playingTimeLable" destination="sJQ-5k-nhn" id="qs0-60-ARB"/>
                 <outlet property="progress" destination="EYA-SZ-r6e" id="9X0-cM-vPT"/>

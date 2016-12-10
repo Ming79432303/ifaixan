@@ -72,45 +72,38 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="视频播放" translatesAutoresizingMaskIntoConstraints="NO" id="WrP-Qt-aeA">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="视频播放" translatesAutoresizingMaskIntoConstraints="NO" id="WrP-Qt-aeA" userLabel="starVideo">
                         <rect key="frame" x="118" y="134" width="100" height="100"/>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ayu-D3-wSx">
-                        <rect key="frame" x="10" y="84" width="316" height="200"/>
-                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="nf1-1F-k3x" firstAttribute="centerY" secondItem="Y44-Zi-rln" secondAttribute="centerY" id="1B2-Tg-2F5"/>
-                    <constraint firstItem="ayu-D3-wSx" firstAttribute="height" secondItem="RUf-DA-7yV" secondAttribute="height" id="1EB-0a-V2j"/>
                     <constraint firstAttribute="trailing" secondItem="RUf-DA-7yV" secondAttribute="trailing" constant="10" id="5IO-U6-Bn8"/>
-                    <constraint firstItem="WrP-Qt-aeA" firstAttribute="centerX" secondItem="fLl-N8-vlA" secondAttribute="centerX" id="6GY-tB-DMp"/>
                     <constraint firstItem="mgm-lR-LJW" firstAttribute="top" secondItem="qL6-mV-0IF" secondAttribute="bottom" id="9cm-Yx-Zhr"/>
                     <constraint firstItem="RUf-DA-7yV" firstAttribute="leading" secondItem="fLl-N8-vlA" secondAttribute="leading" constant="10" id="CS7-Of-1C5"/>
                     <constraint firstItem="RUf-DA-7yV" firstAttribute="top" secondItem="BSl-f1-zSk" secondAttribute="bottom" constant="10" id="DdW-Te-QyR"/>
-                    <constraint firstItem="ayu-D3-wSx" firstAttribute="width" secondItem="RUf-DA-7yV" secondAttribute="width" id="Dyo-BG-zVG"/>
                     <constraint firstItem="qL6-mV-0IF" firstAttribute="top" secondItem="RUf-DA-7yV" secondAttribute="bottom" constant="10" id="EHZ-fA-KET"/>
                     <constraint firstItem="Y44-Zi-rln" firstAttribute="leading" secondItem="fLl-N8-vlA" secondAttribute="leadingMargin" id="HSR-wO-EmL"/>
-                    <constraint firstItem="ayu-D3-wSx" firstAttribute="centerX" secondItem="RUf-DA-7yV" secondAttribute="centerX" id="K37-CF-43T"/>
-                    <constraint firstItem="ayu-D3-wSx" firstAttribute="centerY" secondItem="RUf-DA-7yV" secondAttribute="centerY" id="L4D-Kf-0bu"/>
                     <constraint firstItem="nf1-1F-k3x" firstAttribute="leading" secondItem="Y44-Zi-rln" secondAttribute="trailing" constant="10" id="LUb-If-tW8"/>
-                    <constraint firstItem="WrP-Qt-aeA" firstAttribute="centerY" secondItem="RUf-DA-7yV" secondAttribute="centerY" id="W3N-yj-MbF"/>
                     <constraint firstItem="mgm-lR-LJW" firstAttribute="leading" secondItem="fLl-N8-vlA" secondAttribute="leading" id="ZeZ-Pf-HYJ"/>
                     <constraint firstAttribute="trailing" secondItem="qL6-mV-0IF" secondAttribute="trailing" id="aQq-rc-K7x"/>
                     <constraint firstItem="Y44-Zi-rln" firstAttribute="top" secondItem="fLl-N8-vlA" secondAttribute="topMargin" id="bZV-X2-eph"/>
                     <constraint firstItem="BSl-f1-zSk" firstAttribute="top" secondItem="Y44-Zi-rln" secondAttribute="bottom" constant="10" id="fTL-Z5-si1"/>
                     <constraint firstItem="BSl-f1-zSk" firstAttribute="leading" secondItem="fLl-N8-vlA" secondAttribute="leading" constant="10" id="kxW-yj-FBV"/>
                     <constraint firstAttribute="trailing" secondItem="BSl-f1-zSk" secondAttribute="trailing" constant="10" id="mmc-NU-qhE"/>
+                    <constraint firstItem="WrP-Qt-aeA" firstAttribute="centerX" secondItem="fLl-N8-vlA" secondAttribute="centerX" id="tih-Ki-g3i"/>
                     <constraint firstAttribute="trailing" secondItem="mgm-lR-LJW" secondAttribute="trailing" id="wQH-FI-slG"/>
+                    <constraint firstItem="WrP-Qt-aeA" firstAttribute="centerY" secondItem="RUf-DA-7yV" secondAttribute="centerY" id="wWJ-nN-Hee"/>
                     <constraint firstItem="qL6-mV-0IF" firstAttribute="leading" secondItem="fLl-N8-vlA" secondAttribute="leading" id="wjb-9W-l4O"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="nameLable" destination="nf1-1F-k3x" id="sFB-zj-yRD"/>
                 <outlet property="picImageView" destination="RUf-DA-7yV" id="qQa-Rr-gES"/>
-                <outlet property="playerView" destination="ayu-D3-wSx" id="Xeb-JK-EFg"/>
+                <outlet property="starVideoButton" destination="WrP-Qt-aeA" id="5im-NE-YBG"/>
                 <outlet property="titleLable" destination="BSl-f1-zSk" id="fRh-fw-yBT"/>
             </connections>
-            <point key="canvasLocation" x="-6" y="219"/>
+            <point key="canvasLocation" x="70" y="198"/>
         </tableViewCell>
     </objects>
     <resources>

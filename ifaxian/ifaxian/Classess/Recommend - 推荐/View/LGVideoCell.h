@@ -10,5 +10,6 @@
 #import "LGRecommend.h"
 @interface LGVideoCell : UITableViewCell
 @property(nonatomic, strong) LGRecommend *model;
-@property (weak, nonatomic) IBOutlet UIView *playerView;
+@property (strong, nonatomic)  UIView *playerView;
+@property (weak, nonatomic) IBOutlet UIImageView *starVideoButton;
 @end
