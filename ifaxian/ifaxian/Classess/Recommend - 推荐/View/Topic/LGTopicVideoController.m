@@ -51,9 +51,11 @@ static NSString *videoCellID = @"videoCellID";
 //cell离开
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     LGVideoCell *videoCell = [tableView cellForRowAtIndexPath:indexPath];
-     videoCell.starVideoButton.hidden = NO;
-    [videoCell.playerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [videoCell.playerView removeFromSuperview];
+    if (videoCell.playerView) {
+        
+        [videoCell.playerView.subviews.firstObject removeFromSuperview];
+        [videoCell.playerView removeFromSuperview];
+    }
 
 }
 

@@ -66,6 +66,7 @@
 - (void)setTags:(NSArray<LGTag *> *)tags{
     _tags = tags;
     int i = 0;
+    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     for (LGTag *tag in tags){
 #warning 按钮重复添加
         //计算出文字的大小

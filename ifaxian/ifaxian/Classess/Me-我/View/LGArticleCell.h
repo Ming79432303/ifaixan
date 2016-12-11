@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LGArticleModel.h"
+#import "LGShareImage.h"
 @interface LGArticleCell : UITableViewCell
-@property(nonatomic, strong) LGArticleModel *postModel;
+@property(nonatomic, strong) LGShareImage *postModel;
 @end

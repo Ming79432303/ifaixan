@@ -11,4 +11,5 @@
 @interface LGSquareCell : UITableViewCell
 @property(nonatomic, strong) LGShare *model;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
+@property(nonatomic, strong) UIView *playerView;
 @end

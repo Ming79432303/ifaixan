@@ -13,6 +13,7 @@
 #import "LGSquareCell.h"
 #import "LGShareController.h"
 #import "LGTestController.h"
+#import "LGVideoCell.h"
 @interface LGSquareController ()
 
 @property (nonatomic, strong) NSArray<LGShare *> *shares;
@@ -22,6 +23,7 @@
 
 @implementation LGSquareController
 static NSString *squareCellID = @"squareCellID";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
@@ -113,12 +115,13 @@ static NSString *squareCellID = @"squareCellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    LGSquareCell *cell = [tableView dequeueReusableCellWithIdentifier:squareCellID];
     
-    cell.model = self.shares[indexPath.row];
+   LGShare *share = self.shares[indexPath.row];
     
-    return cell;
-    
+        LGSquareCell *cell = [tableView dequeueReusableCellWithIdentifier:squareCellID];
+        cell.model = share;
+        return cell;
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -139,6 +142,19 @@ static NSString *squareCellID = @"squareCellID";
     [self.navigationController pushViewController:shareVc animated:YES];
     
 }
+
+
+//cell离开
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    LGSquareCell *videoCell = [tableView cellForRowAtIndexPath:indexPath];
+    if (videoCell.playerView) {
+        
+        [videoCell.playerView.subviews.firstObject removeFromSuperview];
+        [videoCell.playerView removeFromSuperview];
+    }
+    
+}
+
 
 
 @end

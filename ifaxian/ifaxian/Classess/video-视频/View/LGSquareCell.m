@@ -12,33 +12,56 @@
 #import "LGPlayerView.h"
 #import "NSURL+LGGetVideoImage.h"
 
-@interface LGSquareCell()
+@interface LGSquareCell()<LGPlayerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
-
 @property (weak, nonatomic) IBOutlet UILabel *contenText;
-
 @property (weak, nonatomic) IBOutlet UIImageView *imagev;
-
 @property (weak, nonatomic) IBOutlet LGImagesView *imagesView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLable;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
-
 @property (weak, nonatomic) IBOutlet UILabel *dataLable;
-@property(nonatomic, strong) LGPlayerView *playerView;
+
+@property(nonatomic, strong) UIImageView *bacImageView;
+@property(nonatomic, strong) UIImageView *starImageView;
 @end
 
 
 @implementation LGSquareCell
 
-- (LGPlayerView *)playerView{
+- (UIView *)playerView{
+    
     if (_playerView == nil) {
-        _playerView = [LGPlayerView videoPlayView];
-        _playerView.backgroundColor = [UIColor redColor];
-        [self.contentView addSubview:_playerView];
+        _playerView = [[LGPlayerView alloc] init];
     }
     
     return _playerView;
+}
+
+
+- (UIImageView *)bacImageView{
+    
+    if (_bacImageView == nil) {
+        _bacImageView = [[UIImageView alloc] init];
+        _bacImageView.userInteractionEnabled = YES;
+        _bacImageView.backgroundColor = [UIColor yellowColor];
+        _bacImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _bacImageView.clipsToBounds = YES;
+        [_bacImageView addSubview:self.starImageView];
+        [self.contentView addSubview:_bacImageView];
+    }
+    
+    return _bacImageView;
+}
+
+- (UIImageView *)starImageView{
+    if (_starImageView == nil) {
+        _starImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"视频播放"]];
+        _starImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playerVieo)];
+        [_starImageView addGestureRecognizer:tap];
+    }
+    return _starImageView;
 }
 
 
@@ -46,7 +69,8 @@
     // Initialization code
     
     [super awakeFromNib];
-    
+    self.autoresizingMask = UIViewAutoresizingNone;
+    [self layoutIfNeeded];
 }
 
 - (void)setModel:(LGShare *)model{
@@ -57,26 +81,25 @@
     
     if (model.images.count) {
         self.imagev.image = [UIImage imageNamed:@"image_icon"];
-        self.playerView.hidden = YES;
+        _bacImageView.hidden = YES;
         _imagesView.hidden = NO;
         _imagesView.model = model;
     }else if (model.VideoUrl.length) {
          self.imagev.image = [UIImage imageNamed:@"video_icon"];
-        self.playerView.hidden = NO;
+         self.bacImageView.frame = model.videoViewFrame;
+     
+         self.starImageView.center = CGPointMake(model.videoViewFrame.size.width/2, model.videoViewFrame.size.height/2);
+        _bacImageView.hidden = NO;
         _imagesView.hidden = YES;
-        self.playerView.urlString = model.VideoUrl;
-        self.playerView.frame = model.videoViewFrame;
-        self.playerView.bacImagView.image = model.videoImage;
+
+        self.bacImageView.image = model.videoImage;
     }else{
          self.imagev.image = [UIImage imageNamed:@"text_icon"];
-        self.playerView.hidden = YES;
+        _bacImageView.hidden = YES;
         _imagesView.hidden = YES;
 
          LGLog(@"文字");
     }
-    
-    
-    
     [_likeButton setTitle:model.share.ding forState:UIControlStateNormal];
     [_commentButton setTitle:[NSString stringWithFormat:@"%zd",model.share.comments.count] forState:UIControlStateNormal];
 
@@ -90,10 +113,37 @@
     cellFrame.size.width -= 2 * LGCommonMargin;
     cellFrame.origin.x += LGCommonMargin;
     cellFrame.origin.y += LGCommonMargin;
-    
-    
-    
+
     [super setFrame:cellFrame];
+    
+}
+
+//调用代理
+- (void)playerFailuretoreplay:(LGPlayerView *)view{
+    
+    [self playerVieo];
+}
+
+- (void)playerVieo{
+    // [self.playerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    self.playerView.frame = self.bacImageView.frame;
+    self.playerView.lg_width = LGScreenW - 4 * LGCommonMargin;
+    self.playerView.backgroundColor = [UIColor yellowColor];
+    [self.contentView addSubview:self.playerView];
+    
+    LGPlayerView *plaer = [LGPlayerView videoPlayView];
+    
+    plaer.frame = self.playerView.bounds;
+    
+    plaer.delegate = self;
+    UITabBarController *tab = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    UINavigationController *nav = tab.selectedViewController;
+    plaer.contrainerViewController = nav;
+    plaer.contrainerView = self.playerView;
+    [self.playerView addSubview:plaer];
+
+    plaer.urlString = self.model.VideoUrl;
+    [plaer starVideo:plaer.fullStarButton];
     
 }
 - (IBAction)addLike:(id)sender {
@@ -129,13 +179,6 @@
             };
             
         }];
-
-            
-        
-
-        
-        
-        
         
          [[LGNetWorkingManager manager] requestAddLikeAction:@"addLike" umid:[NSString stringWithFormat:@"%zd",self.model.share.ID] completion:^(BOOL isSuccess, id responseObject) {
        

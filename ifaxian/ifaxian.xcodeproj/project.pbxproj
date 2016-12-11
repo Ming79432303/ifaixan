@@ -179,6 +179,7 @@
 		3AD9778E1DF2759F00244312 /* LGPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD9778C1DF2759F00244312 /* LGPlayerView.m */; };
 		3AD9778F1DF2759F00244312 /* LGPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD9778D1DF2759F00244312 /* LGPlayerView.xib */; };
 		3AD977921DF2A46C00244312 /* NSURL+LGGetVideoImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD977911DF2A46C00244312 /* NSURL+LGGetVideoImage.m */; };
+		3ADC66111DFCEDE80052BA23 /* LGActivityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC66101DFCEDE80052BA23 /* LGActivityViewModel.m */; };
 		3ADD2C971DEC8B6600314B19 /* LGShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD2C961DEC8B6600314B19 /* LGShow.m */; };
 		3ADD2C9A1DEC8F1800314B19 /* LGDiscoverHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD2C991DEC8F1800314B19 /* LGDiscoverHeaderView.m */; };
 		3ADD2C9C1DEC8F6E00314B19 /* LGDiscoverHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ADD2C9B1DEC8F6E00314B19 /* LGDiscoverHeaderView.xib */; };
@@ -582,6 +583,8 @@
 		3AD9778D1DF2759F00244312 /* LGPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGPlayerView.xib; sourceTree = "<group>"; };
 		3AD977901DF2A46C00244312 /* NSURL+LGGetVideoImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+LGGetVideoImage.h"; sourceTree = "<group>"; };
 		3AD977911DF2A46C00244312 /* NSURL+LGGetVideoImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+LGGetVideoImage.m"; sourceTree = "<group>"; };
+		3ADC660F1DFCEDE80052BA23 /* LGActivityViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGActivityViewModel.h; sourceTree = "<group>"; };
+		3ADC66101DFCEDE80052BA23 /* LGActivityViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGActivityViewModel.m; sourceTree = "<group>"; };
 		3ADD2C951DEC8B6600314B19 /* LGShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGShow.h; sourceTree = "<group>"; };
 		3ADD2C961DEC8B6600314B19 /* LGShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGShow.m; sourceTree = "<group>"; };
 		3ADD2C981DEC8F1800314B19 /* LGDiscoverHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGDiscoverHeaderView.h; sourceTree = "<group>"; };
@@ -1445,7 +1448,7 @@
 				3A0F219A1DDF4BC1008B955F /* Commons - 评论 */,
 				3AE122831DDC8B6800D1A128 /* Main-主控制器 */,
 				3AE1227B1DDC8B6800D1A128 /* Discover-发现 */,
-				3AE122931DDC8B6800D1A128 /* video-视频 */,
+				3AE122931DDC8B6800D1A128 /* Share-分享 */,
 				3AE122871DDC8B6800D1A128 /* Me-我 */,
 				3AE122921DDC8B6800D1A128 /* Tool-工具 */,
 				3AE1228B1DDC8B6800D1A128 /* Other-其他 */,
@@ -1539,6 +1542,8 @@
 		3AE122891DDC8B6800D1A128 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3ADC660F1DFCEDE80052BA23 /* LGActivityViewModel.h */,
+				3ADC66101DFCEDE80052BA23 /* LGActivityViewModel.m */,
 				3A4B17EB1DE448EB0051E6C7 /* LGArticleModel.h */,
 				3A4B17EC1DE448EB0051E6C7 /* LGArticleModel.m */,
 			);
@@ -1662,13 +1667,14 @@
 			path = "Tool-工具";
 			sourceTree = "<group>";
 		};
-		3AE122931DDC8B6800D1A128 /* video-视频 */ = {
+		3AE122931DDC8B6800D1A128 /* Share-分享 */ = {
 			isa = PBXGroup;
 			children = (
 				3A5138EF1DEE7905002BE232 /* Model */,
 				3A5138F21DEE7905002BE232 /* View */,
 				3A5138F81DEE7905002BE232 /* ViewModel */,
 			);
+			name = "Share-分享";
 			path = "video-视频";
 			sourceTree = "<group>";
 		};
@@ -2132,6 +2138,7 @@
 				3A52B5191DFBE1D600C8C010 /* LGWriteView.m in Sources */,
 				3A0F21451DDEB503008B955F /* LWHTMLLayout.m in Sources */,
 				3A0F214B1DDEB503008B955F /* LWStorage.m in Sources */,
+				3ADC66111DFCEDE80052BA23 /* LGActivityViewModel.m in Sources */,
 				3A4B17ED1DE448EB0051E6C7 /* LGArticleModel.m in Sources */,
 				3A0F21821DDEC5A7008B955F /* LWImageItem.m in Sources */,
 				3A0F213D1DDEB503008B955F /* CALayer+WebCache.m in Sources */,

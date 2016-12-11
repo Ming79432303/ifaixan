@@ -28,10 +28,6 @@
     
 }
 
-
-
-
-
 - (void)awakeFromNib{
 
     [super awakeFromNib];
@@ -50,11 +46,6 @@
         if (model.images.count > 9 || !model.images.count) {
         return;
     }
-    
-   
-    
-    
-    
     for (UIView *imageView in self.subviews) {
         imageView.hidden = YES;
     }
@@ -67,8 +58,6 @@
         NSLog(@"%@",NSStringFromCGSize(model.oneImageSize));
         
         imageV.frame = CGRectMake(0, 0, model.oneImageSize.width,  model.oneImageSize.height);
-         //[imageV lg_setImageWithurl:[self.model.images.firstObject lg_thumbnailImageSizeImageW:model.oneImageSize.width] placeholderImage:nil];
-        
         [imageV lg_setImageWithurl:[self isGifUrl:self.model.images.firstObject imageView:imageV] placeholderImage:nil];
         
     }else if (model.images.count == 2) {
@@ -80,10 +69,7 @@
             v.frame = CGRectMake(LGCommonSmallMargin * lin + lin * (LGTowImageItemWH), LGCommonSmallMargin * loc + loc * (LGTowImageItemWH), LGTowImageItemWH, LGTowImageItemWH);
             v.hidden = NO;
             NSString *url =  model.images[i];
-            
-           // [v lg_setImageWithurl:[url lg_thumbnailImageSizeImageW:LGTowImageItemWH] placeholderImage:nil];
-            
-               [v lg_setImageWithurl:[self isGifUrl:url imageView:v] placeholderImage:nil];
+            [v lg_setImageWithurl:[self isGifUrl:url imageView:v] placeholderImage:nil];
             
         }
     }else if (model.images.count == 4){
@@ -103,9 +89,6 @@
             [v lg_setImageWithurl:[self isGifUrl:url imageView:v] placeholderImage:nil];
             
             index ++;
-          
-            
-            
         }
     }else{
         
@@ -113,18 +96,12 @@
             UIImageView *v = self.subviews[i];
             int lin = i % 3;
             int loc = i / 3;
-            
             v.frame = CGRectMake(LGCommonSmallMargin * (lin) + lin * (LGImageItemWH), LGCommonSmallMargin * (loc) + loc * (LGImageItemWH), LGImageItemWH, LGImageItemWH);
             v.hidden = NO;
             [v lg_setImageWithurl:[self isGifUrl:self.model.images[i] imageView:v] placeholderImage:nil];
             
         }
     }
-    
-    
-
-    
-    
 }
 
 //9宫格布局
@@ -132,7 +109,6 @@
 -(void)setupUI{
     // 设置一些常数
     //图片距离两边的距离
-    
     self.contentMode = UIViewContentModeScaleToFill;
     //图片的间距
     //让数从1开始计算

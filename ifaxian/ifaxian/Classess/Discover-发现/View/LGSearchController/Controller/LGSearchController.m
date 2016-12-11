@@ -76,7 +76,7 @@
         return;
     }
     
-       
+#warning 中文转码
     self.searchHeaderView.hidden = NO;
     self.activityView.hidden = NO;
     self.titleLable.text = [NSString stringWithFormat:@"正在查找%@",self.searchStr];

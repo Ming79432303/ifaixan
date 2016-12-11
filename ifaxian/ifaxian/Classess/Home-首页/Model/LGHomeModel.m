@@ -12,7 +12,7 @@
 
 - (CGFloat)rowHeight{
     
-        NSLog(@"%@",self.title);
+       
     if (_rowHeight == 0){
         
         

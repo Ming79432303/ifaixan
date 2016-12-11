@@ -50,7 +50,6 @@
         _videoViewFrame = CGRectMake(LGCommonMargin, _rowHeight, LGScreenW - 4 * LGCommonMargin, 200);
         _rowHeight += 200;
     }
-    
     if (self.images.count > 0) {
     switch (self.images.count) {
           //一张图片
@@ -118,23 +117,14 @@
     if (width < minWidth) {
         width = minWidth;
         height = width * imageSize.height/imageSize.width;
-        
-        
     }
     //最大宽
     CGFloat maxHeight = 0.8 * LGScreenH;
-    
-    
     if (height > maxHeight) {
         height = maxHeight;
     }
-    
-    
     CGSize size = CGSizeMake(width, height + LGCommonMargin);
-    
     self.oneImageSize = size;
-
-    
     //重新计算行高
     [self calculateHeight];
     
@@ -147,31 +137,13 @@
 - (void)setupImageArray{
     
     NSString *url = [NSString lg_regularExpression:_share.content];
-   
     if (url.length) {
         if ([url hasSuffix:@".mp4"]) {
-            
             self.VideoUrl = [NSString stringWithFormat:@"%@video/%@",LGbuckeUrl,url];
-            
             return;
         }
         self.images = [_share.content lg_getAllImages];
-       
-//        NSArray *imageArray = [NSJSONSerialization JSONObjectWithData:[[self replstr:url] dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
-//        for (NSString *url in imageArray) {
-//            [self.images addObject:[NSString stringWithFormat:@"%@squareImages/%@",LGbuckeUrl,url]];
-//            
-//        }
-//        }
-    
+       }
 }
-}
-
-//- (NSString *)replstr:(NSString *)text{
-//    NSString *str = [text stringByReplacingOccurrencesOfString:@"&#8220" withString:@"\""];
-//    str = [str stringByReplacingOccurrencesOfString:@"&#8221" withString:@"\""];
-//    str = [str stringByReplacingOccurrencesOfString:@";" withString:@""];
-//    return str;
-//}
 
 @end

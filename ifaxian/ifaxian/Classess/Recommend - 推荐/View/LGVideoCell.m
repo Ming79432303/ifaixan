@@ -62,11 +62,11 @@
     self.playerView.lg_width = LGScreenW - 2 * LGCommonMargin;
     self.playerView.backgroundColor = [UIColor yellowColor];
     [self.contentView addSubview:self.playerView];
-
+    
     LGPlayerView *plaer = [LGPlayerView videoPlayView];
     
     plaer.frame = self.playerView.bounds;
-   
+    
     plaer.delegate = self;
     UITabBarController *tab = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     UINavigationController *nav = tab.selectedViewController;
@@ -74,7 +74,7 @@
     plaer.contrainerView = self.playerView;
     [self.playerView addSubview:plaer];
     self.videoPlayer = plaer;
-   plaer.urlString = self.model.videoUrl;
+    plaer.urlString = self.model.videoUrl;
     [plaer starVideo:self.videoPlayer.fullStarButton];
     
 }

@@ -14,9 +14,7 @@
 #import "NSURL+LGGetVideoImage.h"
 #import "NSString+LGImageStyle.h"
 @interface  LGShareViewModel()
-@property (nonatomic, strong) LGHTTPSessionManager *manager;
 
-@property (nonatomic, strong) NSMutableArray<LGShare *> *shareArray;
 
 @end
 @implementation LGShareViewModel{
@@ -132,12 +130,13 @@
                 dispatch_group_enter(groupVideo);
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
     
-                    [NSURL thumbnailImageForVideo:[NSURL URLWithString:[share.VideoUrl lg_jpgReplaceGif]] atTime:1 completion:^(UIImage *thumbnailImage) {
+                    [NSURL thumbnailImageForVideo:[NSURL URLWithString:share.VideoUrl] atTime:2 completion:^(UIImage *thumbnailImage) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             if (thumbnailImage) {
     
                                 share.videoImage = thumbnailImage;
                                 dispatch_group_leave(groupVideo);
+                                
                             }
                         });
     
