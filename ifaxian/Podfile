@@ -29,4 +29,5 @@ pod 'WordPress-iOS-Editor'
 pod "AliyunOSSiOS"
 pod 'ReactiveCocoa','2.5'
 pod 'YYImage'
+pod 'TZImagePickerController'
 end

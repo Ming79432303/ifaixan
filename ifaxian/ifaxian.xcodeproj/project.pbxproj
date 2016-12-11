@@ -227,6 +227,8 @@
 		3AF6CF201DF3B15D00A93778 /* LGTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF6CF1F1DF3B15D00A93778 /* LGTextView.m */; };
 		3AFD79751DE0900E00014C71 /* LGVisitorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD79741DE0900E00014C71 /* LGVisitorView.m */; };
 		3AFD79771DE0902800014C71 /* LGVisitorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD79761DE0902800014C71 /* LGVisitorView.xib */; };
+		3AFE71C71DFD3EDC002B6157 /* LGSelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE71C41DFD3EDC002B6157 /* LGSelectImageCell.m */; };
+		3AFE71C81DFD3EDC002B6157 /* LxGridViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE71C61DFD3EDC002B6157 /* LxGridViewFlowLayout.m */; };
 		480265D31DDD8F6D009549DD /* LGNetWorkingManager+LGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 480265D21DDD8F6D009549DD /* LGNetWorkingManager+LGExtension.m */; };
 		480265E51DDDA0EF009549DD /* LGModelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 480265E41DDDA0EF009549DD /* LGModelConfig.m */; };
 		48DAD6E81DDFEB4200CD33A4 /* LGRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DAD6E71DDFEB4200CD33A4 /* LGRefreshHeader.m */; };
@@ -675,6 +677,10 @@
 		3AFD79731DE0900E00014C71 /* LGVisitorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGVisitorView.h; sourceTree = "<group>"; };
 		3AFD79741DE0900E00014C71 /* LGVisitorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGVisitorView.m; sourceTree = "<group>"; };
 		3AFD79761DE0902800014C71 /* LGVisitorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGVisitorView.xib; sourceTree = "<group>"; };
+		3AFE71C31DFD3EDC002B6157 /* LGSelectImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSelectImageCell.h; sourceTree = "<group>"; };
+		3AFE71C41DFD3EDC002B6157 /* LGSelectImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSelectImageCell.m; sourceTree = "<group>"; };
+		3AFE71C51DFD3EDC002B6157 /* LxGridViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LxGridViewFlowLayout.h; sourceTree = "<group>"; };
+		3AFE71C61DFD3EDC002B6157 /* LxGridViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LxGridViewFlowLayout.m; sourceTree = "<group>"; };
 		480265D11DDD8F6D009549DD /* LGNetWorkingManager+LGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGNetWorkingManager+LGExtension.h"; sourceTree = "<group>"; };
 		480265D21DDD8F6D009549DD /* LGNetWorkingManager+LGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LGNetWorkingManager+LGExtension.m"; sourceTree = "<group>"; };
 		480265E31DDDA0EF009549DD /* LGModelConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGModelConfig.h; sourceTree = "<group>"; };
@@ -1307,6 +1313,10 @@
 		3A5669E91DED790200959D96 /* VIew */ = {
 			isa = PBXGroup;
 			children = (
+				3AFE71C31DFD3EDC002B6157 /* LGSelectImageCell.h */,
+				3AFE71C41DFD3EDC002B6157 /* LGSelectImageCell.m */,
+				3AFE71C51DFD3EDC002B6157 /* LxGridViewFlowLayout.h */,
+				3AFE71C61DFD3EDC002B6157 /* LxGridViewFlowLayout.m */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
@@ -2179,6 +2189,7 @@
 				3A2ED2971DEC2194002CFE88 /* LGHTTPSessionManager.m in Sources */,
 				3AEB69AC1DF1372200888B9E /* LGSendVideoController.m in Sources */,
 				3A52B4DD1DFBE16E00C8C010 /* LGHomeController.m in Sources */,
+				3AFE71C71DFD3EDC002B6157 /* LGSelectImageCell.m in Sources */,
 				48DAD6ED1DE0043D00CD33A4 /* LGReplyView.m in Sources */,
 				3AE122AE1DDCA9B300D1A128 /* LGPhotoNavigationController.m in Sources */,
 				3A0F21401DDEB503008B955F /* LWAsyncDisplayLayer.m in Sources */,
@@ -2229,6 +2240,7 @@
 				3A0F20921DDE94B6008B955F /* NSString+LGStringSize.m in Sources */,
 				3AF4B6301DDCAB3B00C06419 /* UIView+Frame.m in Sources */,
 				3A0F21A51DDF4F2A008B955F /* LGCommentCell.m in Sources */,
+				3AFE71C81DFD3EDC002B6157 /* LxGridViewFlowLayout.m in Sources */,
 				3A0F215A1DDEB503008B955F /* SDWebImageManager+Gallop.m in Sources */,
 				3A0F21A01DDF4BE1008B955F /* LGCommentController.m in Sources */,
 				3A4685C11DED3D6E00FD6345 /* LGTagView.m in Sources */,
@@ -2432,7 +2444,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = ifaxian/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRELINK_FLAGS = "";
@@ -2464,7 +2476,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = ifaxian/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRELINK_FLAGS = "";

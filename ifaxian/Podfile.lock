@@ -49,6 +49,7 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.0.4)
+  - TZImagePickerController (1.7.1)
   - UIAlertView+Blocks (0.8.1)
   - WordPress-iOS-Editor (0.9.1):
     - CocoaLumberjack (= 2.0.0)
@@ -76,6 +77,7 @@ DEPENDENCIES:
   - ReactiveCocoa (= 2.5)
   - SDWebImage
   - SVProgressHUD
+  - TZImagePickerController
   - WordPress-iOS-Editor
   - YYImage
 
@@ -93,12 +95,13 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
+  TZImagePickerController: cbfd57ba947263759b860f74132dd1bc33125afc
   UIAlertView+Blocks: 45c3d3b7194906702d3e9a14c7ece5581505646d
   WordPress-iOS-Editor: 31c09f96f7af2b9c908e11e847ce7a0f74b2fff0
   WordPress-iOS-Shared: 5480e7b5c9c55158ea22c89ff44fca5597852224
   WordPressCom-Analytics-iOS: 73de8c9a0f1a43bac03fd2fcd881389be73ee820
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
 
-PODFILE CHECKSUM: 71e685e3aaba7673005559685206980b9f6c4b70
+PODFILE CHECKSUM: 3a27c0ef5da37edb1aa1eea51ca2c12015f77c3b
 
 COCOAPODS: 1.0.1

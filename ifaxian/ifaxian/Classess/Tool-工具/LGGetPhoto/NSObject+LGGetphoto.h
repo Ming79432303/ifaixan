@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+//#import <UIKit/UIKit.h>
 #import "LGPhoto.h"
 #import "LGPhotoImage.h"
 @interface NSObject (LGGetphoto)
