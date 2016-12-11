@@ -31,16 +31,16 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+//     [[NSNotificationCenter defaultCenter] postNotificationName:@"loadFinish" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData:) name:@"loadFinish" object:nil];
     [self setCollectionViews];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选择" style:0 target:self action:@selector(selectedImages)];
   
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noti:) name:@"n" object:nil];
 
-    
-    // Do any additional setup after loading the view.
 }
+
+
 
 - (void)noti:(NSNotification *)noty{
     
@@ -137,8 +137,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
         [[NSNotificationCenter defaultCenter] postNotificationName:@"removeimage" object:self userInfo:@{@"image":phpotoImage}];
     }
-    NSLog(@"%@",self.count);
-    if ([self.count integerValue] >= 9) {
+      if ([self.count integerValue] >= 9) {
         
         [SVProgressHUD showInfoWithStatus:@"只能选择9张图片"];
         return;

@@ -67,8 +67,8 @@
         
         PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
         // 同步获得图片, 只会返回1张图片
-        options.synchronous = YES;
-        
+//        options.synchronous = NO;
+    
         // 获得某个相簿中的所有PHAsset对象
         PHFetchResult<PHAsset *> *assets = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
         NSMutableArray *arrayM = [NSMutableArray array];

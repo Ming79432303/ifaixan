@@ -49,9 +49,9 @@ static NSString *ID = @"cellID";
 
 - (void)loadImages{
     __weak typeof(self) weakSelf = self;
-   // [NSObject lg_getThumbnailImage:^(NSArray<LGPhoto *> *photos) {
-     //   weakSelf.photoLists = photos;
-    //}];
+//    [NSObject lg_getThumbnailImage:^(NSArray<LGPhoto *> *photos) {
+//        weakSelf.photoLists = photos;
+//    }];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [NSObject lg_getOriginalImage:^(NSArray<LGPhoto *> *photos) {
@@ -59,6 +59,7 @@ static NSString *ID = @"cellID";
             weakSelf.photoLists = photos;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
+            
             });
         }];
         
