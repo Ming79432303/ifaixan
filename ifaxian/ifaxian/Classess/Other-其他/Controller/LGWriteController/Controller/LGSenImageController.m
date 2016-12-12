@@ -120,7 +120,7 @@
 }
 
 - (void)setupUI{
-    
+    self.view.frame = [UIScreen mainScreen].bounds;
     LGTextView *textField = [[LGTextView alloc] init];
     textField.backgroundColor = [UIColor groupTableViewBackgroundColor];
     textField.frame = CGRectMake(0, 0, 200, 100);

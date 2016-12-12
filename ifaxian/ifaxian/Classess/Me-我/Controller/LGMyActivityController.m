@@ -16,15 +16,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.tableView.scrollEnabled = LGuserInteractionEnabled;
-      CGFloat bootmInset = LGnavBarH + LGtabBarH + LGTitleViewHeight;
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0,bootmInset , 0);
-    // Do any additional setup after loading the view.
+      self.tableView.contentInset = UIEdgeInsetsMake(200 + 35 - 74, 0,47, 0);
 }
 - (void)setupNavBar{
     
     
 }
+
+
+
+- (void)setupTableView{
+    
+    
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -44,7 +50,7 @@
         
     }
     
-    cell.textLabel.text = @"123";
+    cell.textLabel.text = @"act123";
     
     return cell;
     

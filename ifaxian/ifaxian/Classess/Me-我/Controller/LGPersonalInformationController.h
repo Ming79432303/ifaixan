@@ -8,6 +8,6 @@
 
 #import "LGBasiController.h"
 
-@interface LGPersonalInformationController : LGBasiController
+@interface LGPersonalInformationController : UITableViewController
 
 @end

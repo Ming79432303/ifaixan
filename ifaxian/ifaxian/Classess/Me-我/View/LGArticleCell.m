@@ -46,7 +46,8 @@
     self.viewsLable.text = [NSString stringWithFormat:@"%zd次阅读",[postModel.views integerValue]];
     self.commentsLable.text = [NSString stringWithFormat:@"%zd评论",[postModel.comment_count integerValue]];
     self.zanLabel.text = [NSString stringWithFormat:@"%zd点赞",[postModel.ding integerValue]];
-    if (postModel.imageUrl.length) {        
+    NSLog(@"%@",postModel.title);
+    if (postModel.imageUrl.length) {
         [self.picImageView lg_setImageWithurl:postModel.imageUrl placeholderImage:nil];
         self.timeLable.text = postModel.date;
     }

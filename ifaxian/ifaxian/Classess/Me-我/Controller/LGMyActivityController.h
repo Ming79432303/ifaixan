@@ -8,6 +8,6 @@
 
 #import "LGBasiController.h"
 
-@interface LGMyActivityController : LGBasiController
+@interface LGMyActivityController : UITableViewController
 
 @end

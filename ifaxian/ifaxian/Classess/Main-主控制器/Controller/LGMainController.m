@@ -11,6 +11,7 @@
 #import "LGBasiController.h"
 #import "LGLoginController.h"
 #import "LGWriteView.h"
+#import "LGMecontroller.h"
 @interface LGMainController ()<LGWriteViewDelegate>
 @property(nonatomic, strong) UIButton *writeButton;
 @end
@@ -113,7 +114,7 @@
                            @"className":@"LGHomeController",@"title":@"首页",@"imageName":@"home"
                         },
                        @{
-                           @"className":@"LGMeController",@"title":@"我",@"imageName":@"profile",
+                           @"className":@"LGMecontroller",@"title":@"我",@"imageName":@"profile",
                          }];
     
     NSMutableArray<__kindof UIViewController *> *controllers = [NSMutableArray array];
@@ -143,8 +144,17 @@
     NSString *normalImageName = [NSString stringWithFormat:@"tabbar_%@",imageName];
     NSString *selectImageName = [NSString stringWithFormat:@"%@_selected",normalImageName];
     
+   
+    UIViewController *vc;
     Class className = NSClassFromString(clsName);
-    LGBasiController *vc = [[className alloc] init];
+    if (className == [LGMecontroller class]) {
+        UIStoryboard *stroy = [UIStoryboard storyboardWithName:@"LGMeController" bundle:nil];
+      vc = [stroy instantiateInitialViewController];
+    
+    }else{
+        
+        vc = [[className alloc] init];
+    }
     LGNavigationController *nav = [[LGNavigationController alloc] initWithRootViewController:vc];
     vc.tabBarItem.title = title;
    

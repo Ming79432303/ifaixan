@@ -10,11 +10,11 @@
 
 @implementation LGShareImage
 - (NSString *)imageUrl{
-    
-    if (_imageUrl.length) {
-        
-        return _imageUrl;
-    }
+//    
+//    if (_imageUrl.length) {
+//        
+//        return _imageUrl;
+//    }
     _imageUrl = [self.content lg_getImageUrl];
     
     return _imageUrl;

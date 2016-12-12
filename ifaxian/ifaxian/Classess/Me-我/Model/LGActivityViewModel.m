@@ -14,7 +14,7 @@
 
 -(void)loadNewDatacompletion:(void (^)(BOOL, NSArray<LGShare *> *))completion{
     
-    [[LGNetWorkingManager manager] requsetUrl:@"http://112.74.45.39/author/ming/page/1?json=1" completion:^(BOOL isSuccess, NSArray *json) {
+    [[LGNetWorkingManager manager] requsetUrl:@"http://112.74.45.39/author/ming/page/13?json=1" completion:^(BOOL isSuccess, NSArray *json) {
         
         if (isSuccess) {
             index_ = 2;

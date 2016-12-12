@@ -17,9 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.tableView.scrollEnabled = NO;
-    CGFloat bootmInset = LGnavBarH + LGtabBarH + LGTitleViewHeight;
-     self.tableView.contentInset = UIEdgeInsetsMake(0, 0,bootmInset , 0);
+       self.tableView.contentInset = UIEdgeInsetsMake(200 + 35 - 74, 0, 47, 0);
+
 
 
     // Do any additional setup after loading the view.
@@ -47,7 +46,7 @@
         
     }
     
-    cell.textLabel.text = @"123";
+    cell.textLabel.text = @"ps123";
     
     return cell;
     

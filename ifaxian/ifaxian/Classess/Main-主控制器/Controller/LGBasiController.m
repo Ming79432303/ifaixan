@@ -72,8 +72,8 @@
     
     
     self.tableView.frame = self.view.frame;
-    self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.contentInset = UIEdgeInsetsMake(self.navBar.lg_height, 0, self.tabBarController.tabBar.lg_height, 0);
   

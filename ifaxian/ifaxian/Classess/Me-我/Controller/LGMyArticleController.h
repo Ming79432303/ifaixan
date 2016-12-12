@@ -8,7 +8,7 @@
 
 #import "LGBasiController.h"
 
-@interface LGMyArticleController : LGBasiController
+@interface LGMyArticleController : UITableViewController
 
 
 @end

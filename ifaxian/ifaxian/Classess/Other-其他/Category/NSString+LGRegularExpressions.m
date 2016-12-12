@@ -74,7 +74,7 @@
     NSString *urlString = self;
     NSError *error = NULL;
     //创建正则表达式
-    NSString *pattern = @"http://.*?.jpg";
+     NSString *pattern = @"(?<=img src=\\\")[^\"]*(?=\")";
     
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
     __block NSString *resultString;
@@ -89,26 +89,6 @@
         }
         *stop = YES;
     }];
-    
-    if (resultString==nil) {
-        //创建正则表达式
-        NSString *pattern = @"http://.*?.gif";
-        
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
-      
-        [regex enumerateMatchesInString:urlString options:0 range:NSMakeRange(0, [urlString length]) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-            if (flags != NSMatchingInternalError) {
-                NSRange firstHalfRange = [result rangeAtIndex:0];
-                if (firstHalfRange.length > 0) {
-                    NSRange resRang = NSMakeRange(firstHalfRange.location, firstHalfRange.length);
-                    NSLog(@"%@",resultString);
-                    resultString = [urlString substringWithRange:resRang];
-                }
-            }
-            *stop = YES;
-        }];
-
-    }
     
     return resultString;
     

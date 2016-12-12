@@ -37,32 +37,38 @@ static NSString *squareCellID = @"squareCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupTableView];
+    [self setupRefreshView];
     index_ = 1;
-       self.tableView.scrollEnabled = LGuserInteractionEnabled;
+    
     CGFloat bootmInset = LGnavBarH + LGtabBarH + LGTitleViewHeight;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0,bootmInset , 0);
-    [self.tableView.mj_header beginRefreshing];
+    [self loadNewData];
+    
+    self.tableView.bounces = YES;
+    self.tableView.contentInset = UIEdgeInsetsMake(200 + 35 - 74, 0, 64 + 35, 0);
    
 }
 
-
-
--(void)setupNavBar{
+- (void)setupRefreshView{
+    
+    self.tableView.mj_footer = [LGRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadOldData)];
+    self.tableView.mj_header = [LGRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    
     
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
 
 - (void)setupTableView{
     
-    [super setupTableView];
-    
+
+ 
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGArticleCell class]) bundle:nil] forCellReuseIdentifier:articleCellID];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGSquareCell class]) bundle:nil] forCellReuseIdentifier:squareCellID];
-    self.tableView.rowHeight = 150;
-    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+
     
 }
 
@@ -122,8 +128,8 @@ static NSString *squareCellID = @"squareCellID";
          return model.rowHeight;
     }else{
         
-        LGArticleCell *cell = [tableView dequeueReusableCellWithIdentifier:articleCellID];
-        cell.postModel =  (LGArticleModel *)model.share;
+                       
+       
         return 110;
 
     }
@@ -147,7 +153,7 @@ static NSString *squareCellID = @"squareCellID";
     }else{
         
         LGArticleCell *cell = [tableView dequeueReusableCellWithIdentifier:articleCellID];
-        cell.postModel =  (LGArticleModel *)model.share;
+        cell.postModel = model.share;
         
         return cell;
         

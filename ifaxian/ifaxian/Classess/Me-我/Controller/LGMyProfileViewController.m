@@ -12,7 +12,7 @@
 #import "LGMyActivityController.h"
 #import "LGPersonalInformationController.h"
 static CGFloat const lableW = 100;
-static CGFloat const lableScale = 1.3;
+static CGFloat const lableScale = 1.1;
 #define  LGScreen  [UIScreen mainScreen].bounds.size.width
 @interface LGMyProfileViewController ()<UIScrollViewDelegate>
 @property(nonatomic, strong) NSMutableArray *dataArray;
@@ -49,24 +49,23 @@ static CGFloat const lableScale = 1.3;
     [self setTitleHeadView];
     //初始化UIScrollView
     [self setScrollVIew];
+#warning ??
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(user) name:@"user" object:nil];
     
 }
 
 #pragma mark - 添加所有子控制器
 - (void)setAllChileControllers{
-    
-    LGPersonalInformationController *profile = [[LGPersonalInformationController alloc] init];
-    profile.title = @"我的信息";
-    [self addChildViewController:profile];
     LGMyArticleController *article = [[LGMyArticleController alloc] init];
-    article.title = @"我的文章";
+    article.title = @"我发布的";
     [self addChildViewController:article];
     LGMyActivityController *activity = [[LGMyActivityController alloc] init];
     activity.title = @"我的动态";
     [self addChildViewController:activity];
 
-    
+      LGPersonalInformationController *profile = [[LGPersonalInformationController alloc] init];
+    profile.title = @"我的信息";
+    [self addChildViewController:profile];
 
     
 }
@@ -78,10 +77,10 @@ static CGFloat const lableScale = 1.3;
     
     CGFloat lableY = 0;
     
-    CGFloat lableH = 40;
+    CGFloat lableH = 30;
     
     CGFloat lableX = ([UIScreen lg_screenWidth] - count * lableW) /2;
-    NSLog(@"%f--%f---%f",self.titleView.lg_width,count * lableW,(self.titleView.lg_width - count * lableW));
+   
     
     for (int i = 0; i < count; i++) {
         UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(lableX + lableW * i, lableY, lableW, lableH)];
@@ -90,8 +89,9 @@ static CGFloat const lableScale = 1.3;
         lable.tag = i;
         UIViewController *vc = self.childViewControllers[i];
         
-        lable.highlightedTextColor = [UIColor redColor];
-        
+        lable.highlightedTextColor = [UIColor whiteColor];
+        lable.textColor = [UIColor lightGrayColor];
+        lable.backgroundColor = [UIColor redColor];
         lable.text = vc.title;
         //添加单击手势事件
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selecedLable:)];
@@ -108,6 +108,15 @@ static CGFloat const lableScale = 1.3;
     
     
 }
+
+- (void)addtipView{
+    
+    UIView *tipView = [[UIView alloc] init];
+
+    
+    
+}
+
 #pragma mark - 单击手势事件
 - (void)selecedLable:(UITapGestureRecognizer *)tap{
     //单击之后要做的事情
@@ -134,7 +143,7 @@ static CGFloat const lableScale = 1.3;
     //取消上一次按钮单击三部曲
     _lasLable.highlighted = NO;
     //恢复按钮颜色
-    _lasLable.textColor = [UIColor blackColor];
+    _lasLable.textColor = [UIColor lightGrayColor];
     //恢复上一次按钮的大小
     _lasLable.transform = CGAffineTransformIdentity;
     //设置选中的大小
@@ -203,13 +212,14 @@ static CGFloat const lableScale = 1.3;
     //右边的缩放放大系数
     CGFloat rightscale = index - (int)index;
     //左边的放大系数
+    NSLog(@"%f",rightscale);
     CGFloat leftscale = 1- rightscale;
-    leftLble.transform = CGAffineTransformMakeScale(leftscale * 0.3 + 1, leftscale * 0.3 + 1);
-    rightLble.transform = CGAffineTransformMakeScale(rightscale * 0.3 + 1 , rightscale * 0.3 + 1);
+    leftLble.transform = CGAffineTransformMakeScale(leftscale * 0.1 + 1, leftscale * 0.1 + 1);
+    rightLble.transform = CGAffineTransformMakeScale(rightscale * 0.1 + 1 , rightscale * 0.1 + 1);
     //设置渐变颜色,黑色是最纯洁的RGB:0,0,0
-    leftLble.textColor = [UIColor colorWithRed:leftscale green:0 blue:0 alpha:1];
-    rightLble.textColor = [UIColor colorWithRed:rightscale green:0 blue:0 alpha:1];
-    
+//    leftLble.textColor = [UIColor colorWithWhite:leftscale alpha:1.0];
+//  
+//    rightLble.textColor  = [UIColor colorWithWhite:rightscale alpha:1.0];
     
     
 }
