@@ -30,4 +30,5 @@ typedef NS_ENUM(NSInteger , LGRequiredArgumen) {
 - (void)requestPOstCategory:(NSString *)category page:(NSString *)page completion:(LGRequestCompletion)completion;
 
 - (void)request:(LGNetMethod)method urlString:(NSString *)urlString parameters:(NSDictionary *)parameters completion:(LGRequestCompletion)completion;
+- (void)requestUsercompletion:(LGRequestCompletion)completion;
 @end

@@ -47,8 +47,6 @@
  *  通用尺寸
  */
 
-#define Margin 10;
-#define minMargin
 #define LGnavBarH 64
 #define LGstatusBarH 20
 #define LGtabBarH 49

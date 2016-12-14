@@ -16,9 +16,6 @@ CGFloat const LGCommonMargin = 10;
 //最小间距
 CGFloat const LGCommonMinMargin = 3;
 /********* 首页 *********/
-
-
-
 //评论字体
 CGFloat const LGCommentFontSize = 15;
 //转发字体
@@ -31,16 +28,21 @@ CGFloat const LGCommentNameHeight = 14;
 CGFloat const LGCommentIconHeight = 18;
 //
 CGFloat const LGHomeImageViewScale = 1.86;
-//是否开启交互
-int LGuserInteractionEnabled = NO;
+
+
+
+/********* 个人中中心 *********/
 //个人中的TitleView
 CGFloat const LGTitleViewHeight = 44;
+CGFloat const LGBacImageViewHeight = 200;
+CGFloat const LGTipViewHeight = 35;
 
-/** 通知 */
+
+/********* 通知 *********/
 //登录成功通知
 NSString *const LGUserLoginSuccessNotification = @"LGUserLoginSuccessNotification";
 //通知用户登录
 NSString *const LGUserLoginNotification = @"LGUserLoginNotification";
 
-
+NSString *const LGUserupdataImageNotification = @"LGUserupdataImageNotification";
 

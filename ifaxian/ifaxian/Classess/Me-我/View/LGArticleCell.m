@@ -46,7 +46,7 @@
     self.viewsLable.text = [NSString stringWithFormat:@"%zd次阅读",[postModel.views integerValue]];
     self.commentsLable.text = [NSString stringWithFormat:@"%zd评论",[postModel.comment_count integerValue]];
     self.zanLabel.text = [NSString stringWithFormat:@"%zd点赞",[postModel.ding integerValue]];
-    NSLog(@"%@",postModel.title);
+
     if (postModel.imageUrl.length) {
         [self.picImageView lg_setImageWithurl:postModel.imageUrl placeholderImage:nil];
         self.timeLable.text = postModel.date;
@@ -58,12 +58,12 @@
     
     CGRect cellFrame = frame;
     cellFrame.size.height -= LGCommonMargin;
-    cellFrame.size.width -= 2 * LGCommonMargin;
-    cellFrame.origin.x += LGCommonMargin;
+    cellFrame.size.width -= 2 * LGCommonSmallMargin;
+    cellFrame.origin.x += LGCommonSmallMargin;
     cellFrame.origin.y += LGCommonMargin;
     
-    [super setFrame:cellFrame];
     
+    [super setFrame:cellFrame];
 }
 
 @end

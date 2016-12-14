@@ -97,6 +97,9 @@
    //创建一个字典visitordiscover_image_message   visitordiscover_image_profile
     NSArray *array = @[
                        @{
+                           @"className":@"LGMecontroller",@"title":@"我",@"imageName":@"profile",
+                           },
+                       @{
                            @"className":@"LGSquareController",@"title":@"视频",@"imageName":@"discover"
                            },
 
@@ -112,10 +115,8 @@
 
                        @{
                            @"className":@"LGHomeController",@"title":@"首页",@"imageName":@"home"
-                        },
-                       @{
-                           @"className":@"LGMecontroller",@"title":@"我",@"imageName":@"profile",
-                         }];
+                        }
+                      ];
     
     NSMutableArray<__kindof UIViewController *> *controllers = [NSMutableArray array];
     

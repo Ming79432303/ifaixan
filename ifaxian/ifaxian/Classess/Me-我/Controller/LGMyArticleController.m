@@ -36,18 +36,19 @@ static NSString *squareCellID = @"squareCellID";
 
 
 - (void)viewDidLoad {
+  
     [super viewDidLoad];
     [self setupTableView];
     [self setupRefreshView];
     index_ = 1;
-    
     CGFloat bootmInset = LGnavBarH + LGtabBarH + LGTitleViewHeight;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0,bootmInset , 0);
     [self loadNewData];
-    
     self.tableView.bounces = YES;
-    self.tableView.contentInset = UIEdgeInsetsMake(200 + 35 - 74, 0, 64 + 35, 0);
-   
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(LGBacImageViewHeight + LGTipViewHeight - LGstatusBarH, 0, LGtabBarH, 0);
+    self.tableView.backgroundColor = LGCommonColor;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)setupRefreshView{
@@ -195,9 +196,8 @@ static NSString *squareCellID = @"squareCellID";
             
             [videoCell.playerView.subviews.firstObject removeFromSuperview];
             [videoCell.playerView removeFromSuperview];
+            
         }
-
-        
     }
    
     

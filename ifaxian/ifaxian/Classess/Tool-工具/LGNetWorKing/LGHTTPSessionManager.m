@@ -17,6 +17,23 @@
     return self;
 }
 
+
+
+
+- (void)requestUsercompletion:(LGRequestCompletion)completion{
+    
+    NSString *url = @"http://112.74.45.39/api/user/get_user_meta";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"cookie"] = [LGNetWorkingManager manager].account.cookie;
+    parameters[@"insecure"] = @"cool";
+    [self request:LGRequeTypeGET urlString:url parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
+        completion(isSuccess,responseObject);
+    }];
+}
+
+
+
 /**
  *  获取首页数据
  *

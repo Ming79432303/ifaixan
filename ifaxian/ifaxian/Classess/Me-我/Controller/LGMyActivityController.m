@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-      self.tableView.contentInset = UIEdgeInsetsMake(200 + 35 - 74, 0,47, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(LGBacImageViewHeight + LGTipViewHeight - LGstatusBarH, 0, LGtabBarH, 0);
 }
 - (void)setupNavBar{
     

@@ -210,7 +210,7 @@
    
     [self requestPostNonceArgument:LGRequiredArgumenRegister completion:^(BOOL isSuccess, NSString *nonce) {
         
-
+ self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
         
      NSString *url = [NSString requestBasiPathAppend:@"/api/user/register"];
         
@@ -319,7 +319,9 @@
 
 
 - (void)requestAddLikeAction:(NSString *)action umid:(NSString *)ID completion:(LGRequestCompletion)completion{
-    
+    [self   requestSetProfilecompletion:^(BOOL isSuccess, id responseObject) {
+        
+    }];
     NSString *url = [NSString requestBasiPathAppend:@"/wp-admin/admin-ajax.php"];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"action"] = action;
@@ -337,7 +339,26 @@
 
     
 }
+#warning 待做
+- (void)requestSetProfilecompletion:(LGRequestCompletion)completion{
+    
+//  NSDictionary *dict = @{@"1":@"Test UserName",@"5":@"About Content :: Lorem Ipsum is simply dummy text of the \n",@"2":@"Male",@"3":@"Native American",@"4":@"Average",@"21":@"Fit",@"32":@"Kosher",@"39":@"Sometimes",@"43":@"Sometimes",@"47":@"English",@"6":@"USA",@"7":@"New York"};
+// NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:kNilOptions error:nil];
+//    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"website"] = @"www.baidu.com";
+    parameters[@"city"] = @"贵港";
+    parameters[@"country"] = @"中国";
+    parameters[@"skills"] = @"ios开发";
+    parameters[@"cookie"] = self.account.cookie;
+    parameters[@"insecure"] = @"cool";
 
+    [self request:LGRequeTypePOST urlString:@"http://112.74.45.39/api/user/update_user_meta_vars" parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
+        NSLog(@"%@",responseObject);
+    }];
+    
+    
+}
 
 
 
