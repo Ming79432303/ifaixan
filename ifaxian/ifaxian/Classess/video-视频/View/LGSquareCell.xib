@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="248"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screenshot_2016-11-22-13-35-51-390_微信" translatesAutoresizingMaskIntoConstraints="NO" id="yto-zj-2Oe">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screenshot_2016-11-22-13-35-51-390_微信" translatesAutoresizingMaskIntoConstraints="NO" id="yto-zj-2Oe">
                         <rect key="frame" x="10" y="10" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="5Pq-uc-kKS"/>

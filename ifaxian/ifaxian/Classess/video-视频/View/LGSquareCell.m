@@ -11,6 +11,7 @@
 #import "NSString+LGRegularExpressions.h"
 #import "LGPlayerView.h"
 #import "NSURL+LGGetVideoImage.h"
+#import "LGUserController.h"
 
 @interface LGSquareCell()<LGPlayerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
@@ -21,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UILabel *dataLable;
-
 @property(nonatomic, strong) UIImageView *bacImageView;
 @property(nonatomic, strong) UIImageView *starImageView;
 @end
@@ -70,8 +70,25 @@
     
     [super awakeFromNib];
     self.autoresizingMask = UIViewAutoresizingNone;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2userController)];
+    
+    [self.iconImage addGestureRecognizer:tap];
+    
+    
     [self layoutIfNeeded];
 }
+
+- (void)go2userController{
+    
+    UIStoryboard *story = [UIStoryboard storyboardWithName:NSStringFromClass([LGUserController class]) bundle:nil];
+    LGUserController *userVc = [story instantiateInitialViewController];
+    
+    UITabBarController *tab = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    UINavigationController *nav = tab.selectedViewController;
+    [nav pushViewController:userVc animated:YES];
+    
+}
+
 
 - (void)setModel:(LGShare *)model{
     _model = model;

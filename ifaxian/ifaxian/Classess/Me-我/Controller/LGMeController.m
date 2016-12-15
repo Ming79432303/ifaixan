@@ -11,7 +11,7 @@
 #import "UIImage+AlphaImage.h"
 #import "LGSetingController.h"
 #import "LGMyArticleController.h"
-#import "LGMyActivityController.h"
+#import "LGOtherController.h"
 #import "LGPersonalInformationController.h"
 #import "LGAliYunOssUpload.h"
 #define alphHeight 115
@@ -133,9 +133,9 @@
     LGPersonalInformationController *profile = [[LGPersonalInformationController alloc] initWithStyle:UITableViewStyleGrouped];
     profile.title = @"信息";
     [self addChildViewController:profile];
-    LGMyActivityController *activity = [[LGMyActivityController alloc] init];
-    activity.title = @"其他";
-    [self addChildViewController:activity];
+    LGOtherController *other = [[LGOtherController alloc] initWithStyle:UITableViewStyleGrouped];
+    other.title = @"其他";
+    [self addChildViewController:other];
 
 
     UILabel *title = [[UILabel alloc] init];
@@ -185,12 +185,14 @@
     [self.navBar setBackgroundImage:[UIImage imageWithAlpha:alph]  forBarMetrics:UIBarMetricsDefault];
     self.titleLabel.textColor = [UIColor colorWithWhite:0 alpha:alph];
     
-    self.converViewHeight.constant = -scrollView.contentOffset.y - LGCommonMargin;
-    if (self.converViewHeight.constant < LGnavBarH) {
+   
+    if (-scrollView.contentOffset.y - LGCommonMargin < LGnavBarH) {
         
         self.converViewHeight.constant = LGnavBarH;
         return;
     }
+    self.converViewHeight.constant = -scrollView.contentOffset.y - LGCommonMargin;
+        
     if (self.converViewHeight.constant >= LGBacImageViewHeight) {
         self.converViewHeight.constant = LGBacImageViewHeight;
         for (UIView *view in self.vcView.subviews) {

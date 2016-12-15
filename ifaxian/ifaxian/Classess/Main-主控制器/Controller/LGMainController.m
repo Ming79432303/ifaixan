@@ -24,7 +24,7 @@
     [self setControllersDict];
     [self addwriteButton];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogin) name:LGUserLoginNotification object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogout) name:LGUserLogoutNotification object:nil];
 }
 - (void)addwriteButton{
     
@@ -81,7 +81,7 @@
     
     
 }
-
+//用户登录
 - (void)userLogin{
     
     LGLoginController *login = [[LGLoginController alloc] init];
@@ -92,6 +92,23 @@
     [nav presentViewController:login animated:YES completion:nil];
     
 }
+//用户退出登录
+- (void)userLogout{
+    UIAlertController *alerView = [UIAlertController alertControllerWithTitle:@"爱发现" message:@"确定退出当前账号吗?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alerView addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [alerView addAction: [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+
+    
+    [self presentViewController:alerView animated:YES completion:nil];
+    
+    
+}
+
 
 - (void)setControllersDict{
    //创建一个字典visitordiscover_image_message   visitordiscover_image_profile

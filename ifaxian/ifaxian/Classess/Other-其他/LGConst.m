@@ -43,6 +43,6 @@ CGFloat const LGTipViewHeight = 35;
 NSString *const LGUserLoginSuccessNotification = @"LGUserLoginSuccessNotification";
 //通知用户登录
 NSString *const LGUserLoginNotification = @"LGUserLoginNotification";
-
+NSString *const LGUserLogoutNotification = @"LGUserLogoutNotification";
 NSString *const LGUserupdataImageNotification = @"LGUserupdataImageNotification";
 

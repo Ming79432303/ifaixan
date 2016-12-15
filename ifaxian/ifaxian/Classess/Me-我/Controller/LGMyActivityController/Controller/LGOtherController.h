@@ -1,5 +1,5 @@
 //
-//  LGPersonalInformationController.h
+//  LGMyActivityController.h
 //  ifaxian
 //
 //  Created by ming on 16/11/21.
@@ -8,6 +8,6 @@
 
 #import "LGBasiController.h"
 
-@interface LGPersonalInformationController : UITableViewController
+@interface LGOtherController : UITableViewController
 
 @end

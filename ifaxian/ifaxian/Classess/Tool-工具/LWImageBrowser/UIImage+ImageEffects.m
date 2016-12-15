@@ -99,6 +99,47 @@
 
 @implementation UIImage (ImageEffects)
 
+- (UIImage *)applyLightEffect
+{
+    UIColor *tintColor = [UIColor colorWithWhite:1.0 alpha:0.3];
+    return [self applyBlurWithRadius:30 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
+}
+
+
+- (UIImage *)applyExtraLightEffect
+{
+    UIColor *tintColor = [UIColor colorWithWhite:0.97 alpha:0.82];
+    return [self applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
+}
+
+
+- (UIImage *)applyDarkEffect
+{
+    UIColor *tintColor = [UIColor colorWithWhite:0.11 alpha:0.73];
+    return [self applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
+}
+
+
+- (UIImage *)applyTintEffectWithColor:(UIColor *)tintColor
+{
+    const CGFloat EffectColorAlpha = 0.6;
+    UIColor *effectColor = tintColor;
+    int componentCount = CGColorGetNumberOfComponents(tintColor.CGColor);
+    if (componentCount == 2) {
+        CGFloat b;
+        if ([tintColor getWhite:&b alpha:NULL]) {
+            effectColor = [UIColor colorWithWhite:b alpha:EffectColorAlpha];
+        }
+    }
+    else {
+        CGFloat r, g, b;
+        if ([tintColor getRed:&r green:&g blue:&b alpha:NULL]) {
+            effectColor = [UIColor colorWithRed:r green:g blue:b alpha:EffectColorAlpha];
+        }
+    }
+    return [self applyBlurWithRadius:10 tintColor:effectColor saturationDeltaFactor:-1.0 maskImage:nil];
+}
+
 - (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage {
     // Check pre-conditions.
     if (self.size.width < 1 || self.size.height < 1) {
