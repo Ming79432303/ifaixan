@@ -126,10 +126,9 @@
 
 - (void)addConView{
     LGMyArticleController *article = [[LGMyArticleController alloc] init];
+    article.userName = [LGNetWorkingManager manager].account.user.username;
     article.title = @"我发布的";
     [self addChildViewController:article];
-   
-    
     LGPersonalInformationController *profile = [[LGPersonalInformationController alloc] initWithStyle:UITableViewStyleGrouped];
     profile.title = @"信息";
     [self addChildViewController:profile];

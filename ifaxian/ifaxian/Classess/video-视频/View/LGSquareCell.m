@@ -82,7 +82,7 @@
     
     UIStoryboard *story = [UIStoryboard storyboardWithName:NSStringFromClass([LGUserController class]) bundle:nil];
     LGUserController *userVc = [story instantiateInitialViewController];
-    
+    userVc.author = _model.share.author;
     UITabBarController *tab = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     UINavigationController *nav = tab.selectedViewController;
     [nav pushViewController:userVc animated:YES];

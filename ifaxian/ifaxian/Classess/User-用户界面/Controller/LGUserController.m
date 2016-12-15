@@ -10,6 +10,7 @@
 #import "UIImage+AlphaImage.h"
 #import "UIImage+ImageEffects.h"
 #import "UIImageView+LBBlurredImage.h"
+#import "LGUserListController.h"
 
 #define LGHeadViewH 244
 
@@ -31,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userBacImageView;
 @property(nonatomic, strong) UINavigationBar *navBar;
 @property(nonatomic, strong)  UINavigationItem *navItem;
+@property(nonatomic, weak)  UITableView  *userTableView;
 @end
 
 @implementation LGUserController
@@ -70,12 +72,82 @@
     _oriOffsetY = -(LGHeadViewH + LGTabBarH);
     
     // 设置tableView顶部额外滚动区域`
-    self.tableView.contentInset = UIEdgeInsetsMake(LGHeadViewH + LGTabBarH, 0, 0, 0);
+   
     self.userBacImageView.image = [[UIImage imageNamed:@"screen"] applyLightEffect];
     _userIconImageView.layer.cornerRadius = _userIconImageView.lg_height / 2;
     _userIconImageView.layer.masksToBounds = YES;
     _tabView.image = [UIImage imageNamed:@"1111111"];
+    LGUserListController *userList = [[LGUserListController alloc] init];
+    userList.userName = _author.name;
+    userList.view.frame = self.view.frame;
+    userList.tableView.contentInset = UIEdgeInsetsMake(LGHeadViewH + LGTabBarH, 0, 0, 0);
+    userList.tableView.lg_y = -LGnavBarH + LGstatusBarH;
+    userList.tableView.lg_height -= -LGnavBarH + LGstatusBarH;
+    
+    UIImage *bacImage = [[UIImage imageNamed:@"screen"] applyDarkEffect];
+    
+    userList.tableView.backgroundView = [[UIImageView alloc] initWithImage:bacImage];
+    
+    [userList.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+    [self addChildViewController:userList];
+    [self.view insertSubview:userList.tableView atIndex:0];
+    _userTableView = userList.tableView;
+    
 }
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(UIScrollView *)scrollView change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    
+    // 计算下tableView滚动了多少
+    
+    // 偏移量:tableView内容与可视范围的差值
+    
+    // 获取当前偏移量y值
+    CGFloat curOffsetY = scrollView.contentOffset.y;
+    
+    // 计算偏移量的差值 == tableView滚动了多少
+    // 获取当前滚动偏移量 - 最开始的偏移量(-244)
+    CGFloat delta = curOffsetY - _oriOffsetY;
+    
+    // 计算下头部视图的高度
+    CGFloat h = LGHeadViewH - delta;
+    if (h < LGHeadViewMinH ) {
+        h = LGHeadViewMinH;
+        _titleLable.text = @"Ming";
+    }else{
+        
+        _titleLable.text = @"共发表了24篇文章";
+    }
+    if (h > LGHeadViewH) {
+        h = LGHeadViewH;
+    }
+    
+    // 修改头部视图高度,有视觉差效果
+    _headHeightCons.constant = h;
+    
+    // 处理导航条业务逻辑
+    
+    // 计算透明度
+    CGFloat alpha = delta / (LGHeadViewH - LGHeadViewMinH);
+    
+    if (alpha > 1) {
+        alpha = 0.99;
+        return;
+    }
+    NSLog(@"%f",alpha);
+    if (alpha < 0) {
+        alpha = 0;
+    }
+    // 设置导航条背景图片
+    // 根据当前alpha值生成图片
+    UIImage *image = [UIImage imageWithAlpha:alpha];
+    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    // 设置导航条标题颜色
+    _label.textColor = [UIColor colorWithWhite:0 alpha:alpha];
+    
+    
+}
+
+
 - (void)setupNavBar{
     
     self.navigationController.navigationBar.hidden = YES;
@@ -100,57 +172,6 @@
     
 }
 // 滚动tableView的时候就会调用
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    // 计算下tableView滚动了多少
-    
-    // 偏移量:tableView内容与可视范围的差值
-    
-    // 获取当前偏移量y值
-    CGFloat curOffsetY = scrollView.contentOffset.y;
-    
-    // 计算偏移量的差值 == tableView滚动了多少
-    // 获取当前滚动偏移量 - 最开始的偏移量(-244)
-    CGFloat delta = curOffsetY - _oriOffsetY;
-    
-    // 计算下头部视图的高度
-    CGFloat h = LGHeadViewH - delta;
-    if (h < LGHeadViewMinH ) {
-        h = LGHeadViewMinH;
-        _titleLable.text = @"Ming";
-    }else{
-        
-        _titleLable.text = @"共发表了24篇文章";
-    }
-    
-    // 修改头部视图高度,有视觉差效果
-    _headHeightCons.constant = h;
-    
-    // 处理导航条业务逻辑
-    
-    // 计算透明度
-    CGFloat alpha = delta / (LGHeadViewH - LGHeadViewMinH);
-    
-    if (alpha > 1) {
-        alpha = 0.99;
-        return;
-    }
-     NSLog(@"%f",alpha);
-    if (alpha < 0) {
-        alpha = 0;
-    }
-    // 设置导航条背景图片
-    // 根据当前alpha值生成图片
-    UIImage *image = [UIImage imageWithAlpha:alpha];
-    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-    // 设置导航条标题颜色
-    _label.textColor = [UIColor colorWithWhite:0 alpha:alpha];
-    
-   
-    
-}
-
 // 设置导航条
 - (void)setUpNavigationBar
 {
@@ -198,5 +219,8 @@
     return cell;
 }
 
-
+- (void)dealloc{
+    
+    [_userTableView removeObserver:self forKeyPath:@"contentOffset"];
+}
 @end

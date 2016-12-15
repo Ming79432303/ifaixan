@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LGAuthor.h"
 @interface LGUserController : UIViewController
 
-
+@property(nonatomic, strong) LGAuthor *author;
 @end
 
