@@ -100,6 +100,9 @@
         
     }]];
     [alerView addAction: [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //处理退出登录
+        [self logOut];
+        [[NSNotificationCenter defaultCenter] postNotificationName:LGUserLogoutSuccessNotification object:nil];
         
     }]];
 
@@ -109,6 +112,15 @@
     
 }
 
+
+- (void)logOut{
+    NSString *fileName = @"account.json";
+    NSString *filePatch = [fileName lg_appendDocumentDir];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    [manager removeItemAtPath:filePatch error:nil];
+    [LGNetWorkingManager manager].account = nil;
+    
+}
 
 - (void)setControllersDict{
    //创建一个字典visitordiscover_image_message   visitordiscover_image_profile

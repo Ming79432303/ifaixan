@@ -63,7 +63,7 @@
     
 
 
-    [self.requestSerializer setValue:self.account.cookie forHTTPHeaderField:self.account.cookie_name];
+    //[self.requestSerializer setValue:self.account.cookie forHTTPHeaderField:self.account.cookie_name];
     NSString *method;
     switch (argumen) {
             
@@ -83,11 +83,12 @@
   
    NSString *url = [NSString requestBasiPathAppend:[NSString stringWithFormat:@"/api/get_nonce/?controller=posts&method=%@",method]];
     
-    if (method == LGRequiredArgumenRegister) {
+    if (argumen == LGRequiredArgumenRegister) {
         url = [NSString requestBasiPathAppend:@"/api/get_nonce/?controller=user&method=register"];
     }
  
     [self request:LGRequeTypePOST urlString:url parameters:nil completion:^(BOOL isSuccess, id responseObject) {
+        NSLog(@"%@",responseObject);
         if (completion) {
             
             completion(isSuccess,responseObject[@"nonce"]);
@@ -210,7 +211,7 @@
    
     [self requestPostNonceArgument:LGRequiredArgumenRegister completion:^(BOOL isSuccess, NSString *nonce) {
         
- self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
+ 
         
      NSString *url = [NSString requestBasiPathAppend:@"/api/user/register"];
         

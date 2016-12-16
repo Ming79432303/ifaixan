@@ -14,6 +14,8 @@
 #import "LGOtherController.h"
 #import "LGPersonalInformationController.h"
 #import "LGAliYunOssUpload.h"
+#import "LGVisitorView.h"
+
 #define alphHeight 115
 @interface LGMecontroller ()<UITableViewDelegate,UIScrollViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,LGAliYunOssUploadDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *converView;
@@ -26,17 +28,18 @@
 @property(nonatomic, weak)  UIButton *lastButton;
 @property(nonatomic, strong)  UITableViewController *lasttabVc;
 @property(nonatomic, strong) NSMutableArray *dataArray;
-@property (nonatomic, weak) UIImageView *bacView;
-@property (nonatomic, weak) UIImageView *iconView;
-@property (nonatomic, weak) UIImageView *picView;
-@property (nonatomic, weak) UIButton *popView;
-@property (assign ,nonatomic) CGFloat initOffSetY;
-@property(nonatomic, weak) UILabel *titleLabel;
+@property(nonatomic, weak) UIImageView *bacView;
+@property(nonatomic, weak) UIImageView *iconView;
+@property(nonatomic, weak) UIImageView *picView;
+@property(nonatomic, weak) UIButton *popView;
+@property(nonatomic, assign) CGFloat initOffSetY;
+@property(nonatomic, strong) UILabel *titleLabel;
 @property(nonatomic, weak) UIScrollView *contenView;
 @property(nonatomic, strong) UIBarButtonItem *leftButton;
-@property(nonatomic, weak) UIImageView *iconImageView;
-@property(nonatomic, weak) UILabel *nameLable;
+@property(nonatomic, strong) UIImageView *iconImageView;
+@property(nonatomic, strong) UILabel *nameLable;
 @property(nonatomic, weak) UIView *titleView;
+@property(nonatomic, strong) UIImageView *titleImageView;
 @property(nonatomic, strong) UINavigationBar *navBar;
 @property(nonatomic, strong)  UINavigationItem *navItem;
 @property(nonatomic, strong)  NSString *path;
@@ -52,6 +55,9 @@
     
     return _navBar;
 }
+
+
+
 - (UINavigationItem *)navItem{
     
     if (_navItem == nil) {
@@ -61,18 +67,69 @@
     return _navItem;
 }
 
+- (UILabel *)nameLable{
+    if (_nameLable == nil) {
+        _nameLable = [[UILabel alloc] init];
+    }
+    
+    return _nameLable;
+}
+- (UILabel *)titleLabel{
+    if (_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] init];
+    }
+    
+    return _titleLabel;
+}
 
+- (UIImageView *)iconImageView{
+    if (_iconImageView == nil) {
+        _iconImageView = [[UIImageView alloc] init];
+    }
+    
+    return _iconImageView;
+    
+}
+
+- (UIImageView *)titleImageView{
+    if (_titleImageView == nil) {
+        _titleImageView = [[UIImageView alloc] init];
+       
+    }
+    return _titleImageView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserImage:) name:LGUserupdataImageNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoginOrLogout) name:LGUserLoginSuccessNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoginOrLogout) name:LGUserLogoutSuccessNotification object:nil];
     [self setupNavBar];
     [self setupBacImageView];
     self.view.frame = [UIScreen mainScreen].bounds;
-    [self addConView];
-    [self addtipView];
+
+    [LGNetWorkingManager manager].isLogin ? [self addConView]:[self addvisitorView];
+    
     [self setupConfigVcView];
-    [self didClick:self.tipView.subviews.firstObject];
+   
+}
+
+- (void)userLoginOrLogout{
+    
+    [self.vcView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.childViewControllers makeObjectsPerformSelector:@selector(removeFromParentViewController)];
+    [self.tipView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    self.nameLable.text = nil;
+    [self viewDidLoad];
+    
+}
+
+- (void)addvisitorView{
+    
+    UIView *visitorView = [LGVisitorView viewFromeNib];
+    visitorView.frame = self.vcView.frame;
+    
+    [self.vcView addSubview:visitorView];
 }
 
 - (void)updateUserImage:(NSNotification *)noti{
@@ -80,9 +137,12 @@
     NSString *filePath = noti.userInfo[@"filePath"];
   NSDictionary *userInfo = [[NSDictionary alloc] initWithContentsOfFile:filePath];
     
-    [self.converView lg_setImageWithurl:userInfo[@"bac"] placeholderImage:nil];
-    [self.iconImageView lg_setCircularImageWithurl:userInfo[@"basic_user_avatar"] placeholderImage:nil];
-    self.nameLable.text = userInfo[@"signature"];
+    [self.converView lg_setImageWithurl:userInfo[@"bac"] placeholderImage:[UIImage imageNamed:@"screen"]];
+    [self.iconImageView lg_setCircularImageWithurl:userInfo[@"basic_user_avatar"] placeholderImage:[UIImage imageNamed:@"手机app-个人默认头像"]];
+    [self.titleImageView lg_setCircularImageWithurl:userInfo[@"basic_user_avatar"] placeholderImage:nil];
+    NSString *singleText = userInfo[@"signature"];
+    self.nameLable.text = singleText.length ? singleText:@"尚未设置个人说明";
+    
     
 }
 
@@ -93,7 +153,7 @@
     self.vcView.showsHorizontalScrollIndicator = NO;
     self.vcView.showsVerticalScrollIndicator = NO;
     self.vcView.contentSize = CGSizeMake(self.childViewControllers.count * self.view.frame.size.width , 0);
-    
+
 }
 
 - (void)setupNavBar{
@@ -111,6 +171,25 @@
     [self.view addSubview:self.navBar];
     self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"setting" highImage:@"" target:self action:@selector(seting)];
     
+    //用颜色来设置文字透明@"请登录";
+    self.titleLabel.text = [LGNetWorkingManager manager].isLogin ? [LGNetWorkingManager manager].account.user.nickname : @"请登录";
+    //自动根据文字设置尺寸
+
+    //self.titleLabel = title;
+    //self.navItem.titleView = title;
+    //让navigationBar导航条变透明
+    //去除线
+    self.titleImageView.lg_width = 35;
+    self.titleImageView.lg_height = 35;
+    self.titleImageView.image = self.iconImageView.image;
+    self.titleImageView.layer.cornerRadius = 35/2;
+    self.titleImageView.layer.masksToBounds = YES;
+    self.titleImageView.hidden = YES;
+    self.titleImageView.center = self.navBar.center;
+    self.titleImageView.lg_centerY += LGCommonMargin;
+    [self.navBar addSubview:self.titleImageView];
+    [self.navBar setShadowImage:[[UIImage alloc] init]];
+    
     
 }
 
@@ -125,6 +204,7 @@
 }
 
 - (void)addConView{
+    
     LGMyArticleController *article = [[LGMyArticleController alloc] init];
     article.userName = [LGNetWorkingManager manager].account.user.username;
     article.title = @"我发布的";
@@ -137,18 +217,7 @@
     [self addChildViewController:other];
 
 
-    UILabel *title = [[UILabel alloc] init];
-    title.text = @"个人中心";
-    //用颜色来设置文字透明
-    title.textColor = [UIColor colorWithWhite:0 alpha:0];
-    //自动根据文字设置尺寸
-    [title sizeToFit];
-    self.titleLabel = title;
-    self.navItem.titleView = title;
-    //让navigationBar导航条变透明
-    //去除线
-    [self.navBar setShadowImage:[[UIImage alloc] init]];
-
+   
     
     
     [self.view layoutIfNeeded];
@@ -157,19 +226,19 @@
         
         UITableViewController *vc = self.childViewControllers[i];
         vc.view.frame = CGRectMake(i * self.view.frame.size.width, 0,  self.view.frame.size.width,  self.view.lg_height);
+           vc.tableView.contentInset =  UIEdgeInsetsMake(LGBacImageViewHeight - LGstatusBarH + LGCommonMargin, 0, LGtabBarH, 0);
         
         [self.vcView addSubview:vc.view];
         
         
     }
-    
-    
-    
+     [self addtipView];
+     [self didClick:self.tipView.subviews.firstObject];
+   
     
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(UITableView *)scrollView change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-    
-    if (scrollView.contentOffset.y > -LGBacImageViewHeight - LGTipViewHeight - 100 && scrollView.contentOffset.y <0) {
+    if (scrollView.contentOffset.y > -LGBacImageViewHeight - LGstatusBarH && scrollView.contentOffset.y < -64) {
         
         
         
@@ -178,26 +247,30 @@
         CGFloat alph = 1 + offSetY / alphHeight;
         
         if (alph>=1) {
+            _iconImageView.hidden = YES;
+            _nameLable.hidden = YES;
+            _titleImageView.hidden = NO;
             alph = 0.99;
+        }else{
+           
+            _iconImageView.hidden = NO;
+            _nameLable.hidden = NO;
+            _titleImageView.hidden = YES;
+            
         }
     //让navigationBar导航条变透明
-    [self.navBar setBackgroundImage:[UIImage imageWithAlpha:alph]  forBarMetrics:UIBarMetricsDefault];
-    self.titleLabel.textColor = [UIColor colorWithWhite:0 alpha:alph];
     
+    [self.navBar setBackgroundImage:[UIImage imageWithAlpha:alph * 0.45]  forBarMetrics:UIBarMetricsDefault];
    
-    if (-scrollView.contentOffset.y - LGCommonMargin < LGnavBarH) {
+    
+     self.converViewHeight.constant = -scrollView.contentOffset.y - LGCommonMargin + LGTipViewHeight;
         
-        self.converViewHeight.constant = LGnavBarH;
-        return;
-    }
-    self.converViewHeight.constant = -scrollView.contentOffset.y - LGCommonMargin;
-        
-    if (self.converViewHeight.constant >= LGBacImageViewHeight) {
+    if (self.converViewHeight.constant >(LGBacImageViewHeight - LGstatusBarH)) {
         self.converViewHeight.constant = LGBacImageViewHeight;
         for (UIView *view in self.vcView.subviews) {
             if ([view isKindOfClass:[UIScrollView class]]) {
                 UITableView *tabView = (UITableView *)view;
-                tabView.contentInset = UIEdgeInsetsMake(LGBacImageViewHeight + LGTipViewHeight - LGstatusBarH, 0, LGtabBarH, 0);;
+                tabView.contentInset = UIEdgeInsetsMake(LGBacImageViewHeight - LGstatusBarH, 0, LGtabBarH + 20, 0);
                 if (tabView == scrollView) {
                     
                 }else{
@@ -207,15 +280,12 @@
                 
             }
         }
-
-        
-        
         return;
     }
     for (UIView *view in self.vcView.subviews) {
         if ([view isKindOfClass:[UIScrollView class]]) {
             UITableView *tabView = (UITableView *)view;
-            tabView.contentInset = UIEdgeInsetsMake(LGBacImageViewHeight + LGTipViewHeight - LGstatusBarH, 0, LGtabBarH, 0);
+            tabView.contentInset = UIEdgeInsetsMake(LGBacImageViewHeight - LGstatusBarH, 0, LGtabBarH, 0);
             if (tabView == scrollView) {
                 
             }else{
@@ -227,7 +297,14 @@
      }
         
     }
+    //小鱼最小值
+    if (-scrollView.contentOffset.y - LGCommonMargin < LGnavBarH) {
         
+        self.converViewHeight.constant = LGnavBarH + LGTipViewHeight;
+        return;
+    }
+
+    
 }
 
 - (void)dealloc{
@@ -240,7 +317,7 @@
         }
     }
     
-
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -251,44 +328,50 @@
     headView.backgroundColor = [UIColor whiteColor];
     headView.frame = CGRectMake(0, 0, screen.width, 0.35*screen.height);
     
-    UIImageView *iconImageV = [[UIImageView alloc] init];
-    iconImageV.backgroundColor = [UIColor redColor];
-    iconImageV.image = [UIImage imageNamed:@"Screenshot_2016-11-22-13-35-51-390_微信"];
-    iconImageV.layer.cornerRadius = 64/2;
-    iconImageV.layer.masksToBounds = YES;
-    iconImageV.userInteractionEnabled = YES;
-    [self.converView addSubview:iconImageV];
-    
-    [iconImageV mas_makeConstraints:^(MASConstraintMaker *make) {
+   
+    self.iconImageView.backgroundColor = [UIColor whiteColor];
+   self.iconImageView.image = [UIImage imageNamed:@"手机app-个人默认头像"];
+    self.iconImageView.layer.cornerRadius = 64/2;
+    self.iconImageView.layer.masksToBounds = YES;
+    self.iconImageView.userInteractionEnabled = YES;
+    [self.converView addSubview:self.iconImageView];
+    [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(64, 64));
         make.centerX.mas_equalTo(self.converView.mas_centerX);
-        make.bottom.mas_equalTo(self.converView.mas_bottom).offset(-50);
+        make.bottom.mas_equalTo(self.converView.mas_bottom).offset(-110);
         
         
     }];
     //添加lable
-    UILabel *nameLable = [[UILabel alloc] init];
-    nameLable.textAlignment = NSTextAlignmentCenter;
-    nameLable.text = @"夕阳无限好只是欠黄昏";
-    nameLable.font = [UIFont boldSystemFontOfSize:14];
-    nameLable.textColor = [UIColor whiteColor];
-    [self.converView addSubview:nameLable];
-    [nameLable mas_makeConstraints:^(MASConstraintMaker *make) {
+    LGWeakSelf;
+    self.nameLable.textAlignment = NSTextAlignmentCenter;
+    self.nameLable.font = [UIFont boldSystemFontOfSize:14];
+    self.nameLable.textColor = [UIColor whiteColor];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.textColor = [UIColor whiteColor];
+    [self.converView addSubview: self.nameLable];
+    [self.converView addSubview: self.titleLabel];
+    [ self.nameLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(headView.lg_width, 20));
-        make.centerX.mas_equalTo(iconImageV.mas_centerX);
-        make.top.mas_equalTo(iconImageV.mas_bottom).offset(10);
-        
+        make.centerX.mas_equalTo(weakSelf.iconImageView.mas_centerX);
+        make.top.mas_equalTo(weakSelf.iconImageView.mas_bottom).offset(35);
+
+    }];
+    [ self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(headView.lg_width, 20));
+        make.centerX.mas_equalTo(weakSelf.iconImageView.mas_centerX);
+        make.top.mas_equalTo(weakSelf.iconImageView.mas_bottom).offset(10);
         
     }];
-    self.iconImageView = iconImageV;
-    self.nameLable = nameLable;
+
+
     
     //添加手势
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setupConverImageView)];
     [self.converView addGestureRecognizer:tap];
     
     UITapGestureRecognizer *avatarTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setupAvatarImageView)];
-    [iconImageV addGestureRecognizer:avatarTap];
+    [self.iconImageView addGestureRecognizer:avatarTap];
     
 }
 
@@ -401,7 +484,8 @@
         [butn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         [butn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         butn.frame = CGRectMake(i * butnW, 0, butnW, butnH);
-        butn.backgroundColor = [UIColor lg_colorWithRed:37 green:37 blue:37];
+        butn.backgroundColor = [UIColor clearColor];
+        
         [butn addTarget:self action:@selector(didClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.tipView addSubview:butn];
         

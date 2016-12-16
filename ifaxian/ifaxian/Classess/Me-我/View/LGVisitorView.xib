@@ -11,28 +11,20 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-yn-Y6S">
-                    <rect key="frame" x="142" y="234" width="90" height="30"/>
-                    <state key="normal" title="立即登录注册"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-yn-Y6S">
+                    <rect key="frame" x="88" y="319" width="200" height="30"/>
+                    <state key="normal" image="login_button_icon">
+                        <color key="titleColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="login:" destination="iN0-l3-epB" eventType="touchUpInside" id="cek-I4-ju5"/>
                     </connections>
                 </button>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qsh-BQ-a53">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="64" id="zeY-8O-Fa6"/>
-                    </constraints>
-                    <items>
-                        <navigationItem title="登录" id="BSx-bK-5sU"/>
-                    </items>
-                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="qsh-BQ-a53" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cGr-3p-XoV"/>
-                <constraint firstItem="qsh-BQ-a53" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ued-WE-y6g"/>
-                <constraint firstAttribute="trailing" secondItem="qsh-BQ-a53" secondAttribute="trailing" id="xBN-fU-dTI"/>
+                <constraint firstItem="1sf-yn-Y6S" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dSZ-Fw-qoI"/>
+                <constraint firstItem="1sf-yn-Y6S" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="iFu-Cc-3Ck"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <connections>
@@ -40,4 +32,7 @@
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="login_button_icon" width="200" height="30"/>
+    </resources>
 </document>

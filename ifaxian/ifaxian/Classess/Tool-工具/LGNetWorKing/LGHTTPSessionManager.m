@@ -11,7 +11,7 @@
 @implementation LGHTTPSessionManager
 - (instancetype)initWithBaseURL:(NSURL *)url{
     if (self = [super initWithBaseURL:url]) {
-               self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
+//               self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
     }
     
     return self;

@@ -83,7 +83,7 @@ static NSString *ID = @"cellID";
         if (isSuccess) {
             
             self.postsArrayM =  [LGHomeModel mj_objectArrayWithKeyValuesArray:json context:nil];
-            self.headerArray = [self.postsArrayM subarrayWithRange:NSMakeRange(0, 2)];
+           // self.headerArray = [self.postsArrayM subarrayWithRange:NSMakeRange(0, 2)];
             self.headerView.headerArray = self.headerArray;
             
             

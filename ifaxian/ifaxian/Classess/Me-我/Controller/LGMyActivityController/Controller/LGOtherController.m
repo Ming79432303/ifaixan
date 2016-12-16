@@ -36,7 +36,7 @@ static NSString * otherCellID = @"otherCellID";
 }
 
 - (void)setupTableView{
-    self.tableView.contentInset = UIEdgeInsetsMake(LGBacImageViewHeight + LGTipViewHeight - LGstatusBarH, 0, LGtabBarH, 0);
+    
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGOtherCell class]) bundle:nil] forCellReuseIdentifier:otherCellID];
     self.tableView.rowHeight = 52;
     self.tableView.backgroundColor = LGCommonColor;

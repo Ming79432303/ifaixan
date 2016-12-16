@@ -34,13 +34,14 @@ CGFloat const LGHomeImageViewScale = 1.86;
 /********* 个人中中心 *********/
 //个人中的TitleView
 CGFloat const LGTitleViewHeight = 44;
-CGFloat const LGBacImageViewHeight = 200;
+CGFloat const LGBacImageViewHeight = 235;
 CGFloat const LGTipViewHeight = 35;
 
 
 /********* 通知 *********/
 //登录成功通知
 NSString *const LGUserLoginSuccessNotification = @"LGUserLoginSuccessNotification";
+NSString *const LGUserLogoutSuccessNotification = @"LGUserLogoutSuccessNotification";
 //通知用户登录
 NSString *const LGUserLoginNotification = @"LGUserLoginNotification";
 NSString *const LGUserLogoutNotification = @"LGUserLogoutNotification";

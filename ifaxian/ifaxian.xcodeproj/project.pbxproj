@@ -203,6 +203,9 @@
 		3AD84B0B1E02509F00CE44B5 /* LGUserListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD84B081E02509F00CE44B5 /* LGUserListController.m */; };
 		3AD84B181E02596A00CE44B5 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD84B151E02596A00CE44B5 /* UIImage+ImageEffects.m */; };
 		3AD84B191E02596A00CE44B5 /* UIImageView+LBBlurredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD84B171E02596A00CE44B5 /* UIImageView+LBBlurredImage.m */; };
+		3AD84B1C1E02A82600CE44B5 /* LGUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD84B1B1E02A82600CE44B5 /* LGUserInfoController.m */; };
+		3AD84B1F1E02AE9400CE44B5 /* LGUserHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD84B1E1E02AE9400CE44B5 /* LGUserHeaderFooterView.m */; };
+		3AD84B221E02B58B00CE44B5 /* LGUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD84B211E02B58B00CE44B5 /* LGUserCell.m */; };
 		3AD9778E1DF2759F00244312 /* LGPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD9778C1DF2759F00244312 /* LGPlayerView.m */; };
 		3AD9778F1DF2759F00244312 /* LGPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD9778D1DF2759F00244312 /* LGPlayerView.xib */; };
 		3AD977921DF2A46C00244312 /* NSURL+LGGetVideoImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD977911DF2A46C00244312 /* NSURL+LGGetVideoImage.m */; };
@@ -649,6 +652,12 @@
 		3AD84B151E02596A00CE44B5 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		3AD84B161E02596A00CE44B5 /* UIImageView+LBBlurredImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LBBlurredImage.h"; sourceTree = "<group>"; };
 		3AD84B171E02596A00CE44B5 /* UIImageView+LBBlurredImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LBBlurredImage.m"; sourceTree = "<group>"; };
+		3AD84B1A1E02A82600CE44B5 /* LGUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGUserInfoController.h; sourceTree = "<group>"; };
+		3AD84B1B1E02A82600CE44B5 /* LGUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGUserInfoController.m; sourceTree = "<group>"; };
+		3AD84B1D1E02AE9400CE44B5 /* LGUserHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGUserHeaderFooterView.h; sourceTree = "<group>"; };
+		3AD84B1E1E02AE9400CE44B5 /* LGUserHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGUserHeaderFooterView.m; sourceTree = "<group>"; };
+		3AD84B201E02B58B00CE44B5 /* LGUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGUserCell.h; sourceTree = "<group>"; };
+		3AD84B211E02B58B00CE44B5 /* LGUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGUserCell.m; sourceTree = "<group>"; };
 		3AD9778B1DF2759F00244312 /* LGPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGPlayerView.h; sourceTree = "<group>"; };
 		3AD9778C1DF2759F00244312 /* LGPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGPlayerView.m; sourceTree = "<group>"; };
 		3AD9778D1DF2759F00244312 /* LGPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGPlayerView.xib; sourceTree = "<group>"; };
@@ -1659,6 +1668,10 @@
 		3AD84B001E02424D00CE44B5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3AD84B1D1E02AE9400CE44B5 /* LGUserHeaderFooterView.h */,
+				3AD84B1E1E02AE9400CE44B5 /* LGUserHeaderFooterView.m */,
+				3AD84B201E02B58B00CE44B5 /* LGUserCell.h */,
+				3AD84B211E02B58B00CE44B5 /* LGUserCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1671,6 +1684,8 @@
 				3AD84B061E02509F00CE44B5 /* LGUserController.storyboard */,
 				3AD84B071E02509F00CE44B5 /* LGUserListController.h */,
 				3AD84B081E02509F00CE44B5 /* LGUserListController.m */,
+				3AD84B1A1E02A82600CE44B5 /* LGUserInfoController.h */,
+				3AD84B1B1E02A82600CE44B5 /* LGUserInfoController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2380,6 +2395,7 @@
 				3AF4B62D1DDCAB3B00C06419 /* NSString+LGFileSize.m in Sources */,
 				3A5138FA1DEE7905002BE232 /* LGSquareCell.m in Sources */,
 				3A0F214A1DDEB503008B955F /* LWLayout.m in Sources */,
+				3AD84B221E02B58B00CE44B5 /* LGUserCell.m in Sources */,
 				480265D31DDD8F6D009549DD /* LGNetWorkingManager+LGExtension.m in Sources */,
 				3A52B50C1DFBE1D600C8C010 /* LGContenHeraderView.m in Sources */,
 				3A0F214F1DDEB503008B955F /* LWTextGlyph.m in Sources */,
@@ -2437,6 +2453,7 @@
 				3A8864361DE14B8B00DE7E46 /* LGTextField.m in Sources */,
 				3A32B6711E01218C00B9FCD6 /* LGMecontroller.m in Sources */,
 				480265E51DDDA0EF009549DD /* LGModelConfig.m in Sources */,
+				3AD84B1F1E02AE9400CE44B5 /* LGUserHeaderFooterView.m in Sources */,
 				3A2ED2881DEBED13002CFE88 /* LGShowController.m in Sources */,
 				3AF4B6191DDCAAC500C06419 /* LGRefreshGif.m in Sources */,
 				3A2ED2801DEBED13002CFE88 /* LGSearchController.m in Sources */,
@@ -2486,6 +2503,7 @@
 				3A597DBD1DF5A69900C1EBE2 /* LGPhotoImage.m in Sources */,
 				3A5902FE1DF11A8D007B7B20 /* LGHeaderFooterView.m in Sources */,
 				3A2ED2821DEBED13002CFE88 /* LGSearchCell.m in Sources */,
+				3AD84B1C1E02A82600CE44B5 /* LGUserInfoController.m in Sources */,
 				3A0F21551DDEB503008B955F /* LWTransaction.m in Sources */,
 				3A52B5161DFBE1D600C8C010 /* LGHomeTagsView.m in Sources */,
 				3A0F214E1DDEB503008B955F /* LWTextContainer.m in Sources */,
@@ -2714,7 +2732,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRELINK_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = faxian.cc;
+				PRODUCT_BUNDLE_IDENTIFIER = cc.faxian.me;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -2746,7 +2764,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRELINK_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = faxian.cc;
+				PRODUCT_BUNDLE_IDENTIFIER = cc.faxian.me;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};

@@ -12,7 +12,7 @@
 #import "LGPlayerView.h"
 #import "NSURL+LGGetVideoImage.h"
 #import "LGUserController.h"
-
+#import "LGUserListController.h"
 @interface LGSquareCell()<LGPlayerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
 @property (weak, nonatomic) IBOutlet UILabel *contenText;
@@ -80,6 +80,11 @@
 
 - (void)go2userController{
     
+   
+    if ([[self getCurrentViewController] isKindOfClass:[LGUserListController class]]) {
+        return;
+    }
+    
     UIStoryboard *story = [UIStoryboard storyboardWithName:NSStringFromClass([LGUserController class]) bundle:nil];
     LGUserController *userVc = [story instantiateInitialViewController];
     userVc.author = _model.share.author;
@@ -88,7 +93,16 @@
     [nav pushViewController:userVc animated:YES];
     
 }
-
+-(UIViewController *)getCurrentViewController{
+    UIResponder *next = [self nextResponder];
+    do {
+        if ([next isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)next;
+        }
+        next = [next nextResponder];
+    } while (next != nil);
+    return nil;
+}
 
 - (void)setModel:(LGShare *)model{
     _model = model;

@@ -17,7 +17,8 @@
     //创建一个路径
     UIBezierPath *path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 20, 2)];
     //设置填充颜色
-    [[UIColor colorWithWhite:1 alpha:alpha] set];
+    [[UIColor colorWithRed:0 green:0 blue:0 alpha:alpha] set];
+    //[[UIColor colorWithWhite:1 alpha:alpha] set];
     //填充
     [path fill];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();

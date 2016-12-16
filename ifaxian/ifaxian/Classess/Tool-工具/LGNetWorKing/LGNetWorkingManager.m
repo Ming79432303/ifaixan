@@ -32,14 +32,14 @@ singleM(Net)
 - (instancetype)initWithBaseURL:(NSURL *)url{
     if (self = [super initWithBaseURL:url]) {
 #warning cookie为空处理
-    
+      self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
         if (![self isLogin]) {
             
             //通知用户登录
             [[NSNotificationCenter defaultCenter] postNotificationName:LGUserLoginNotification object:nil];
         }
         
-        [self.requestSerializer setValue:[NSString stringWithFormat:@"%@=%@",self.account.cookie_name,self.account.cookie] forHTTPHeaderField:@"Cookie"];
+        //[self.requestSerializer setValue:[NSString stringWithFormat:@"%@=%@",self.account.cookie_name,self.account.cookie] forHTTPHeaderField:@"Cookie"];
                
     }
     

@@ -11,6 +11,7 @@
 #import "UIImage+ImageEffects.h"
 #import "UIImageView+LBBlurredImage.h"
 #import "LGUserListController.h"
+#import "LGUserInfoController.h"
 
 #define LGHeadViewH 244
 
@@ -71,12 +72,14 @@
     // 先记录最开始偏移量
     _oriOffsetY = -(LGHeadViewH + LGTabBarH);
     
-    // 设置tableView顶部额外滚动区域`
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userInfo)];
+    
+    [_userIconImageView addGestureRecognizer:tap];
    
-    self.userBacImageView.image = [[UIImage imageNamed:@"screen"] applyLightEffect];
+    //self.userBacImageView.image = [[UIImage imageNamed:@"screen"] applyLightEffect];
     _userIconImageView.layer.cornerRadius = _userIconImageView.lg_height / 2;
     _userIconImageView.layer.masksToBounds = YES;
-    _tabView.image = [UIImage imageNamed:@"1111111"];
+    _tabView.image = [[UIImage imageNamed:@"1111111"] applyDarkEffect];
     LGUserListController *userList = [[LGUserListController alloc] init];
     userList.userName = _author.name;
     userList.view.frame = self.view.frame;
@@ -84,9 +87,9 @@
     userList.tableView.lg_y = -LGnavBarH + LGstatusBarH;
     userList.tableView.lg_height -= -LGnavBarH + LGstatusBarH;
     
-    UIImage *bacImage = [[UIImage imageNamed:@"screen"] applyDarkEffect];
+    //UIImage *bacImage = [[UIImage imageNamed:@"screen"] applyDarkEffect];
     
-    userList.tableView.backgroundView = [[UIImageView alloc] initWithImage:bacImage];
+    //userList.tableView.backgroundView = [[UIImageView alloc] initWithImage:bacImage];
     
     [userList.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     [self addChildViewController:userList];
@@ -94,7 +97,13 @@
     _userTableView = userList.tableView;
     
 }
-
+- (void)userInfo{
+    LGUserInfoController *userVc = [[LGUserInfoController alloc] init];
+   
+    
+    [self.navigationController pushViewController:userVc animated:YES];
+    
+}
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(UIScrollView *)scrollView change:(NSDictionary<NSString *,id> *)change context:(void *)context{
     
     // 计算下tableView滚动了多少
@@ -184,7 +193,7 @@
     
     // 设置导航条标题为透明
     UILabel *label = [[UILabel alloc] init];
-    label.text = @"小码哥";
+
     
     _label = label;
     
