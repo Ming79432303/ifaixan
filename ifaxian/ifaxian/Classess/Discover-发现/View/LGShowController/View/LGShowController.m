@@ -19,6 +19,7 @@
 @property(nonatomic, strong) LGDiscoverList *list;
 @property(nonatomic, strong) NSMutableArray *categories;
 @property(nonatomic, strong) NSMutableArray *categoryposts;
+
 @end
 static NSString *ID = @"cell";
 @implementation LGShowController
@@ -31,6 +32,18 @@ static NSString *ID = @"cell";
     return _list;
     
 }
+
+- (UICollectionView *)collectionView{
+    
+    if (_collectionView == nil) {
+         LGFlowLayout *layout = [[LGFlowLayout alloc]init];
+        _collectionView =[[UICollectionView alloc] initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, self.view.lg_height * 0.4) collectionViewLayout:layout];
+    }
+    
+    return _collectionView;
+}
+
+
 - (NSMutableArray *)categoryposts{
     
     if (_categoryposts == nil) {
@@ -53,30 +66,30 @@ static NSString *ID = @"cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     //创建布局
-    LGFlowLayout *layout = [[LGFlowLayout alloc]init];
-    
-    UICollectionView *coollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, self.view.lg_height * 0.4) collectionViewLayout:layout];
-    coollectionView.backgroundColor = [UIColor redColor];
-    coollectionView.showsHorizontalScrollIndicator = NO;
+   
+ 
+   
+    self.collectionView.showsHorizontalScrollIndicator = NO;
     
     //设置代理
-    coollectionView.delegate = self;
-    coollectionView.dataSource = self;
-
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    
     //注册cell
     
-    [coollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([LGCategoryCell class]) bundle:nil] forCellWithReuseIdentifier:ID];
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([LGCategoryCell class]) bundle:nil] forCellWithReuseIdentifier:ID];
     
     //添加到视图
     
-    [self.view addSubview:coollectionView];
+    [self.view addSubview:self.collectionView];
     
     LGWeakSelf;
 
     [self.list getAllCategoriesPosts:^(NSArray *categoryposts) {
        
         [weakSelf.categories addObjectsFromArray:categoryposts];
-        [coollectionView reloadData];
+        [self.collectionView reloadData];
+        [self.collectionView setContentOffset:CGPointMake(self.collectionView.lg_width, 0)];
     }];
     
 

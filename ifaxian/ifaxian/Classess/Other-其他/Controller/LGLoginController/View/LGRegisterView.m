@@ -55,7 +55,7 @@
 
         
         [SVProgressHUD showWithStatus:@"正在注册..."];
-        [[LGNetWorkingManager manager] requestRegiterUserName:self.userNameTextField.text passWord:self.passWordTextField.text email:self.emailTextField.text completion:^(BOOL isSuccess) {
+        [[LGHTTPSessionManager manager] requestRegiterUserName:self.userNameTextField.text passWord:self.passWordTextField.text email:self.emailTextField.text completion:^(BOOL isSuccess) {
             if (isSuccess) {
                 
                 

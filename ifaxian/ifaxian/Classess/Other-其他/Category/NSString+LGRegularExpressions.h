@@ -24,4 +24,5 @@
 - (NSString *)lg_getVideoUrl;
 - (NSArray *)lg_getImages;
 - (NSArray *)lg_getAllImages;
+- (NSArray *)lg_get_lasA_Link_text;
 @end

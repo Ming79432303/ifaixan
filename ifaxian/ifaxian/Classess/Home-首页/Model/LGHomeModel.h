@@ -8,9 +8,10 @@
 
 #import "LGPostModel.h"
 #import "NSString+LGRegularExpressions.h"
+#import "LGHomeTage.h"
 @interface LGHomeModel : LGPostModel
 @property(nonatomic, assign) CGFloat rowHeight;
 @property(nonatomic, copy) NSString *describe;
-@property(nonatomic, strong) NSArray *tags;
+@property(nonatomic, strong) NSArray<LGHomeTage *> *tags;
 @property(nonatomic, strong) NSArray *images;
 @end

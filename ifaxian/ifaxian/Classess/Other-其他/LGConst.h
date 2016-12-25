@@ -19,6 +19,7 @@ UIKIT_EXTERN CGFloat const LGCommentToolHeight;
 UIKIT_EXTERN CGFloat const LGCommentNameHeight;
 UIKIT_EXTERN CGFloat const LGCommentIconHeight;
 UIKIT_EXTERN CGFloat const LGCommonMinMargin;
+UIKIT_EXTERN CGFloat const LGAvatarHeight;
 UIKIT_EXTERN CGFloat const LGTitleViewHeight;
 UIKIT_EXTERN NSString *const LGUserLoginSuccessNotification;
 UIKIT_EXTERN NSString *const LGUserLoginNotification;

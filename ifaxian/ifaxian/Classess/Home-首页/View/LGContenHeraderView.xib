@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <development version="7000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,9 +12,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="St7-30-vEc">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="St7-30-vEc">
                     <rect key="frame" x="10" y="10" width="35" height="35"/>
-                    <color key="backgroundColor" red="0.80000000000000004" green="0.0" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="P0Y-h5-N7F"/>
                         <constraint firstAttribute="width" constant="35" id="Zww-Xg-NWj"/>
@@ -25,13 +25,23 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zkX-zR-pTO">
+                    <rect key="frame" x="0.0" y="83" width="600" height="1"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="6Vk-DO-klg"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="St7-30-vEc" firstAttribute="leading" secondItem="dyB-Nq-fZE" secondAttribute="leading" constant="10" id="2Is-GY-5zG"/>
                 <constraint firstItem="fYz-HF-uvn" firstAttribute="centerY" secondItem="St7-30-vEc" secondAttribute="centerY" id="5g6-kw-wbp"/>
+                <constraint firstAttribute="trailing" secondItem="zkX-zR-pTO" secondAttribute="trailing" id="9DQ-hz-QM8"/>
                 <constraint firstItem="fYz-HF-uvn" firstAttribute="leading" secondItem="St7-30-vEc" secondAttribute="trailing" constant="10" id="Ps9-qK-Z20"/>
+                <constraint firstItem="zkX-zR-pTO" firstAttribute="leading" secondItem="dyB-Nq-fZE" secondAttribute="leading" id="S7S-Bb-xvQ"/>
                 <constraint firstItem="St7-30-vEc" firstAttribute="top" secondItem="dyB-Nq-fZE" secondAttribute="top" constant="10" id="aNh-hE-EUc"/>
+                <constraint firstAttribute="bottom" secondItem="zkX-zR-pTO" secondAttribute="bottom" id="grK-1q-rQc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

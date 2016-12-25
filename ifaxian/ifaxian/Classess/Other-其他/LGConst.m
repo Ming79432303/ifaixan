@@ -18,6 +18,7 @@ CGFloat const LGCommonMinMargin = 3;
 /********* 首页 *********/
 //评论字体
 CGFloat const LGCommentFontSize = 15;
+CGFloat const LGAvatarHeight = 35;
 //转发字体
 CGFloat const LGCommentReplyFontSize = 13;
 //

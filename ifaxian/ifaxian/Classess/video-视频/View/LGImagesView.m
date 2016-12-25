@@ -54,7 +54,6 @@
         //更改第一张图片的位置
         UIImageView *imageV = self.subviews[0];
         imageV.hidden = NO;
-        imageV.backgroundColor = [UIColor redColor];
         NSLog(@"%@",NSStringFromCGSize(model.oneImageSize));
         
         imageV.frame = CGRectMake(0, 0, model.oneImageSize.width,  model.oneImageSize.height);
@@ -116,7 +115,6 @@
       for (int i = 0; i< 9; i++) {
         //根据图片内容添加布局
         UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.backgroundColor = [UIColor redColor];
         int lin = i % 3;
         int loc = i / 3;
          imageView.hidden = YES;

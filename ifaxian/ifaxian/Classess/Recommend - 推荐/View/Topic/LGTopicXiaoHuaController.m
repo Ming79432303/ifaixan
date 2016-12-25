@@ -19,7 +19,7 @@ static NSString *xiaoHuaCellID = @"xiaoHuaCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.postName = @"xiaohua";
-
+   
   
 [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGXiaoHuaCell class]) bundle:nil] forCellReuseIdentifier:xiaoHuaCellID];
 }
@@ -43,6 +43,7 @@ static NSString *xiaoHuaCellID = @"xiaoHuaCellID";
      LGRecommend *recomm = self.dateArray[indexPath.row];
     LGXiaoHuaCommentController *xhComment = [[LGXiaoHuaCommentController alloc] init];
     xhComment.share = recomm;
+    xhComment.model = recomm;
     UITabBarController *tab = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     UINavigationController *nav = tab.selectedViewController;
     [nav pushViewController:xhComment animated:YES];

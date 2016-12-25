@@ -12,5 +12,5 @@
 
 
 +(NSString *)requestBasiPathAppend:(NSString *)path;
-
+- (NSString *)lg_getuserAvatar;
 @end

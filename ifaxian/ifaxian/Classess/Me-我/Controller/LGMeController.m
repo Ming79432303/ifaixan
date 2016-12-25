@@ -15,9 +15,10 @@
 #import "LGPersonalInformationController.h"
 #import "LGAliYunOssUpload.h"
 #import "LGVisitorView.h"
+#import "UIImage+lg_image.h"
 
 #define alphHeight 115
-@interface LGMecontroller ()<UITableViewDelegate,UIScrollViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,LGAliYunOssUploadDelegate>
+@interface LGMecontroller ()<UITableViewDelegate,UIScrollViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *converView;
 @property (weak, nonatomic) IBOutlet UIView *tipView;
 
@@ -100,8 +101,9 @@
 }
 
 - (void)viewDidLoad {
+   
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserImage:) name:LGUserupdataImageNotification object:nil];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserImage:) name:LGUserupdataImageNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoginOrLogout) name:LGUserLoginSuccessNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoginOrLogout) name:LGUserLogoutSuccessNotification object:nil];
     [self setupNavBar];
@@ -109,17 +111,18 @@
     self.view.frame = [UIScreen mainScreen].bounds;
 
     [LGNetWorkingManager manager].isLogin ? [self addConView]:[self addvisitorView];
-    
     [self setupConfigVcView];
+    
    
 }
 
 - (void)userLoginOrLogout{
-    
+     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.vcView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.childViewControllers makeObjectsPerformSelector:@selector(removeFromParentViewController)];
     [self.tipView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.nameLable.text = nil;
+    
     [self viewDidLoad];
     
 }
@@ -128,6 +131,7 @@
     
     UIView *visitorView = [LGVisitorView viewFromeNib];
     visitorView.frame = self.vcView.frame;
+
     
     [self.vcView addSubview:visitorView];
 }
@@ -136,12 +140,55 @@
     
     NSString *filePath = noti.userInfo[@"filePath"];
   NSDictionary *userInfo = [[NSDictionary alloc] initWithContentsOfFile:filePath];
-    
-    [self.converView lg_setImageWithurl:userInfo[@"bac"] placeholderImage:[UIImage imageNamed:@"screen"]];
-    [self.iconImageView lg_setCircularImageWithurl:userInfo[@"basic_user_avatar"] placeholderImage:[UIImage imageNamed:@"手机app-个人默认头像"]];
-    [self.titleImageView lg_setCircularImageWithurl:userInfo[@"basic_user_avatar"] placeholderImage:nil];
     NSString *singleText = userInfo[@"signature"];
+    NSString *avUrl = userInfo[@"signature"];
+    NSString *bcUrl = userInfo[@"bac"];
+//    lg_user_avatar bac
+    if (!avUrl.length) {
+        self.iconImageView.image = [UIImage imageNamed:@"default_Avatar"];
+        
+    }
+    
+    if (!bcUrl.length) {
+        self.iconImageView.image = [UIImage imageNamed:@"screen"];
+    }
+   
+    LGWeakSelf;
     self.nameLable.text = singleText.length ? singleText:@"尚未设置个人说明";
+           dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            NSString *urlstr = [NSString stringWithFormat:@"%@ifaxian/avatars/%@lg_user_avatar.jpg",LGbuckeUrl,[LGNetWorkingManager manager].account.user.username];
+            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlstr]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIImage *image = [UIImage imageWithData:imageData];
+                if (!image) {
+                    weakSelf.iconImageView.image = [UIImage imageNamed:@"default_Avatar"];
+                }else{
+                    
+                    weakSelf.iconImageView.image = [image lg_avatarImagesize:_iconImageView.bounds.size backColor:[UIColor whiteColor] lineColor:[UIColor whiteColor]];
+                }
+                
+                    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                        NSString *urlstr = [NSString stringWithFormat:@"%@ifaxian/avatars/%@bac.jpg",LGbuckeUrl,[LGNetWorkingManager manager].account.user.username];
+                        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlstr]];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            UIImage *image = [UIImage imageWithData:imageData];
+                            if (!image) {
+                                weakSelf.converView.image = [UIImage imageNamed:@"screen"];
+                            }else{
+                                
+                                weakSelf.converView.image = image;
+                            }
+
+                            
+                        });
+                        
+                    });
+                
+            });
+            
+        });
+
+
     
     
 }
@@ -169,7 +216,7 @@
     [self.navBar setShadowImage:[[UIImage alloc] init]];
 
     [self.view addSubview:self.navBar];
-    self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"setting" highImage:@"" target:self action:@selector(seting)];
+    self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"mine-setting-icon" highImage:@"" target:self action:@selector(seting)];
     
     //用颜色来设置文字透明@"请登录";
     self.titleLabel.text = [LGNetWorkingManager manager].isLogin ? [LGNetWorkingManager manager].account.user.nickname : @"请登录";
@@ -199,7 +246,7 @@
     
     [self.navigationController pushViewController:setVc animated:YES];
     
-    
+     [self setupConfigVcView];
     
 }
 
@@ -216,9 +263,6 @@
     other.title = @"其他";
     [self addChildViewController:other];
 
-
-   
-    
     
     [self.view layoutIfNeeded];
     
@@ -323,6 +367,9 @@
 
 - (void)setupBacImageView{
     //headerView
+    
+    self.converView.image = [UIImage imageNamed:@"screen"];
+    
     UIView *headView = [[UIView alloc] init];
     CGSize screen = [UIScreen mainScreen].bounds.size;
     headView.backgroundColor = [UIColor whiteColor];
@@ -330,7 +377,7 @@
     
    
     self.iconImageView.backgroundColor = [UIColor whiteColor];
-   self.iconImageView.image = [UIImage imageNamed:@"手机app-个人默认头像"];
+   self.iconImageView.image = [UIImage imageNamed:@"default_Avatar"];
     self.iconImageView.layer.cornerRadius = 64/2;
     self.iconImageView.layer.masksToBounds = YES;
     self.iconImageView.userInteractionEnabled = YES;
@@ -367,107 +414,107 @@
 
     
     //添加手势
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setupConverImageView)];
-    [self.converView addGestureRecognizer:tap];
-    
-    UITapGestureRecognizer *avatarTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setupAvatarImageView)];
-    [self.iconImageView addGestureRecognizer:avatarTap];
-    
-}
-
-- (void)setupConverImageView{
-    LGLog(@"更换背景图");
-    UIAlertController *alerView = [UIAlertController alertControllerWithTitle:@"更换背景图" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    [alerView addAction: [UIAlertAction actionWithTitle:@"更换背景图" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-      
-        [self picImageOnImageView:self.converView isAvatar:NO];
-        
-    }]];
-    [alerView addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-    }]];
-    
-    [self presentViewController:alerView animated:YES completion:nil];
-    
-   
-    
-    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setupConverImageView)];
+//    [self.converView addGestureRecognizer:tap];
+//    
+//    UITapGestureRecognizer *avatarTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setupAvatarImageView)];
+//    [self.iconImageView addGestureRecognizer:avatarTap];
     
 }
-
-- (void)setupAvatarImageView{
-    
-    UIAlertController *alerView = [UIAlertController alertControllerWithTitle:@"更换头像" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    [alerView addAction: [UIAlertAction actionWithTitle:@"更换头像" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-         [self picImageOnImageView:self.converView isAvatar:YES];
-        
-    }]];
-    [alerView addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-    }]];
-    
-    [self presentViewController:alerView animated:YES completion:nil];
-    
-    
-}
-
-- (void)picImageOnImageView:(UIImageView *)imageView isAvatar:(BOOL)isAvatar{
-    
-    
-    UIImagePickerController *picImage = [[UIImagePickerController alloc] init];
-    _path = isAvatar == YES ? @"image":@"bacImage";
-    picImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    picImage.delegate = self;
-    picImage.mediaTypes = [NSArray arrayWithObject:@"public.image"];
-    picImage.allowsEditing = YES;
-    
-    [self presentViewController:picImage animated:YES completion:nil];
-    
-
-    
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    
-    NSLog(@"%@",info);
-    //默认头像
-    UIImage *bacImage = info[UIImagePickerControllerEditedImage];
-    NSData *imageDate = UIImageJPEGRepresentation(bacImage, 1);
-    LGAliYunOssUpload *upload = [[LGAliYunOssUpload alloc] init];
-    NSString *fileName = [NSString stringWithFormat:@"%@/%@.jpg",_path,[LGNetWorkingManager manager].account.user.username];
-    upload.delegate = self;
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    [upload uploadfileData:imageDate fileName:fileName bucketName:nil completion:^(BOOL isSuccess) {
-        if (isSuccess) {
-            
-            NSString *url = [NSString stringWithFormat:@"%@/%@/%@.jpg",LGbuckeUrl,_path,[LGNetWorkingManager manager].account.user.username];
-            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-            UIImage *image = [UIImage imageWithData:data];
-            if ([_path isEqualToString:@"image"]) {
-                self.iconImageView.image = image;
-                //保存到磁盘
-                
-            }else{
-                self.converView.image = image;
-                //保存到磁盘
-            }
-        }
-    }];
-    
-    
-}
-
-- (void)aliyunOssUploa:(LGAliYunOssUpload *)upload Progress:(CGFloat)progress{
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-       
-    });
-    
-    
-}
+//
+//- (void)setupConverImageView{
+//    
+//    UIAlertController *alerView = [UIAlertController alertControllerWithTitle:@"更换背景图" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+//    
+//    [alerView addAction: [UIAlertAction actionWithTitle:@"更换背景图" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//      
+//        [self picImageOnImageView:self.converView isAvatar:NO];
+//        
+//    }]];
+//    [alerView addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        
+//    }]];
+//    
+//    [self presentViewController:alerView animated:YES completion:nil];
+//    
+//   
+//    
+//    
+//    
+//}
+//
+//- (void)setupAvatarImageView{
+//    
+//    UIAlertController *alerView = [UIAlertController alertControllerWithTitle:@"更换头像" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+//    
+//    [alerView addAction: [UIAlertAction actionWithTitle:@"更换头像" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        
+//         [self picImageOnImageView:self.converView isAvatar:YES];
+//        
+//    }]];
+//    [alerView addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        
+//    }]];
+//    
+//    [self presentViewController:alerView animated:YES completion:nil];
+//    
+//    
+//}
+//
+//- (void)picImageOnImageView:(UIImageView *)imageView isAvatar:(BOOL)isAvatar{
+//    
+//    
+//    UIImagePickerController *picImage = [[UIImagePickerController alloc] init];
+//    _path = isAvatar == YES ? @"image":@"bacImage";
+//    picImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    picImage.delegate = self;
+//    picImage.mediaTypes = [NSArray arrayWithObject:@"public.image"];
+//    picImage.allowsEditing = YES;
+//    
+//    [self presentViewController:picImage animated:YES completion:nil];
+//    
+//
+//    
+//}
+//
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+//    
+//    NSLog(@"%@",info);
+//    //默认头像
+//    UIImage *bacImage = info[UIImagePickerControllerEditedImage];
+//    NSData *imageDate = UIImageJPEGRepresentation(bacImage, 1);
+//    LGAliYunOssUpload *upload = [[LGAliYunOssUpload alloc] init];
+//    NSString *fileName = [NSString stringWithFormat:@"%@/%@.jpg",_path,[LGNetWorkingManager manager].account.user.username];
+//    upload.delegate = self;
+//    [picker dismissViewControllerAnimated:YES completion:nil];
+//    [upload uploadfileData:imageDate fileName:fileName bucketName:nil completion:^(BOOL isSuccess) {
+//        if (isSuccess) {
+//            
+//            NSString *url = [NSString stringWithFormat:@"%@/%@/%@.jpg",LGbuckeUrl,_path,[LGNetWorkingManager manager].account.user.username];
+//            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+//            UIImage *image = [UIImage imageWithData:data];
+//            if ([_path isEqualToString:@"image"]) {
+//                self.iconImageView.image = image;
+//                //保存到磁盘
+//                
+//            }else{
+//                self.converView.image = image;
+//                //保存到磁盘
+//            }
+//        }
+//    }];
+//    
+//    
+//}
+//
+//- (void)aliyunOssUploa:(LGAliYunOssUpload *)upload Progress:(CGFloat)progress{
+//    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//       
+//    });
+//    
+//    
+//}
 
 - (void)addtipView{
     NSInteger count = self.childViewControllers.count;

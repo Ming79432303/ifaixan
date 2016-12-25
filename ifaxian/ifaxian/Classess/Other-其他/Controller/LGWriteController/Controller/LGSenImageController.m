@@ -45,6 +45,7 @@
 @property (assign, nonatomic)  CGFloat maxCountTF;  ///< 照片最大可选张数，设置为1即为单选模式
 @property (nonatomic, strong) UIImagePickerController *imagePickerVc;
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property(nonatomic, strong) CWStatusBarNotification *notification;
 @end
 
 @implementation LGSenImageController
@@ -122,7 +123,7 @@
 - (void)setupUI{
     self.view.frame = [UIScreen mainScreen].bounds;
     LGTextView *textField = [[LGTextView alloc] init];
-    textField.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    textField.backgroundColor = [UIColor whiteColor];
     textField.frame = CGRectMake(0, 0, 200, 100);
     self.textView = textField;
     self.tableView.tableHeaderView = textField;
@@ -149,7 +150,7 @@
     layout.itemSize = CGSizeMake(_itemWH, _itemWH);
     layout.minimumInteritemSpacing = _margin;
     layout.minimumLineSpacing = _margin;
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 20, self.view.tz_width, self.view.tz_height - 220) collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 20, self.view.tz_width, self.view.tz_height - 180) collectionViewLayout:layout];
     CGFloat rgb = 244 / 255.0;
     _collectionView.alwaysBounceVertical = YES;
     _collectionView.backgroundColor = [UIColor colorWithRed:rgb green:rgb blue:rgb alpha:1.0];
@@ -468,10 +469,16 @@
 
 - (void)sendImage:(id)sender {
     
+    CWStatusBarNotification *notification = [CWStatusBarNotification new];
     
+    self.notification = notification;
+    notification.notificationLabelBackgroundColor = [UIColor lightGrayColor];
+    [self setupNotification];
     
+    [notification displayNotificationWithMessage:@"正在发送..." forDuration:1.0];
+    [self close:nil];
     dispatch_group_t group = dispatch_group_create();
-    [SVProgressHUD showWithStatus:@"正在上传图片.."];
+//    [SVProgressHUD showWithStatus:@"正在上传图片.."];
     for (LGPhotoImage *photoImage in self.imagesArray) {
         
         NSString *imageID = [[NSUUID UUID] UUIDString];
@@ -526,12 +533,18 @@
         
         
         [[LGNetWorkingManager manager] requestPostImageTitle:self.textView.text content:htmstrM :^(BOOL isSuccess) {
+            CWStatusBarNotification *notification = [CWStatusBarNotification new];
+           
+            notification.notificationLabelBackgroundColor = [UIColor lightGrayColor];
+            [self setupNotification];
+
             if (isSuccess) {
-                [SVProgressHUD showSuccessWithStatus:@"发送成功"];
+                
+                [notification displayNotificationWithMessage:@"发送成功" forDuration:1.0];
                 [self close:nil];
             }else{
                 
-                [SVProgressHUD showErrorWithStatus:@"发送失败"];
+               [notification displayNotificationWithMessage:@"发送失败" forDuration:1.0];
             }
         }];
         
@@ -549,7 +562,12 @@
     }];
 }
 
-
+- (void)setupNotification
+{
+    self.notification.notificationAnimationInStyle = CWNotificationAnimationStyleTop;
+    self.notification.notificationAnimationOutStyle =CWNotificationAnimationStyleTop;
+    self.notification.notificationStyle  = CWNotificationStyleStatusBarNotification;
+}
 - (void)tap:(UIGestureRecognizer *)tap{
     [tap.view endEditing:YES];
     

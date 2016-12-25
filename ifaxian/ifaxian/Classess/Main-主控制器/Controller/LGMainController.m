@@ -29,7 +29,7 @@
 - (void)addwriteButton{
     
     UIButton *writButn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [writButn setImage:[UIImage imageNamed:@"发表"] forState:UIControlStateNormal];
+    [writButn setImage:[UIImage imageNamed:@"tabbar_compose_button"] forState:UIControlStateNormal];
     [self.view addSubview:writButn];
     [self.tabBar addSubview:writButn];
     CGFloat btnW = LGScreenW / self.viewControllers.count;
@@ -46,11 +46,9 @@
 - (void)writeView{
     LGWriteView *writeView = [LGWriteView viewFromeNib];
     writeView.delegate = self;
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeView:)];
-    
     writeView.frame = self.view.frame;
-    
-    
     [writeView addGestureRecognizer:tap];
     
     [self.view addSubview:writeView];
@@ -126,26 +124,24 @@
    //创建一个字典visitordiscover_image_message   visitordiscover_image_profile
     NSArray *array = @[
                        @{
-                           @"className":@"LGMecontroller",@"title":@"我",@"imageName":@"profile",
+                           @"className":@"LGHomeController",@"title":@"首页",@"imageName":@"home"
                            },
                        @{
-                           @"className":@"LGSquareController",@"title":@"视频",@"imageName":@"discover"
+                           @"className":@"LGDiscoverController",@"title":@"发现",@"imageName":@"discover"
+                           
+                           }, @{
+                           @"className":@"UIViewController",@"title":@"UIviewController"
+                           },
+                        @{
+                           @"className":@"LGSquareController",@"title":@"分享",@"imageName":@"message_center"
                            },
 
-  
-                        @{
-                           @"className":@"LGDiscoverController",@"title":@"发现",@"imageName":@"message_center"
-                         
-                           },
                        
                        @{
-                           @"className":@"",@"title":@"UIviewController"
-                           },
+                           @"className":@"LGMecontroller",@"title":@"我",@"imageName":@"profile",
+                           }
 
-                       @{
-                           @"className":@"LGHomeController",@"title":@"首页",@"imageName":@"home"
-                        }
-                      ];
+                            ];
     
     NSMutableArray<__kindof UIViewController *> *controllers = [NSMutableArray array];
     

@@ -11,6 +11,8 @@
 #import "LGTag.h"
 #import "LGPostModel.h"
 #import "LGShow.h"
+#import "LGActivitie.h"
+#import "LGActivityUser.h"
 
 @interface LGDiscoverList()
 //分类
@@ -19,6 +21,8 @@
 @property(nonatomic, strong) NSMutableArray *tags;
 //分类前4条数据
 @property(nonatomic, strong) NSMutableArray *categoryposts;
+//活动数据
+@property(nonatomic, strong) NSMutableArray *activities;
 @end;
 
 
@@ -127,6 +131,25 @@
     
     
 }
+
+- (void)getActivity_get_activities:(void(^)(BOOL isSuccess , NSArray *activities))completion{
+    NSString *url = [NSString requestBasiPathAppend:@"/api/buddypressread/activity_get_activities"];
+    [[LGHTTPSessionManager manager] request:LGRequeTypePOST urlString:url parameters:nil completion:^(BOOL isSuccess, id responseObject) {
+        NSArray *activities;
+    self.activities = [LGActivitie mj_objectArrayWithKeyValuesArray:responseObject[@"activities"]];
+        if (self.activities.count > 20) {
+       activities = [self.activities subarrayWithRange:NSMakeRange(0, 20)];
+        completion(isSuccess,activities);
+        return ;
+        }
+        completion(isSuccess,self.activities);
+    }];
+    
+    
+    
+}
+
+
 
 
 @end

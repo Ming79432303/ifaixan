@@ -28,7 +28,7 @@
 
 - (void)loadNewDataCompletion:(void(^)(BOOL isSuccess ,NSArray *array))completion{
     
-    [[LGHTTPSessionManager manager] requestPostUrl:[NSString stringWithFormat:@"http://52it.me/category/%@/?json=1",self.postName] completion:^(BOOL isSuccess, id responseObject) {
+    [[LGHTTPSessionManager manager] requestPostUrl:[NSString stringWithFormat:@"http://112.74.45.39/category/%@/?json=1",self.postName] completion:^(BOOL isSuccess, id responseObject) {
         
         if (isSuccess) {
             index_ = 2;
@@ -44,8 +44,8 @@
 
 - (void)loadOldDataCompletion:(void(^)(BOOL isSuccess ,NSArray *array))completion{
 #warning 滑到最后一页出现问题数据有些无图做处理
-    [[LGHTTPSessionManager manager] requestPostUrl:[NSString stringWithFormat:@"http://52it.me/category/%@/?json=1&page=%zd",self.postName,index_] completion:^(BOOL isSuccess, id responseObject) {
-        NSLog(@"%@",[NSString stringWithFormat:@"http://ifaxian.cc/%@/?json=1&page=%zd",self.postName,index_]);
+    [[LGHTTPSessionManager manager] requestPostUrl:[NSString stringWithFormat:@"http://112.74.45.39/category/%@/?json=1&page=%zd",self.postName,index_] completion:^(BOOL isSuccess, id responseObject) {
+        NSLog(@"%@",[NSString stringWithFormat:@"http://112.74.45.39/%@/?json=1&page=%zd",self.postName,index_]);
         //        self.images = [LGShareImage mj_objectArrayWithKeyValuesArray:responseObject[@"posts"]];
         NSMutableArray<LGRecommend *> *shareM = [NSMutableArray array];
       

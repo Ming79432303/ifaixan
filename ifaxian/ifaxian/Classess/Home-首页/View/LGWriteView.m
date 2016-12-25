@@ -24,7 +24,7 @@
 - (void)setupUI{
     
     UIButton *articleButton  = [[UIButton alloc] init];
-    [articleButton setImage:[UIImage imageNamed:@"发表日志"]  forState:UIControlStateNormal];
+    [articleButton setImage:[UIImage imageNamed:@"send_button_article"]  forState:UIControlStateNormal];
     CGFloat butnH = 35;
     CGFloat butnW = 35;
    
@@ -32,7 +32,7 @@
 
     
     articleButton.frame = CGRectMake(self.lg_width/2 - butnW/2, self.lg_height - butnH, butnH, butnH);
-
+    [articleButton sizeToFit];
     
    
       [self addSubview:articleButton];
@@ -60,12 +60,12 @@
 
     //动态按钮
     UIButton *dynamicButton  = [[UIButton alloc] init];
-    [dynamicButton setImage:[UIImage imageNamed:@"发送图片"] forState:UIControlStateNormal];
+    [dynamicButton setImage:[UIImage imageNamed:@"send_image_button"] forState:UIControlStateNormal];
  
    
     
     dynamicButton.frame = CGRectMake(self.lg_width/2 - butnW/2, self.lg_height - butnH, butnH, butnH);
-
+    [dynamicButton sizeToFit];
     [self addSubview:dynamicButton];
     
     POPSpringAnimation *dynamicAnimat = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
@@ -80,9 +80,10 @@
     
     
     UIButton *videoButton  = [[UIButton alloc] init];
-    [videoButton setBackgroundImage:[UIImage imageNamed:@"视频"] forState:UIControlStateNormal];
+    [videoButton setBackgroundImage:[UIImage imageNamed:@"send_video_button"] forState:UIControlStateNormal];
 
     videoButton.frame = CGRectMake(self.lg_width/2 - butnW/2, self.lg_height - butnH, butnW, butnH);
+     [videoButton sizeToFit];
     [videoButton addTarget:self action:@selector(sendVideo) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:videoButton];
     POPSpringAnimation *videoAnimat = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];

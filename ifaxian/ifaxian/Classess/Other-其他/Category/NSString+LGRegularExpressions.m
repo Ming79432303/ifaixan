@@ -54,6 +54,9 @@
     
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
     __block NSString *resultString;
+    if (text.length < 6) {
+        return @"";
+    }
     [regex enumerateMatchesInString:urlString options:0 range:NSMakeRange(0, [urlString length]) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
         if (flags != NSMatchingInternalError) {
             NSRange firstHalfRange = [result rangeAtIndex:0];
@@ -83,7 +86,7 @@
             NSRange firstHalfRange = [result rangeAtIndex:0];
             if (firstHalfRange.length > 0) {
                 NSRange resRang = NSMakeRange(firstHalfRange.location, firstHalfRange.length);
-                NSLog(@"%@",resultString);
+              
                 resultString = [urlString substringWithRange:resRang];
             }
         }
@@ -182,6 +185,49 @@
     return arrayM;
     
 }
+//获得链接中的所有a标签
+- (NSArray *)lg_get_lasA_Link_text{
 
+    
+    NSError *error = NULL;
+    //创建正则表达式
+    NSMutableArray *arrayM = [NSMutableArray array];
+    NSString *pattern = @"<a href=\"[^\"]*\"[^>]*>(.*?)</a>";
+     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
+    [regex enumerateMatchesInString:self options:0 range:NSMakeRange(0, [self length]) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        if (flags != NSMatchingInternalError) {
+            NSRange firstHalfRange = [result rangeAtIndex:0];
+            if (firstHalfRange.length > 0) {
+                NSRange resRang = NSMakeRange(firstHalfRange.location, firstHalfRange.length);
+                
+                [arrayM addObject:[self substringWithRange:resRang]];
+            }
+        }
+    }];
+    
+  NSArray *array = [arrayM.lastObject getLink_text];
+    return array;
+    
+}
+
+//传入一个a标签
+- (NSArray *)getLink_text{
+    NSError *error = NULL;
+    NSString *pattern = @"<a href=\"(.*?)\".*?>(.*?)</a>";
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
+    
+    NSTextCheckingResult *result = [regex firstMatchInString:self options:0 range:NSMakeRange(0, self.length)];
+    ;
+    
+    NSMutableArray *arrayM = [NSMutableArray array];
+    NSString *link = [self substringWithRange:[result rangeAtIndex:1]];
+    [arrayM addObject:link];
+    NSString *text = [self substringWithRange:[result rangeAtIndex:2]];
+    [arrayM addObject:text];
+    
+
+    return  arrayM;
+    
+}
 
 @end

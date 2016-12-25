@@ -44,7 +44,7 @@
         if (images.count == 1) {
             UIImageView *imageV = self.subviews.firstObject;
             imageV.hidden = NO;
-            imageV.frame = CGRectMake(0, 0,LGScreenW - 2 * LGCommonMargin,200);
+            imageV.frame = CGRectMake(0, 0,LGScreenW - 3 * LGCommonMargin,200);
             [imageV lg_setImageWithurl:images.firstObject placeholderImage:nil];
             
 

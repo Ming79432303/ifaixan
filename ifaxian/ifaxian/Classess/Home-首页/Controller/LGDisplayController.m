@@ -17,6 +17,7 @@
 #import <WordPressShared/WPFontManager.h>
 #import "LGCommentController.h"
 #import "LGContenHeraderView.h"
+#import "LGUserController.h"
 @interface LGDisplayController ()<LWHTMLDisplayViewDelegate>
 @property (nonatomic,strong) LWHTMLDisplayView* htmlView;
 @property (nonatomic,strong) UILabel* coverTitleLabel;
@@ -64,13 +65,59 @@
     self.videoPressCache = [[NSCache alloc] init];
     [self setNav];
     [self setupUI];
+    self.navItem.title = @"文章详情";
    [self setupCommentView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
-    
+    self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"more_icon" highImage:@"" target:self action:@selector(more)];
     
 }
+
+- (void)more{
+   
+    UIAlertController *alerVc = [UIAlertController alertControllerWithTitle:@"提示" message:@"您要？" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [alerVc addAction:[UIAlertAction actionWithTitle:@"复制链接地址" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        [pasteboard setString:[NSString stringWithFormat:@"%@ %@",self.model.title,self.model.url]];
+        [SVProgressHUD showSuccessWithStatus:@"复制成功"];
+        
+    }]];
+    [alerVc addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+               
+    }]];
+
+    LGWeakSelf;
+    if ([self.model.author.slug isEqualToString:[LGNetWorkingManager manager].account.user.username] || [[LGNetWorkingManager manager].account.user.ID isEqualToString:@"1"]) {
+        [alerVc addAction:[UIAlertAction actionWithTitle:@"删除该文章" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+          UIAlertController *alerVc2 = [UIAlertController alertControllerWithTitle:@"提示" message:@"删除之后不可恢复您确定要删除吗？" preferredStyle:UIAlertControllerStyleAlert];
+            [alerVc2 addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            }]];
+            [alerVc2 addAction:[UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                [[LGNetWorkingManager manager] requestDeleteArticlePost_slug:_model.slug post_id:[NSString stringWithFormat:@"%zd",_model.ID] completion:^(BOOL isSuccess) {
+                    if (isSuccess) {
+                        [SVProgressHUD showSuccessWithStatus:@"删除成功"];
+                        [weakSelf.navigationController popViewControllerAnimated:YES];
+                    }else{
+                        [SVProgressHUD showErrorWithStatus:@"删除失败"];
+                    }
+                    
+                }];
+            }]];
+             [weakSelf presentViewController:alerVc2 animated:YES completion:nil];
+        }]];
+        
+    }
+    
+    
+    [self presentViewController:alerVc animated:YES completion:nil];
+    
+}
+
+
 - (void)commentWillChange:(NSNotification *)noti{
     
 #warning 按钮状态有问题
@@ -107,11 +154,12 @@
     
     UIView *commentView = [[UIView alloc] init];
     UIImageView *imageView = [[UIImageView alloc] init];
+    commentView.backgroundColor = LGCommonColor;
     /**
      *  背景图片
      */
-    imageView.image = [UIImage imageNamed:@"comment-bar-bg"];
     UITextField *textField = [[UITextField alloc] init];
+    textField.borderStyle = UITextBorderStyleRoundedRect;
     textField.placeholder = @"你有什么看法呢";
     textField.backgroundColor = [UIColor whiteColor];
     //按钮
@@ -121,7 +169,7 @@
     
     [button setImage:[UIImage imageNamed:@"comment"] forState:UIControlStateNormal];
     
-    [sendButton setImage:[UIImage imageNamed:@"发送"] forState:UIControlStateNormal];
+    [sendButton setImage:[UIImage imageNamed:@"send_icon"] forState:UIControlStateNormal];
     
     [self.view addSubview:commentView];
     [commentView addSubview:imageView];
@@ -200,10 +248,11 @@
 
 
 - (void)setupUI{
-#warning 设置头像调整数据待做
+
     LGContenHeraderView *view = [LGContenHeraderView viewFromeNib];
     
     view.authorLable.text = self.model.author.name;
+    [view.avatarImageView setHeader:[self.model.author.slug lg_getuserAvatar]];
     
     view.frame = CGRectMake(0, self.navBar.lg_height, self.view.lg_width, 50);
    
@@ -216,10 +265,21 @@
 
     [self findScrollViewsInView:self.editorView];
 
-   
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2userVc)];
+    
+    [view.avatarImageView addGestureRecognizer:tap];
  
 }
+- (void)go2userVc{
 
+   UIStoryboard *story =  [UIStoryboard storyboardWithName:NSStringFromClass([LGUserController class]) bundle:nil];
+   LGUserController *userVc = [story instantiateInitialViewController];
+    
+    userVc.author = self.model.author;
+    
+    [self.navigationController pushViewController:userVc  animated:YES];
+    
+}
 - (void)findScrollViewsInView:(UIView *)view
 {
     // 利用递归查找所有的子控件

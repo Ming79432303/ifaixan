@@ -64,5 +64,7 @@
 
 @property(nonatomic, strong)  LGAttachment *attachment;
 @property(nonatomic, strong) LGImage *thumbnail_images;
+@property(nonatomic, copy) NSString *slug;
+@property(nonatomic, copy) NSString *imageUrl;
 
 @end

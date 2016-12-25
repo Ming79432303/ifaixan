@@ -33,12 +33,14 @@
     self.tagView.lg_y = LGCommonMargin;
     self.tagView.lg_x = LGCommonMargin;
     self.tagView.lg_width = [UIScreen lg_screenWidth] - 2*LGCommonMargin;
-    self.tagView.lg_height = self.lg_height;
+    self.tagView.lg_height = self.lg_height - LGCommonMargin;
     
     
 }
 - (void)setTags:(NSArray *)tags{
-    
+    if (_tags.count) {
+        return;
+    }
     _tags = tags;
     if (tags.count > 20) {
         self.tagView.tags = [tags subarrayWithRange:NSMakeRange(0, 20)];
@@ -49,4 +51,5 @@
     
     
 }
+
 @end

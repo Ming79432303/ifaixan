@@ -15,26 +15,48 @@
 #import "LGDiscoverList.h"
 #import "LGTag.h"
 #import "LGDiscoverHeaderView.h"
+#import "LGActivityCell.h"
+#import "LGDIscoverHeaderFooterView.h"
 
 typedef NS_ENUM(NSInteger , LGTypeCell) {
     LGCategoryCell,//展示分类的cell
     LGTagCell,//展示标签的cell
-    LGOtherCell,//其他的cell
+    LGActivitieCell,//其他的cell
 };
 
 @interface LGDiscoverController ()<UITextFieldDelegate>
 @property (weak, nonatomic) UITextField *searchTextField;
 @property (weak, nonatomic) UIView *searchView;
-@property (weak, nonatomic) LGSearchController *searchVc;
+@property (strong, nonatomic) LGSearchController *searchVc;
 @property(nonatomic, strong) NSArray *tags;
-
+@property(nonatomic, strong) LGDiscoverList *list;
+@property(nonatomic, strong) NSArray *activities;
 @end
 
 @implementation LGDiscoverController
 
 static NSString  *showCellID = @"showCellID";
 static NSString  *tagCellID = @"tagCellID";
+static NSString  *activitieCellID = @"activitieCellID";
+static NSString  *discoverHFID = @"discoverHFID";
 
+- (LGDiscoverList *)list{
+    
+    if (_list == nil) {
+        _list = [[LGDiscoverList alloc] init];
+    }
+    
+    return _list;
+}
+
+- (LGSearchController *)searchVc{
+    
+    if (_searchVc == nil) {
+        _searchVc = [[LGSearchController alloc] init];
+    }
+    
+    return _searchVc;
+}
 
 
 - (void)viewDidLoad {
@@ -44,6 +66,7 @@ static NSString  *tagCellID = @"tagCellID";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextFieldTextDidChangeNotification object:self.searchTextField];
     [self addHeaderView];
     [self addShowView];
+    [self loadNewData];
     
     
 }
@@ -67,8 +90,13 @@ static NSString  *tagCellID = @"tagCellID";
     }];
     [self.tableView registerClass:[LGShowCell class] forCellReuseIdentifier:showCellID];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGTagsCell class]) bundle:nil] forCellReuseIdentifier:tagCellID];
-
    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGActivityCell class]) bundle:nil] forCellReuseIdentifier:activitieCellID];
+    [self.tableView registerClass:[LGDIscoverHeaderFooterView class] forHeaderFooterViewReuseIdentifier:discoverHFID];
+    self.tableView.sectionFooterHeight = 50;
+    self.tableView.sectionHeaderHeight = 40;
+    self.tableView.backgroundColor = LGCommonColor;
+    self.tableView.mj_footer.hidden = YES;
 }
 
 - (void)textChange:(NSNotification *)noti{
@@ -89,9 +117,9 @@ static NSString  *tagCellID = @"tagCellID";
     searchView.borderStyle = UITextBorderStyleRoundedRect;
     searchView.backgroundColor = [UIColor whiteColor];
     searchView.frame = CGRectMake(0, 0, 200, self.navBar.lg_height -  LGCommonMargin - LGstatusBarH);
-    searchView.placeholder = @"搜索,用户名,标题";
+    searchView.placeholder = @"请输入关键字搜索";
     UIImageView *search = [[UIImageView alloc] init];
-    search.image = [UIImage imageNamed:@"search"];
+    search.image = [UIImage imageNamed:@"search_icon"];
     search.frame = CGRectMake(0, 0, 20, 20);
     searchView.leftView = search;
     searchView.leftViewMode = UITextFieldViewModeAlways;
@@ -100,13 +128,13 @@ static NSString  *tagCellID = @"tagCellID";
     LGWeakSelf;
     [searchView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.navBar).offset(LGCommonMargin);
-        make.right.mas_equalTo(weakSelf.navBar).offset(-5 * LGCommonMargin);
+        make.right.mas_equalTo(weakSelf.navBar).offset(-LGCommonMargin);
         make.top.mas_equalTo(weakSelf.navBar).offset(LGCommonSmallMargin + LGstatusBarH);
         make.bottom.mas_equalTo(weakSelf.navBar).offset(-LGCommonSmallMargin);
     }];
     
     //self.navItem.rightBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"云标签" fontSize:14 addTarget:self action:@selector(tag) isBack:NO];
-    self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"更多" highImage:@"更多 (1)" target:search action:@selector(tag)];
+    self.navItem.rightBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"搜索" fontSize:14 addTarget:self action:@selector(textFieldDidBeginEditing:) isBack:NO];
 
     self.searchTextField = searchView;
 }
@@ -119,6 +147,7 @@ static NSString  *tagCellID = @"tagCellID";
 - (void)canle{
     
     [self.searchTextField resignFirstResponder];
+    self.searchTextField.text = nil;
      self.tabBarController.tabBar.hidden = NO;
     
     POPBasicAnimation *animati = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
@@ -129,10 +158,11 @@ static NSString  *tagCellID = @"tagCellID";
     animati.completionBlock = ^(POPAnimation *anim ,BOOL finish){
         
         [self.searchView removeFromSuperview];
+        [self.searchVc removeFromParentViewController];
     };
     
     [self.searchView pop_addAnimation:animati forKey:nil];
-    self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"更多" highImage:@"更多 (1)" target:self action:@selector(tag)];
+     self.navItem.rightBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"搜索" fontSize:14 addTarget:self action:@selector(textFieldDidBeginEditing:) isBack:NO];
     
     
     
@@ -141,25 +171,25 @@ static NSString  *tagCellID = @"tagCellID";
 - (void)addSearchView{
     
     self.tabBarController.tabBar.hidden = YES;
-    LGSearchController *searchVc = [[LGSearchController alloc] init];
-    _searchVc = searchVc;
-    [self addChildViewController:searchVc];
+ 
+ 
+    [self addChildViewController: self.searchVc];
    
-    searchVc.view.backgroundColor = [UIColor whiteColor];
-    searchVc.view.frame = self.tableView.frame;
-    searchVc.view.lg_y = self.navBar.lg_bottom;
-    searchVc.view.lg_height = self.view.lg_height - self.navBar.lg_height;
+     self.searchVc.view.backgroundColor = [UIColor whiteColor];
+     self.searchVc.view.frame = self.tableView.frame;
+     self.searchVc.view.lg_y = self.navBar.lg_bottom;
+     self.searchVc.view.lg_height = self.view.lg_height - self.navBar.lg_height;
     
-    [self.view addSubview:searchVc.view];
-    self.searchView = searchVc.view;
+    [self.view addSubview: self.searchVc.view];
+    self.searchView =  self.searchVc.view;
     
     POPBasicAnimation *animati = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
     
-    animati.fromValue = @(0);
+    animati.fromValue = @(1);
     animati.toValue = @(1);
-    animati.duration = 0.25;
+    animati.duration = 0.15;
     
-    [searchVc.view pop_addAnimation:animati forKey:nil];
+    [ self.searchVc.view pop_addAnimation:animati forKey:nil];
     
     
     
@@ -188,6 +218,20 @@ static NSString  *tagCellID = @"tagCellID";
     
 }
 
+- (void)loadNewData{
+    
+    LGWeakSelf;
+    [self.list getActivity_get_activities:^(BOOL isSuccess, NSArray *activities) {
+    [self.tableView.mj_header endRefreshing];
+        if (isSuccess) {
+            
+            weakSelf.activities = activities;
+            [weakSelf.tableView reloadData];
+        }
+    }];
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     return 3;
@@ -197,16 +241,15 @@ static NSString  *tagCellID = @"tagCellID";
     if (section == LGCategoryCell) {
         return 1;
     }else if (section == LGTagCell){
-        
         return 1;
     }else{
         
-        return 20;
+        return self.activities.count;
     }
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%zd",indexPath.section);
+    
     if (indexPath.section == LGCategoryCell) {
     LGShowCell * cell = [tableView dequeueReusableCellWithIdentifier:showCellID];
          return cell;
@@ -216,10 +259,9 @@ static NSString  *tagCellID = @"tagCellID";
         cell.tags = self.tags;
          return cell;
     }else {
-        static NSString *ID = @"otherCell";
-        
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-        cell.textLabel.text = @"其他样式";
+        LGActivitie *activiti = self.activities[indexPath.row];
+        LGActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:activitieCellID];
+        cell.model = activiti;
         return cell;
     }
    
@@ -227,36 +269,45 @@ static NSString  *tagCellID = @"tagCellID";
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    LGActivitie *activiti = self.activities[indexPath.row];
     if (indexPath.section == LGCategoryCell) {
-        return [UIScreen lg_screenWidth] * 0.7;
+        return [UIScreen lg_screenWidth] * 0.7 + LGCommonMargin;
     }else if (indexPath.section == LGTagCell){
-        return 275;
+        return 125;
     }else{
         
-        return 50;
+        return activiti.rowHeight;
     }
     
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
-    if (section == 1) {
-        return @"云标签";
+    UITableViewHeaderFooterView *hfView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:discoverHFID];
+    UIView *view = [[UIView alloc] init];
+    view.frame = CGRectMake(0,  1, self.tableView.lg_width, 40 -2);
+    view.backgroundColor = [UIColor whiteColor];
+    UILabel *titleLable = [[UILabel alloc] init];
+    titleLable.backgroundColor = [UIColor whiteColor];
+    titleLable.font = [UIFont systemFontOfSize:13];
+    titleLable.textColor = [UIColor lightGrayColor];
+    titleLable.frame = CGRectMake(2 * LGCommonMargin,  0, view.lg_width/2, view.lg_height);
+    if (section == LGCategoryCell) {
+        titleLable.text = @"精选推荐";
+    }else if(section == LGTagCell){
+        titleLable.text = @"云标签";
     }else{
         
-        return @"";
+        titleLable.text = @"最新活动";
     }
+    [view addSubview:titleLable];
+    [hfView addSubview:view];
+    return hfView;
     
+
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 1) {
-         return 4 * LGCommonMargin;
-    }else{
-        
-        return 0;
-    }
-   
-}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     

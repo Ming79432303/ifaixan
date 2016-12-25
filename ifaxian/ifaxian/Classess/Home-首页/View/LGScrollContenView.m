@@ -57,7 +57,7 @@
         [self.categoryButton  setTitle:@"文章" forState:UIControlStateNormal];
         
     }
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnail_images.medium.url] placeholderImage:nil];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnail_images.full.url] placeholderImage:nil];
     
     [self setNeedsLayout];
     

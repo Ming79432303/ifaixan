@@ -30,7 +30,7 @@ static NSString *videoCellID = @"videoCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGVideoCell class]) bundle:nil] forCellReuseIdentifier:videoCellID];
-    self.postName = @"video";
+    self.postName = @"sp";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,7 +64,7 @@ static NSString *videoCellID = @"videoCellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     LGRecommend *recomm = self.dateArray[indexPath.row];
-    
+       NSLog(@"%@",NSStringFromUIEdgeInsets(self.tableView.contentInset));
     return recomm.VideoCellHeght;
 }
 

@@ -9,7 +9,6 @@
 #import "LGPostModel.h"
 
 @interface LGRecommend : LGPostModel
-@property(nonatomic, copy) NSString *imageUrl;
 @property(nonatomic, assign) CGSize originalImageSize;
 @property(nonatomic, assign) CGSize imageSize;
 @property(nonatomic, copy) NSString *contentText;

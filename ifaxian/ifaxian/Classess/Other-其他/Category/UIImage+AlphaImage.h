@@ -11,4 +11,5 @@
 @interface UIImage (AlphaImage)
 
 + (UIImage *)imageWithAlpha:(CGFloat )alpha;
++ (UIImage *)WhiteimageWithAlpha:(CGFloat )alpha;
 @end

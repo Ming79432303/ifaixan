@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "tabbar_home_selected.png",
       "scale" : "1x"
     },
     {

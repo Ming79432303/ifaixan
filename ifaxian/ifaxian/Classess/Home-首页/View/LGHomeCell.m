@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imagesViewHeight;
 
 @property (weak, nonatomic) IBOutlet UILabel *categoryLable;
+@property (weak, nonatomic) IBOutlet UILabel *tagLable;
 
 @end
 
@@ -47,6 +48,13 @@
     self.titleLable.text = model.title;
     self.tagView.tags = model.tags;
     self.homeimagesView.images = model.images;
+    if (model.tags.firstObject.title.length) {
+    
+        self.tagLable.text = [NSString stringWithFormat:@"#%@",model.tags.firstObject.title];
+    }else{
+        self.tagLable.text = nil;
+    }
+    [self.avatarImageView setHeader:[model.author.slug lg_getuserAvatar]];
     if (self.constraints.count) {
         
         self.categoryLable.text = model.categories.firstObject.title;
@@ -97,15 +105,15 @@
 - (void)setFrame:(CGRect)frame{
     
     CGRect cellFrame = frame;
-    cellFrame.size.height -= 1;
-//    cellFrame.size.width -= 4;
-//    cellFrame.origin.y += LGCommonMargin;
-//    cellFrame.origin.x += 2;
+    cellFrame.size.height -= LGCommonMargin;
+    cellFrame.size.width -= 2 * LGCommonSmallMargin;
+    cellFrame.origin.x += LGCommonSmallMargin;
+    cellFrame.origin.y += LGCommonMargin;
+    
+    
     [super setFrame:cellFrame];
-
+    
 }
-
-
 
 
 

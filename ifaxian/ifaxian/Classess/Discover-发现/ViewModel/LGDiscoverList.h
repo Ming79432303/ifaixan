@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface LGDiscoverList : NSObject
+
 - (void)requestCategroie:(void(^)(NSArray *categories))completion;
 - (void)getAllCategoriesPosts:(void(^)(NSArray *categoryposts))completion;
 - (void)requestTags:(void(^)(NSArray *tags))completion;
+- (void)getActivity_get_activities:(void(^)(BOOL isSuccess , NSArray *activities))completion;
 @end

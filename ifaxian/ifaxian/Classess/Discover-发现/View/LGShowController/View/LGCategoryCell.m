@@ -31,7 +31,7 @@
     for (int i = 0; i < count; i ++) {
         
         UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.backgroundColor = [UIColor blueColor];
+        
         [self.showView addSubview:imageView];
     }
     
@@ -41,7 +41,7 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     [self layoutIfNeeded];
-    CGFloat margin = 1;
+    CGFloat margin = 3;
     NSInteger count = self.showView.subviews.count;
     CGFloat imageW = (self.showView.bounds.size.width - margin) * 0.5;
     CGFloat imageH = (self.showView.bounds.size.height - margin) * 0.5;
@@ -56,6 +56,7 @@
     }
 }
 - (void)setModel:(LGShow *)model{
+  
     _model = model;
     self.titleView.text = model.title;
     for (int i = 0; i < model.posts.count; i ++) {
@@ -64,8 +65,7 @@
         imageV.contentMode = UIViewContentModeScaleAspectFill;
         imageV.clipsToBounds = YES;
         LGPostModel  *post = model.posts[i];
-        NSString *url = post.thumbnail_images.medium.url;
-        
+        NSString *url = post.imageUrl;
         [imageV sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"1479723749506"]];
         
     }

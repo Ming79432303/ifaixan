@@ -46,7 +46,7 @@
     _titleLable.text = model.title;
     _nameLable.text = model.author.name;
     
-    [_picImageView lg_setImageWithurl:model.thumbnail_images.medium.url placeholderImage:nil];
+    [_picImageView lg_setImageWithurl:model.thumbnail_images.full.url placeholderImage:nil];
 
 }
 
@@ -78,5 +78,19 @@
     [plaer starVideo:self.videoPlayer.fullStarButton];
     
 }
+
+- (void)setFrame:(CGRect)frame{
+    
+    CGRect cellFrame = frame;
+    cellFrame.size.height -= LGCommonMargin;
+    cellFrame.size.width -= 2 * LGCommonSmallMargin;
+    cellFrame.origin.x += LGCommonSmallMargin;
+    cellFrame.origin.y += LGCommonMargin;
+    
+    
+    [super setFrame:cellFrame];
+    
+}
+
 
 @end

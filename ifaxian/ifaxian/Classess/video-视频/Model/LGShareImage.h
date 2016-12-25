@@ -9,5 +9,5 @@
 #import "LGPostModel.h"
 
 @interface LGShareImage : LGPostModel
-@property(nonatomic, copy) NSString *imageUrl;
+
 @end

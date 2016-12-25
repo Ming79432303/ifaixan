@@ -9,12 +9,15 @@
 #import "LGSearchController.h"
 #import "LGPostModel.h"
 #import "LGSearchCell.h"
+#import "LGSearch.h"
+#import "LGShareController.h"
+#import "LGDisplayController.h"
 @interface LGSearchController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @property (weak, nonatomic) IBOutlet UIView *searchHeaderView;
-@property (strong, nonatomic) NSMutableArray *results;
+@property (strong, nonatomic) NSMutableArray<LGSearch *> *results;
 @property(nonatomic, copy) NSString *searchStr;
 @end
 
@@ -76,7 +79,6 @@
         return;
     }
     
-#warning 中文转码
     self.searchHeaderView.hidden = NO;
     self.activityView.hidden = NO;
     self.titleLable.text = [NSString stringWithFormat:@"正在查找%@",self.searchStr];
@@ -91,22 +93,33 @@
   [[LGNetWorkingManager manager] requestSearch:self.searchStr page:index_ completion:^(BOOL isSccess, NSDictionary *responseObject) {
       if (isSccess) {
           
-
+          NSMutableArray *searchsM = [NSMutableArray array];
           NSMutableArray *postArray = [LGPostModel mj_objectArrayWithKeyValuesArray:responseObject[@"posts"]];
+          
+         // NSArray *postArray = responseObject[@"posts"];
+          
+          for (LGPostModel *parems in postArray) {
+              
+              LGSearch *sears = [[LGSearch alloc] initWithModel:parems];
+              [searchsM addObject:sears];
+          }
+          
+          
+          
           NSString * count_total = responseObject[@"count_total"];
           if ([count_total integerValue] == 0) {
-              self.titleLable.text = @"没有找到数据";
-              self.activityView.hidden = YES;
+              weakSelf.titleLable.text = @"没有找到数据";
+              weakSelf.activityView.hidden = YES;
                self.tableView.mj_footer.hidden = YES;
               return ;
           }
           
-          if (self.results.count == [count_total integerValue]) {
+          if (weakSelf.results.count == [count_total integerValue]) {
               weakSelf.tableView.mj_footer.hidden = YES;
           }
           
           //[self.results addObjectsFromArray:postArray];
-          weakSelf.results = postArray;
+          weakSelf.results = searchsM;
           weakSelf.searchHeaderView.hidden = YES;
           weakSelf.tableView.hidden = NO;
           [weakSelf.tableView.mj_footer endRefreshing];
@@ -132,21 +145,31 @@
         if (isSccess) {
             
             
+            NSMutableArray *searchsM = [NSMutableArray array];
             NSMutableArray *postArray = [LGPostModel mj_objectArrayWithKeyValuesArray:responseObject[@"posts"]];
+            
+            // NSArray *postArray = responseObject[@"posts"];
+            
+            for (LGPostModel *parems in postArray) {
+                
+                LGSearch *sears = [[LGSearch alloc] initWithModel:parems];
+                [searchsM addObject:sears];
+            }
+            
             NSString * count_total = responseObject[@"count_total"];
             if ([count_total integerValue] == 0) {
-                self.titleLable.text = @"没有找到数据";
-                self.activityView.hidden = YES;
-                self.tableView.mj_footer.hidden = YES;
+                weakSelf.titleLable.text = @"没有找到数据";
+                weakSelf.activityView.hidden = YES;
+                weakSelf.tableView.mj_footer.hidden = YES;
                 return ;
             }
             
-            if (self.results.count == [count_total integerValue]) {
+            if (weakSelf.results.count == [count_total integerValue]) {
                 weakSelf.tableView.mj_footer.hidden = YES;
             }
             
             //[self.results addObjectsFromArray:postArray];
-            [weakSelf.results addObjectsFromArray:postArray];
+            [weakSelf.results addObjectsFromArray:searchsM];
          
            
             [weakSelf.tableView.mj_footer endRefreshing];
@@ -177,9 +200,39 @@
    
     
     LGSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    cell.model = self.results[indexPath.row];
+    cell.model = self.results[indexPath.row].share;
     
     return cell;
     
 }
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [self.view endEditing:YES];
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    LGSearch *search = self.results[indexPath.row];
+ 
+    if ([search.share.categories.firstObject.title isEqualToString:@"分享"]) {
+    LGShareController * pushVc = [[LGShareController alloc] init];
+       pushVc.share = search;
+       [self.navigationController pushViewController:pushVc animated:YES];
+    }else{
+        
+     LGDisplayController * pushVc = [[LGDisplayController alloc] init];
+        pushVc.model = search.share;
+        [self.navigationController pushViewController:pushVc animated:YES];
+    }
+     
+     
+    
+}
+
+- (void)dealloc{
+    
+    NSLog(@"小环");
+    
+}
+
 @end

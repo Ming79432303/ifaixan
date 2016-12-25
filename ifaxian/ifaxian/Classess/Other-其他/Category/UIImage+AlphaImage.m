@@ -28,5 +28,24 @@
     
     
 }
++ (UIImage *)WhiteimageWithAlpha:(CGFloat )alpha{
+    
+    CGSize size = CGSizeMake(20, 2);
+    //开启图片上线文
+    UIGraphicsBeginImageContext(size);
+    //创建一个路径
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 20, 2)];
+    //设置填充颜色
+   
+    [[UIColor colorWithWhite:1 alpha:alpha] set];
+    //填充
+    [path fill];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    //关闭上下文
+    UIGraphicsEndImageContext();
+    return image;
+    
+    
+}
 
 @end

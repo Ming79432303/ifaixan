@@ -161,7 +161,9 @@
 
 -(void)loadOldDatacompletion:(void(^)(BOOL isSuccess ,NSArray<LGShare *> *shareArray))completion{
    
-    
+    if (index_ < 2) {
+        index_ = 2;
+    }
     [self.manager requestPOstCategory:@"images" page:[NSString stringWithFormat:@"%zd",index_] completion:^(BOOL isSuccess, id responseObject) {
         
         //        self.images = [LGShareImage mj_objectArrayWithKeyValuesArray:responseObject[@"posts"]];

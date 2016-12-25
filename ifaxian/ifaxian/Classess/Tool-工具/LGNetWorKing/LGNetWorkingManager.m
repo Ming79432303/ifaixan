@@ -37,10 +37,12 @@ singleM(Net)
             
             //通知用户登录
             [[NSNotificationCenter defaultCenter] postNotificationName:LGUserLoginNotification object:nil];
+        }else{
+            
+            [self.requestSerializer setValue:[NSString stringWithFormat:@"%@=%@",self.account.cookie_name,self.account.cookie] forHTTPHeaderField:@"Cookie"];
         }
         
-        //[self.requestSerializer setValue:[NSString stringWithFormat:@"%@=%@",self.account.cookie_name,self.account.cookie] forHTTPHeaderField:@"Cookie"];
-               
+        
     }
     
     return self;

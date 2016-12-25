@@ -14,4 +14,9 @@
     return [NSString stringWithFormat:@"%@%@",LGBasiRequestUrl,path];
     
 }
+- (NSString *)lg_getuserAvatar{
+    
+     NSString * userAvatar = [NSString stringWithFormat:@"%@ifaxian/avatars/%@lg_user_avatar.jpg",LGbuckeUrl,self];
+    return userAvatar;
+}
 @end

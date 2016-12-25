@@ -11,6 +11,6 @@
 #import "LGRecommend.h"
 @interface LGTopicController : UITableViewController
 @property(nonatomic, strong) LGRecommendViewModel *recommend;
-@property(nonatomic, strong) NSMutableArray *dateArray;
+@property(nonatomic, strong) NSArray *dateArray;
 @property(nonatomic, copy) NSString *postName;
 @end

@@ -10,4 +10,13 @@
 
 @interface UIImage (lg_image)
 - (UIImage *)lg_avatarImagesize:(CGSize)size backColor:(UIColor *)backColor lineColor:(UIColor *)linColor;
+/**
+ * 返回一张圆形图片
+ */
+- (instancetype)lg_circleImage;
+
+/**
+ * 返回一张圆形图片
+ */
++ (instancetype)lg_circleImageNamed:(NSString *)name;
 @end

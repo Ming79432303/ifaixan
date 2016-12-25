@@ -27,6 +27,8 @@
 #import "UIImageView+WebCache.h"
 #import "LGHTTPSessionManager.h"
 #import "UIImageView+LGUIimageView.h"
+#import "LGHTTPSessionManager+LGUserRequest.h"
+#import "CWStatusBarNotification.h"
 
 // 日志输出
 #ifdef DEBUG // 开发阶段-DEBUG阶段:使用Log
@@ -58,10 +60,10 @@
  *
  */
 //9张图的宽高
-#define LGTowImageItemWH (LGScreenW - 4 * LGCommonMargin - LGCommonSmallMargin)/2
-#define LGImageItemWH (LGScreenW - 4 * LGCommonMargin - 2 * LGCommonSmallMargin)/3
+#define LGTowImageItemWH (LGScreenW - 3 * LGCommonMargin - LGCommonMinMargin)/2
+#define LGImageItemWH (LGScreenW - 3 * LGCommonMargin - 2 * LGCommonMinMargin)/3
 
-#define LGHomeImageViewItemWH  (LGScreenW - 2 * (LGCommonMargin + LGCommonMinMargin))/3
+#define LGHomeImageViewItemWH  (LGScreenW - 2 * (LGCommonMargin + LGCommonMinMargin + LGCommonSmallMargin))/3
 
 /**
  *  统一背景颜色

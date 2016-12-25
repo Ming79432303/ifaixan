@@ -46,6 +46,22 @@
 - (void)setupUI{
     
     
+    _textView.layer.backgroundColor = [[UIColor whiteColor] CGColor];
+    
+    
+    _textView.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    
+    
+    _textView.layer.borderWidth = 1.0;
+    
+    
+    _textView.layer.cornerRadius = 3.0f;
+    
+    
+    [_textView.layer setMasksToBounds:YES];
+    
+
+    
     //右边按钮
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

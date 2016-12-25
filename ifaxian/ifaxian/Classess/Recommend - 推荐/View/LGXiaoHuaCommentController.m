@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+   
 }
 
 - (void)setupTableView{
@@ -30,13 +30,10 @@
     headerView.frame = CGRectMake(0, 0, LGScreenW, self.share.xhCellHeght);
     LGXiaoHuaCell *cellView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([LGXiaoHuaCell class]) owner:nil options:nil] firstObject];
 
-    
+    cellView.backgroundColor = [UIColor whiteColor];
     cellView.model = self.share;
     cellView.frame = headerView.bounds;
     [headerView addSubview:cellView];
-    
-    
-    
     
     self.tableView.tableHeaderView = headerView;
     

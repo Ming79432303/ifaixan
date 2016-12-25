@@ -34,6 +34,8 @@
 @property(nonatomic, strong) UINavigationBar *navBar;
 @property(nonatomic, strong)  UINavigationItem *navItem;
 @property(nonatomic, weak)  UITableView  *userTableView;
+@property (weak, nonatomic) IBOutlet UILabel *nickname;
+@property(nonatomic, copy) NSString *titleText;
 @end
 
 @implementation LGUserController
@@ -57,8 +59,46 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
+   
+    [self setHeaderView];
+    [self setupTableView];
+    [self loadUserInfo];
+
+}
+- (void)loadUserInfo{
+    
+    [[LGHTTPSessionManager manager] requestUserIfo:self.author.slug completion:^(BOOL isSuccess, id responseObject) {
+        NSInteger count = [responseObject[@"pages"] integerValue];
+        NSString *titleText;
+        if (count <= 0) {
+            titleText = @"暂无发表的动态";
+        }else{
+            
+           titleText = [NSString stringWithFormat:@"共发表了%@条动态", responseObject[@"pages"]];
+        }
+        self.titleLable.text = titleText;
+        self.titleText = titleText;
+    }];
+    
+    
+}
+-(void)setHeaderView{
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userInfo)];
+    
+    [_userIconImageView addGestureRecognizer:tap];
+    
+    self.userBacImageView.image = [[UIImage imageNamed:@"screen"] applyTintEffectWithColor:[UIColor lightGrayColor]];
+    _userIconImageView.layer.cornerRadius = _userIconImageView.lg_height / 2;
+    _userIconImageView.layer.masksToBounds = YES;
+//    _tabView.image = [[UIImage imageNamed:@"1111111"] applyDarkEffect];
+    
+    _nickname.text = [NSString stringWithFormat:@"昵称:%@",_author.nickname];
+    
+}
+
+- (void)setupTableView{
     // 设置tableView数据源和代理
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -68,20 +108,12 @@
     [self setupNavBar];
     // 不需要添加额外的滚动区域
     self.automaticallyAdjustsScrollViewInsets = NO;
-
+    
     // 先记录最开始偏移量
     _oriOffsetY = -(LGHeadViewH + LGTabBarH);
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userInfo)];
-    
-    [_userIconImageView addGestureRecognizer:tap];
-   
-    //self.userBacImageView.image = [[UIImage imageNamed:@"screen"] applyLightEffect];
-    _userIconImageView.layer.cornerRadius = _userIconImageView.lg_height / 2;
-    _userIconImageView.layer.masksToBounds = YES;
-    _tabView.image = [[UIImage imageNamed:@"1111111"] applyDarkEffect];
+
     LGUserListController *userList = [[LGUserListController alloc] init];
-    userList.userName = _author.name;
+    userList.userName = _author.slug;
     userList.view.frame = self.view.frame;
     userList.tableView.contentInset = UIEdgeInsetsMake(LGHeadViewH + LGTabBarH, 0, 0, 0);
     userList.tableView.lg_y = -LGnavBarH + LGstatusBarH;
@@ -95,13 +127,19 @@
     [self addChildViewController:userList];
     [self.view insertSubview:userList.tableView atIndex:0];
     _userTableView = userList.tableView;
+    NSString * userAvatar = [_author.slug lg_getuserAvatar];
+
+    [_userIconImageView lg_setCircularImageWithurl:userAvatar placeholderImage:nil];
     
 }
+
+
 - (void)userInfo{
-    LGUserInfoController *userVc = [[LGUserInfoController alloc] init];
-   
-    
-    [self.navigationController pushViewController:userVc animated:YES];
+    return;
+//    LGUserInfoController *userVc = [[LGUserInfoController alloc] init];
+//    
+//    
+//    [self.navigationController pushViewController:userVc animated:YES];
     
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(UIScrollView *)scrollView change:(NSDictionary<NSString *,id> *)change context:(void *)context{
@@ -121,10 +159,10 @@
     CGFloat h = LGHeadViewH - delta;
     if (h < LGHeadViewMinH ) {
         h = LGHeadViewMinH;
-        _titleLable.text = @"Ming";
+        _titleLable.text = _author.nickname;
     }else{
         
-        _titleLable.text = @"共发表了24篇文章";
+        _titleLable.text = _titleText;
     }
     if (h > LGHeadViewH) {
         h = LGHeadViewH;
@@ -142,7 +180,6 @@
         alpha = 0.99;
         return;
     }
-    NSLog(@"%f",alpha);
     if (alpha < 0) {
         alpha = 0;
     }

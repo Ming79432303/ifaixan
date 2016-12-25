@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <development version="7000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -21,8 +23,8 @@
                         <color key="highlightedColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QL-vI-wH5">
-                        <rect key="frame" x="290" y="10" width="20" height="22"/>
-                        <state key="normal" image="赞"/>
+                        <rect key="frame" x="286" y="10" width="24" height="22"/>
+                        <state key="normal" image="zan_icon"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIk-5H-wjW">
                         <rect key="frame" x="10" y="37" width="300" height="18"/>
@@ -33,7 +35,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2c-vU-fNJ">
                         <rect key="frame" x="10" y="65" width="300" height="47"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLk-1t-nl7" customClass="LGHomeImagesView">
@@ -62,17 +64,37 @@
                             <constraint firstAttribute="height" constant="35" id="Wrg-OV-mgx"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaH-93-GaO">
+                        <rect key="frame" x="279" y="272" width="33" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.72336632013320923" green="0.72336632013320923" blue="0.72336632013320923" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="highlightedColor" red="0.72336632013320923" green="0.72336632013320923" blue="0.72336632013320923" alpha="1" colorSpace="calibratedRGB"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uo8-5i-CKK">
+                        <rect key="frame" x="225" y="270" width="44" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="UCA-mb-QhS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="评论" image="home_comment_icon">
+                            <color key="titleColor" red="0.72336632013320923" green="0.72336632013320923" blue="0.72336632013320923" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Ufo-cN-6LD" firstAttribute="top" secondItem="giF-md-HEO" secondAttribute="bottom" id="0Ka-rT-Ola"/>
                     <constraint firstItem="eIk-5H-wjW" firstAttribute="top" secondItem="FSH-32-hdb" secondAttribute="bottom" constant="10" id="1o7-SQ-QTq"/>
                     <constraint firstItem="FSH-32-hdb" firstAttribute="top" secondItem="Wni-dE-TeJ" secondAttribute="top" constant="10" id="6Sr-LJ-Vlz"/>
+                    <constraint firstItem="uo8-5i-CKK" firstAttribute="bottom" secondItem="Ufo-cN-6LD" secondAttribute="bottom" id="7pO-Pm-c8G"/>
                     <constraint firstItem="VZ2-Gu-fCT" firstAttribute="leading" secondItem="Wni-dE-TeJ" secondAttribute="leading" constant="10" id="FtY-sZ-Zy3"/>
                     <constraint firstItem="T2c-vU-fNJ" firstAttribute="top" secondItem="eIk-5H-wjW" secondAttribute="bottom" constant="10" id="HD5-07-jZh"/>
                     <constraint firstItem="Ufo-cN-6LD" firstAttribute="leading" secondItem="giF-md-HEO" secondAttribute="leading" id="IJv-HZ-hIt"/>
                     <constraint firstItem="giF-md-HEO" firstAttribute="leading" secondItem="VZ2-Gu-fCT" secondAttribute="trailing" constant="10" id="JIJ-Tu-YU8"/>
+                    <constraint firstItem="KaH-93-GaO" firstAttribute="bottom" secondItem="Ufo-cN-6LD" secondAttribute="bottom" constant="-2" id="QdH-U6-0F7"/>
                     <constraint firstItem="aLk-1t-nl7" firstAttribute="top" secondItem="T2c-vU-fNJ" secondAttribute="bottom" constant="10" id="SvN-ll-j63"/>
+                    <constraint firstItem="KaH-93-GaO" firstAttribute="leading" secondItem="uo8-5i-CKK" secondAttribute="trailing" constant="10" id="Uea-2g-Tyr"/>
                     <constraint firstItem="VZ2-Gu-fCT" firstAttribute="top" secondItem="aLk-1t-nl7" secondAttribute="bottom" constant="10" id="V5w-Dz-g12"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="KaH-93-GaO" secondAttribute="trailing" id="XfU-XA-kdd"/>
                     <constraint firstItem="0QL-vI-wH5" firstAttribute="top" secondItem="Wni-dE-TeJ" secondAttribute="top" constant="10" id="Y5w-s7-HWs"/>
                     <constraint firstAttribute="trailing" secondItem="0QL-vI-wH5" secondAttribute="trailing" constant="10" id="cD0-h6-bnW"/>
                     <constraint firstItem="T2c-vU-fNJ" firstAttribute="leading" secondItem="Wni-dE-TeJ" secondAttribute="leading" constant="10" id="g8r-4e-VAt"/>
@@ -94,13 +116,15 @@
                 <outlet property="homeimagesView" destination="aLk-1t-nl7" id="f5h-gH-rLi"/>
                 <outlet property="imagesViewHeight" destination="ovN-xm-ad9" id="gnb-pR-qC6"/>
                 <outlet property="nameLable" destination="giF-md-HEO" id="0Vl-Td-Vvz"/>
+                <outlet property="tagLable" destination="KaH-93-GaO" id="twb-Bd-LPb"/>
                 <outlet property="titleLable" destination="eIk-5H-wjW" id="F8U-bV-NcW"/>
             </connections>
-            <point key="canvasLocation" x="466" y="460"/>
+            <point key="canvasLocation" x="176" y="441"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="Screenshot_2016-11-22-13-35-51-390_微信" width="1080" height="1068"/>
-        <image name="赞" width="20" height="20"/>
+        <image name="home_comment_icon" width="17" height="17"/>
+        <image name="zan_icon" width="24" height="20"/>
     </resources>
 </document>

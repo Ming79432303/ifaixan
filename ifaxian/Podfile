@@ -30,4 +30,6 @@ pod "AliyunOSSiOS"
 pod 'ReactiveCocoa','2.5'
 pod 'YYImage'
 pod 'TZImagePickerController'
+pod 'SGNavigationProgress'
+pod 'CWStatusBarNotification', '~> 2.3.5'
 end

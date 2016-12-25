@@ -10,9 +10,12 @@
 
 @interface LGSearchCell()
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
-@property (weak, nonatomic) IBOutlet UILabel *describeLable;
+@property (weak, nonatomic) IBOutlet UILabel *dataLable;
 
-@property (weak, nonatomic) IBOutlet UILabel *timeLable;
+
+@property (weak, nonatomic) IBOutlet UILabel *commentCountLable;
+@property (weak, nonatomic) IBOutlet UILabel *postViewsLable;
+@property (weak, nonatomic) IBOutlet UIImageView *picImageView;
 
 @end
 
@@ -28,11 +31,30 @@
     
     self.titleLable.text = model.title;
     
-    self.describeLable.text = model.excerpt;
+    self.dataLable.text = model.date;
     
-    self.timeLable.text = model.date;
+    self.commentCountLable.text = [NSString stringWithFormat:@"评论 %@",model.comment_count];
+    [self.picImageView lg_setImageWithurl:model.imageUrl placeholderImage:nil];
+    NSString *viewCount = model.views.length > 0 ? model.views:@"0";
+    self.postViewsLable.text = [NSString stringWithFormat:@"评论 %@",viewCount];
+   
     
     
 }
+
+
+- (void)setFrame:(CGRect)frame{
+    
+    CGRect cellFrame = frame;
+    cellFrame.size.height -= 1;
+    cellFrame.size.width -= 2 * LGCommonSmallMargin;
+    cellFrame.origin.x += LGCommonSmallMargin;
+    cellFrame.origin.y += LGCommonMargin;
+    
+    
+    [super setFrame:cellFrame];
+    
+}
+
 
 @end

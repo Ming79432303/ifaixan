@@ -75,7 +75,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.tableView.contentInset = UIEdgeInsetsMake(self.navBar.lg_height, 0, self.tabBarController.tabBar.lg_height, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(self.navBar.lg_height, 0, LGtabBarH + LGstatusBarH, 0);
   
     //包tableview插入到self.navBar的视图下面
     self.tableView.backgroundColor = LGCommonColor;

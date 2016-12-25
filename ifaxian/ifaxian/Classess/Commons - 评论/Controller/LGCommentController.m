@@ -9,6 +9,7 @@
 #import "LGCommentController.h"
 #import "LGCommentCell.h"
 #import "LGComment.h"
+#import "LGCommentHeaderFooterView.h"
 @interface LGCommentController()
 @property (nonatomic, strong) NSMutableArray<LGComment *> *comments;
 @property(nonatomic, weak) UIView *commentView;
@@ -26,16 +27,27 @@
 }
 static NSString *cellID = @"commentID";
 static NSString *replyCellID = @"replyCellID";
+static NSString *commentHFViewID = @"replyCellID";
 - (void)viewDidLoad{
     
     [super viewDidLoad];
-    [self.tableView.mj_header beginRefreshing];
     [self setupUI];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
+     [self loadNewData];
+}
+
+-(void)setupTableView{
+    [super setupTableView];
+    
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGCommentCell class]) bundle:nil] forCellReuseIdentifier:cellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"LGReplyCell" bundle:nil]forCellReuseIdentifier:replyCellID];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
+       [self.tableView registerClass:[LGCommentHeaderFooterView class] forHeaderFooterViewReuseIdentifier:commentHFViewID];
+    self.tableView.sectionFooterHeight = 40;
+    self.tableView.sectionHeaderHeight = 40;
+    
     
 }
+
 - (void)dealloc{
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -76,9 +88,11 @@ static NSString *replyCellID = @"replyCellID";
     UITextField *textField = [[UITextField alloc] init];
     textField.placeholder = @"我来说两句";
     textField.backgroundColor = [UIColor whiteColor];
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    
     //按钮
     UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [sendButton setImage:[UIImage imageNamed:@"发送"] forState:UIControlStateNormal];
+    [sendButton setImage:[UIImage imageNamed:@"comment_send_icon"] forState:UIControlStateNormal];
     
     [self.view addSubview:commentView];
     [commentView addSubview:imageView];
@@ -121,16 +135,23 @@ static NSString *replyCellID = @"replyCellID";
 }
 #pragma mark - 发评论
 - (void)sendComments:(UIButton *)butn{
+    
+    if (!self.commentTextField.text.length) {
+        [SVProgressHUD showErrorWithStatus:@"评论不能为空"];
+        return;
+    }
+    
     NSString *parentID = [NSString stringWithFormat:@"%zd",butn.tag];
         [[LGNetWorkingManager manager] requestPostComment:self.commentTextField.text commentPostId:[NSString stringWithFormat:@"%zd",self.model.ID] commentParent:parentID completion:^(BOOL isSuccess) {
             if (isSuccess) {
                 [SVProgressHUD showSuccessWithStatus:@"评论成功"];
                 [self.commentTextField resignFirstResponder];
+                self.commentTextField.text = nil;
                 [self loadNewData];
                 
             }else{
                 
-                [SVProgressHUD showSuccessWithStatus:@"评论失败"];
+                [SVProgressHUD showErrorWithStatus:@"评论失败"];
             }
             
         }];
@@ -142,7 +163,7 @@ static NSString *replyCellID = @"replyCellID";
     NSString *url = [NSString stringWithFormat:@"%@?json=1",self.model.url];
 
     LGWeakSelf;
-    [[LGNetWorkingManager manager] requsetCommentUrl:url completion:^(BOOL isSuccess, NSArray *json) {
+    [[LGHTTPSessionManager manager] requsetCommentUrl:url completion:^(BOOL isSuccess, NSArray *json) {
         if (isSuccess) {
             
           
@@ -239,6 +260,7 @@ static NSString *replyCellID = @"replyCellID";
     LGComment *comment = self.comments[indexPath.row];
     self.commentSendButton.tag = [comment.ID integerValue];
     self.commentTextField.placeholder = [NSString stringWithFormat:@"回复%@",comment.name];
+    
     [self.commentTextField becomeFirstResponder];
 }
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
@@ -247,6 +269,30 @@ static NSString *replyCellID = @"replyCellID";
     self.commentSendButton.tag = 0;
     self.commentTextField.placeholder = @"我来说两句";
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+      UITableViewHeaderFooterView *hfView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:commentHFViewID];
+    UIView *view = [[UIView alloc] init];
+    view.frame = CGRectMake(LGCommonSmallMargin,  LGCommonMargin, self.tableView.lg_width - 2 * LGCommonSmallMargin, 40 -1);
+    view.backgroundColor = [UIColor whiteColor];
+    UILabel *titleLable = [[UILabel alloc] init];
+    titleLable.backgroundColor = [UIColor whiteColor];
+    titleLable.font = [UIFont systemFontOfSize:13];
+    titleLable.textColor = [UIColor lightGrayColor];
+    titleLable.frame = CGRectMake(2 * LGCommonMargin,  0, view.lg_width/2, view.lg_height);
+    if ([self.model.comment_count integerValue] <=  0 && !self.comments.count) {
+        titleLable.text = @"暂无评论";
+    }else{
+        titleLable.text = @"最新评论";
+    }
+    [view addSubview:titleLable];
+    [hfView addSubview:view];
+    return hfView;
+
+    
+    
+}
+
 
 
 @end

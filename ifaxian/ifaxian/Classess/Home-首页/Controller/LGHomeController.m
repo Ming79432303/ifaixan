@@ -56,7 +56,7 @@ static NSString *ID = @"cellID";
     
     LGHomeHeaderView *headerView = [LGHomeHeaderView viewFromeNib];
     
-    headerView.frame = CGRectMake(0, 0, 200, 200);
+    headerView.frame = CGRectMake(LGCommonMargin, 0, 200, 200);
     self.headerView = headerView;
     self.tableView.tableHeaderView = headerView;
     
@@ -65,7 +65,7 @@ static NSString *ID = @"cellID";
 }
 - (void)setupNav{
     self.navItem.title = @"首页";
-    self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"MainTagSubIcon" highImage:@"MainTagSubIconClick" target:self action:@selector(test)];
+   // self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"MainTagSubIcon" highImage:@"MainTagSubIconClick" target:self action:@selector(test)];
 }
 
 -(void)setupRefreshView{
@@ -73,6 +73,22 @@ static NSString *ID = @"cellID";
     [self.refresh beginRefreshing];
     [self loadNewData];
     self.tableView.mj_footer = [LGRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadOldDate)];
+    [self loadHaderData];
+}
+
+- (void)loadHaderData{
+NSString *url = [NSString requestBasiPathAppend:@"/?json=1&count=1"];
+    [[LGHTTPSessionManager manager] requestPostUrl:url completion:^(BOOL isSuccess, id responseObject) {
+         NSArray *headerList = [LGHomeModel mj_objectArrayWithKeyValuesArray:responseObject[@"posts"] context:nil];
+        if (headerList.count > 3) {
+            
+            headerList = [headerList subarrayWithRange:NSMakeRange(0, 3)];
+            
+        }
+        self.headerView.headerArray = headerList;
+
+    }];
+    
 }
 
 #warning 取消上一次的请求
@@ -81,10 +97,9 @@ static NSString *ID = @"cellID";
     // Do any additional setup after loading the view.
     [[LGHTTPSessionManager manager] requsetHomelist:^(BOOL isSuccess, NSArray *json) {
         if (isSuccess) {
-            
+            [self.tableView.mj_footer resetNoMoreData];
+            index_ = 2;
             self.postsArrayM =  [LGHomeModel mj_objectArrayWithKeyValuesArray:json context:nil];
-           // self.headerArray = [self.postsArrayM subarrayWithRange:NSMakeRange(0, 2)];
-            self.headerView.headerArray = self.headerArray;
             
             
             [self.postsArrayM removeObjectsInArray:self.headerArray];
@@ -102,12 +117,15 @@ static NSString *ID = @"cellID";
 
 - (void)loadOldDate{
 //http://112.74.45.39/page/1?json=5&count=20
-    NSString *url = [NSString stringWithFormat:@"http://112.74.45.39/page/%zd?json=1",index_];
+    NSString *url = [NSString stringWithFormat:@"http://112.74.45.39/category/home/page/%zd?json=1",index_];
     
     
     [[LGHTTPSessionManager manager] requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {
        
-        
+        if (json == nil) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            return ;
+        }
         if (isSuccess) {
             NSArray<LGHomeModel *> *posts =  [LGHomeModel mj_objectArrayWithKeyValuesArray:json context:nil];
             

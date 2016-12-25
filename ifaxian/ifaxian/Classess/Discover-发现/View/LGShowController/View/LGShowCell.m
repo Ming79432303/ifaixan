@@ -16,11 +16,23 @@
 
 @implementation LGShowCell
 
+- (LGShowController *)showVc{
+    
+    if (_showVc == nil) {
+        _showVc = [[LGShowController alloc] init];
+        
+    }
+    
+    return _showVc;
+}
+
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
         [self setupUI];
+
       
     }
     
@@ -28,12 +40,13 @@
 }
 - (void)setupUI{
     
-    LGShowController *showVc = [[LGShowController alloc] init];
-    self.showVc = showVc;
-    showVc.view.frame = self.contentView.frame;
+    self.showVc = _showVc;
+    
+    self.showVc.view.frame = self.contentView.frame;
   
-    [self addSubview:showVc.view];
+    [self addSubview:self.showVc.view];
     
     
 }
+
 @end

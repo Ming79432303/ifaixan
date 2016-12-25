@@ -9,13 +9,6 @@
 #import "LGHTTPSessionManager.h"
 
 @implementation LGHTTPSessionManager
-- (instancetype)initWithBaseURL:(NSURL *)url{
-    if (self = [super initWithBaseURL:url]) {
-//               self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
-    }
-    
-    return self;
-}
 
 
 
@@ -28,7 +21,10 @@
     parameters[@"cookie"] = [LGNetWorkingManager manager].account.cookie;
     parameters[@"insecure"] = @"cool";
     [self request:LGRequeTypeGET urlString:url parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
-        completion(isSuccess,responseObject);
+        if (completion) {
+            
+            completion(isSuccess,responseObject);
+        }
     }];
 }
 
@@ -41,7 +37,7 @@
  */
 - (void)requsetHomelist:(LGRequestCompletion)completion{
     
-    [self request:LGRequeTypePOST urlString:[NSString requestBasiPathAppend:@"/?json=1"] parameters:nil completion:^(BOOL isSuccess, id responseObject) {
+    [self request:LGRequeTypePOST urlString:[NSString requestBasiPathAppend:@"/category/home/?json=1"] parameters:nil completion:^(BOOL isSuccess, id responseObject) {
         if (completion) {
             completion(isSuccess,responseObject[@"posts"]);
         }
@@ -151,5 +147,47 @@
     
     
 }
+
+- (void)requestPostNonceArgument:(LGRequiredArgumen)argumen completion:(void(^)(BOOL isSuccess,NSString *nonce))completion{
+    
+    
+    
+    //[self.requestSerializer setValue:self.account.cookie forHTTPHeaderField:self.account.cookie_name];
+    NSString *method;
+    switch (argumen) {
+            
+        case LGRequiredArgumenRegister:
+            method = @"register";
+            break;
+        case LGRequiredArgumenCreate:
+            method = @"create_post";
+            break;
+        case LGRequiredArgumenUpdate:
+            method = @"update_post";
+            break;
+        case LGRequiredArgumenDelete:
+            method = @"delete_post";
+            break;
+    }
+    
+    NSString *url = [NSString requestBasiPathAppend:[NSString stringWithFormat:@"/api/get_nonce/?controller=posts&method=%@",method]];
+    
+    if (argumen == LGRequiredArgumenRegister) {
+        url = [NSString requestBasiPathAppend:@"/api/get_nonce/?controller=user&method=register"];
+    }
+    
+    [self request:LGRequeTypePOST urlString:url parameters:nil completion:^(BOOL isSuccess, id responseObject) {
+        NSLog(@"%@",responseObject);
+        if (completion) {
+            
+            completion(isSuccess,responseObject[@"nonce"]);
+        }
+        
+    }];
+    
+    
+    
+}
+
 
 @end

@@ -48,11 +48,15 @@
     
     CGRect cellFrame = frame;
     cellFrame.size.height -= LGCommonMargin;
+    cellFrame.size.width -= 2 * LGCommonSmallMargin;
+    cellFrame.origin.x += LGCommonSmallMargin;
     cellFrame.origin.y += LGCommonMargin;
+    
     
     [super setFrame:cellFrame];
     
 }
+
 
 - (void)seeImage:(UIGestureRecognizer *)tap{
     

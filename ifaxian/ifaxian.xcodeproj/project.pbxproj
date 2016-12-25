@@ -109,10 +109,21 @@
 		3A32B69B1E012A0D00B9FCD6 /* LGContributeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A32B6991E012A0D00B9FCD6 /* LGContributeController.m */; };
 		3A32B69E1E013AA600B9FCD6 /* LGContributeController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A32B69D1E013AA600B9FCD6 /* LGContributeController.storyboard */; };
 		3A32B6A11E0154FF00B9FCD6 /* LGContributeViewContorller.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A32B6A01E0154FF00B9FCD6 /* LGContributeViewContorller.m */; };
+		3A34369D1E04D7F000EE4311 /* LGSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A34369C1E04D7F000EE4311 /* LGSearch.m */; };
+		3A3436A01E05090900EE4311 /* LGActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A34369F1E05090900EE4311 /* LGActivityCell.m */; };
+		3A3436A21E05091600EE4311 /* LGActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A3436A11E05091600EE4311 /* LGActivityCell.xib */; };
+		3A3436A51E05111D00EE4311 /* LGActivitie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3436A41E05111D00EE4311 /* LGActivitie.m */; };
+		3A3436A81E0511A300EE4311 /* LGActivityUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3436A71E0511A300EE4311 /* LGActivityUser.m */; };
+		3A3436AB1E052BC100EE4311 /* LGALinkAndText.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3436AA1E052BC100EE4311 /* LGALinkAndText.m */; };
+		3A3436AE1E055F5200EE4311 /* LGDIscoverHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3436AD1E055F5200EE4311 /* LGDIscoverHeaderFooterView.m */; };
 		3A3C5C521DDD3D9E00818673 /* LGMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C5C511DDD3D9E00818673 /* LGMainController.m */; };
 		3A3C5C551DDD3DBA00818673 /* LGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C5C541DDD3DBA00818673 /* LGNavigationController.m */; };
 		3A3C5C591DDD3EE300818673 /* HYPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C5C581DDD3EE300818673 /* HYPageView.m */; };
 		3A3C5C5C1DDD425200818673 /* LGBasiController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C5C5B1DDD425200818673 /* LGBasiController.m */; };
+		3A4082911E0637EF00FAA367 /* LGUserActivityDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4082901E0637EF00FAA367 /* LGUserActivityDisplayController.m */; };
+		3A4082971E0658CA00FAA367 /* LWActiveIncator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4082941E0658CA00FAA367 /* LWActiveIncator.m */; };
+		3A4082981E0658CA00FAA367 /* LWActiveIncatorAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4082961E0658CA00FAA367 /* LWActiveIncatorAnimationView.m */; };
+		3A40829B1E06638300FAA367 /* LGTagController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A40829A1E06638300FAA367 /* LGTagController.m */; };
 		3A4685C11DED3D6E00FD6345 /* LGTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4685C01DED3D6E00FD6345 /* LGTagView.m */; };
 		3A4B17F41DE47C210051E6C7 /* LGAliAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B17F31DE47C210051E6C7 /* LGAliAccessToken.m */; };
 		3A5138F91DEE7905002BE232 /* LGShareImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5138F11DEE7905002BE232 /* LGShareImage.m */; };
@@ -190,6 +201,8 @@
 		3A88643A1DE1C49B00DE7E46 /* LGAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8864391DE1C49B00DE7E46 /* LGAccount.m */; };
 		3A88643D1DE1C58200DE7E46 /* LGAccountUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88643C1DE1C58200DE7E46 /* LGAccountUser.m */; };
 		3A8864401DE1D6A200DE7E46 /* UIImage+AlphaImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88643F1DE1D6A200DE7E46 /* UIImage+AlphaImage.m */; };
+		3A8DF1B41E037EA100ADD735 /* LGHTTPSessionManager+LGUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8DF1B31E037EA100ADD735 /* LGHTTPSessionManager+LGUserRequest.m */; };
+		3A8DF1B71E04191000ADD735 /* LGCommentHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8DF1B61E04191000ADD735 /* LGCommentHeaderFooterView.m */; };
 		3A9617DF1DDD54F6008780D5 /* LGTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9617DE1DDD54F6008780D5 /* LGTestController.m */; };
 		3A9617E31DDD7C91008780D5 /* LGNetWorkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9617E21DDD7C91008780D5 /* LGNetWorkingManager.m */; };
 		3AA560B51DF1992D008326AA /* NSString+LGExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA560B41DF1992D008326AA /* NSString+LGExtention.m */; };
@@ -475,6 +488,19 @@
 		3A32B69D1E013AA600B9FCD6 /* LGContributeController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LGContributeController.storyboard; sourceTree = "<group>"; };
 		3A32B69F1E0154FF00B9FCD6 /* LGContributeViewContorller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGContributeViewContorller.h; sourceTree = "<group>"; };
 		3A32B6A01E0154FF00B9FCD6 /* LGContributeViewContorller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGContributeViewContorller.m; sourceTree = "<group>"; };
+		3A34369B1E04D7F000EE4311 /* LGSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSearch.h; sourceTree = "<group>"; };
+		3A34369C1E04D7F000EE4311 /* LGSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSearch.m; sourceTree = "<group>"; };
+		3A34369E1E05090900EE4311 /* LGActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGActivityCell.h; sourceTree = "<group>"; };
+		3A34369F1E05090900EE4311 /* LGActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGActivityCell.m; sourceTree = "<group>"; };
+		3A3436A11E05091600EE4311 /* LGActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGActivityCell.xib; sourceTree = "<group>"; };
+		3A3436A31E05111D00EE4311 /* LGActivitie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGActivitie.h; sourceTree = "<group>"; };
+		3A3436A41E05111D00EE4311 /* LGActivitie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGActivitie.m; sourceTree = "<group>"; };
+		3A3436A61E0511A300EE4311 /* LGActivityUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGActivityUser.h; sourceTree = "<group>"; };
+		3A3436A71E0511A300EE4311 /* LGActivityUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGActivityUser.m; sourceTree = "<group>"; };
+		3A3436A91E052BC100EE4311 /* LGALinkAndText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGALinkAndText.h; sourceTree = "<group>"; };
+		3A3436AA1E052BC100EE4311 /* LGALinkAndText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGALinkAndText.m; sourceTree = "<group>"; };
+		3A3436AC1E055F5200EE4311 /* LGDIscoverHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGDIscoverHeaderFooterView.h; sourceTree = "<group>"; };
+		3A3436AD1E055F5200EE4311 /* LGDIscoverHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGDIscoverHeaderFooterView.m; sourceTree = "<group>"; };
 		3A3C5C4F1DDD387600818673 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ../PrefixHeader.pch; sourceTree = "<group>"; };
 		3A3C5C501DDD3D9E00818673 /* LGMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGMainController.h; sourceTree = "<group>"; };
 		3A3C5C511DDD3D9E00818673 /* LGMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGMainController.m; sourceTree = "<group>"; };
@@ -484,6 +510,14 @@
 		3A3C5C581DDD3EE300818673 /* HYPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPageView.m; sourceTree = "<group>"; };
 		3A3C5C5A1DDD425200818673 /* LGBasiController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGBasiController.h; sourceTree = "<group>"; };
 		3A3C5C5B1DDD425200818673 /* LGBasiController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGBasiController.m; sourceTree = "<group>"; };
+		3A40828F1E0637EF00FAA367 /* LGUserActivityDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGUserActivityDisplayController.h; sourceTree = "<group>"; };
+		3A4082901E0637EF00FAA367 /* LGUserActivityDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGUserActivityDisplayController.m; sourceTree = "<group>"; };
+		3A4082931E0658CA00FAA367 /* LWActiveIncator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWActiveIncator.h; sourceTree = "<group>"; };
+		3A4082941E0658CA00FAA367 /* LWActiveIncator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWActiveIncator.m; sourceTree = "<group>"; };
+		3A4082951E0658CA00FAA367 /* LWActiveIncatorAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWActiveIncatorAnimationView.h; sourceTree = "<group>"; };
+		3A4082961E0658CA00FAA367 /* LWActiveIncatorAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWActiveIncatorAnimationView.m; sourceTree = "<group>"; };
+		3A4082991E06638300FAA367 /* LGTagController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTagController.h; sourceTree = "<group>"; };
+		3A40829A1E06638300FAA367 /* LGTagController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGTagController.m; sourceTree = "<group>"; };
 		3A4685BF1DED3D6E00FD6345 /* LGTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTagView.h; sourceTree = "<group>"; };
 		3A4685C01DED3D6E00FD6345 /* LGTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGTagView.m; sourceTree = "<group>"; };
 		3A4B17F21DE47C210051E6C7 /* LGAliAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAliAccessToken.h; sourceTree = "<group>"; };
@@ -629,6 +663,10 @@
 		3A88643C1DE1C58200DE7E46 /* LGAccountUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAccountUser.m; sourceTree = "<group>"; };
 		3A88643E1DE1D6A200DE7E46 /* UIImage+AlphaImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AlphaImage.h"; sourceTree = "<group>"; };
 		3A88643F1DE1D6A200DE7E46 /* UIImage+AlphaImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AlphaImage.m"; sourceTree = "<group>"; };
+		3A8DF1B21E037EA100ADD735 /* LGHTTPSessionManager+LGUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGHTTPSessionManager+LGUserRequest.h"; sourceTree = "<group>"; };
+		3A8DF1B31E037EA100ADD735 /* LGHTTPSessionManager+LGUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LGHTTPSessionManager+LGUserRequest.m"; sourceTree = "<group>"; };
+		3A8DF1B51E04191000ADD735 /* LGCommentHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCommentHeaderFooterView.h; sourceTree = "<group>"; };
+		3A8DF1B61E04191000ADD735 /* LGCommentHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCommentHeaderFooterView.m; sourceTree = "<group>"; };
 		3A9617DD1DDD54F6008780D5 /* LGTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTestController.h; sourceTree = "<group>"; };
 		3A9617DE1DDD54F6008780D5 /* LGTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGTestController.m; sourceTree = "<group>"; };
 		3A9617E11DDD7C91008780D5 /* LGNetWorkingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGNetWorkingManager.h; sourceTree = "<group>"; };
@@ -955,6 +993,8 @@
 		3A0F219D1DDF4BC1008B955F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3A8DF1B51E04191000ADD735 /* LGCommentHeaderFooterView.h */,
+				3A8DF1B61E04191000ADD735 /* LGCommentHeaderFooterView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -968,6 +1008,12 @@
 				3A2ED2901DEBEEA8002CFE88 /* LGCategory.m */,
 				3A2ED2921DEBEEB8002CFE88 /* LGTag.h */,
 				3A2ED2931DEBEEB8002CFE88 /* LGTag.m */,
+				3A3436A31E05111D00EE4311 /* LGActivitie.h */,
+				3A3436A41E05111D00EE4311 /* LGActivitie.m */,
+				3A3436A61E0511A300EE4311 /* LGActivityUser.h */,
+				3A3436A71E0511A300EE4311 /* LGActivityUser.m */,
+				3A3436A91E052BC100EE4311 /* LGALinkAndText.h */,
+				3A3436AA1E052BC100EE4311 /* LGALinkAndText.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -987,6 +1033,15 @@
 				3ADD2C981DEC8F1800314B19 /* LGDiscoverHeaderView.h */,
 				3ADD2C991DEC8F1800314B19 /* LGDiscoverHeaderView.m */,
 				3ADD2C9B1DEC8F6E00314B19 /* LGDiscoverHeaderView.xib */,
+				3A34369E1E05090900EE4311 /* LGActivityCell.h */,
+				3A34369F1E05090900EE4311 /* LGActivityCell.m */,
+				3A3436A11E05091600EE4311 /* LGActivityCell.xib */,
+				3A3436AC1E055F5200EE4311 /* LGDIscoverHeaderFooterView.h */,
+				3A3436AD1E055F5200EE4311 /* LGDIscoverHeaderFooterView.m */,
+				3A40828F1E0637EF00FAA367 /* LGUserActivityDisplayController.h */,
+				3A4082901E0637EF00FAA367 /* LGUserActivityDisplayController.m */,
+				3A4082991E06638300FAA367 /* LGTagController.h */,
+				3A40829A1E06638300FAA367 /* LGTagController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1014,6 +1069,8 @@
 		3A2ED2671DEBED13002CFE88 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3A34369B1E04D7F000EE4311 /* LGSearch.h */,
+				3A34369C1E04D7F000EE4311 /* LGSearch.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1271,6 +1328,17 @@
 				3A3C5C581DDD3EE300818673 /* HYPageView.m */,
 			);
 			path = HYPageView;
+			sourceTree = "<group>";
+		};
+		3A4082921E0658CA00FAA367 /* LWActiveIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				3A4082931E0658CA00FAA367 /* LWActiveIncator.h */,
+				3A4082941E0658CA00FAA367 /* LWActiveIncator.m */,
+				3A4082951E0658CA00FAA367 /* LWActiveIncatorAnimationView.h */,
+				3A4082961E0658CA00FAA367 /* LWActiveIncatorAnimationView.m */,
+			);
+			path = LWActiveIndicator;
 			sourceTree = "<group>";
 		};
 		3A4B17F11DE47C210051E6C7 /* LGUpload */ = {
@@ -1644,6 +1712,8 @@
 				480265D21DDD8F6D009549DD /* LGNetWorkingManager+LGExtension.m */,
 				3A2ED2951DEC2194002CFE88 /* LGHTTPSessionManager.h */,
 				3A2ED2961DEC2194002CFE88 /* LGHTTPSessionManager.m */,
+				3A8DF1B21E037EA100ADD735 /* LGHTTPSessionManager+LGUserRequest.h */,
+				3A8DF1B31E037EA100ADD735 /* LGHTTPSessionManager+LGUserRequest.m */,
 			);
 			path = LGNetWorKing;
 			sourceTree = "<group>";
@@ -1922,6 +1992,7 @@
 		3AE122921DDC8B6800D1A128 /* Tool-工具 */ = {
 			isa = PBXGroup;
 			children = (
+				3A4082921E0658CA00FAA367 /* LWActiveIndicator */,
 				3A4B17F11DE47C210051E6C7 /* LGUpload */,
 				3A0F215F1DDEC5A7008B955F /* LWImageBrowser */,
 				3A0F20F91DDEB503008B955F /* Gallop */,
@@ -2189,6 +2260,7 @@
 				3ACE20951E015C9600510024 /* LGContributeSuccessView.xib in Resources */,
 				3A5138FB1DEE7905002BE232 /* LGSquareCell.xib in Resources */,
 				3A2ED2851DEBED13002CFE88 /* LGCategoryCell.xib in Resources */,
+				3A3436A21E05091600EE4311 /* LGActivityCell.xib in Resources */,
 				3A5669E31DED78D300959D96 /* LGForgotPasswordView.xib in Resources */,
 				3AD9778F1DF2759F00244312 /* LGPlayerView.xib in Resources */,
 				3A32B6801E01218C00B9FCD6 /* LGEditorInfoView.xib in Resources */,
@@ -2382,12 +2454,14 @@
 				3A32B6771E01218C00B9FCD6 /* LGEditorController.m in Sources */,
 				3A0F21561DDEB503008B955F /* LWTransactionGroup.m in Sources */,
 				3A0F21591DDEB503008B955F /* SDImageCache+Gallop.m in Sources */,
+				3A3436AB1E052BC100EE4311 /* LGALinkAndText.m in Sources */,
 				3A32B67C1E01218C00B9FCD6 /* LGPersonalInformationController.m in Sources */,
 				3AF4B64C1DDCAED800C06419 /* NSAttributedString+LGAdditon.m in Sources */,
 				3A32B67F1E01218C00B9FCD6 /* LGEditorInfoView.m in Sources */,
 				3AE122491DDC8AEC00D1A128 /* main.m in Sources */,
 				3A0F21511DDEB503008B955F /* LWTextLine.m in Sources */,
 				3A52B4DE1DFBE16E00C8C010 /* LGAttachment.m in Sources */,
+				3A3436A81E0511A300EE4311 /* LGActivityUser.m in Sources */,
 				3A52B5111DFBE1D600C8C010 /* LGHomeCommntContentView.m in Sources */,
 				48DAD6E81DDFEB4200CD33A4 /* LGRefreshHeader.m in Sources */,
 				3A2ED27F1DEBED13002CFE88 /* LGDiscoverController.m in Sources */,
@@ -2401,6 +2475,7 @@
 				3A0F214F1DDEB503008B955F /* LWTextGlyph.m in Sources */,
 				3A52B5291DFBE87700C8C010 /* LGTopicDongManController.m in Sources */,
 				3A6F6BF31DDDDA4100D00F2F /* LGRefreshFooter.m in Sources */,
+				3A8DF1B71E04191000ADD735 /* LGCommentHeaderFooterView.m in Sources */,
 				3A0F21411DDEB503008B955F /* LWAsyncDisplayView.m in Sources */,
 				3A52B4E51DFBE16E00C8C010 /* LGImage.m in Sources */,
 				3A0F21801DDEC5A7008B955F /* LWImageBrowserFlowLayout.m in Sources */,
@@ -2451,6 +2526,7 @@
 				3A52B4E41DFBE16E00C8C010 /* LGHomeTage.m in Sources */,
 				3A32B6791E01218C00B9FCD6 /* WPImageMetaViewController.m in Sources */,
 				3A8864361DE14B8B00DE7E46 /* LGTextField.m in Sources */,
+				3A3436A51E05111D00EE4311 /* LGActivitie.m in Sources */,
 				3A32B6711E01218C00B9FCD6 /* LGMecontroller.m in Sources */,
 				480265E51DDDA0EF009549DD /* LGModelConfig.m in Sources */,
 				3AD84B1F1E02AE9400CE44B5 /* LGUserHeaderFooterView.m in Sources */,
@@ -2472,6 +2548,7 @@
 				3A0F21841DDEC5A7008B955F /* UIImage+ImageEffects.m in Sources */,
 				3AE122A91DDCA9B300D1A128 /* LGPhotoCell.m in Sources */,
 				3ABEFE391E0180B8008AB1D9 /* LGAboutMeController.m in Sources */,
+				3A4082911E0637EF00FAA367 /* LGUserActivityDisplayController.m in Sources */,
 				3AF4B62F1DDCAB3B00C06419 /* UITextField+LGTextField.m in Sources */,
 				3AF4B62C1DDCAB3B00C06419 /* NSDate+myDate.m in Sources */,
 				3A5669E11DED78D300959D96 /* LGLoginController.m in Sources */,
@@ -2486,6 +2563,7 @@
 				3A52B5461DFBE97D00C8C010 /* LGRecommendViewModel.m in Sources */,
 				3A52B5101DFBE1D600C8C010 /* LGHomeCommentView.m in Sources */,
 				3A52B55C1DFBF02A00C8C010 /* LGSetingController.m in Sources */,
+				3A8DF1B41E037EA100ADD735 /* LGHTTPSessionManager+LGUserRequest.m in Sources */,
 				3A27F35A1DEEE1070051786D /* LGImagesView.m in Sources */,
 				3A32B67E1E01218C00B9FCD6 /* LGUserList.m in Sources */,
 				3A88643D1DE1C58200DE7E46 /* LGAccountUser.m in Sources */,
@@ -2497,9 +2575,11 @@
 				3A52B5581DFBF00F00C8C010 /* LGClearCell.m in Sources */,
 				3AD84B091E02509F00CE44B5 /* LGUserController.m in Sources */,
 				3A52B52A1DFBE87700C8C010 /* LGTopicVideoController.m in Sources */,
+				3A3436AE1E055F5200EE4311 /* LGDIscoverHeaderFooterView.m in Sources */,
 				3A5138FC1DEE7905002BE232 /* LGSquareController.m in Sources */,
 				3A32B6731E01218C00B9FCD6 /* LGOtherController.m in Sources */,
 				3AED5DAD1DF41204006452BD /* NSString+LGImageStyle.m in Sources */,
+				3A40829B1E06638300FAA367 /* LGTagController.m in Sources */,
 				3A597DBD1DF5A69900C1EBE2 /* LGPhotoImage.m in Sources */,
 				3A5902FE1DF11A8D007B7B20 /* LGHeaderFooterView.m in Sources */,
 				3A2ED2821DEBED13002CFE88 /* LGSearchCell.m in Sources */,
@@ -2515,12 +2595,15 @@
 				3A52B56E1DFC320000C8C010 /* LGFullController.m in Sources */,
 				3A52B5151DFBE1D600C8C010 /* LGHomeImagesView.m in Sources */,
 				3A0F21791DDEC5A7008B955F /* LWActionSheetTableViewCell.m in Sources */,
+				3A4082981E0658CA00FAA367 /* LWActiveIncatorAnimationView.m in Sources */,
 				3A0F20921DDE94B6008B955F /* NSString+LGStringSize.m in Sources */,
 				3AF4B6301DDCAB3B00C06419 /* UIView+Frame.m in Sources */,
+				3A3436A01E05090900EE4311 /* LGActivityCell.m in Sources */,
 				3A0F21A51DDF4F2A008B955F /* LGCommentCell.m in Sources */,
 				3AFE71C81DFD3EDC002B6157 /* LxGridViewFlowLayout.m in Sources */,
 				3A0F215A1DDEB503008B955F /* SDWebImageManager+Gallop.m in Sources */,
 				3A32B68B1E0124B500B9FCD6 /* LGOtherCell.m in Sources */,
+				3A4082971E0658CA00FAA367 /* LWActiveIncator.m in Sources */,
 				3A0F21A01DDF4BE1008B955F /* LGCommentController.m in Sources */,
 				3A4685C11DED3D6E00FD6345 /* LGTagView.m in Sources */,
 				3A52B5591DFBF00F00C8C010 /* LGSetingCell.m in Sources */,
@@ -2541,6 +2624,7 @@
 				3A2ED2871DEBED13002CFE88 /* LGShowCell.m in Sources */,
 				3A0F21421DDEB503008B955F /* LWCornerRadiusHelper.m in Sources */,
 				3A0F21491DDEB503008B955F /* LWImageStorage.m in Sources */,
+				3A34369D1E04D7F000EE4311 /* LGSearch.m in Sources */,
 				3AD2D9DD1DEB20F300286C83 /* NSString+LGRequestBasiPath.m in Sources */,
 				3A32B6871E01249400B9FCD6 /* LGOther.m in Sources */,
 				3AF4B62E1DDCAB3B00C06419 /* UIBarButtonItem+LGExtension.m in Sources */,
@@ -2710,7 +2794,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A33DEF1A738C09BCC9304529 /* Pods-ifaxian.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = /Users/ming/Desktop/ifaxan/ifaixan/ifaxian/ifaxian/Classess/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
@@ -2742,7 +2826,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A2E783B691CBF573F690F3D /* Pods-ifaxian.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = /Users/ming/Desktop/ifaxan/ifaixan/ifaxian/ifaxian/Classess/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (

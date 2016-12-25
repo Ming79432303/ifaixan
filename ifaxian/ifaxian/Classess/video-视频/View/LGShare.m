@@ -10,20 +10,26 @@
 
 @implementation LGShare
 
-- (instancetype)initWithModel:(LGShareImage *)shareImage{
+- (instancetype)initWithModel:(LGPostModel *)shareImage{
     
     if (self = [super init]) {
         
         self.share = shareImage;
-        
         [self setupImageArray];
+        [self getAvatar];
         [self calculateHeight];
     }
     
     return self;
 }
 
+- (void)getAvatar{
 
+    _userAvatar =[_share.author.slug lg_getuserAvatar];
+    
+    
+    
+}
 
 //- (NSMutableArray *)images{
 //    if (_images == nil) {
@@ -42,7 +48,7 @@
     _rowHeight += iconH + 3 * LGCommonMargin;
     
     //计算文本的高度
-   _rowHeight += [self.share.title boundingRectWithSize:CGSizeMake(LGScreenW - 2 * LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size.height;
+   _rowHeight += [self.share.title boundingRectWithSize:CGSizeMake(LGScreenW - 3 * LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size.height;
     
     //计算图像的高度
     CGFloat imageH = 0;

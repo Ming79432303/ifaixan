@@ -14,6 +14,9 @@
 #import "LGAttachment.h"
 #import "LGAccountUser.h"
 #import "LGBasiModel.h"
+#import "LGHomeModel.h"
+#import "LGTag.h"
+#import "LGHomeTage.h"
 @implementation LGModelConfig
 
 
@@ -27,6 +30,12 @@
                  @"attachment":@"attachments[0]"};
     }];
     [LGComment mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+        return @{@"ID":@"id"};
+    }];
+    [LGHomeModel mj_setupObjectClassInArray:^NSDictionary *{
+        return @{@"tags":[LGHomeTage class]};
+    }];
+    [LGAuthor mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
         return @{@"ID":@"id"};
     }];
     [LGCategories mj_setupReplacedKeyFromPropertyName:^NSDictionary *{

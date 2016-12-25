@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "LGShareImage.h"
 @interface LGShare : NSObject
-@property(nonatomic, strong) LGShareImage *share;
+@property(nonatomic, strong) LGPostModel *share;
 @property(nonatomic, strong) NSArray *images;
 @property(nonatomic, assign) CGFloat rowHeight;
 @property(nonatomic,assign) CGSize oneImageSize;
 @property(nonatomic, copy) NSString *VideoUrl;
 @property(nonatomic, assign) CGRect videoViewFrame;
 @property(nonatomic, strong) UIImage *videoImage;
+@property(nonatomic, copy) NSString *userAvatar;
 
 typedef NS_ENUM(NSInteger , LGPictures) {
     LGOnePictures = 1,
@@ -23,6 +24,6 @@ typedef NS_ENUM(NSInteger , LGPictures) {
     LGFourpictures = 4
 };
 
--(instancetype)initWithModel:(LGShareImage *)share;
+-(instancetype)initWithModel:(LGPostModel *)share;
 - (void)calculateOneHeight:(CGSize)imageSize;
 @end

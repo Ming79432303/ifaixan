@@ -7,6 +7,6 @@
 //
 
 #import "LGCommentController.h"
-@interface LGSquareController : LGCommentController
+@interface LGSquareController : LGBasiController
 
 @end

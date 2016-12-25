@@ -27,7 +27,7 @@ static NSString *squareCellID = @"squareCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-    self.navItem.title = @"分享";
+    self.navItem.title = @"用户分享";
     [self.tableView.mj_header beginRefreshing];
     self.tableView.rowHeight = 600;
     
@@ -138,7 +138,7 @@ static NSString *squareCellID = @"squareCellID";
     
     shareVc.share = share;
     
-    shareVc.model = share.share;
+
     [self.navigationController pushViewController:shareVc animated:YES];
     
 }

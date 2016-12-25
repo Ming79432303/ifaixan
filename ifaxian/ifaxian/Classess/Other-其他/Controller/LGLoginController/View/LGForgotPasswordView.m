@@ -29,7 +29,7 @@
         return;
     }
     
-    [[LGNetWorkingManager manager] requestRetrievePasswordUserLogin:self.userLoginField.text completion:^(BOOL isSuccess) {
+    [[LGHTTPSessionManager manager] requestRetrievePasswordUserLogin:self.userLoginField.text completion:^(BOOL isSuccess) {
         if (isSuccess) {
             [self showSendSuccess];
             

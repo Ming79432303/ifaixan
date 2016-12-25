@@ -14,6 +14,7 @@
 @property(nonatomic, weak) UIImageView *visiView;
 @property(nonatomic, weak) UIImageView *reuseView;
 @property(nonatomic, strong) NSTimer *timer;
+@property(nonatomic, assign) NSInteger curPage;
 @end
 
 #define kCount  3
@@ -78,24 +79,27 @@
     //创建一个重用的imageView
     UIImageView *reuseView = [[UIImageView alloc] init];
     reuseView.backgroundColor = [UIColor yellowColor];
-    
+    reuseView.contentMode = UIViewContentModeScaleAspectFill;
+    reuseView.clipsToBounds = YES;
     reuseView.frame = self.scroView.bounds;
     
     [self.scroView addSubview:reuseView];
     //添加一个用来显示的imageVIew
     UIImageView *visiView = [[UIImageView alloc] init];
+    visiView.contentMode = UIViewContentModeScaleAspectFill;
+    visiView                                                          .clipsToBounds = YES;
     visiView.tag = 0;
     visiView.backgroundColor = [UIColor redColor];
     visiView.frame = CGRectMake(w, self.scroView.frame.origin.y, w, h);
     [self.scroView addSubview:visiView];
-    
+    visiView.image = [UIImage imageNamed:@"disvc1"];
     self.visiView = visiView;
     self.reuseView = reuseView;
     
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self removeTime];
+    
     
     CGRect rect = self.reuseView.frame;
     CGFloat offSetX = scrollView.contentOffset.x;
@@ -108,7 +112,6 @@
         rect.origin.x = 0;
         index = self.visiView.tag - 1;
         self.pageView.currentPage = self.visiView.tag;
-        
         if (index < 0) {
             index = kCount-1;
         }
@@ -126,7 +129,12 @@
     rect.origin.y = scrollView.bounds.origin.y;
     self.reuseView.frame = rect;
     _reuseView.tag = index;
-    
+    _curPage = index;
+    NSLog(@"%zd",self.curPage);
+    NSString *imageName = [NSString stringWithFormat:@"disvc%zd",_curPage + 1];
+    UIImage *image = [UIImage imageNamed:imageName];
+    _reuseView.image = image;
+
        // 2.滚动到 最左 或者 最右 的图片
     if (offSetX <= 0 || offSetX >= w * 2) {
         // 2.1.交换 中间的 和 循环利用的指针
@@ -144,15 +152,18 @@
     
     
 }
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-    
-    [self addtimer];
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self removeTime];
 }
+
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     
     [self addtimer];
 }
+
+
 
 
 

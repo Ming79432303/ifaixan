@@ -11,8 +11,7 @@
 @interface LGImage : NSObject
 
 @property(nonatomic, strong) LGImageSize *full;
-@property(nonatomic, strong) LGImageSize *large;
-@property(nonatomic, strong) LGImageSize *medium;
-@property(nonatomic, strong) LGImageSize *thumbnail;
+//@property(nonatomic, strong) LGImageSize *medium;
+//@property(nonatomic, strong) LGImageSize *thumbnail;
 
 @end

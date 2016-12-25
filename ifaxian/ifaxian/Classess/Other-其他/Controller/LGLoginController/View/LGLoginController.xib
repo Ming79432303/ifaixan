@@ -29,7 +29,7 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgG-6O-5Sc">
                             <rect key="frame" x="0.0" y="300" width="280" height="60"/>
-                            <color key="backgroundColor" red="0.69411764710000001" green="0.25882352939999997" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="9nE-gB-MuL"/>
                             </constraints>
@@ -52,7 +52,7 @@
                                 <constraint firstAttribute="height" constant="64" id="yKf-br-N9Y"/>
                             </constraints>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" background="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="7Go-g6-Hdt" customClass="LGTextField">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ming" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" background="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="7Go-g6-Hdt" customClass="LGTextField">
                             <rect key="frame" x="15" y="124" width="250" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="250" id="VwZ-Ks-d5F"/>
@@ -90,7 +90,7 @@
                                 <action selector="forGotPassWord:" destination="-1" eventType="touchUpInside" id="UhF-Yc-ces"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uwS-zr-0CI" customClass="LGTextField">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1579116334" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uwS-zr-0CI" customClass="LGTextField">
                             <rect key="frame" x="15" y="194" width="250" height="50"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>

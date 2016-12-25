@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO" initialViewController="EAP-fM-EDU">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <development version="7000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Mecontroller-->
+        <scene sceneID="6xS-Lz-d7X">
+            <objects>
+                <viewController id="EAP-fM-EDU" customClass="LGMecontroller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Nt-Hr-3uM"/>
+                        <viewControllerLayoutGuide type="bottom" id="wiw-pK-f40"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wgi-TO-tWX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SAz-mJ-7lD">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="screen" translatesAutoresizingMaskIntoConstraints="NO" id="NmD-4t-8hc">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="235"/>
+                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="235" id="r0P-fY-EBC"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Xb-Tb-Jtr">
+                                <rect key="frame" x="0.0" y="200" width="375" height="35"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="LZL-q3-mag"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="8Xb-Tb-Jtr" firstAttribute="leading" secondItem="Wgi-TO-tWX" secondAttribute="leading" id="Ez3-UA-bQA"/>
+                            <constraint firstAttribute="trailing" secondItem="8Xb-Tb-Jtr" secondAttribute="trailing" id="M1Y-U5-oq1"/>
+                            <constraint firstItem="NmD-4t-8hc" firstAttribute="top" secondItem="Wgi-TO-tWX" secondAttribute="topMargin" id="QRa-4f-n8f"/>
+                            <constraint firstItem="wiw-pK-f40" firstAttribute="top" secondItem="SAz-mJ-7lD" secondAttribute="bottom" id="UrV-Kl-zSv"/>
+                            <constraint firstItem="SAz-mJ-7lD" firstAttribute="leading" secondItem="Wgi-TO-tWX" secondAttribute="leading" id="WrN-15-4g3"/>
+                            <constraint firstAttribute="trailing" secondItem="SAz-mJ-7lD" secondAttribute="trailing" id="YpO-0X-fxM"/>
+                            <constraint firstItem="8Xb-Tb-Jtr" firstAttribute="top" secondItem="NmD-4t-8hc" secondAttribute="bottom" constant="-35" id="aih-KQ-V7C"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NmD-4t-8hc" secondAttribute="trailing" constant="-20" id="ce0-Kf-VM4"/>
+                            <constraint firstItem="SAz-mJ-7lD" firstAttribute="top" secondItem="2Nt-Hr-3uM" secondAttribute="bottom" id="eLC-a3-biO"/>
+                            <constraint firstItem="NmD-4t-8hc" firstAttribute="leading" secondItem="Wgi-TO-tWX" secondAttribute="leadingMargin" constant="-20" id="u61-19-qd5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="68g-gO-x2s"/>
+                    <connections>
+                        <outlet property="converView" destination="NmD-4t-8hc" id="imu-13-ueQ"/>
+                        <outlet property="converViewHeight" destination="r0P-fY-EBC" id="ThP-Y1-2V3"/>
+                        <outlet property="tipView" destination="8Xb-Tb-Jtr" id="pf4-KF-GSD"/>
+                        <outlet property="vcView" destination="SAz-mJ-7lD" id="7gN-t5-0qf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FL5-DI-n64" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-314" y="-67"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="screen" width="800" height="534"/>
+    </resources>
+</document>

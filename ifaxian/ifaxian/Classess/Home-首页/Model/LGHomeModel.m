@@ -17,15 +17,14 @@
         
         
         CGFloat height = 0;
-        height += [self.title boundingRectWithSize:CGSizeMake(LGScreenW - 2*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:15]} context:nil].size.height;
+        height += [self.title boundingRectWithSize:CGSizeMake(LGScreenW - 2*(LGCommonMargin + LGCommonSmallMargin), MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:15]} context:nil].size.height;
         CGFloat iconH = 35;
         CGFloat timeH = 17;
         height += iconH;
         height += timeH;
-        height += 5 * LGCommonMargin;
- 
+        height += 6 * LGCommonMargin;
         if (self.excerpt.length) {
-            height += [self.excerpt boundingRectWithSize:CGSizeMake(LGScreenW - 2 * LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13]} context:nil].size.height;
+            height += [self.description boundingRectWithSize:CGSizeMake(LGScreenW - 2*(LGCommonMargin + LGCommonSmallMargin), MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size.height;
         }
         
         if (self.images.count >= 1) {
@@ -33,17 +32,17 @@
             
                 height += 200;
             }else {
-                  height += ((self.images.count - 1)/3 +1) * LGHomeImageViewItemWH;
+                height += ((self.images.count - 1)/3 +1) * LGHomeImageViewItemWH + (((self.images.count - 1)/3 +1) - 1) * LGCommonMinMargin;
             }
-            
-            
-            
+            height +=  LGCommonMargin;
+        }else{
+             height +=  LGCommonMargin;
         }
     
 
         _rowHeight = height;
     }
-    NSLog(@"%f",_rowHeight);
+   
     return _rowHeight;
 }
 

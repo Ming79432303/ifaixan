@@ -109,6 +109,7 @@
     _nameLable.text = model.share.author.nickname;
     _contenText.text = model.share.title;
     _dataLable.text = model.share.date;
+    [_iconImage setHeader:model.userAvatar];
     
     if (model.images.count) {
         self.imagev.image = [UIImage imageNamed:@"image_icon"];
@@ -182,7 +183,7 @@
     _likeButton.selected = !_likeButton.selected;
 
     if (_likeButton.selected) {
-        LGLog(@"赞");
+    
         _likeButton.enabled = NO;
         POPSpringAnimation *animat = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
         animat.toValue = [NSValue valueWithCGPoint:CGPointMake(1.5, 1.5)];
@@ -217,7 +218,7 @@
         NSLog(@"%@",responseObject);
     }];
     }else{
-        LGLog(@"取消赞");
+       
         if (!_likeButton.selected) {
             [[LGNetWorkingManager manager] requestAddLikeAction:@"subLike" umid:[NSString stringWithFormat:@"%zd",self.model.share.ID] completion:^(BOOL isSuccess, id responseObject) {
                 

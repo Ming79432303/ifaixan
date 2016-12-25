@@ -10,7 +10,6 @@
             <connections>
                 <outlet property="navItem" destination="mZX-iI-xVT" id="0T8-vw-RPB"/>
                 <outlet property="picVideoButton" destination="BNy-vV-1vG" id="U7a-l2-Mrp"/>
-                <outlet property="playVideo" destination="KED-vR-MaT" id="NhI-bv-OVU"/>
                 <outlet property="progressView" destination="fDe-eH-Tas" id="Tlw-nL-hBG"/>
                 <outlet property="textView" destination="PPn-OT-5B6" id="Lwr-1B-Fr0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -31,7 +30,7 @@
                     </items>
                 </navigationBar>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PPn-OT-5B6" customClass="LGTextView">
-                    <rect key="frame" x="0.0" y="64" width="375" height="100"/>
+                    <rect key="frame" x="10" y="74" width="355" height="100"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="IME-gZ-QwV"/>
@@ -40,7 +39,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNy-vV-1vG">
-                    <rect key="frame" x="20" y="184" width="100" height="100"/>
+                    <rect key="frame" x="20" y="194" width="100" height="100"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="K5T-i7-ZBf"/>
@@ -52,37 +51,26 @@
                     </connections>
                 </button>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDe-eH-Tas" customClass="DALabeledCircularProgressView">
-                    <rect key="frame" x="20" y="184" width="100" height="100"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="20" y="194" width="100" height="100"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="fvx-nR-bej"/>
                         <constraint firstAttribute="width" constant="100" id="td0-EK-BN8"/>
                     </constraints>
                 </view>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="视频播放" translatesAutoresizingMaskIntoConstraints="NO" id="KED-vR-MaT">
-                    <rect key="frame" x="20" y="184" width="100" height="100"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="3bJ-og-yWN"/>
-                        <constraint firstAttribute="width" constant="100" id="xn5-LT-KQL"/>
-                    </constraints>
-                </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="KED-vR-MaT" firstAttribute="top" secondItem="PPn-OT-5B6" secondAttribute="bottom" constant="20" id="0VO-PT-1Z6"/>
                 <constraint firstItem="BNy-vV-1vG" firstAttribute="top" secondItem="PPn-OT-5B6" secondAttribute="bottom" constant="20" id="0zu-Q7-Kfh"/>
                 <constraint firstAttribute="trailing" secondItem="87o-GZ-4AS" secondAttribute="trailing" id="3WS-Eq-gpb"/>
                 <constraint firstItem="fDe-eH-Tas" firstAttribute="top" secondItem="PPn-OT-5B6" secondAttribute="bottom" constant="20" id="CH3-6P-TEC"/>
-                <constraint firstAttribute="trailing" secondItem="PPn-OT-5B6" secondAttribute="trailing" id="GuH-XA-wtD"/>
+                <constraint firstAttribute="trailing" secondItem="PPn-OT-5B6" secondAttribute="trailing" constant="10" id="GuH-XA-wtD"/>
                 <constraint firstItem="fDe-eH-Tas" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="HAb-9K-Ibl"/>
                 <constraint firstItem="BNy-vV-1vG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="TeA-9V-CQb"/>
-                <constraint firstItem="PPn-OT-5B6" firstAttribute="top" secondItem="87o-GZ-4AS" secondAttribute="bottom" id="Uov-Yz-CVj"/>
+                <constraint firstItem="PPn-OT-5B6" firstAttribute="top" secondItem="87o-GZ-4AS" secondAttribute="bottom" constant="10" id="Uov-Yz-CVj"/>
                 <constraint firstItem="87o-GZ-4AS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WZ4-ZQ-r8Y"/>
-                <constraint firstItem="KED-vR-MaT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="fZ7-7g-Emo"/>
                 <constraint firstItem="87o-GZ-4AS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hGq-IL-Ygh"/>
-                <constraint firstItem="PPn-OT-5B6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lmx-hT-e79"/>
+                <constraint firstItem="PPn-OT-5B6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="lmx-hT-e79"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="-106.5" y="135.5"/>
@@ -90,6 +78,5 @@
     </objects>
     <resources>
         <image name="添加视频-互动" width="100" height="100"/>
-        <image name="视频播放" width="100" height="100"/>
     </resources>
 </document>

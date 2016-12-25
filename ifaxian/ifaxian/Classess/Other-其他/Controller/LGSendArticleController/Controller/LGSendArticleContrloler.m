@@ -22,6 +22,9 @@
 
 }
 - (void)setupNav{
+    
+    
+    self.navItem.title = @"发表文章";
     self.navigationController.navigationBar.hidden = YES;
     self.navBar.frame = self.navigationController.navigationBar.bounds;
     self.navBar.lg_height += 20;
@@ -51,11 +54,18 @@
     
 }
 - (void)sendArticle{
-    
+       if (!(self.titleText.length&&self.bodyText.length)) {
+        [SVProgressHUD showInfoWithStatus:@"标题和内容不能为空"];
+        return;
+    }
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:@"正在发送.."];
+
     [[LGNetWorkingManager manager] requestPostThearticleTitle:self.titleText content:self.bodyText :^(BOOL isSuccess) {
         
         if (isSuccess) {
             [SVProgressHUD showSuccessWithStatus:@"发送成功"];
+            [self dismissView];
         }else{
             [SVProgressHUD showSuccessWithStatus:@"发送失败"];
         }

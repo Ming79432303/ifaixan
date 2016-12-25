@@ -65,8 +65,8 @@
 - (void)setupUI{
 //    _currentPageImage _pageImage
    
-    [self.pageView setValue:[UIImage imageWithAlpha:0.3] forKeyPath:@"_pageImage"];
-    [self.pageView setValue:[UIImage imageWithAlpha:1] forKeyPath:@"_currentPageImage"];
+    [self.pageView setValue:[UIImage WhiteimageWithAlpha:0.3] forKeyPath:@"_pageImage"];
+    [self.pageView setValue:[UIImage WhiteimageWithAlpha:1] forKeyPath:@"_currentPageImage"];
    
     
     
@@ -83,7 +83,6 @@
     
     //创建一个重用的imageView
     LGScrollContenView *reuseView = [LGScrollContenView viewFromeNib];
-    reuseView.backgroundColor = [UIColor yellowColor];
     
     reuseView.frame = self.scrollView.bounds;
     
@@ -91,7 +90,6 @@
     //添加一个用来显示的imageVIew
     LGScrollContenView *visiView = [LGScrollContenView viewFromeNib];
     visiView.tag = 0;
-    visiView.backgroundColor = [UIColor redColor];
     visiView.frame = CGRectMake(w, self.scrollView.frame.origin.y, w, h);
     [self.scrollView addSubview:visiView];
    

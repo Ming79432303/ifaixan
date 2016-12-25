@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImageView (LGUIimageView)
-
+- (void)setHeader:(NSString *)url;
 -(void)lg_setImageWithurl:(NSString *)url placeholderImage:(UIImage *)image;
 -(void)lg_setCircularImageWithurl:(NSString *)url placeholderImage:(UIImage *)image;
 @end
