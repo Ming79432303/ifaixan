@@ -120,7 +120,7 @@
                 <outlet property="tagLable" destination="KaH-93-GaO" id="twb-Bd-LPb"/>
                 <outlet property="titleLable" destination="eIk-5H-wjW" id="F8U-bV-NcW"/>
             </connections>
-            <point key="canvasLocation" x="176" y="441"/>
+            <point key="canvasLocation" x="366" y="206"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -47,7 +47,7 @@ static  NSCalendar *canlendar_;
     NSDate *localDate = [GMTDate dateByAddingTimeInterval:-interval];//localDate
     //注意：这里是从GMT时间转换为本地时间所以interval不变号，此时localData的值为2016-06-01 10:00:00 +0000
     NSString *localDateString = [fmt_ stringFromDate:localDate];
-    NSLog(@"%@",localDateString);
+   
 //    //NSDate转回NSString时根据本地时区减去之前加上的4个小时，此时localDateString的值为2016-06-1 06:00:00
     
     
@@ -74,7 +74,7 @@ static  NSCalendar *canlendar_;
     //所以需要自己写
     
     NSString *dateStr;
-    NSLog(@"%@",comps);
+    
     if (localDate.isThisYear) {
         if (localDate.isToday) {
             if (comps.hour >= 1) {

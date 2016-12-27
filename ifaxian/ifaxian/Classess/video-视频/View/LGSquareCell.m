@@ -73,7 +73,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2userController)];
     
     [self.iconImage addGestureRecognizer:tap];
-    
+    _commentButton.imageView.contentMode  = UIViewContentModeScaleAspectFit;
     
     [self layoutIfNeeded];
 }
@@ -215,7 +215,7 @@
         
          [[LGNetWorkingManager manager] requestAddLikeAction:@"addLike" umid:[NSString stringWithFormat:@"%zd",self.model.share.ID] completion:^(BOOL isSuccess, id responseObject) {
        
-        NSLog(@"%@",responseObject);
+        
     }];
     }else{
        

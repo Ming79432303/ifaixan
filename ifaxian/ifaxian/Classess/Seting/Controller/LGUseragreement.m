@@ -19,7 +19,7 @@
     self.navItem.title = @"用户使用协议";
     UIWebView *weBview = [[UIWebView alloc] init];
     
-    [weBview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString requestBasiPathAppend:@"/user.html"]]]];
+    [weBview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString requestBasiPathAppend:@"/app/user.html"]]]];
     
     weBview.frame = self.tableView.frame;
     weBview.lg_height -= 64;
@@ -38,7 +38,6 @@
 
 - (void)dealloc{
 
-    NSLog(@"12");
 }
 
 @end

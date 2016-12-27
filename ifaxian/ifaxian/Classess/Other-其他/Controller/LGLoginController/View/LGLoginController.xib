@@ -98,10 +98,10 @@
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0l-zR-LgD">
-                            <rect key="frame" x="250" y="10" width="20" height="20"/>
+                            <rect key="frame" x="245" y="10" width="25" height="25"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="aFB-p2-uYv"/>
-                                <constraint firstAttribute="width" constant="20" id="jYe-AY-Rui"/>
+                                <constraint firstAttribute="height" constant="25" id="aFB-p2-uYv"/>
+                                <constraint firstAttribute="width" constant="25" id="jYe-AY-Rui"/>
                             </constraints>
                             <state key="normal" image="关闭"/>
                             <connections>
@@ -228,7 +228,7 @@
                 <constraint firstItem="geo-RR-VtP" firstAttribute="centerY" secondItem="5Ly-DK-Zdv" secondAttribute="centerY" id="hQY-Wv-Ze4"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="-616.5" y="-36.5"/>
+            <point key="canvasLocation" x="-740.5" y="-49.5"/>
         </view>
     </objects>
     <resources>

@@ -231,7 +231,7 @@
 
 - (void)dealloc{
     
-    NSLog(@"小环");
+
     
 }
 

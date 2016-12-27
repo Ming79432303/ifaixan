@@ -18,7 +18,7 @@
 static NSString *xiaoHuaCellID = @"xiaoHuaCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.postName = @"xiaohua";
+    self.postName = @"xh";
    
   
 [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGXiaoHuaCell class]) bundle:nil] forCellReuseIdentifier:xiaoHuaCellID];

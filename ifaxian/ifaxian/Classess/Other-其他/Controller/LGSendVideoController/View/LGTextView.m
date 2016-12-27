@@ -49,7 +49,7 @@
     
     
     self.textLable.hidden = self.text.length != 0 ? YES:NO;
-    NSLog(@"%f",textView.contentSize.height);
+    
 }
 
 

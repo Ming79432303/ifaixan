@@ -120,7 +120,7 @@
 //上传的进度
 - (void)aliyunOssUploa:(LGAliYunOssUpload *)upload Progress:(CGFloat)progress{
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"%f",progress);
+       
         self.progressView.progress = progress/100.0;
     });
     
@@ -151,7 +151,7 @@
         filePicker.view.backgroundColor = [UIColor whiteColor];
         [self presentViewController:filePicker animated:YES completion:^{
             
-            NSLog(@"%@",filePicker);
+            
         }];
         
         
@@ -183,7 +183,7 @@
 
 - (CGFloat)getFileSize:(NSString *)path
 {
-    NSLog(@"%@",path);
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     float filesize = -1.0;
     if ([fileManager fileExistsAtPath:path]) {
@@ -191,7 +191,7 @@
         unsigned long long size = [[fileDic objectForKey:NSFileSize] longLongValue];
         filesize = 1.0*size/1024;
     }else{
-        NSLog(@"找不到文件");
+       
     }
     return filesize;
 }//此方法可以获取文件的大小，返回的是单位是KB。
@@ -210,8 +210,6 @@
   
     
     NSURL *sourceURL = [info objectForKey:UIImagePickerControllerMediaURL];
-    NSLog(@"%@",[NSString stringWithFormat:@"%f s", [self getVideoLength:sourceURL]]);
-    NSLog(@"%@", [NSString stringWithFormat:@"%.2f kb", [self getFileSize:[sourceURL path]]]);
     NSURL *newVideoUrl ; //一般.mp4
     NSDateFormatter *formater = [[NSDateFormatter alloc] init];//用时间给文件全名，以免重复，在测试的时候其实可以判断文件是否存在若存在，则删除，重新生成文件即可
     [formater setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];

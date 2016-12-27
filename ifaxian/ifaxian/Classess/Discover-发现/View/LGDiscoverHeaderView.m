@@ -130,7 +130,7 @@
     self.reuseView.frame = rect;
     _reuseView.tag = index;
     _curPage = index;
-    NSLog(@"%zd",self.curPage);
+  
     NSString *imageName = [NSString stringWithFormat:@"disvc%zd",_curPage + 1];
     UIImage *image = [UIImage imageNamed:imageName];
     _reuseView.image = image;

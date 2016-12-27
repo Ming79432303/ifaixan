@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="261"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b1U-cc-FqC">
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_media_default" translatesAutoresizingMaskIntoConstraints="NO" id="b1U-cc-FqC">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="261"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
@@ -188,6 +188,7 @@
         </view>
     </objects>
     <resources>
+        <image name="bg_media_default" width="320" height="180"/>
         <image name="chongbo" width="64" height="64"/>
         <image name="full_pause_btn" width="50" height="50"/>
         <image name="full_play_btn" width="50" height="50"/>

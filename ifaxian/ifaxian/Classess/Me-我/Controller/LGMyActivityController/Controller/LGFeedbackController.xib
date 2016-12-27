@@ -24,7 +24,7 @@
                     </constraints>
                     <items>
                         <navigationItem title="反馈" id="6be-3v-5yi">
-                            <barButtonItem key="leftBarButtonItem" image="navigationButtonReturn" id="FoD-uw-RKf">
+                            <barButtonItem key="leftBarButtonItem" image="back_nomar" id="FoD-uw-RKf">
                                 <connections>
                                     <action selector="back:" destination="-1" id="uej-n6-TBI"/>
                                 </connections>
@@ -104,7 +104,7 @@
         </view>
     </objects>
     <resources>
-        <image name="navigationButtonReturn" width="15" height="21"/>
+        <image name="back_nomar" width="45" height="39"/>
         <image name="send" width="60" height="30"/>
     </resources>
 </document>

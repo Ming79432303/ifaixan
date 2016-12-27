@@ -56,7 +56,7 @@ static  NSCalendar *canlendar_;
     NSString *rewTitle = [NSString stringWithFormat:@"@%@ 发表于 %@",self.self.author.nickname,self.date];
     CGFloat replayW = LGScreenW - 5*LGCommonMargin - LGAvatarHeight;
     height += [rewTitle boundingRectWithSize:CGSizeMake(replayW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LGCommentReplyFontSize]} context:nil].size.height;
-    NSLog(@"%f--%@",[rewTitle boundingRectWithSize:CGSizeMake(replayW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LGCommentReplyFontSize]} context:nil].size.height,rewTitle);
+   
     
     height += [self.content boundingRectWithSize:CGSizeMake(replayW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LGCommentReplyFontSize]} context:nil].size.height;
 

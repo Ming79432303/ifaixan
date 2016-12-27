@@ -51,7 +51,7 @@
         self.timeLable.text = model.date;
     self.titileLable.text = model.title;
     if (model.categories.firstObject.title.length) {
-        [self.categoryButton  setTitle:model.categories.firstObject.title forState:UIControlStateNormal];
+        [self.categoryButton  setTitle:model.tags.firstObject.title forState:UIControlStateNormal];
       
     }else{
         [self.categoryButton  setTitle:@"文章" forState:UIControlStateNormal];

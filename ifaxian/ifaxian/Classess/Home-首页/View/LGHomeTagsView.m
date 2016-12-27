@@ -49,7 +49,7 @@
             
             CGSize titleSize = [tag.title boundingRectWithSize:CGSizeMake(self.frame.size.width - 20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
             UIButton *tagButton = self.subviews[index];
-            NSLog(@"%@",tag.title);
+       
             tagButton.hidden = NO;
             tagButton.frame = CGRectMake(index * (titleSize.width + LGCommonMargin), 2.5,titleSize.width +  LGCommonMargin, 20);
             [tagButton setTitle:[NSString stringWithFormat:@"#%@",tag.title] forState:UIControlStateNormal];

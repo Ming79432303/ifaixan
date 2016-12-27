@@ -125,7 +125,7 @@ static NSString *userCellID = @"userCellID";
     
     //**** 第一组 ***//
     
-    NSArray *user_info = @[@"lg_user_avatar",@"bac",@"nickname",@"lg_capabilities",@"city",@"website",@"signature"];
+    NSArray *user_info = @[@"lg_user_avatar",@"bac",@"nickname",@"wp_capabilities",@"city",@"website",@"signature"];
     NSArray *user_infoTitle = @[@"更换头像",@"更换背景图",@"昵称",@"用户身份",@"居住地",@"我的站点",@"个人说明"];
     NSArray *groupUserInfo = [self userinfo:responseObject userinfoKeys:user_info userTitle:user_infoTitle];
        LGUserItem *item1 = [LGUserItem userGruopTitle:@"个人基本信息" userInfo:groupUserInfo];

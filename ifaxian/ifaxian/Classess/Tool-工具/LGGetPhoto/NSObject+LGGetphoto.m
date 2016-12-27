@@ -51,7 +51,7 @@
 
     
     for (PHAssetCollection *col in assetColetion) {
-        NSLog(@"%@",col);
+        
         [photos addObject: [self enumerateAssetsInAssetCollection:col original:YES]];
     }
         completion(photos);

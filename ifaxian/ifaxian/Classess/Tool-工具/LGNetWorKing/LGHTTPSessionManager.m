@@ -118,7 +118,7 @@
     //失败回调
     void(^failure)() = ^(NSURLSessionDataTask * _Nonnull task ,NSError *error) {
 #warning 403 token过期处理
-        NSLog(@"%@",error);
+    
         NSHTTPURLResponse *respon = (NSHTTPURLResponse *)task.response;
         
         
@@ -128,7 +128,7 @@
             return ;
             
         }
-        NSLog ( @"operation: %@" ,task.response);
+        
         // [SVProgressHUD showErrorWithStatus:@"请求失败"];
         completion(NO,nil);
         
@@ -177,7 +177,7 @@
     }
     
     [self request:LGRequeTypePOST urlString:url parameters:nil completion:^(BOOL isSuccess, id responseObject) {
-        NSLog(@"%@",responseObject);
+       
         if (completion) {
             
             completion(isSuccess,responseObject[@"nonce"]);

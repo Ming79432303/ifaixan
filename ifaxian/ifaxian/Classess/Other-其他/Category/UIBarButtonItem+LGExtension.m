@@ -13,19 +13,19 @@
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:highImage] forState:UIControlStateHighlighted];
+    //[button setImage:[UIImage imageNamed:highImage] forState:UIControlStateHighlighted];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     [button sizeToFit];
     return [[self alloc] initWithCustomView:button];
 }
 + (instancetype)lg_barButtonCustButton:(NSString *)title fontSize:(CGFloat)fontSize addTarget:(id)addTarget action:(SEL)action isBack:(BOOL)isBack{
     
-    UIButton *butn = [UIButton lg_textButton:title fontSize:fontSize normalColor:[UIColor darkGrayColor] highlightedColor:[UIColor orangeColor]];
+    UIButton *butn = [UIButton lg_textButton:@"" fontSize:fontSize normalColor:[UIColor darkGrayColor] highlightedColor:[UIColor blackColor]];
     butn.titleLabel.font = [UIFont boldSystemFontOfSize:fontSize];
     
     if (isBack) {
-        [butn setImage:[UIImage imageNamed:@"navigationbar_back_withtext_highlighted"] forState:UIControlStateHighlighted];
-        [butn setImage:[UIImage imageNamed:@"navigationbar_back_withtext"] forState:UIControlStateNormal];
+        //[butn setImage:[UIImage imageNamed:@""] forState:UIControlStateHighlighted];
+        [butn setImage:[UIImage imageNamed:@"back_nomar"] forState:UIControlStateNormal];
         
         [butn sizeToFit];
     }

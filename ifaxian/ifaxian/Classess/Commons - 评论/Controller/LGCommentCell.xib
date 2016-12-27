@@ -15,14 +15,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像" translatesAutoresizingMaskIntoConstraints="NO" id="91W-eS-61S">
-                        <rect key="frame" x="8" y="8" width="35" height="35"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="35" id="4RV-BF-xHQ"/>
-                            <constraint firstAttribute="width" constant="35" id="nBB-ad-K1K"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuX-0S-pgL">
                         <rect key="frame" x="53" y="8" width="249" height="18"/>
                         <gestureRecognizers/>
@@ -51,6 +43,14 @@
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="91W-eS-61S">
+                        <rect key="frame" x="8" y="8" width="35" height="35"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="4RV-BF-xHQ"/>
+                            <constraint firstAttribute="width" constant="35" id="nBB-ad-K1K"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="hse-dF-psd" secondAttribute="trailing" id="2cp-aY-0k2"/>
@@ -75,11 +75,10 @@
                 <outlet property="replyButton" destination="W2H-fc-A86" id="f56-6h-o82"/>
                 <outlet property="timeLable" destination="edg-4Q-CPR" id="gnW-FT-slf"/>
             </connections>
-            <point key="canvasLocation" x="260" y="209.5"/>
+            <point key="canvasLocation" x="-42" y="78.5"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="reply" width="30" height="30"/>
-        <image name="头像" width="35" height="35"/>
     </resources>
 </document>

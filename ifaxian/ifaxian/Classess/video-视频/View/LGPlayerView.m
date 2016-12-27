@@ -191,7 +191,7 @@
     self.showTime = nil;
 }
 -(void)dealloc{
-    NSLog(@"销毁控制器");
+
     
     
 }
@@ -411,7 +411,7 @@
 /** 弹出全屏播放器 */
 - (void)videoplayViewSwitchOrientation:(BOOL)isFull
 {
-    NSLog(@"%zd1212121212",isFull);
+ 
     if (isFull) {
         [self.contrainerViewController presentViewController:self.fullVc animated:NO completion:^{
             [self.fullVc.view addSubview:self];

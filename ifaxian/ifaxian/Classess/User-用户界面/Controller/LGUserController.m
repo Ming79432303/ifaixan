@@ -129,7 +129,7 @@
     _userTableView = userList.tableView;
     NSString * userAvatar = [_author.slug lg_getuserAvatar];
 
-    [_userIconImageView lg_setCircularImageWithurl:userAvatar placeholderImage:nil];
+    [_userIconImageView lg_setCircularImageWithurl:userAvatar placeholderImage:[UIImage imageNamed:@"default_Avatar"]];
     
 }
 

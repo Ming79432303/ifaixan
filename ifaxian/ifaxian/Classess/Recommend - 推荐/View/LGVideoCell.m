@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) LGPlayerView *videoPlayer;
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImgaeView;
 
 @end
 
@@ -138,7 +139,7 @@
         
         [[LGNetWorkingManager manager] requestAddLikeAction:@"addLike" umid:[NSString stringWithFormat:@"%zd",self.model.ID] completion:^(BOOL isSuccess, id responseObject) {
             
-            NSLog(@"%@",responseObject);
+           
         }];
     }else{
         

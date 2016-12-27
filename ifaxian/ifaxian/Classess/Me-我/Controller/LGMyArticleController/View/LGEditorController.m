@@ -151,7 +151,7 @@
         NSString *ID = [NSString stringWithFormat:@"%zd",self.model.ID];
         
         LGWeakSelf;
-        NSLog(@"%@",self.model.slug);
+    
         [[LGNetWorkingManager manager] requestUpdateArticleTitle:self.titleText content:self.bodyText post_slug:self.model.slug post_id:ID contentText:^(BOOL isSuccess) {
             
             if (isSuccess) {
@@ -252,7 +252,7 @@
                  imageTapped:(NSString *)imageId
                          url:(NSURL *)url{
     
-    NSLog(@"%@",url);
+   
     
 }
 
@@ -518,7 +518,7 @@
         [self.editorView setProgress:progres.fractionCompleted onImage:imageID];
         // Uncomment this code if you need to test a failed image upload
         
-        NSLog(@"%@",progres);
+  
         if (progres.fractionCompleted >=1) {
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

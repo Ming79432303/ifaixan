@@ -18,7 +18,7 @@ NSString *fileName = @"account.json";
     
   NSString *file =  [fileName lg_appendDocumentDir];
     
-    NSLog(@"%@",file);
+   
     NSData *data  = [self mj_JSONData];
     
     [data writeToFile:file atomically:YES];

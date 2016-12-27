@@ -120,13 +120,14 @@
             <connections>
                 <outlet property="commentButton" destination="RZe-vP-7pB" id="3g2-Il-mvS"/>
                 <outlet property="dateLable" destination="IVt-RY-RLK" id="UFV-Wi-bdE"/>
+                <outlet property="iconImgaeView" destination="Y44-Zi-rln" id="37p-bd-Mew"/>
                 <outlet property="likeButton" destination="uS5-hl-rsI" id="w7B-BB-DN7"/>
                 <outlet property="nameLable" destination="nf1-1F-k3x" id="sFB-zj-yRD"/>
                 <outlet property="picImageView" destination="RUf-DA-7yV" id="qQa-Rr-gES"/>
                 <outlet property="starVideoButton" destination="WrP-Qt-aeA" id="5im-NE-YBG"/>
                 <outlet property="titleLable" destination="BSl-f1-zSk" id="fRh-fw-yBT"/>
             </connections>
-            <point key="canvasLocation" x="70" y="223"/>
+            <point key="canvasLocation" x="237" y="319"/>
         </tableViewCell>
     </objects>
     <resources>

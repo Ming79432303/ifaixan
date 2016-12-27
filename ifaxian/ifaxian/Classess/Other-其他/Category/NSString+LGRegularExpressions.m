@@ -111,7 +111,7 @@
             NSRange firstHalfRange = [result rangeAtIndex:0];
             if (firstHalfRange.length > 0) {
                 NSRange resRang = NSMakeRange(firstHalfRange.location, firstHalfRange.length);
-                NSLog(@"%@",resultString);
+                
                 resultString = [urlString substringWithRange:resRang];
             }
         }

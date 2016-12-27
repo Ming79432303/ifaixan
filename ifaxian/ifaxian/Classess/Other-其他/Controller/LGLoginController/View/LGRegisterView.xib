@@ -26,7 +26,7 @@
                         <constraint firstAttribute="height" constant="430" id="xrM-F0-KHm"/>
                     </constraints>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="roundedRect" placeholder="用户名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TEb-me-ATQ">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TEb-me-ATQ">
                     <rect key="frame" x="63" y="210" width="250" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="0FK-bV-i8Q"/>
@@ -35,12 +35,12 @@
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ool-9o-MRk">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ool-9o-MRk">
                     <rect key="frame" x="63" y="280" width="250" height="50"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456@QQ.COM" borderStyle="roundedRect" placeholder="邮箱/该邮箱将用于密码找回" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKF-jB-KVE">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="邮箱/该邮箱将用于密码找回" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKF-jB-KVE">
                     <rect key="frame" x="63" y="350" width="250" height="50"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -66,10 +66,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESX-bb-eTy">
-                    <rect key="frame" x="298" y="129" width="20" height="20"/>
+                    <rect key="frame" x="293" y="129" width="25" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="20" id="4bG-qb-cfB"/>
-                        <constraint firstAttribute="height" constant="20" id="IE2-hY-QT9"/>
+                        <constraint firstAttribute="width" constant="25" id="4bG-qb-cfB"/>
+                        <constraint firstAttribute="height" constant="25" id="IE2-hY-QT9"/>
                     </constraints>
                     <state key="normal" title="Button" image="关闭"/>
                     <connections>

@@ -39,7 +39,10 @@
     self.tableView.backgroundColor = LGCommonColor;
     [self.tableView.mj_header beginRefreshing];
     
+    
 }
+
+
 
 
 

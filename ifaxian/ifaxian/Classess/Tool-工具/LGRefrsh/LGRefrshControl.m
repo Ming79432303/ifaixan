@@ -70,7 +70,7 @@
 //刷新方法
 ///开始刷新
 - (void)beginRefreshing{
-    NSLog(@"开始刷新方法");
+  
     if (_scrroView == nil) {
         return;
     }
@@ -85,7 +85,7 @@
 ///结束刷新
 - (void)endRefreshing{
     
-    NSLog(@"结束刷新方法");
+
     if (self.scrroView == nil) {
         return;
     }
@@ -119,16 +119,16 @@
     //判断是下拉状态
     if (self.scrroView.isDragging) {
         if (heiht < refHeight && self.refrshView.refState == PullIng) {
-            NSLog(@"使劲拉");
+        
             self.refrshView.refState = Normal;
             
         }else if (heiht > refHeight && self.refrshView.refState == Normal) {
             self.refrshView.refState = PullIng;
-            NSLog(@"放开开始刷新");
+          
         }
     }else{
         if (heiht > refHeight && self.refrshView.refState == PullIng) {
-            NSLog(@"正在刷新");
+          
             //执行刷新控件
             [self beginRefreshing];
           //发送事件

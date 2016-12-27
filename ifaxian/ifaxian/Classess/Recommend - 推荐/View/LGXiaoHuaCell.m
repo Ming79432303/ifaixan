@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLable;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
@@ -32,6 +33,7 @@
 
 - (void)setModel:(LGRecommend *)model{
     _model = model;
+    [self.iconImageView setHeader:[model.author.slug lg_getuserAvatar]];
     self.nameLable.text = model.author.name;
     self.titleLable.text = model.title;
     self.imageViewHeight.constant = model.imageSize.height;
@@ -118,7 +120,7 @@
         
         [[LGNetWorkingManager manager] requestAddLikeAction:@"addLike" umid:[NSString stringWithFormat:@"%zd",self.model.ID] completion:^(BOOL isSuccess, id responseObject) {
             
-            NSLog(@"%@",responseObject);
+            
         }];
     }else{
         

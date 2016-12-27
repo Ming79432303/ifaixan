@@ -24,7 +24,7 @@
                     </constraints>
                     <items>
                         <navigationItem title="关于" id="cN0-Su-ch4">
-                            <barButtonItem key="leftBarButtonItem" image="navigationButtonReturn" id="bkD-qQ-Rmv">
+                            <barButtonItem key="leftBarButtonItem" image="back_nomar" id="bkD-qQ-Rmv">
                                 <connections>
                                     <action selector="back:" destination="-1" id="JgS-ac-o4H"/>
                                 </connections>
@@ -52,6 +52,6 @@
         </view>
     </objects>
     <resources>
-        <image name="navigationButtonReturn" width="15" height="21"/>
+        <image name="back_nomar" width="45" height="39"/>
     </resources>
 </document>

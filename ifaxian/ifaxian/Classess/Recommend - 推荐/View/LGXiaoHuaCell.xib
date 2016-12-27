@@ -124,13 +124,14 @@
                 <outlet property="commentButton" destination="oam-ck-U2g" id="UAM-9d-GTb"/>
                 <outlet property="contentLable" destination="I8p-5f-cfZ" id="aXT-xj-0lI"/>
                 <outlet property="dateLable" destination="FNn-PT-cAD" id="Fvl-4S-ymz"/>
+                <outlet property="iconImageView" destination="52m-8s-cVq" id="pIc-z0-jJV"/>
                 <outlet property="imageViewHeight" destination="YhJ-Aj-IW4" id="eVf-od-6e9"/>
                 <outlet property="likeButton" destination="2Ed-gX-G7q" id="WRs-cA-9eS"/>
                 <outlet property="nameLable" destination="oSO-SW-xCI" id="ZNN-cn-mCe"/>
                 <outlet property="picImageView" destination="aDS-XR-LrW" id="9TA-Rt-i9m"/>
                 <outlet property="titleLable" destination="83F-gv-8aA" id="JD5-wH-dUr"/>
             </connections>
-            <point key="canvasLocation" x="383" y="360"/>
+            <point key="canvasLocation" x="346" y="324"/>
         </tableViewCell>
     </objects>
     <resources>

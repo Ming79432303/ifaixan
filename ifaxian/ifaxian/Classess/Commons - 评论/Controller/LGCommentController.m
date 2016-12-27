@@ -79,6 +79,8 @@ static NSString *commentHFViewID = @"replyCellID";
 }
 - (void)setupUI{
     
+    self.navItem.title = @"评论";
+    
     UIView *commentView = [[UIView alloc] init];
     UIImageView *imageView = [[UIImageView alloc] init];
     /**

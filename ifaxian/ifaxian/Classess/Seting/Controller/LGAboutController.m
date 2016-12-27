@@ -17,7 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
         self.navItem.title = @"关于我们";
-
+     UIWebView *weBview = [[UIWebView alloc] init];
+    [weBview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://ming.tf"]]];
+    
+    weBview.frame = self.tableView.frame;
+    weBview.lg_height -= 64;
+    [self.tableView addSubview:weBview];
 }
 
 - (void)didReceiveMemoryWarning {

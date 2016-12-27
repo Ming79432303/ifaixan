@@ -103,7 +103,7 @@
             parameters[@"nonce"] = nonce;
             parameters[@"title"] = title;
             parameters[@"content"] = contentText;
-            parameters[@"categories"] = @"images";
+            parameters[@"categories"] = @"share";
             parameters[@"status"] = @"publish";
             [self request:LGRequeTypePOST urlString:url parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
                 

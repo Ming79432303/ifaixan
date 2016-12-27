@@ -52,7 +52,7 @@
 
 -(void)loadNewDatacompletion:(void(^)(BOOL isSuccess ,NSArray<LGShare *> *shareArray))completion{
     
-    [self.manager requestPOstCategory:@"images" page:nil completion:^(BOOL isSuccess, id responseObject) {
+    [self.manager requestPOstCategory:@"share" page:nil completion:^(BOOL isSuccess, id responseObject) {
         if (isSuccess) {
             index_ = 2;
         NSMutableArray *shareM = [NSMutableArray array];
@@ -164,7 +164,7 @@
     if (index_ < 2) {
         index_ = 2;
     }
-    [self.manager requestPOstCategory:@"images" page:[NSString stringWithFormat:@"%zd",index_] completion:^(BOOL isSuccess, id responseObject) {
+    [self.manager requestPOstCategory:@"share" page:[NSString stringWithFormat:@"%zd",index_] completion:^(BOOL isSuccess, id responseObject) {
         
         //        self.images = [LGShareImage mj_objectArrayWithKeyValuesArray:responseObject[@"posts"]];
         NSMutableArray<LGShare *> *shareM = [NSMutableArray array];

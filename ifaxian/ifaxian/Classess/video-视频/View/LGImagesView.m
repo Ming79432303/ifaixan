@@ -54,7 +54,7 @@
         //更改第一张图片的位置
         UIImageView *imageV = self.subviews[0];
         imageV.hidden = NO;
-        NSLog(@"%@",NSStringFromCGSize(model.oneImageSize));
+        
         
         imageV.frame = CGRectMake(0, 0, model.oneImageSize.width,  model.oneImageSize.height);
         [imageV lg_setImageWithurl:[self isGifUrl:self.model.images.firstObject imageView:imageV] placeholderImage:nil];

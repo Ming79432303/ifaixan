@@ -121,7 +121,7 @@
 }
 - (void)dealloc{
     
-    NSLog(@"销毁了");
+
 }
 #pragma mark ---- 文字效果核心代码
 - (void) setupTextLayer

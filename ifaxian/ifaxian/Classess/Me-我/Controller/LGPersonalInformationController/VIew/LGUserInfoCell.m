@@ -36,7 +36,7 @@
                 self.rightTitle.text = model.title;
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
                 NSString *urlstr = [NSString stringWithFormat:@"%@ifaxian/avatars/%@%@.jpg",LGbuckeUrl,[LGNetWorkingManager manager].account.user.username,model.parameter];
-                NSLog(@"%@",urlstr);
+                
                 NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlstr]];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     UIImage *image = [UIImage imageWithData:imageData];

@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像" translatesAutoresizingMaskIntoConstraints="NO" id="Vpb-Tb-pQv">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vpb-Tb-pQv">
                         <rect key="frame" x="8" y="8" width="35" height="35"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -115,6 +115,5 @@
     </objects>
     <resources>
         <image name="reply" width="30" height="30"/>
-        <image name="头像" width="35" height="35"/>
     </resources>
 </document>

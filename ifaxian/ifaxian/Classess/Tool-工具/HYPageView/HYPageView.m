@@ -57,7 +57,7 @@
 }
 
 - (void)dealloc{
-    NSLog(@"%@",self.class);
+    
     [self removeObserver:self forKeyPath:@"currentPage"];
 }
 
