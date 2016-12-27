@@ -522,10 +522,10 @@
 //        NSData *data = [NSJSONSerialization dataWithJSONObject:self.imageUrls options:kNilOptions error:nil];
 //        NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         for (NSString *url in self.imageUrls) {
-            // <a href="http://79432303.oss-cn-shanghai.aliyuncs.com/images/1E53C48D-56A6-47CE-8ABD-B23D1FCE9819.jpg"><img src="http://79432303.oss-cn-shanghai.aliyuncs.com/images/1E53C48D-56A6-47CE-8ABD-B23D1FCE9819.jpg" alt="" /></a>
+            // <a href="https://79432303.oss-cn-shanghai.aliyuncs.com/images/1E53C48D-56A6-47CE-8ABD-B23D1FCE9819.jpg"><img src="http://79432303.oss-cn-shanghai.aliyuncs.com/images/1E53C48D-56A6-47CE-8ABD-B23D1FCE9819.jpg" alt="" /></a>
             //E9CA5808-051D-4B05-BEE3-392A11357BEF.gif
             
-            NSString *htmlStr =  [NSString stringWithFormat:@"<a href=\"http://79432303.oss-cn-shanghai.aliyuncs.com/squareImages/%@\"><img src=\"http://79432303.oss-cn-shanghai.aliyuncs.com/squareImages/%@\" alt=\"\" /></a>",url,url];
+            NSString *htmlStr =  [NSString stringWithFormat:@"<a href=\"https://79432303.oss-cn-shanghai.aliyuncs.com/squareImages/%@\"><img src=\"https://79432303.oss-cn-shanghai.aliyuncs.com/squareImages/%@\" alt=\"\" /></a>",url,url];
             [htmstrM appendString:htmlStr];
         }
         

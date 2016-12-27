@@ -117,7 +117,7 @@ NSString *url = [NSString requestBasiPathAppend:@"/?json=1&count=1"];
 
 - (void)loadOldDate{
 //http://112.74.45.39/page/1?json=5&count=20
-    NSString *url = [NSString stringWithFormat:@"http://112.74.45.39/category/home/page/%zd?json=1",index_];
+    NSString *url = [NSString stringWithFormat:@"https://ifaxian.cc/category/home/page/%zd?json=1",index_];
     
     
     [[LGHTTPSessionManager manager] requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {

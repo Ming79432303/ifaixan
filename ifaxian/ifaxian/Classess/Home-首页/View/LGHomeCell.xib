@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <development version="7000" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -48,7 +48,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giF-md-HEO">
                         <rect key="frame" x="55" y="252" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufo-cN-6LD">
@@ -71,7 +71,7 @@
                         <color key="highlightedColor" red="0.72336632013320923" green="0.72336632013320923" blue="0.72336632013320923" alpha="1" colorSpace="calibratedRGB"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uo8-5i-CKK">
-                        <rect key="frame" x="225" y="270" width="44" height="20"/>
+                        <rect key="frame" x="226" y="270" width="43" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="UCA-mb-QhS"/>
                         </constraints>
@@ -110,6 +110,7 @@
             <connections>
                 <outlet property="avatarImageView" destination="VZ2-Gu-fCT" id="d5k-rz-iPd"/>
                 <outlet property="categoryLable" destination="Ufo-cN-6LD" id="y77-HO-jV4"/>
+                <outlet property="commentButton" destination="uo8-5i-CKK" id="VqX-ZM-vbC"/>
                 <outlet property="dateLable" destination="FSH-32-hdb" id="tsx-hJ-QaP"/>
                 <outlet property="excerptLable" destination="T2c-vU-fNJ" id="yIQ-ab-5s4"/>
                 <outlet property="homeImagesViewHeight" destination="ovN-xm-ad9" id="AFP-eW-8sW"/>

@@ -12,6 +12,7 @@
 #import "LGLoginController.h"
 #import "LGWriteView.h"
 #import "LGMecontroller.h"
+#import "LGNewFeatureView.h"
 @interface LGMainController ()<LGWriteViewDelegate>
 @property(nonatomic, strong) UIButton *writeButton;
 @end
@@ -20,11 +21,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [self isGoinNewFeature];
     [self setControllersDict];
     [self addwriteButton];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogin) name:LGUserLoginNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogout) name:LGUserLogoutNotification object:nil];
+    
 }
 - (void)addwriteButton{
     
@@ -194,7 +196,33 @@
     return nav;
 }
 
+- (void)isGoinNewFeature{
+    NSDictionary *info = [NSBundle mainBundle].infoDictionary;
+    // NSString *bundl =  [info @{CFBundleShortVersionString}];
+    //获取当前出版本信息
+    NSString *version =  [info objectForKey:@"CFBundleShortVersionString"];
+    
+    //从偏好设置中读取版本号
+    NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
+    if (![version isEqualToString:lastVersion]) {
+        //保存到偏好设置
+       
+        // 进入到新特性
+        [[NSUserDefaults standardUserDefaults] setObject:version forKey:@"version"];
+        
+        LGNewFeatureView *newFeatureView = [LGNewFeatureView viewFromeNib];
+        newFeatureView.frame = [UIScreen mainScreen].bounds;
+        [self.view addSubview:newFeatureView];
+        
+    }else{
+        
+        
+    }
 
+    
+    
+    
+}
 
 
 @end

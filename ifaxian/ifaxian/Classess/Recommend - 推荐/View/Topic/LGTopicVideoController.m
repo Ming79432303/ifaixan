@@ -9,6 +9,7 @@
 #import "LGTopicVideoController.h"
 #import "LGVideoCell.h"
 #import "LGRecommend.h"
+#import "LGVideoCommentController.h"
 
 @interface LGTopicVideoController ()
 @property(nonatomic, strong) NSMutableSet *set;
@@ -59,12 +60,26 @@ static NSString *videoCellID = @"videoCellID";
 
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    LGRecommend *recomm = self.dateArray[indexPath.row];
+    LGVideoCommentController *videoComment = [[LGVideoCommentController alloc] init];
+    videoComment.share = recomm;
+    videoComment.model = recomm;
+    UITabBarController *tab = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    UINavigationController *nav = tab.selectedViewController;
+    [nav pushViewController:videoComment animated:YES];
+    
+    
+    [self.navigationController pushViewController:videoComment animated:YES];
+    
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     LGRecommend *recomm = self.dateArray[indexPath.row];
-       NSLog(@"%@",NSStringFromUIEdgeInsets(self.tableView.contentInset));
+    
     return recomm.VideoCellHeght;
 }
 

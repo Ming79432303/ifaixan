@@ -20,7 +20,7 @@
 #import "LGAliAccessToken.h"
 #import "LGAliYunOssUpload.h"
 #import "WPImageMetaViewController.h"
-#define URL @"http://79432303.oss-cn-shanghai.aliyuncs.com"
+#define URL @"https://79432303.oss-cn-shanghai.aliyuncs.com"
 
 @interface LGEditorController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate,LGAliYunOssUploadDelegate,WPImageMetaViewControllerDelegate>
 @property(nonatomic, strong) NSProgress *progress;

@@ -15,7 +15,7 @@
 -(void)loadNewDatacompletion:(void (^)(BOOL, NSArray<LGShare *> *))completion{
     
     
-    NSString *url = [NSString stringWithFormat:@"http://112.74.45.39/author/%@/page/1?json=1",_userName];
+    NSString *url = [NSString stringWithFormat:@"https://ifaxian.cc/author/%@/page/1?json=1",_userName];
     
     [[LGHTTPSessionManager manager] requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {
         
@@ -44,7 +44,7 @@
     if (index_ < 2) {
         index_ = 2;
     }
-    NSString *url = [NSString stringWithFormat:@"http://112.74.45.39/author/%@/page/%zd?json=1",_userName,index_];
+    NSString *url = [NSString stringWithFormat:@"https://ifaxian/author/%@/page/%zd?json=1",_userName,index_];
     
     
     [[LGHTTPSessionManager manager] requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {

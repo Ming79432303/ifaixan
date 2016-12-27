@@ -83,14 +83,25 @@ static NSString *ID = @"cell";
     
     [self.view addSubview:self.collectionView];
     
-    LGWeakSelf;
 
-    [self.list getAllCategoriesPosts:^(NSArray *categoryposts) {
-       
-        [weakSelf.categories addObjectsFromArray:categoryposts];
-        [self.collectionView reloadData];
-        [self.collectionView setContentOffset:CGPointMake(self.collectionView.lg_width, 0)];
-    }];
+//    NSString *fileName = @"show.plist";
+//    NSString *path = [fileName lg_appendDocumentDir];
+    //[NSKeyedArchiver archiveRootObject:arrM toFile:path];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"show.plist" ofType:nil];
+    NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    [self.categories addObjectsFromArray:array];
+    
+    
+    [self.collectionView setContentOffset:CGPointMake(self.collectionView.lg_width, 0)];
+    [self.collectionView reloadData];
+
+//    LGWeakSelf;
+//    [self.list getAllCategoriesPosts:^(NSArray *categoryposts) {
+//       
+//        [weakSelf.categories addObjectsFromArray:categoryposts];
+//        [self.collectionView reloadData];
+//        [self.collectionView setContentOffset:CGPointMake(self.collectionView.lg_width, 0)];
+//    }];
     
 
 }

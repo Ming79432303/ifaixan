@@ -108,7 +108,12 @@
             
             dispatch_group_enter(requestGroup);
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                NSLog(@"当前线程%@",[NSThread currentThread]);
+                if ([category.title isEqualToString:@"首页"]||[category.title isEqualToString:@"文章"] || [category.title isEqualToString:@"早报"] || [category.title isEqualToString:@"美图"]) {
+                    
+                     dispatch_group_leave(requestGroup);
+                    return ;
+                    
+                }
                 [self requestGetcategoryID:category.ID posts:^(NSArray *categoryposts) {
                     
                     LGShow *showList = [LGShow showTitle:category.title posts:categoryposts];
@@ -122,7 +127,14 @@
         }
          dispatch_group_notify(requestGroup, dispatch_get_main_queue(), ^{
         #warning 缓存到磁盘
+        
+             NSString *fileName = @"show.plist";
+             NSString *path = [fileName lg_appendDocumentDir];
+             [NSKeyedArchiver archiveRootObject:arrM toFile:path];
+             
+          
                 completion(arrM);
+             
              
             });
 

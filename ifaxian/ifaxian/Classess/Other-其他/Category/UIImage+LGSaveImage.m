@@ -35,7 +35,7 @@ static NSString *name = @"爱发现";
         
     }else if (status == PHAuthorizationStatusAuthorized){//用户允许当前应用访问相册(用户当初点击了"好")
         //1.2用户已经授权
-        [self saveImage];
+        [self saveImage:NO imageUrl:nil];
         
         
         
@@ -46,7 +46,49 @@ static NSString *name = @"爱发现";
             if (status == PHAuthorizationStatusAuthorized) {//用户授权
                 
                 LGLog(@"授权成功");
-                [self saveImage];
+                [self saveImage:NO imageUrl:nil];
+                
+                
+            }else{
+                
+                LGLog(@"授权失败");
+                
+            }
+        }];
+        
+        
+    }
+}
+
+- (void)lg_saveGifImage:(NSURL *)imageUrl completion:(void(^)(bool isSuccess ,NSString * info))completion{
+    
+    
+    self.finish = completion;
+    
+    //1.判断用户是否授权
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    
+    if (status == PHAuthorizationStatusRestricted){// 因为家长控制, 导致应用无法方法相册(跟用户的选择没有关系)
+        
+        
+    }else if (status == PHAuthorizationStatusDenied) { //用户拒绝当前应用访问相册(用户当初点击了"不允许")
+        //1.1用户拒绝
+        LGLog(@"用户拒绝");
+        
+    }else if (status == PHAuthorizationStatusAuthorized){//用户允许当前应用访问相册(用户当初点击了"好")
+        //1.2用户已经授权
+        [self saveImage:YES imageUrl:imageUrl];
+        
+        
+        
+    }else if (status == PHAuthorizationStatusNotDetermined){//用户还没有做出选择
+        //1.3用户未决定
+        //1.3.1请求用户授权
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if (status == PHAuthorizationStatusAuthorized) {//用户授权
+                
+                LGLog(@"授权成功");
+                [self saveImage:YES imageUrl:imageUrl];
                 
                 
             }else{
@@ -64,8 +106,7 @@ static NSString *name = @"爱发现";
 
 
 
-
-- (void)saveImage
+- (void)saveImage:(BOOL)isGif imageUrl:(NSURL *)url
 {
     // PHAsset : 一个资源, 比如一张图片\一段视频
     // PHAssetCollection : 一个相簿
@@ -76,9 +117,18 @@ static NSString *name = @"爱发现";
     // 如果想对"相册"进行修改(增删改), 那么修改代码必须放在[PHPhotoLibrary sharedPhotoLibrary]的performChanges方法的block中
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
         // 1.保存图片A到"相机胶卷"中
+        
         // 创建图片的请求
+        
         //这样设计的好处因为这短代码是在子线程中运行的如果就在这里返回结果那么就会卡主主线程
-        assetLocalIdentifier = [PHAssetCreationRequest creationRequestForAssetFromImage:self].placeholderForCreatedAsset.localIdentifier;
+        if (isGif) {
+            assetLocalIdentifier = [PHAssetCreationRequest creationRequestForAssetFromImageAtFileURL:url].placeholderForCreatedAsset.localIdentifier;
+            
+        }else{
+            
+            assetLocalIdentifier = [PHAssetCreationRequest creationRequestForAssetFromImage:self].placeholderForCreatedAsset.localIdentifier;
+        }
+    
             //PHAssetResourceCreationOptions *options = [[PHAssetResourceCreationOptions alloc] init];
         //options.shouldMoveFile = YES;
         //[[PHAssetCreationRequest creationRequestForAsset] addResourceWithType:PHAssetResourceTypePhoto data:nil options:options];
@@ -109,9 +159,9 @@ static NSString *name = @"爱发现";
             [request addAssets:@[asset]];
         } completionHandler:^(BOOL success, NSError * _Nullable error) {
             if (success == NO) {
-                [self showError:@"保存图片失败!"];;
+                [self showError:@"保存图片失败!"];
             } else {
-                [self showSuccess:@"保存图片成功!"];;
+                [self showSuccess:@"保存图片成功!"];
             }
         }];
     }];

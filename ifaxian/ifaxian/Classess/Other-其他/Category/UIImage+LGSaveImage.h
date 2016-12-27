@@ -11,4 +11,5 @@
 @interface UIImage (LGSaveImage)
 
 - (void)lg_saveImage:(void(^)(bool isSuccess ,NSString * info))completion;
+- (void)lg_saveGifImage:(NSURL *)imageUrl completion:(void(^)(bool isSuccess ,NSString * info))completion;
 @end

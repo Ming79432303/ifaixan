@@ -22,6 +22,7 @@
 - (IBAction)forGotPasswordClick:(id)sender {
     
     
+    [SVProgressHUD showWithStatus:@"正在发送消息到你邮箱.."];
 
     //忘记密码
     if (!self.userLoginField.text.length) {
@@ -31,6 +32,7 @@
     
     [[LGHTTPSessionManager manager] requestRetrievePasswordUserLogin:self.userLoginField.text completion:^(BOOL isSuccess) {
         if (isSuccess) {
+            [SVProgressHUD dismiss];
             [self showSendSuccess];
             
         }else{

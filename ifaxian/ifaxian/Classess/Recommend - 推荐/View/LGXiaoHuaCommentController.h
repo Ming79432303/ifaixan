@@ -10,4 +10,5 @@
 #import "LGRecommend.h"
 @interface LGXiaoHuaCommentController : LGCommentController
 @property(nonatomic, strong) LGRecommend *share;
+
 @end

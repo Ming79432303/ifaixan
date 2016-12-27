@@ -36,7 +36,7 @@
    self.navItem.title = @"动态详情";
     self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"more_icon" highImage:@"" target:self action:@selector(more)];
    
-    NSString *postId= [_postUrl substringFromIndex:@"http://112.74.45.39/?p=".length];
+    NSString *postId= [_postUrl substringFromIndex:@"https://ifaxian.cc/?p=".length];
   NSString * requestUrl = [NSString requestBasiPathAppend:[NSString stringWithFormat:@"/api/get_post/?post_id=%@",postId]];
 
     [[LGHTTPSessionManager manager] requestPostUrl:requestUrl completion:^(BOOL isSuccess, id responseObject) {

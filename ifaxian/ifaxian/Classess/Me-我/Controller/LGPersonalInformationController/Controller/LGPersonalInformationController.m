@@ -321,7 +321,7 @@ static NSString *userCellID = @"userCellID";
     parameters[@"cookie"] = [LGNetWorkingManager manager].account.cookie;
     parameters[@"insecure"] = @"cool";
     LGWeakSelf;
-    [self.manager request:LGRequeTypePOST urlString:@"http://112.74.45.39/api/user/update_user_meta_vars" parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
+    [self.manager request:LGRequeTypePOST urlString:@"https://ifaxian.cc/api/user/update_user_meta_vars" parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
         
         if ([responseObject[@"status"] isEqualToString:@"ok"]) {
             [SVProgressHUD showSuccessWithStatus:@"更改成功"];
@@ -352,7 +352,7 @@ static NSString *userCellID = @"userCellID";
     parameters[@"cookie"] = [LGNetWorkingManager manager].account.cookie;
     parameters[@"insecure"] = @"cool";
     LGWeakSelf;
-    [self.manager request:LGRequeTypePOST urlString:@"http://112.74.45.39/api/user/update_user_meta_vars" parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
+    [self.manager request:LGRequeTypePOST urlString:@"https://ifaxian.cc/api/user/update_user_meta_vars" parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
        
         if ([responseObject[@"status"] isEqualToString:@"ok"]) {
             [SVProgressHUD showSuccessWithStatus:@"更改成功"];

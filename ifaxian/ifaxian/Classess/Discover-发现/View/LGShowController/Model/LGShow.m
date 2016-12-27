@@ -8,6 +8,10 @@
 
 #import "LGShow.h"
 
+@interface  LGShow()<NSCoding>
+
+@end
+
 @implementation LGShow
 +(instancetype)showTitle:(NSString *)title posts:(NSArray *)post;{
     LGShow *show = [[self alloc] init];
@@ -20,4 +24,25 @@
     
     
 }
+
+//归档
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    
+    [aCoder encodeObject:self.title forKey:@"title"];
+    [aCoder encodeObject:self.posts forKey:@"posts"];
+    
+    
+}
+//反归档
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super init]) {
+        
+        self.title = [aDecoder decodeObjectForKey:@"title"];
+        self.posts = [aDecoder decodeObjectForKey:@"posts"];
+    }
+    
+    return self;
+}
+
+
 @end

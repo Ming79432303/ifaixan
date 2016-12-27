@@ -90,6 +90,24 @@ static  NSCalendar *canlendar_;
     
     return _imageUrl;
 }
+//归档
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    
+   
+    [aCoder encodeObject:self.imageUrl forKey:@"imageUrl"];
+    
+    
+}
+//反归档
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super init]) {
+        
+      
+        self.imageUrl = [aDecoder decodeObjectForKey:@"imageUrl"];
+    }
+    
+    return self;
+}
 
 
 @end

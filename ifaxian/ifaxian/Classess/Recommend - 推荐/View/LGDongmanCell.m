@@ -44,6 +44,8 @@
     if (model.imageSize.height > 0) {
         
         self.picImageViewHeight.constant = model.imageSize.height;
+    }else{
+        self.picImageViewHeight.constant = 0;
     }
 
 }

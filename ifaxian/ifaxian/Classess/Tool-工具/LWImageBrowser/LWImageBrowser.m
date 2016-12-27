@@ -32,7 +32,7 @@
 #import "UIImage+ImageEffects.h"
 #import "LWImageItem.h"
 #import "UIImage+LGSaveImage.h"
-
+#import "NSURL+LGImageSave.h"
 
 
 @interface LWImageBrowser ()
@@ -232,15 +232,25 @@ LWActionSheetViewDelegate>
 
 - (void)lwActionSheet:(LWActionSheetView *)actionSheet didSelectedButtonWithIndex:(NSInteger)index {
     if (index == 0) {
-        [self saveImageToPhotos:self.currentImageItem.imageView.image];
+        
+        
+        
+        //保存到手机
+        if (![self.currentImageItem.imageModel.HDURL.absoluteString hasSuffix:@".gif"]){
+            [self saveImageToPhotos:self.currentImageItem.imageView.image];
+        }else{
+            //保存gif到手机
+            [self saveGifImageToPhotos];
+        }
+        
     }
-
+    
 }
 
+
 #pragma mark - Save Photo
-
 - (void)saveImageToPhotos:(UIImage*)savedImage {
-
+    
     [savedImage lg_saveImage:^(bool isSuccess, NSString *info) {
         if (isSuccess) {
             
@@ -255,6 +265,37 @@ LWActionSheetViewDelegate>
     }];
     
 }
+- (void)saveGifImageToPhotos{
+    
+    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:self.currentImageItem.imageModel.HDURL options:0 progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+        
+        NSString *fileName = [self.currentImageItem.imageModel.HDURL absoluteString].lastPathComponent;
+        NSString *file = [fileName lg_appendDocumentDir];
+        [data writeToFile:file atomically:YES];
+        
+        NSURL *url = [[NSURL alloc] initFileURLWithPath:file];
+        [url lg_saveImage:^(bool isSuccess, NSString *info) {
+            
+            if (isSuccess) {
+                NSString* msg = @"";
+                msg = @"图片已保存到本地";
+                [LWAlertView shoWithMessage:info];
+                [[NSFileManager defaultManager] removeItemAtURL:url error:nil];
+            }else{
+                NSString* msg = @"";
+                msg = @"图片保存失败";
+                [LWAlertView shoWithMessage:info];
+            }
+            
+        }];
+        
+        
+    }];
+    
+    
+}
+
+
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error
   contextInfo:(void *)contextInfo {

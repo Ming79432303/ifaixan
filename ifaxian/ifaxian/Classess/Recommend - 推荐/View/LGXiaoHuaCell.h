@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LGRecommend.h"
+#import "LGTopCell.h"
 @interface LGXiaoHuaCell : UITableViewCell
 @property(nonatomic, strong) LGRecommend *model;
+
 @end

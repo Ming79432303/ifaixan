@@ -25,7 +25,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nf1-1F-k3x">
                         <rect key="frame" x="53" y="15" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RUf-DA-7yV">
@@ -44,23 +44,35 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgm-lR-LJW">
                         <rect key="frame" x="0.0" y="295" width="336" height="35"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uS5-hl-rsI">
-                                <rect key="frame" x="10" y="5" width="36" height="22"/>
-                                <state key="normal" title="赞" image="commentLikeButton">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZe-vP-7pB">
+                                <rect key="frame" x="269" y="5" width="57" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="评论" image="recommend_comment_icon">
                                     <color key="titleColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZe-vP-7pB">
-                                <rect key="frame" x="295" y="5" width="31" height="22"/>
-                                <state key="normal" title="0" image="评论1">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uS5-hl-rsI">
+                                <rect key="frame" x="5" y="5" width="58" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="9je-mx-7UF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="赞" image="zan">
                                     <color key="titleColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="addLike:" destination="L4S-mY-4pH" eventType="touchUpInside" id="OuN-nG-JLv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="RZe-vP-7pB" secondAttribute="trailing" constant="10" id="A5j-gg-XlZ"/>
-                            <constraint firstItem="uS5-hl-rsI" firstAttribute="leading" secondItem="mgm-lR-LJW" secondAttribute="leading" constant="10" id="Fvv-et-X3Z"/>
+                            <constraint firstItem="uS5-hl-rsI" firstAttribute="leading" secondItem="mgm-lR-LJW" secondAttribute="leading" constant="5" id="Fvv-et-X3Z"/>
                             <constraint firstAttribute="height" constant="35" id="Sqa-S4-SGe"/>
                             <constraint firstItem="uS5-hl-rsI" firstAttribute="top" secondItem="mgm-lR-LJW" secondAttribute="top" constant="5" id="eX1-NT-uGi"/>
                             <constraint firstItem="RZe-vP-7pB" firstAttribute="top" secondItem="mgm-lR-LJW" secondAttribute="top" constant="5" id="gGQ-I1-v0z"/>
@@ -69,12 +81,18 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSl-f1-zSk">
                         <rect key="frame" x="10" y="53" width="316" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="视频播放" translatesAutoresizingMaskIntoConstraints="NO" id="WrP-Qt-aeA" userLabel="starVideo">
                         <rect key="frame" x="118" y="134" width="100" height="100"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVt-RY-RLK">
+                        <rect key="frame" x="290" y="17" width="36" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="nf1-1F-k3x" firstAttribute="centerY" secondItem="Y44-Zi-rln" secondAttribute="centerY" id="1B2-Tg-2F5"/>
@@ -85,6 +103,8 @@
                     <constraint firstItem="qL6-mV-0IF" firstAttribute="top" secondItem="RUf-DA-7yV" secondAttribute="bottom" constant="10" id="EHZ-fA-KET"/>
                     <constraint firstItem="Y44-Zi-rln" firstAttribute="leading" secondItem="fLl-N8-vlA" secondAttribute="leadingMargin" id="HSR-wO-EmL"/>
                     <constraint firstItem="nf1-1F-k3x" firstAttribute="leading" secondItem="Y44-Zi-rln" secondAttribute="trailing" constant="10" id="LUb-If-tW8"/>
+                    <constraint firstAttribute="trailing" secondItem="IVt-RY-RLK" secondAttribute="trailing" constant="10" id="Tpq-HS-bVo"/>
+                    <constraint firstItem="IVt-RY-RLK" firstAttribute="centerY" secondItem="nf1-1F-k3x" secondAttribute="centerY" id="Vqt-kL-tCZ"/>
                     <constraint firstItem="mgm-lR-LJW" firstAttribute="leading" secondItem="fLl-N8-vlA" secondAttribute="leading" id="ZeZ-Pf-HYJ"/>
                     <constraint firstAttribute="trailing" secondItem="qL6-mV-0IF" secondAttribute="trailing" id="aQq-rc-K7x"/>
                     <constraint firstItem="Y44-Zi-rln" firstAttribute="top" secondItem="fLl-N8-vlA" secondAttribute="topMargin" id="bZV-X2-eph"/>
@@ -98,6 +118,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="commentButton" destination="RZe-vP-7pB" id="3g2-Il-mvS"/>
+                <outlet property="dateLable" destination="IVt-RY-RLK" id="UFV-Wi-bdE"/>
+                <outlet property="likeButton" destination="uS5-hl-rsI" id="w7B-BB-DN7"/>
                 <outlet property="nameLable" destination="nf1-1F-k3x" id="sFB-zj-yRD"/>
                 <outlet property="picImageView" destination="RUf-DA-7yV" id="qQa-Rr-gES"/>
                 <outlet property="starVideoButton" destination="WrP-Qt-aeA" id="5im-NE-YBG"/>
@@ -108,8 +131,8 @@
     </objects>
     <resources>
         <image name="Screenshot_2016-11-22-13-35-51-390_微信" width="1080" height="1068"/>
-        <image name="commentLikeButton" width="18" height="18"/>
+        <image name="recommend_comment_icon" width="20" height="18"/>
+        <image name="zan" width="18" height="20"/>
         <image name="视频播放" width="100" height="100"/>
-        <image name="评论1" width="20" height="20"/>
     </resources>
 </document>

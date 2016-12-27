@@ -31,6 +31,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *categoryLable;
 @property (weak, nonatomic) IBOutlet UILabel *tagLable;
+@property (weak, nonatomic) IBOutlet UIButton *commentButton;
 
 @end
 
@@ -48,6 +49,14 @@
     self.titleLable.text = model.title;
     self.tagView.tags = model.tags;
     self.homeimagesView.images = model.images;
+    if (model.comments.count > 0) {
+        
+        [self.commentButton setTitle:[NSString stringWithFormat:@"%zd",model.comments.count] forState:UIControlStateNormal];
+    }else{
+        
+        [self.commentButton setTitle:@"评论" forState:UIControlStateNormal];
+    }
+
     if (model.tags.firstObject.title.length) {
     
         self.tagLable.text = [NSString stringWithFormat:@"#%@",model.tags.firstObject.title];

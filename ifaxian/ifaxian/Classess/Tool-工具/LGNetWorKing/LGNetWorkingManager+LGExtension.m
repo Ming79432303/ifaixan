@@ -246,7 +246,7 @@
     parameters[@"cookie"] = self.account.cookie;
     parameters[@"insecure"] = @"cool";
 
-    [self request:LGRequeTypePOST urlString:@"http://112.74.45.39/api/user/update_user_meta_vars" parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
+    [self request:LGRequeTypePOST urlString:@"https://ifaxian.cc/api/user/update_user_meta_vars" parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
         NSLog(@"%@",responseObject);
     }];
     

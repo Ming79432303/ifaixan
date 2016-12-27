@@ -52,8 +52,8 @@
 #define LGnavBarH 64
 #define LGstatusBarH 20
 #define LGtabBarH 49
-#define LGBasiRequestUrl  @"http://112.74.45.39"
-#define LGbuckeUrl @"http://79432303.oss-cn-shanghai.aliyuncs.com/"
+#define LGBasiRequestUrl  @"https://ifaxian.cc"
+#define LGbuckeUrl @"https://79432303.oss-cn-shanghai.aliyuncs.com/"
 /**
  *
  

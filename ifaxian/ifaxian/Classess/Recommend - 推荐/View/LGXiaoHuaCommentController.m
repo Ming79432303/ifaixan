@@ -34,7 +34,7 @@
     cellView.model = self.share;
     cellView.frame = headerView.bounds;
     [headerView addSubview:cellView];
-    
+
     self.tableView.tableHeaderView = headerView;
     
     

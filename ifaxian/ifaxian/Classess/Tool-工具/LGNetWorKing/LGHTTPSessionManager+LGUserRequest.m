@@ -87,7 +87,7 @@
 - (void)requestUserIfo:(NSString *)userName completion:(LGRequestCompletion)completion{
     //http://112.74.45.39/author/ming?json=1&count=1
     
-    NSString *url = [NSString stringWithFormat:@"http://112.74.45.39/author/%@?json=1&count=1",userName];
+    NSString *url = [NSString stringWithFormat:@"https://ifaxian.cc/author/%@?json=1&count=1",userName];
     
     [self requestPostUrl:url completion:^(BOOL isSuccess, id responseObject) {
        
@@ -113,7 +113,7 @@
 - (void)requestUserIfoList:(NSString *)userName completion:(LGRequestCompletion)completion{
     
     
-    NSString *url = @"http://112.74.45.39/api/user/get_user_meta";
+    NSString *url = @"https://ifaxian.cc/api/user/get_user_meta";
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"cookie"] = [LGNetWorkingManager manager].account.cookie;

@@ -24,6 +24,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _userNameTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
+    _passWordTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"];
+     _remenberButton.selected = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemenber"];
+    [self textChange];
+    
+    
     // 注册通知监听器，监听键盘弹起事件
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     // 注册通知监听器，监听键盘收起事件
@@ -59,7 +66,7 @@
     
     if (self.userNameTextField.text.length && self.passWordTextField.text.length) {
         
-        self.loginButton.enabled = YES;
+    self.loginButton.enabled = YES;
         
     }else{
         
@@ -92,8 +99,9 @@
  
 }
 - (IBAction)login:(id)sender {
-    LGLog(@"登录");
-    self.loginButton.enabled = YES;
+   
+        self.loginButton.enabled = YES;
+    
     [SVProgressHUD showWithStatus:@"正在登陆..."];
     NSString *userName = [self.userNameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *password = [self.passWordTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -106,6 +114,13 @@
                 [[LGNetWorkingManager manager].account readAccount];
                 
                  [SVProgressHUD showSuccessWithStatus:@"登陆成功"];
+                if (_remenberButton.selected == YES) {
+                    //保存账号密码
+                    [[NSUserDefaults standardUserDefaults] setBool:_remenberButton.selected forKey:@"isRemenber"];
+                    [[NSUserDefaults standardUserDefaults] setObject:_userNameTextField.text forKey:@"userName"];
+                    [[NSUserDefaults standardUserDefaults] setObject:_passWordTextField.text forKey:@"userPassword"];
+                }
+                
                 //通知登录
                 [self dismissViewControllerAnimated:YES completion:nil];
                 [[NSNotificationCenter defaultCenter] postNotificationName:LGUserLoginSuccessNotification object:nil];
@@ -199,6 +214,11 @@
     
 }
 
+- (IBAction)remenberpasWord:(id)sender {
+    _remenberButton.selected = !_remenberButton.selected;
+    
+    
+}
 
 
 - (IBAction)close:(id)sender {

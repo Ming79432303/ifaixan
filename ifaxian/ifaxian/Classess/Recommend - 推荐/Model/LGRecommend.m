@@ -53,12 +53,12 @@
     }
     CGFloat nameIcomW = 35;
     _xhCellHeght += nameIcomW;
-    _xhCellHeght += [self.title boundingRectWithSize:CGSizeMake(LGScreenW - 2*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil].size.height + LGCommonMargin * 5;
+    _xhCellHeght += [self.title boundingRectWithSize:CGSizeMake(LGScreenW - 3*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil].size.height + LGCommonMargin * 5;
     if (self.imageUrl.length) {
         _xhCellHeght += self.imageSize.height;
     }else{
-        
-        _xhCellHeght += [self.contentText boundingRectWithSize:CGSizeMake(LGScreenW - 2*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
+       
+        _xhCellHeght += [self.contentText boundingRectWithSize:CGSizeMake(LGScreenW - 3*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
         
     }
     

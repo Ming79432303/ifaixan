@@ -101,7 +101,7 @@
     //    client.credentialProvider = [[OSSStsTokenCredentialProvider alloc] initWithAccessKeyId:@"<StsToken.AccessKeyId>" secretKeyId:@"<StsToken.SecretKeyId>" securityToken:@"<StsToken.SecurityToken>"];
 
     id<OSSCredentialProvider>  credential = [self getCredential];
-    NSString *endpoint = @"http://oss-cn-shanghai.aliyuncs.com";
+    NSString *endpoint = @"https://oss-cn-shanghai.aliyuncs.com";
     // 由阿里云颁发的AccessKeyId/AccessKeySecret构造一个CredentialProvider。
     // 明文设置secret的方式建议只在测试时使用，更多鉴权模式请参考后面的访问控制章节。
     // Do any additional setup after loading the view, typically from a nib.
@@ -126,7 +126,7 @@
 -(void)uploadfileData:(NSData *)data fileName:(NSString *)fileName bucketName:(NSString *)bucketName completion:(void(^)(BOOL isSuccess))cmpletion{
  
     id<OSSCredentialProvider>  credential = [self getCredential];
-    NSString *endpoint = @"http://oss-cn-shanghai.aliyuncs.com";
+    NSString *endpoint = @"https://oss-cn-shanghai.aliyuncs.com";
     // 由阿里云颁发的AccessKeyId/AccessKeySecret构造一个CredentialProvider。
     // 明文设置secret的方式建议只在测试时使用，更多鉴权模式请参考后面的访问控制章节。
     // Do any additional setup after loading the view, typically from a nib.
