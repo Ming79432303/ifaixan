@@ -10,6 +10,7 @@
 #import "LGRegisterView.h"
 #import <POP.h>
 #import "LGForgotPasswordView.h"
+#import "LGSinaLoginController.h"
 @interface LGLoginController ()
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 
@@ -24,7 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissVc) name:LGSinaUserLoginSuccessNotification object:nil];
+    self.navigationItem.title = @"登录/注册";
     _userNameTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
     _passWordTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"];
      _remenberButton.selected = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRemenber"];
@@ -39,6 +41,14 @@
     [self setupUI];
 
 }
+
+
+- (void)dismissVc{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [SVProgressHUD dismiss];
+}
+
 
 - (void)setupUI{
     //登录
@@ -146,15 +156,19 @@
 }
 - (IBAction)sina:(id)sender {
     LGLog(@"新浪登录");
+    LGSinaLoginController *sina = [[LGSinaLoginController alloc] init];
+    [self.navigationController pushViewController:sina animated:YES];
 }
 
 - (IBAction)qq:(id)sender {
-    LGLog(@"QQ登录");
+    [SVProgressHUD showInfoWithStatus:@"暂时不支持QQ登录"];
+    
     
 }
 
 - (IBAction)github:(id)sender {
-    LGLog(@"github登录");
+ 
+     [SVProgressHUD showInfoWithStatus:@"暂时不支持github登录"];
 }
 
 - (IBAction)registered:(id)sender {

@@ -154,7 +154,7 @@
     
     id<OSSCredentialProvider> credential = [[OSSFederationCredentialProvider alloc] initWithFederationTokenGetter:^OSSFederationToken * {
         // 构造请求访问您的业务server
-        NSURL * urlk = [NSURL URLWithString:@"http://wap52.cn/app-server/sts.php"];
+        NSURL * urlk = [NSURL URLWithString:@"https://ifaxian.cc/app-server/sts.php"];
         NSURLRequest * request = [NSURLRequest requestWithURL:urlk];
         OSSTaskCompletionSource * tcs = [OSSTaskCompletionSource taskCompletionSource];
         NSURLSession * session = [NSURLSession sharedSession];

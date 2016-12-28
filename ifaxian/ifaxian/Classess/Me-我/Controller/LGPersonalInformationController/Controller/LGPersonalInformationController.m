@@ -232,6 +232,11 @@ static NSString *userCellID = @"userCellID";
 #pragma mark - 表格代理方法，单击方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    if ([LGNetWorkingManager manager].account.isOtherLogin) {
+        [SVProgressHUD showInfoWithStatus:@"第三方登录不支持修改信息"];
+        return;
+    }
+    
     LGUserItem *item = self.userList[indexPath.section];
     LGUserList *model = item.userInfos[indexPath.row];
     _userItem = model;
@@ -241,7 +246,7 @@ static NSString *userCellID = @"userCellID";
 
     }else if ([model.parameter isEqualToString:@"bac"]) {
          [self upadataAvatar:model];
-    }else if ([model.parameter isEqualToString:@"lg_capabilities"]){
+    }else if ([model.parameter containsString:@"capabilities"]){
         [SVProgressHUD showInfoWithStatus:@"您没有权限更改身份"];
         return;
     }else{

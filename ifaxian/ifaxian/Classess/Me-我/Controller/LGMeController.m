@@ -112,8 +112,8 @@
 
     [LGNetWorkingManager manager].isLogin ? [self addConView]:[self addvisitorView];
     [self setupConfigVcView];
-    
-   
+  
+    self.titleLabel.text = [LGNetWorkingManager manager].account.user.nickname;
 }
 
 - (void)userLoginOrLogout{
@@ -122,7 +122,7 @@
     [self.childViewControllers makeObjectsPerformSelector:@selector(removeFromParentViewController)];
     [self.tipView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.nameLable.text = nil;
-    
+   
     [self viewDidLoad];
     
 }
@@ -151,6 +151,11 @@
     
     if (!bcUrl.length) {
         self.iconImageView.image = [UIImage imageNamed:@"screen"];
+    }
+    if ([LGNetWorkingManager manager].account.isOtherLogin) {
+        
+        [self.iconImageView setHeader:[LGNetWorkingManager manager].account.user.userAvatar];
+        return;
     }
    
     LGWeakSelf;
@@ -216,7 +221,7 @@
     [self.navBar setShadowImage:[[UIImage alloc] init]];
 
     [self.view addSubview:self.navBar];
-    self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"mine-setting-icon" highImage:@"" target:self action:@selector(seting)];
+    self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"mine-setting-icon" highImage:@"mine-setting-icon" target:self action:@selector(seting)];
     
     //用颜色来设置文字透明@"请登录";
     self.titleLabel.text = [LGNetWorkingManager manager].isLogin ? [LGNetWorkingManager manager].account.user.nickname : @"请登录";

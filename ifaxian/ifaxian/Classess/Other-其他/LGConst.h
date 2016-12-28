@@ -26,6 +26,7 @@ UIKIT_EXTERN NSString *const LGUserLoginNotification;
 UIKIT_EXTERN NSString *const LGUserupdataImageNotification;
 UIKIT_EXTERN NSString *const LGUserLogoutSuccessNotification;
 UIKIT_EXTERN NSString *const LGUserLogoutNotification;
+UIKIT_EXTERN NSString *const  LGSinaUserLoginSuccessNotification;
 UIKIT_EXTERN CGFloat const LGHomeImageViewScale;
 UIKIT_EXTERN CGFloat const LGTitleViewHeight;
 UIKIT_EXTERN CGFloat const LGBacImageViewHeight;

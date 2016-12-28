@@ -14,13 +14,19 @@
 
 
 - (void)requestUsercompletion:(LGRequestCompletion)completion{
+    NSString *cookie = [LGNetWorkingManager manager].account.cookie;
+    NSString *url = [NSString stringWithFormat:@"https://ifaxian.cc/api/user/get_user_meta?cookie=%@",cookie];
     
-    NSString *url = @"http://112.74.45.39/api/user/get_user_meta";
+
+    if ([LGNetWorkingManager manager].account.isOtherLogin) {
+        
+        
+    }else{
+        
+        url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
     
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"cookie"] = [LGNetWorkingManager manager].account.cookie;
-    parameters[@"insecure"] = @"cool";
-    [self request:LGRequeTypeGET urlString:url parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
+    [self request:LGRequeTypePOST urlString:url parameters:nil completion:^(BOOL isSuccess, id responseObject) {
         if (completion) {
             
             completion(isSuccess,responseObject);
@@ -28,7 +34,20 @@
     }];
 }
 
+- (void)requestSinaUsercompletion:(LGRequestCompletion)completion{
+    
 
+    
+    NSString *k = [LGNetWorkingManager manager].account.cookie;
+    NSString *str = [NSString stringWithFormat:@"https://ifaxian.cc/api/user/get_user_meta?cookie=%@",k];
+    
+    [self request:LGRequeTypePOST urlString:str parameters:nil completion:^(BOOL isSuccess, id responseObject) {
+        if (completion) {
+            
+            completion(isSuccess,responseObject);
+        }
+    }];
+}
 
 /**
  *  获取首页数据

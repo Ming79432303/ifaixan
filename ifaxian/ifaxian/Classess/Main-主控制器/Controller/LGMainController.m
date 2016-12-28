@@ -83,13 +83,15 @@
 }
 //用户登录
 - (void)userLogin{
-    
-    LGLoginController *login = [[LGLoginController alloc] init];
+ 
+        LGLoginController *login = [[LGLoginController alloc] init];
+    UINavigationController *navTab = [[UINavigationController alloc] initWithRootViewController:login];
+
     
     UITabBarController *tab = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     UINavigationController *nav  =  tab.selectedViewController;
     
-    [nav presentViewController:login animated:YES completion:nil];
+    [nav presentViewController:navTab animated:YES completion:nil];
     
 }
 //用户退出登录

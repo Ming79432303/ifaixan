@@ -46,5 +46,6 @@ NSString *const LGUserLogoutSuccessNotification = @"LGUserLogoutSuccessNotificat
 //通知用户登录
 NSString *const LGUserLoginNotification = @"LGUserLoginNotification";
 NSString *const LGUserLogoutNotification = @"LGUserLogoutNotification";
+NSString *const LGSinaUserLoginSuccessNotification = @"LGSinaUserLoginSuccessNotification";
 NSString *const LGUserupdataImageNotification = @"LGUserupdataImageNotification";
 

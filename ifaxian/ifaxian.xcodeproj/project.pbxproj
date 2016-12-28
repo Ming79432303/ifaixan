@@ -207,6 +207,8 @@
 		3A8C5F921E10F74400A42543 /* LGNewFeatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C5F911E10F74400A42543 /* LGNewFeatureView.xib */; };
 		3A8DF1B41E037EA100ADD735 /* LGHTTPSessionManager+LGUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8DF1B31E037EA100ADD735 /* LGHTTPSessionManager+LGUserRequest.m */; };
 		3A8DF1B71E04191000ADD735 /* LGCommentHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8DF1B61E04191000ADD735 /* LGCommentHeaderFooterView.m */; };
+		3A905BBB1E13C38600BBE087 /* LGSinaLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A905BB91E13C38600BBE087 /* LGSinaLoginController.m */; };
+		3A905BBC1E13C38600BBE087 /* LGSinaLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A905BBA1E13C38600BBE087 /* LGSinaLoginController.xib */; };
 		3A9617DF1DDD54F6008780D5 /* LGTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9617DE1DDD54F6008780D5 /* LGTestController.m */; };
 		3A9617E31DDD7C91008780D5 /* LGNetWorkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9617E21DDD7C91008780D5 /* LGNetWorkingManager.m */; };
 		3AA560B51DF1992D008326AA /* NSString+LGExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA560B41DF1992D008326AA /* NSString+LGExtention.m */; };
@@ -680,6 +682,9 @@
 		3A8DF1B31E037EA100ADD735 /* LGHTTPSessionManager+LGUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LGHTTPSessionManager+LGUserRequest.m"; sourceTree = "<group>"; };
 		3A8DF1B51E04191000ADD735 /* LGCommentHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCommentHeaderFooterView.h; sourceTree = "<group>"; };
 		3A8DF1B61E04191000ADD735 /* LGCommentHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCommentHeaderFooterView.m; sourceTree = "<group>"; };
+		3A905BB81E13C38600BBE087 /* LGSinaLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSinaLoginController.h; sourceTree = "<group>"; };
+		3A905BB91E13C38600BBE087 /* LGSinaLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSinaLoginController.m; sourceTree = "<group>"; };
+		3A905BBA1E13C38600BBE087 /* LGSinaLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGSinaLoginController.xib; sourceTree = "<group>"; };
 		3A9617DD1DDD54F6008780D5 /* LGTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTestController.h; sourceTree = "<group>"; };
 		3A9617DE1DDD54F6008780D5 /* LGTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGTestController.m; sourceTree = "<group>"; };
 		3A9617E11DDD7C91008780D5 /* LGNetWorkingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGNetWorkingManager.h; sourceTree = "<group>"; };
@@ -1627,6 +1632,9 @@
 			children = (
 				3A5669D71DED78D300959D96 /* LGLoginController.h */,
 				3A5669D81DED78D300959D96 /* LGLoginController.m */,
+				3A905BB81E13C38600BBE087 /* LGSinaLoginController.h */,
+				3A905BB91E13C38600BBE087 /* LGSinaLoginController.m */,
+				3A905BBA1E13C38600BBE087 /* LGSinaLoginController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2361,6 +2369,7 @@
 				3A32B68C1E0124B500B9FCD6 /* LGOtherCell.xib in Resources */,
 				3AE122541DDC8AEC00D1A128 /* Assets.xcassets in Resources */,
 				3A5669E41DED78D300959D96 /* LGLoginController.xib in Resources */,
+				3A905BBC1E13C38600BBE087 /* LGSinaLoginController.xib in Resources */,
 				3A52B51A1DFBE1D600C8C010 /* LGWriteView.xib in Resources */,
 				3ADD2C9C1DEC8F6E00314B19 /* LGDiscoverHeaderView.xib in Resources */,
 				3A52B5181DFBE1D600C8C010 /* LGScrollContenView.xib in Resources */,
@@ -2512,6 +2521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF4B62B1DDCAB3B00C06419 /* NSCalendar+Calendar.m in Sources */,
+				3A905BBB1E13C38600BBE087 /* LGSinaLoginController.m in Sources */,
 				3A0F21471DDEB503008B955F /* LWHTMLParser.m in Sources */,
 				3A0F214C1DDEB503008B955F /* LWStorageBuilder.m in Sources */,
 				3A9617E31DDD7C91008780D5 /* LGNetWorkingManager.m in Sources */,

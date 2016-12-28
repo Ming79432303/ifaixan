@@ -25,6 +25,7 @@
  *  用户邮箱
  */
 @property(nonatomic, copy) NSString *email;
+@property(nonatomic, copy) NSString *userAvatar;
 /**
  *  用户名
  */

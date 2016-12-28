@@ -20,7 +20,10 @@
 /**
  *  账户模型
  */
+
 @property(nonatomic, strong) LGAccountUser *user;
+
+@property(nonatomic, assign) BOOL isOtherLogin;
 
 - (void)accountSave;
 - (void)readAccount;
