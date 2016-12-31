@@ -31,8 +31,8 @@ singleM(Net)
 
 - (instancetype)initWithBaseURL:(NSURL *)url{
     if (self = [super initWithBaseURL:url]) {
-#warning cookie为空处理
-      self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
+
+      //self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
         if (![self isLogin]) {
             
             //通知用户登录

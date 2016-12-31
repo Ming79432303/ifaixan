@@ -93,7 +93,7 @@
             return _dmCellHeght;
         }
         
-        _dmCellHeght += [self.title boundingRectWithSize:CGSizeMake(LGScreenW - 4*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:17]} context:nil].size.height + LGCommonMargin * 3;
+        _dmCellHeght += [self.title boundingRectWithSize:CGSizeMake(LGScreenW - 3*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:17]} context:nil].size.height + LGCommonMargin * 3;
         
         _dmCellHeght += self.imageSize.height;
         return _dmCellHeght;
@@ -118,7 +118,24 @@
 
     
 }
-
+- (CGFloat)jueWuHeight{
+    
+    if (_jueWuHeight) {
+        return _jueWuHeight;
+    }
+    _jueWuHeight += LGAvatarHeight + 2 * LGCommonMargin;
+    
+    _jueWuHeight += [self.title boundingRectWithSize:CGSizeMake(LGScreenW - 3*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:16]} context:nil].size.height + LGCommonMargin * 2;
+    _jueWuHeight += 128;
+    
+    _jueWuHeight += [self.excerpt boundingRectWithSize:CGSizeMake(LGScreenW - 3*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:12]} context:nil].size.height + LGCommonMargin * 2;
+    
+    return _jueWuHeight;
+}
+- (NSString *)descriptions{
+    
+    return [[NSString lg_regularExpression:self.excerpt] stringByReplacingOccurrencesOfString:@" [&hellip;]" withString:@"..."];
+}
 
 
 @end

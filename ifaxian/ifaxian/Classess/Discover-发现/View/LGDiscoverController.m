@@ -82,11 +82,11 @@ static NSString  *discoverHFID = @"discoverHFID";
     
 }
 - (void)addShowView{
-    LGDiscoverList *list = [[LGDiscoverList alloc] init];
-    [list requestTags:^(NSArray *tags) {
+    LGWeakSelf;
+    [self.list requestTags:^(NSArray *tags) {
         
-        self.tags = tags;
-        [self.tableView reloadData];
+        weakSelf.tags = tags;
+        [weakSelf.tableView reloadData];
     }];
     [self.tableView registerClass:[LGShowCell class] forCellReuseIdentifier:showCellID];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGTagsCell class]) bundle:nil] forCellReuseIdentifier:tagCellID];

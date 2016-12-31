@@ -37,11 +37,8 @@
     NSString *tempStr2 = [tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
     NSString *tempStr3 = [[@"\"" stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
     NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
-    NSString* returnStr = [NSPropertyListSerialization propertyListFromData:tempData
-                                                           mutabilityOption:NSPropertyListImmutable
-                                                                     format:NULL
-                                                           errorDescription:NULL];
-    
+    NSString* returnStr = [NSPropertyListSerialization propertyListWithData:tempData options:NSPropertyListImmutable format:NULL error:NULL];
+  
     return [returnStr stringByReplacingOccurrencesOfString:@"\\r\\n" withString:@"\n"];
 }
 
@@ -90,7 +87,10 @@
                 resultString = [urlString substringWithRange:resRang];
             }
         }
-        *stop = YES;
+        if (resultString.length) {
+            
+            *stop = YES;
+        }
     }];
     
     return resultString;
@@ -102,7 +102,7 @@
     NSString *urlString = self;
     NSError *error = NULL;
     //创建正则表达式
-    NSString *pattern = @"http://.*?.mp4";
+    NSString *pattern = @"https://.*?.mp4";
     
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
     __block NSString *resultString;
@@ -122,7 +122,7 @@
     return resultString;
     
 }
-//
+
 - (NSArray *)lg_getImages{
     
     

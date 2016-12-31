@@ -32,7 +32,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     
 //     [[NSNotificationCenter defaultCenter] postNotificationName:@"loadFinish" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData:) name:@"loadFinish" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData:) name:@"loadFinish" object:nil];
     [self setCollectionViews];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选择" style:0 target:self action:@selector(selectedImages)];

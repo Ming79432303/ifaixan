@@ -167,6 +167,7 @@
     
     
     if (self.imageModels.count) {
+        
         LWImageBrowser *imageBrowser = [[LWImageBrowser alloc] initWithImageBrowserModels:self.imageModels currentIndex:tap.view.tag];
         //imageBrowser.isScalingToHide = NO ;
  
@@ -204,7 +205,7 @@
         UIImageView *gifImage = imageView.subviews.firstObject;
         gifImage.hidden = YES;
         
-        
+       
         return [url lg_thumbnailImageSizeImageW:0];
     }
     

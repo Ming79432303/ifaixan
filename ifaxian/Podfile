@@ -16,7 +16,7 @@ target 'ifaxian' do
     inherit! :search_paths
     # Pods for testing
   end
-pod "AFNetworking"
+pod 'AFNetworking'
 pod "SDWebImage"
 pod "FMDB"
 pod "SVProgressHUD"

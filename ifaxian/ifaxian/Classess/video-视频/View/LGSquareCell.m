@@ -130,7 +130,7 @@
         _bacImageView.hidden = YES;
         _imagesView.hidden = YES;
 
-         LGLog(@"文字");
+        
     }
     [_likeButton setTitle:model.share.ding forState:UIControlStateNormal];
     [_commentButton setTitle:[NSString stringWithFormat:@"%zd",model.share.comments.count] forState:UIControlStateNormal];

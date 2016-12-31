@@ -34,6 +34,6 @@
 
 - (void)requestAddLikeAction:(NSString *)action umid:(NSString *)ID completion:(LGRequestCompletion)completion;
 - (void)requestDeleteArticlePost_slug:(NSString *)post_slug post_id:(NSString *)post_id completion:(LGSuccess)completion;
-
+- (void)updateUserCookie;
 
 @end

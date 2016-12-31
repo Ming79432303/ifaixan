@@ -62,7 +62,7 @@
      parameters[@"submitBlog"] = self.webUrlTextField.text;
      parameters[@"submitContent"] = self.contentlTextField.text;
     
-    [[LGHTTPSessionManager manager] request:LGRequeTypePOST urlString:@"http://ifaxian.cc/%e6%8f%90%e4%ba%a4" parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
+    [[LGHTTPSessionManager manager] request:LGRequeTypePOST urlString:@"https://ifaxian.cc/%e6%8f%90%e4%ba%a4" parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
         if (isSuccess) {
             
      

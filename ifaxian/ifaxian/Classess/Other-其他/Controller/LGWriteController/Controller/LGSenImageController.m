@@ -46,6 +46,7 @@
 @property (nonatomic, strong) UIImagePickerController *imagePickerVc;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, strong) CWStatusBarNotification *notification;
+@property(nonatomic, strong) LGNetWorkingManager   *manager;
 @end
 
 @implementation LGSenImageController
@@ -57,6 +58,16 @@
     
     return _imagesArray;
 }
+
+
+- (LGNetWorkingManager *)manager{
+    
+    if (_manager == nil) {
+        _manager = [LGNetWorkingManager manager];
+    }
+    return _manager;
+}
+
 
 - (UIImagePickerController *)imagePickerVc{
     if (_imagePickerVc == nil) {
@@ -70,9 +81,12 @@
             tzBarItem = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[TZImagePickerController class]]];
             BarItem = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UIImagePickerController class]]];
         } else {
-            tzBarItem = [UIBarButtonItem appearanceWhenContainedIn:[TZImagePickerController class], nil];
-            BarItem = [UIBarButtonItem appearanceWhenContainedIn:[UIImagePickerController class], nil];
+            tzBarItem = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[TZImagePickerController class]]];
+            BarItem = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UIImagePickerController class]]];
+            
+            
         }
+//        /Users/ming/Desktop/ifaxan/ifaixan/ifaxian/ifaxian/Classess/Other-其他/Controller/LGWriteController/Controller/LGSenImageController.m:84:42: 'appearanceWhenContainedIn:' is deprecated: first deprecated in iOS 9.0 - Use +appearanceWhenContainedInInstancesOfClasses: instead
         NSDictionary *titleTextAttributes = [tzBarItem titleTextAttributesForState:UIControlStateNormal];
         [BarItem setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
     }
@@ -383,7 +397,7 @@
         
         
         
-        
+        LGWeakSelf;
         [imageManager requestImageDataForAsset:asset
                                        options:options
                                  resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
@@ -392,14 +406,14 @@
                                      if ([dataUTI isEqualToString:(__bridge NSString *)kUTTypeGIF]) {
                                          //这里获取gif图片的NSData数据
                                          LGPhotoImage *image = [LGPhotoImage phototisGif:YES image:[UIImage imageWithData:imageData] imageData:imageData];
-                                         [self.imagesArray addObject:image];
+                                         [weakSelf.imagesArray addObject:image];
                                          
                                          
                                          
                                      } else {
                                          //这里获取其他图片的NSData数据
                                          LGPhotoImage *image = [LGPhotoImage phototisGif:NO image:[UIImage imageWithData:imageData] imageData:imageData];
-                                         [self.imagesArray addObject:image];
+                                         [weakSelf.imagesArray addObject:image];
 
                                      }
                                  }];
@@ -431,6 +445,7 @@
 - (void)deleteBtnClik:(UIButton *)sender {
     [_selectedPhotos removeObjectAtIndex:sender.tag];
     [_selectedAssets removeObjectAtIndex:sender.tag];
+    [_imagesArray removeObjectAtIndex:sender.tag];
     
     [_collectionView performBatchUpdates:^{
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:sender.tag inSection:0];
@@ -477,6 +492,7 @@
     
     [notification displayNotificationWithMessage:@"正在发送..." forDuration:1.0];
     [self close:nil];
+       LGWeakSelf;
     dispatch_group_t group = dispatch_group_create();
 //    [SVProgressHUD showWithStatus:@"正在上传图片.."];
     for (LGPhotoImage *photoImage in self.imagesArray) {
@@ -493,15 +509,16 @@
             imageName = [NSString stringWithFormat:@"squareImages/%@.jpg",imageID];
         }
         dispatch_group_enter(group);
+       
         dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^{
-            
-            [self.upload uploadfileData:data fileName:imageName bucketName:nil completion:^(BOOL isSuccess) {
+          
+            [weakSelf.upload uploadfileData:data fileName:imageName bucketName:nil completion:^(BOOL isSuccess) {
                 if (isSuccess) {
                     if (photoImage.isGif) {
                         
-                        [self.imageUrls addObject:[NSString stringWithFormat:@"%@.gif",imageID]] ;
+                        [weakSelf.imageUrls addObject:[NSString stringWithFormat:@"%@.gif",imageID]] ;
                     }else{
-                        [self.imageUrls addObject:[NSString stringWithFormat:@"%@.jpg",imageID]] ;
+                        [weakSelf.imageUrls addObject:[NSString stringWithFormat:@"%@.jpg",imageID]] ;
                     }
                     dispatch_group_leave(group);
                     
@@ -531,7 +548,7 @@
         
         
         
-        
+        LGWeakSelf;
         [[LGNetWorkingManager manager] requestPostImageTitle:self.textView.text content:htmstrM :^(BOOL isSuccess) {
             CWStatusBarNotification *notification = [CWStatusBarNotification new];
            
@@ -541,7 +558,7 @@
             if (isSuccess) {
                 
                 [notification displayNotificationWithMessage:@"发送成功" forDuration:1.0];
-                [self close:nil];
+                [weakSelf close:nil];
             }else{
                 
                [notification displayNotificationWithMessage:@"发送失败" forDuration:1.0];

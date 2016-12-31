@@ -27,10 +27,11 @@
 
 
 - (void)loadNewDataCompletion:(void(^)(BOOL isSuccess ,NSArray *array))completion{
-    
-    [[LGHTTPSessionManager manager] requestPostUrl:[NSString stringWithFormat:@"http://112.74.45.39/category/%@/?json=1",self.postName] completion:^(BOOL isSuccess, id responseObject) {
+    NSLog(@"获取新数据");
+    [[LGHTTPSessionManager manager] requestPostUrl:[NSString stringWithFormat:@"https://ifaxian.cc/category/%@/?json=1",self.postName] completion:^(BOOL isSuccess, id responseObject) {
         
         if (isSuccess) {
+             NSLog(@"获取新数据完毕");
             index_ = 2;
         }
       self.lists = [LGRecommend mj_objectArrayWithKeyValuesArray:responseObject[@"posts"]];
@@ -43,12 +44,12 @@
 
 
 - (void)loadOldDataCompletion:(void(^)(BOOL isSuccess ,NSArray *array))completion{
-#warning 滑到最后一页出现问题数据有些无图做处理
-    [[LGHTTPSessionManager manager] requestPostUrl:[NSString stringWithFormat:@"http://112.74.45.39/category/%@/?json=1&page=%zd",self.postName,index_] completion:^(BOOL isSuccess, id responseObject) {
-       
+NSLog(@"获取就数据");
+    [[LGHTTPSessionManager manager] requestPostUrl:[NSString stringWithFormat:@"https://ifaxian.cc/category/%@/?json=1&page=%zd",self.postName,index_] completion:^(BOOL isSuccess, id responseObject) {
+        NSLog(@"获取就数据完毕");
         //        self.images = [LGShareImage mj_objectArrayWithKeyValuesArray:responseObject[@"posts"]];
         NSMutableArray<LGRecommend *> *shareM = [NSMutableArray array];
-      
+        
         shareM = [LGRecommend mj_objectArrayWithKeyValuesArray: responseObject[@"posts"]];
 
         if (self.lists.lastObject.ID > shareM.firstObject.ID) {
@@ -88,7 +89,7 @@
 
 - (void)downloadImage:(NSArray<LGRecommend *> *)array Completion:(void(^)(BOOL isSuccess ,NSArray <LGRecommend *>*hotArray))completion{
     //下载图片
-    __block   CGFloat lenght = 0;
+  
     dispatch_group_t group = dispatch_group_create();
     for (LGRecommend *hotModel in array) {
     
@@ -100,7 +101,7 @@
                 CGSize imageSize = image.size;
                 //计算行高
                 //
-                lenght += UIImageJPEGRepresentation(image, 1).length;
+    
                 
                 
                 hotModel.originalImageSize = imageSize;
@@ -110,12 +111,12 @@
         }
     }
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        
-       
+    
+       NSLog(@"刷新表格");
         completion(YES,self.lists);
         
     });
-    
+
     
     
     

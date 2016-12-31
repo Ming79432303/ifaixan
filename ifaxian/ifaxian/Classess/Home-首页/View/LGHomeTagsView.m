@@ -41,7 +41,7 @@
 
 - (void)setTags:(NSArray<LGHomeTage *> *)tags{
     _tags = tags;
-#warning 多标签分页
+
     int index = 0;
     if (tags.count>0) {
         

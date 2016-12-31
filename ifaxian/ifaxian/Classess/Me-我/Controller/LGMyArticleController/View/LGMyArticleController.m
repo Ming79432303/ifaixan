@@ -99,11 +99,11 @@ static NSString *squareCellID = @"squareCellID";
                 [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
                 return ;
             }
-            self.postsArrayM = shareArray;
-            [self.tableView reloadData];
-            _lastCount = shareArray.count;
+            weakSelf.postsArrayM = shareArray;
+            [weakSelf.tableView reloadData];
+            weakSelf.lastCount = shareArray.count;
         }
-        [self.tableView.mj_footer endRefreshing];
+        [weakSelf.tableView.mj_footer endRefreshing];
         
     }];
     

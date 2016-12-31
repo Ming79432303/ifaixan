@@ -14,9 +14,19 @@
 #import "LWActiveIncator.h"
 @interface LGUserActivityDisplayController ()
 @property(nonatomic, strong) LGPostModel *model;
+@property(nonatomic, strong) LGHTTPSessionManager *manager;
 @end
 
 @implementation LGUserActivityDisplayController
+
+- (LGHTTPSessionManager *)manager{
+    
+    if (_manager == nil) {
+        _manager = [[LGHTTPSessionManager alloc] init];
+    }
+    
+    return _manager;
+}
 
 - (void)viewWillAppear:(BOOL)animated{
     
@@ -38,9 +48,10 @@
    
     NSString *postId= [_postUrl substringFromIndex:@"https://ifaxian.cc/?p=".length];
   NSString * requestUrl = [NSString requestBasiPathAppend:[NSString stringWithFormat:@"/api/get_post/?post_id=%@",postId]];
-
-    [[LGHTTPSessionManager manager] requestPostUrl:requestUrl completion:^(BOOL isSuccess, id responseObject) {
-        [LWActiveIncator hideInViwe:self.view];
+    
+    LGWeakSelf;
+    [self.manager requestPostUrl:requestUrl completion:^(BOOL isSuccess, id responseObject) {
+        [LWActiveIncator hideInViwe:weakSelf.view];
      
         
    LGPostModel *model = [LGPostModel mj_objectWithKeyValues:responseObject[@"post"]];
@@ -51,15 +62,15 @@
             LGShareController *shareVc = [[LGShareController alloc] init];
             shareVc.share = share;
             //[self.navigationController pushViewController:shareVc animated:YES];
-            [self addChildViewController:shareVc];
-            [self.view insertSubview:shareVc.view atIndex:1];
+            [weakSelf addChildViewController:shareVc];
+            [weakSelf.view insertSubview:shareVc.view atIndex:1];
         }else{
             LGDisplayController *disVc = [[LGDisplayController alloc] init];
             
             disVc.model = model;
 
-            [self addChildViewController:disVc];
-            [self.view insertSubview:disVc.view atIndex:1];
+            [weakSelf addChildViewController:disVc];
+            [weakSelf.view insertSubview:disVc.view atIndex:1];
             
         }
         
@@ -77,7 +88,7 @@
         
     }]];
     LGWeakSelf;
-    if ([self.model.author.slug isEqualToString:[LGNetWorkingManager manager].account.user.username] || [self.model.author.ID isEqualToString:@"1"]) {
+    if ([self.model.author.slug isEqualToString:[LGNetWorkingManager manager].account.user.username] || [[LGNetWorkingManager manager].account.user.ID isEqualToString:@"2"]) {
         [alerVc addAction:[UIAlertAction actionWithTitle:@"删除该文章" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             UIAlertController *alerVc2 = [UIAlertController alertControllerWithTitle:@"提示" message:@"删除之后不可恢复您确定要删除吗？" preferredStyle:UIAlertControllerStyleAlert];
             [alerVc2 addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

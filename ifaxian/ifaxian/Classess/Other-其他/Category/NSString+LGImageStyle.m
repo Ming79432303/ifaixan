@@ -10,18 +10,22 @@
 
 @implementation NSString (LGImageStyle)
 
+//原图
 -(NSString *)lg_largeImage{
     
     return self;
 }
+//略缩图
 -(NSString *)lg_thumbnailImageSizeImageW:(int)imageW{
     
-    return [NSString stringWithFormat:@"%@?image/resize,m_fill,w_100,h_100,limit_0/auto-orient,0/sharpen,239/quality,q_90/format,jpg",self];
+    return [NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_400",self];
 }
+//中图
 -(NSString *)lg_mediumImage{
     
     return [NSString stringWithFormat:@"%@?image/resize,m_fill,w_200,h_200,limit_0/auto-orient,0/quality,q_100",self];
 }
+//截取gif第一张图片
 
 - (NSString *)lg_jpgReplaceGif{
     

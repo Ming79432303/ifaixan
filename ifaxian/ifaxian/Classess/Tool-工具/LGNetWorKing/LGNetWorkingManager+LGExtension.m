@@ -33,7 +33,7 @@
                 
                 //字典专模型
                 LGAccount *account = [LGAccount mj_objectWithKeyValues:responseObject];
-                LGLog(@"%@",account.cookie);
+            
                 //保存用户数据
                 [account accountSave];
                 if (completion) {
@@ -198,6 +198,8 @@
   
    NSString *url = [NSString requestBasiPathAppend:[NSString stringWithFormat:@"/?s=%@&json=1&page=%zd",parame,page]];
     
+
+    
    
     [self request:LGRequeTypeGET urlString:url parameters:nil completion:^(BOOL isSuccess, id responseObject) {
         if (completion) {
@@ -287,7 +289,15 @@
     
     
 }
-
+- (void)updateUserCookie{
+    
+    //自动更新cook用的
+    
+    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"updataUserName"];
+    NSString *userPas = [[NSUserDefaults standardUserDefaults] objectForKey:@"updataPassword"];
+    [self requestAuthcookie:userName passWord:userPas completion:nil];
+    
+}
 
 
 

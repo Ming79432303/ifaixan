@@ -16,8 +16,8 @@
     
     
     NSString *url = [NSString stringWithFormat:@"https://ifaxian.cc/author/%@/page/1?json=1",_userName];
-    
-    [[LGHTTPSessionManager manager] requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {
+    LGWeakSelf;
+    [self.manager requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {
         
         if (isSuccess) {
             index_ = 2;
@@ -28,7 +28,7 @@
                 [shareM addObject:share];
             }
             
-            [self loadImages:shareM isNew:YES Completion:completion];
+            [weakSelf loadImages:shareM isNew:YES Completion:completion];
             
         }else{
             
@@ -46,12 +46,12 @@
     }
     NSString *url = [NSString stringWithFormat:@"https://ifaxian/author/%@/page/%zd?json=1",_userName,index_];
     
-    
-    [[LGHTTPSessionManager manager] requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {
+    LGWeakSelf;
+    [self.manager requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {
 
         NSMutableArray<LGShare *> *shareM = [NSMutableArray array];
         
-        if (self.shareArray.lastObject.share.ID > self.shareArray.firstObject.share.ID) {
+        if (weakSelf.shareArray.lastObject.share.ID > weakSelf.shareArray.firstObject.share.ID) {
             
             for (NSDictionary *dict in json) {
                 LGShareImage *model = [LGShareImage mj_objectWithKeyValues:dict];
@@ -66,9 +66,9 @@
                 [shareM addObject:share];
             }
             
-            for (LGShare *model in self.shareArray) {
+            for (LGShare *model in weakSelf.shareArray) {
                 
-                if (![self.shareArray containsObject:model]) {
+                if (![weakSelf.shareArray containsObject:model]) {
                     [shareM addObject:model];
                 }
                 
@@ -80,7 +80,7 @@
 //            return ;
 //        }
         index_ += 1;
-        [self loadImages:shareM isNew:NO Completion:completion];
+        [weakSelf loadImages:shareM isNew:NO Completion:completion];
         
 
     }];

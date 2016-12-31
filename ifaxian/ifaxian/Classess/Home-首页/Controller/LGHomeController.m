@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSMutableArray<LGHomeModel *> *postsArrayM;
 @property (nonatomic, strong) NSArray<LGHomeModel *>  *headerArray;
 @property(nonatomic, strong)  LGHomeHeaderView *headerView;
+@property(nonatomic, strong)  LGHTTPSessionManager *manager;
 @end
 
 @implementation LGHomeController
@@ -41,7 +42,14 @@ static NSString *ID = @"cellID";
     
 }
 
-
+- (LGHTTPSessionManager *)manager{
+    
+    if (_manager == nil) {
+        _manager = [LGHTTPSessionManager manager];
+    }
+    
+    return _manager;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupNav];
@@ -78,14 +86,15 @@ static NSString *ID = @"cellID";
 
 - (void)loadHaderData{
 NSString *url = [NSString requestBasiPathAppend:@"/?json=1&count=1"];
-    [[LGHTTPSessionManager manager] requestPostUrl:url completion:^(BOOL isSuccess, id responseObject) {
+    LGWeakSelf;
+    [self.manager requestPostUrl:url completion:^(BOOL isSuccess, id responseObject) {
          NSArray *headerList = [LGHomeModel mj_objectArrayWithKeyValuesArray:responseObject[@"posts"] context:nil];
         if (headerList.count > 3) {
             
             headerList = [headerList subarrayWithRange:NSMakeRange(0, 3)];
             
         }
-        self.headerView.headerArray = headerList;
+        weakSelf.headerView.headerArray = headerList;
 
     }];
     
@@ -95,20 +104,21 @@ NSString *url = [NSString requestBasiPathAppend:@"/?json=1&count=1"];
 - (void)loadNewData{
 //    http://ifaxian.cc/page/1?json=1
     // Do any additional setup after loading the view.
-    [[LGHTTPSessionManager manager] requsetHomelist:^(BOOL isSuccess, NSArray *json) {
+    LGWeakSelf;
+    [self.manager requsetHomelist:^(BOOL isSuccess, NSArray *json) {
         if (isSuccess) {
             [self.tableView.mj_footer resetNoMoreData];
             index_ = 2;
-            self.postsArrayM =  [LGHomeModel mj_objectArrayWithKeyValuesArray:json context:nil];
+            weakSelf.postsArrayM =  [LGHomeModel mj_objectArrayWithKeyValuesArray:json context:nil];
             
             
-            [self.postsArrayM removeObjectsInArray:self.headerArray];
+            [weakSelf.postsArrayM removeObjectsInArray:self.headerArray];
             
-            [self.tableView reloadData];
-            [self.refresh endRefreshing];
+            [weakSelf.tableView reloadData];
+            [weakSelf.refresh endRefreshing];
         }else{
             
-             [self.refresh endRefreshing];
+             [weakSelf.refresh endRefreshing];
         }
         
     }];
@@ -119,25 +129,25 @@ NSString *url = [NSString requestBasiPathAppend:@"/?json=1&count=1"];
 //http://112.74.45.39/page/1?json=5&count=20
     NSString *url = [NSString stringWithFormat:@"https://ifaxian.cc/category/home/page/%zd?json=1",index_];
     
-    
-    [[LGHTTPSessionManager manager] requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {
+    LGWeakSelf;
+    [self.manager requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {
        
         if (json == nil) {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
             return ;
         }
         if (isSuccess) {
             NSArray<LGHomeModel *> *posts =  [LGHomeModel mj_objectArrayWithKeyValuesArray:json context:nil];
             
-            if (self.postsArrayM.lastObject.ID > posts.firstObject.ID) {
-                 [self.postsArrayM addObjectsFromArray:posts];
-                 [self.tableView.mj_footer endRefreshing];
-                 [self.tableView reloadData];
+            if (weakSelf.postsArrayM.lastObject.ID > posts.firstObject.ID) {
+                 [weakSelf.postsArrayM addObjectsFromArray:posts];
+                 [weakSelf.tableView.mj_footer endRefreshing];
+                 [weakSelf.tableView reloadData];
             }else{
                 
-                [self.postsArrayM addObjectsFromArray:posts];
+                [weakSelf.postsArrayM addObjectsFromArray:posts];
                 NSMutableArray *arrayM = [NSMutableArray array];
-                for (LGPostModel *model in self.postsArrayM) {
+                for (LGPostModel *model in weakSelf.postsArrayM) {
                     
                     if (![arrayM containsObject:model]) {
                         [arrayM addObject:model];
@@ -146,16 +156,16 @@ NSString *url = [NSString requestBasiPathAppend:@"/?json=1&count=1"];
                 }
              
                 
-                self.postsArrayM = arrayM;
-#warning 最后一页处理
+                weakSelf.postsArrayM = arrayM;
+
                 
             }
       
             index_ += 1;
-            [self.tableView.mj_footer endRefreshing];
+            [weakSelf.tableView.mj_footer endRefreshing];
         }else{
             
-            [self.tableView.mj_footer endRefreshing];
+            [weakSelf.tableView.mj_footer endRefreshing];
             
             
         }

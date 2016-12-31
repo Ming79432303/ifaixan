@@ -12,6 +12,17 @@
 
 
 
+- (instancetype)initWithBaseURL:(NSURL *)url{
+    if (self = [super initWithBaseURL:url]) {
+
+        self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
+        self.securityPolicy = [self customSecurityPolicy];
+       
+            
+    }
+    
+    return self;
+}
 
 - (void)requestUsercompletion:(LGRequestCompletion)completion{
     NSString *cookie = [LGNetWorkingManager manager].account.cookie;
@@ -136,7 +147,7 @@
     };
     //失败回调
     void(^failure)() = ^(NSURLSessionDataTask * _Nonnull task ,NSError *error) {
-#warning 403 token过期处理
+
     
         NSHTTPURLResponse *respon = (NSHTTPURLResponse *)task.response;
         
@@ -207,6 +218,31 @@
     
     
 }
+- (AFSecurityPolicy *)customSecurityPolicy
+{
+    //先导入证书
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"ifaxian.cer" ofType:nil];//证书的路径
+    NSData *certData = [NSData dataWithContentsOfFile:cerPath];
+    // AFSSLPinningModeCertificate 使用证书验证模式
+    //AFSSLPinningModeNone: 代表客户端无条件地信任服务器端返回的证书。
+    //AFSSLPinningModePublicKey: 代表客户端会将服务器端返回的证书与本地保存的证书中，PublicKey的部分进行校验；如果正确，才继续进行。
+    //AFSSLPinningModeCertificate: 代表客户端会将服务器端返回的证书和本地保存的证书中的所有内容，包括PublicKey和证书部分，全部进行校验；如果正确，才继续进行。
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    // allowInvalidCertificates 是否允许无效证书（也就是自建的证书），默认为NO
+    // 如果是需要验证自建证书，需要设置为YES
+//    securityPolicy.allowInvalidCertificates = YES;
+    //validatesDomainName 是否需要验证域名，默认为YES；
+    //假如证书的域名与你请求的域名不一致，需把该项设置为NO；如设成NO的话，即服务器使用其他可信任机构颁发的证书，也可以建立连接，这个非常危险，建议打开。
+    //置为NO，主要用于这种情况：客户端请求的是子域名，而证书上的是另外一个域名。因为SSL证书上的域名是独立的，假如证书上注册的域名是www.google.com，那么mail.google.com是无法验证通过的；当然，有钱可以注册通配符的域名.google.com，但这个还是比较贵的。
+    //如置为NO，建议自己添加对应域名的校验逻辑。
+    //对应域名的校验我认为应该在url中去逻辑判断。--》冯龙腾写
+    securityPolicy.validatesDomainName = YES;
+    if (certData) {
+        securityPolicy.pinnedCertificates = @[certData];
+    }
+    return securityPolicy;
+}
+
 
 
 @end

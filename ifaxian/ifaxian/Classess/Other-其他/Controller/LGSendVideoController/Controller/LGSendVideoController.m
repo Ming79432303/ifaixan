@@ -133,8 +133,7 @@
     [alert addAction:[UIAlertAction actionWithTitle:@"拍摄上传" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            UIAlertView *alert= [[UIAlertView alloc] initWithTitle:@"提示" message:@"该设备不支持视频拍摄" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:NULL];
-            [alert show];
+            [SVProgressHUD showErrorWithStatus:@"该设备不支持拍照"];
             return;
         }
 

@@ -21,7 +21,8 @@
  *  @param completion 是否上传成功回调
  */
 -(void)uploadfilePath:(NSString *)filePath fileName:(NSString *)fileName bucketName:(NSString *)bucketName completion:(void(^)(BOOL isSuccess))completion{
-    
+
+
 #warning 待做
     //    需要注意，由于苹果的限制，后台上传只支持直接上传文件，所以，SDK目前只在 putObject 接口，且只在 设置 fileURL 上传时，支持后台传输服务。所需操作步骤如下：
     //

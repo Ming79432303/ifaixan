@@ -114,6 +114,8 @@
     [self setupConfigVcView];
   
     self.titleLabel.text = [LGNetWorkingManager manager].account.user.nickname;
+
+    
 }
 
 - (void)userLoginOrLogout{
@@ -170,6 +172,7 @@
                 }else{
                     
                     weakSelf.iconImageView.image = [image lg_avatarImagesize:_iconImageView.bounds.size backColor:[UIColor whiteColor] lineColor:[UIColor whiteColor]];
+                    weakSelf.titleImageView.image = weakSelf.iconImageView.image;
                 }
                 
                     dispatch_async(dispatch_get_global_queue(0, 0), ^{

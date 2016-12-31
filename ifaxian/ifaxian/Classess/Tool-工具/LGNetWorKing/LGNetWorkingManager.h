@@ -32,4 +32,6 @@ singleH(Net)
 - (BOOL)isLogin;
 
 
+
+
 @end

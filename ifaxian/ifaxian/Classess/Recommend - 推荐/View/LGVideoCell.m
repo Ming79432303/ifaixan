@@ -47,6 +47,7 @@
 
 - (void)setModel:(LGRecommend *)model{
     _model = model;
+    
     if (model.comments.count > 0) {
         
         [self.commentButton setTitle:[NSString stringWithFormat:@"%zd",model.comments.count] forState:UIControlStateNormal];

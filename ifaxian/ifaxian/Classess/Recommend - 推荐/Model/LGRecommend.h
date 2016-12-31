@@ -16,4 +16,6 @@
 @property(nonatomic, assign) CGFloat xhCellHeght;
 @property(nonatomic, assign) CGFloat dmCellHeght;
 @property(nonatomic, assign) CGFloat VideoCellHeght;
+@property(nonatomic, assign) CGFloat jueWuHeight;
+@property(nonatomic, copy) NSString *descriptions;
 @end

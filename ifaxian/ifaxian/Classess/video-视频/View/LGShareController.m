@@ -38,9 +38,11 @@
         
     }]];
     LGWeakSelf;
-    if ([self.model.author.slug isEqualToString:[LGNetWorkingManager manager].account.user.username] || [self.model.author.ID isEqualToString:@"1"]) {
+    if ([self.model.author.slug isEqualToString:[LGNetWorkingManager manager].account.user.username] || [[LGNetWorkingManager manager].account.user.ID isEqualToString:@"1"]) {
         [alerVc addAction:[UIAlertAction actionWithTitle:@"删除该文章" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             UIAlertController *alerVc2 = [UIAlertController alertControllerWithTitle:@"提示" message:@"删除之后不可恢复您确定要删除吗？" preferredStyle:UIAlertControllerStyleAlert];
+            [alerVc2 addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            }]];
             
             [alerVc2 addAction:[UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                 [[LGNetWorkingManager manager] requestDeleteArticlePost_slug:weakSelf.share.share.slug post_id:[NSString stringWithFormat:@"%zd",weakSelf.share.share.ID] completion:^(BOOL isSuccess) {

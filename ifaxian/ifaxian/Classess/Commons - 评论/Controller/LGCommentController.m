@@ -15,6 +15,7 @@
 @property(nonatomic, weak) UIView *commentView;
 @property(nonatomic, weak) UIButton *commentSendButton;
 @property(nonatomic, weak) UITextField *commentTextField;
+@property(nonatomic, strong) LGHTTPSessionManager *manager;
 @end
 @implementation LGCommentController
 - (NSMutableArray<LGComment *> *)comments{
@@ -25,6 +26,15 @@
     }
     return _comments;
 }
+
+- (LGHTTPSessionManager *)manager{
+    
+    if (_manager == nil) {
+        _manager = [LGHTTPSessionManager manager];
+    }
+    return _manager;
+}
+
 static NSString *cellID = @"commentID";
 static NSString *replyCellID = @"replyCellID";
 static NSString *commentHFViewID = @"replyCellID";
@@ -165,17 +175,17 @@ static NSString *commentHFViewID = @"replyCellID";
     NSString *url = [NSString stringWithFormat:@"%@?json=1",self.model.url];
 
     LGWeakSelf;
-    [[LGHTTPSessionManager manager] requsetCommentUrl:url completion:^(BOOL isSuccess, NSArray *json) {
+    [self.manager requsetCommentUrl:url completion:^(BOOL isSuccess, NSArray *json) {
         if (isSuccess) {
             
           
             //[self.comments addObjectsFromArray: [[[LGComment mj_objectArrayWithKeyValuesArray:json context:nil] reverseObjectEnumerator] allObjects]];
-            self.comments = [LGComment mj_objectArrayWithKeyValuesArray:json context:nil];
+            weakSelf.comments = [LGComment mj_objectArrayWithKeyValuesArray:json context:nil];
             
-            [self.tableView.mj_header endRefreshing];
-            [self.tableView reloadData];
+            [weakSelf.tableView.mj_header endRefreshing];
+            [weakSelf.tableView reloadData];
             
-            if (self.comments.count == [self.model.comment_count integerValue]) {
+            if (weakSelf.comments.count == [weakSelf.model.comment_count integerValue]) {
                  weakSelf.tableView.mj_footer.hidden = YES;
             }
             
@@ -206,24 +216,28 @@ static NSString *commentHFViewID = @"replyCellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *ID;
-  
+    //当前评论
     LGComment *comment = self.comments[indexPath.row];
+    //父评论
     LGComment *parentCommt;
+    //判断当前是否存在父评论
     ID = [comment.parent integerValue] > 0 ? replyCellID:cellID;
     NSUInteger index = 0;
     if (comment.parent.length > 0 && [comment.parent integerValue] > 0) {
+        //存在父评论从当前数组重寻找父评论
         for (LGComment *subComment in self.comments) {
             if ([subComment.ID isEqualToString:comment.parent]) {
                  index = [self.comments indexOfObject:subComment];
             }
         }
+        //得到父评论
         parentCommt = self.comments[index];
         
        
         
     }
-
      LGCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    //传递当前评论和父评论
     [cell comment:comment parentComment:parentCommt];
    
     

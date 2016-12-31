@@ -35,4 +35,5 @@ typedef NS_ENUM(NSInteger , LGRequiredArgumen) {
 - (void)requestPostNonceArgument:(LGRequiredArgumen)argumen completion:(void(^)(BOOL isSuccess,NSString *nonce))completion;
 - (void)requestSinaUsercompletion:(LGRequestCompletion)completion;
 
+
 @end

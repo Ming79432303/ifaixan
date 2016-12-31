@@ -28,6 +28,7 @@
     UIImage*thumbnailImage = thumbnailImageRef ? [[UIImage alloc]initWithCGImage: thumbnailImageRef] : nil;
     
     completion(thumbnailImage);
+     CGImageRelease(thumbnailImageRef);
 }
 
 @end

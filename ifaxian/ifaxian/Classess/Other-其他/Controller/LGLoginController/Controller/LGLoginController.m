@@ -115,20 +115,24 @@
     [SVProgressHUD showWithStatus:@"正在登陆..."];
     NSString *userName = [self.userNameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *password = [self.passWordTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-
+    LGWeakSelf;
     [[LGNetWorkingManager manager] requestAuthcookie:userName passWord:password completion:^(BOOL isSuccess, BOOL isSuccessLogin){
         if (isSuccess) {
             if (isSuccessLogin) {
-                 self.loginButton.enabled = NO;
+                
+                 weakSelf.loginButton.enabled = NO;
                 
                 [[LGNetWorkingManager manager].account readAccount];
                 
                  [SVProgressHUD showSuccessWithStatus:@"登陆成功"];
-                if (_remenberButton.selected == YES) {
+                if (weakSelf.remenberButton.selected == YES) {
                     //保存账号密码
-                    [[NSUserDefaults standardUserDefaults] setBool:_remenberButton.selected forKey:@"isRemenber"];
-                    [[NSUserDefaults standardUserDefaults] setObject:_userNameTextField.text forKey:@"userName"];
-                    [[NSUserDefaults standardUserDefaults] setObject:_passWordTextField.text forKey:@"userPassword"];
+                    [[NSUserDefaults standardUserDefaults] setBool:weakSelf.remenberButton.selected forKey:@"isRemenber"];
+                    [[NSUserDefaults standardUserDefaults] setObject:weakSelf.userNameTextField.text forKey:@"userName"];
+                    [[NSUserDefaults standardUserDefaults] setObject:weakSelf.passWordTextField.text forKey:@"userPassword"];
+                    //自动更新cook用的
+                    [[NSUserDefaults standardUserDefaults] setObject:weakSelf.userNameTextField.text forKey:@"updataUserName"];
+                    [[NSUserDefaults standardUserDefaults] setObject:weakSelf.passWordTextField.text forKey:@"updataPassword"];
                 }
                 
                 //通知登录
@@ -143,7 +147,7 @@
             }
            
         }else{
-             self.loginButton.enabled = NO;
+             weakSelf.loginButton.enabled = NO;
             [SVProgressHUD showErrorWithStatus:@"登陆失败"];
         }
         

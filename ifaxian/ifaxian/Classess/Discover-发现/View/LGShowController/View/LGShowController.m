@@ -102,7 +102,7 @@ static NSString *ID = @"cell";
 //        [self.collectionView reloadData];
 //        [self.collectionView setContentOffset:CGPointMake(self.collectionView.lg_width, 0)];
 //    }];
-    
+//    
 
 }
 

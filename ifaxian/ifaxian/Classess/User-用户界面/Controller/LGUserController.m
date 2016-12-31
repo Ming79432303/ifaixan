@@ -36,6 +36,7 @@
 @property(nonatomic, weak)  UITableView  *userTableView;
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property(nonatomic, copy) NSString *titleText;
+@property(nonatomic, strong) LGHTTPSessionManager *manager;
 @end
 
 @implementation LGUserController
@@ -48,6 +49,17 @@
     
     return _navBar;
 }
+
+- (LGHTTPSessionManager *)manager{
+    
+    if (_manager == nil) {
+        _manager = [LGHTTPSessionManager manager];
+    }
+    
+    return _manager;
+}
+
+
 - (UINavigationItem *)navItem{
     
     if (_navItem == nil) {
@@ -67,8 +79,8 @@
 
 }
 - (void)loadUserInfo{
-    
-    [[LGHTTPSessionManager manager] requestUserIfo:self.author.slug completion:^(BOOL isSuccess, id responseObject) {
+    LGWeakSelf;
+    [self.manager requestUserIfo:self.author.slug completion:^(BOOL isSuccess, id responseObject) {
         NSInteger count = [responseObject[@"pages"] integerValue];
         NSString *titleText;
         if (count <= 0) {
@@ -77,8 +89,8 @@
             
            titleText = [NSString stringWithFormat:@"共发表了%@条动态", responseObject[@"pages"]];
         }
-        self.titleLable.text = titleText;
-        self.titleText = titleText;
+        weakSelf.titleLable.text = titleText;
+        weakSelf.titleText = titleText;
     }];
     
     

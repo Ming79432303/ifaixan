@@ -23,6 +23,7 @@
     LGMainController *main = [[LGMainController alloc] init];
     
     self.window.rootViewController = main;
+    [[LGNetWorkingManager manager] updateUserCookie];
     
     [self.window makeKeyAndVisible];
     

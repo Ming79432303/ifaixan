@@ -20,7 +20,7 @@
 }
 + (instancetype)lg_barButtonCustButton:(NSString *)title fontSize:(CGFloat)fontSize addTarget:(id)addTarget action:(SEL)action isBack:(BOOL)isBack{
     
-    UIButton *butn = [UIButton lg_textButton:@"" fontSize:fontSize normalColor:[UIColor darkGrayColor] highlightedColor:[UIColor blackColor]];
+    UIButton *butn = [UIButton lg_textButton:title fontSize:fontSize normalColor:[UIColor darkGrayColor] highlightedColor:[UIColor blackColor]];
     butn.titleLabel.font = [UIFont boldSystemFontOfSize:fontSize];
     
     if (isBack) {

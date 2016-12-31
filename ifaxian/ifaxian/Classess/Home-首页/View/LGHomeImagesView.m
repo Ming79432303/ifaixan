@@ -130,7 +130,6 @@
         [imageBrowser show];
     }
 
-    
-}
+   }
 
 @end

@@ -63,10 +63,10 @@
     LGWeakSelf;
     [self.recommend loadNewDataCompletion:^(BOOL isSuccess, NSArray *array) {
         weakSelf.dateArray = array;
-        [self.tableView reloadData];
+        [weakSelf.tableView reloadData];
         if (isSuccess) {
-            [self.tableView.mj_footer resetNoMoreData];
-            [self.tableView.mj_header endRefreshing];
+            [weakSelf.tableView.mj_footer resetNoMoreData];
+            [weakSelf.tableView.mj_header endRefreshing];
         }
         
     }];
@@ -89,9 +89,10 @@
             
             weakSelf.dateArray = array;
            
-            [self.tableView reloadData];
+            [weakSelf.tableView reloadData];
+            
         }
-        [self.tableView.mj_footer endRefreshing];
+        [weakSelf.tableView.mj_footer endRefreshing];
         
     }];
     

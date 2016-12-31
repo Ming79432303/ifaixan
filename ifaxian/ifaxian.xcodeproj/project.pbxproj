@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		32E39C1CBACC9EED7B816FD2 /* libPods-ifaxianUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E71EC8D0D2E5DF5B0494DD69 /* libPods-ifaxianUITests.a */; };
+		3A05C4421E1795850074225D /* show.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A05C4411E1795850074225D /* show.plist */; };
 		3A0F208F1DDE92B9008B955F /* LGConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F208E1DDE92B9008B955F /* LGConst.m */; };
 		3A0F20921DDE94B6008B955F /* NSString+LGStringSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F20911DDE94B6008B955F /* NSString+LGStringSize.m */; };
 		3A0F20F71DDEB411008B955F /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0F20F61DDEB411008B955F /* libxml2.tbd */; };
@@ -195,13 +196,16 @@
 		3A597DBD1DF5A69900C1EBE2 /* LGPhotoImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A597DBB1DF5A69900C1EBE2 /* LGPhotoImage.m */; };
 		3A6493341DF0257E0021F24A /* LGShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6493331DF0257E0021F24A /* LGShareController.m */; };
 		3A6F6BF31DDDDA4100D00F2F /* LGRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6BF21DDDDA4100D00F2F /* LGRefreshFooter.m */; };
+		3A6F99901E164BD2005F0341 /* LGJueWuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F998E1E164BD2005F0341 /* LGJueWuCell.m */; };
+		3A6F99911E164BD2005F0341 /* LGJueWuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6F998F1E164BD2005F0341 /* LGJueWuCell.xib */; };
+		3A6F99941E164E11005F0341 /* LGJueWuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F99931E164E11005F0341 /* LGJueWuController.m */; };
+		3A6F99971E167A2F005F0341 /* ifaxian.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3A6F99961E167A2F005F0341 /* ifaxian.cer */; };
 		3A79B4DF1DE55287009B50F2 /* LGAliYunOssUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A79B4DE1DE55287009B50F2 /* LGAliYunOssUpload.m */; };
 		3A7F69F31DE72BC700E4EEDA /* NSString+LGRegularExpressions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7F69F21DE72BC700E4EEDA /* NSString+LGRegularExpressions.m */; };
 		3A8864361DE14B8B00DE7E46 /* LGTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8864351DE14B8B00DE7E46 /* LGTextField.m */; };
 		3A88643A1DE1C49B00DE7E46 /* LGAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8864391DE1C49B00DE7E46 /* LGAccount.m */; };
 		3A88643D1DE1C58200DE7E46 /* LGAccountUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88643C1DE1C58200DE7E46 /* LGAccountUser.m */; };
 		3A8864401DE1D6A200DE7E46 /* UIImage+AlphaImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88643F1DE1D6A200DE7E46 /* UIImage+AlphaImage.m */; };
-		3A8C5F871E10EE8000A42543 /* show.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C5F861E10EE8000A42543 /* show.plist */; };
 		3A8C5F891E10F52900A42543 /* NewFeature.html in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C5F881E10F52900A42543 /* NewFeature.html */; };
 		3A8C5F901E10F73A00A42543 /* LGNewFeatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C5F8F1E10F73A00A42543 /* LGNewFeatureView.m */; };
 		3A8C5F921E10F74400A42543 /* LGNewFeatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C5F911E10F74400A42543 /* LGNewFeatureView.xib */; };
@@ -307,6 +311,7 @@
 
 /* Begin PBXFileReference section */
 		37AE10A20FF22CE9DEF38167 /* Pods-ifaxianTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifaxianTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ifaxianTests/Pods-ifaxianTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3A05C4411E1795850074225D /* show.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = show.plist; sourceTree = "<group>"; };
 		3A0F208D1DDE92B9008B955F /* LGConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGConst.h; sourceTree = "<group>"; };
 		3A0F208E1DDE92B9008B955F /* LGConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGConst.m; sourceTree = "<group>"; };
 		3A0F20901DDE94B6008B955F /* NSString+LGStringSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LGStringSize.h"; sourceTree = "<group>"; };
@@ -661,6 +666,12 @@
 		3A6493331DF0257E0021F24A /* LGShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGShareController.m; sourceTree = "<group>"; };
 		3A6F6BF11DDDDA4100D00F2F /* LGRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGRefreshFooter.h; sourceTree = "<group>"; };
 		3A6F6BF21DDDDA4100D00F2F /* LGRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGRefreshFooter.m; sourceTree = "<group>"; };
+		3A6F998D1E164BD2005F0341 /* LGJueWuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGJueWuCell.h; sourceTree = "<group>"; };
+		3A6F998E1E164BD2005F0341 /* LGJueWuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGJueWuCell.m; sourceTree = "<group>"; };
+		3A6F998F1E164BD2005F0341 /* LGJueWuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGJueWuCell.xib; sourceTree = "<group>"; };
+		3A6F99921E164E11005F0341 /* LGJueWuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGJueWuController.h; sourceTree = "<group>"; };
+		3A6F99931E164E11005F0341 /* LGJueWuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGJueWuController.m; sourceTree = "<group>"; };
+		3A6F99961E167A2F005F0341 /* ifaxian.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = ifaxian.cer; sourceTree = "<group>"; };
 		3A79B4DD1DE55287009B50F2 /* LGAliYunOssUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAliYunOssUpload.h; sourceTree = "<group>"; };
 		3A79B4DE1DE55287009B50F2 /* LGAliYunOssUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAliYunOssUpload.m; sourceTree = "<group>"; };
 		3A7F69F11DE72BC700E4EEDA /* NSString+LGRegularExpressions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LGRegularExpressions.h"; sourceTree = "<group>"; };
@@ -673,7 +684,6 @@
 		3A88643C1DE1C58200DE7E46 /* LGAccountUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAccountUser.m; sourceTree = "<group>"; };
 		3A88643E1DE1D6A200DE7E46 /* UIImage+AlphaImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AlphaImage.h"; sourceTree = "<group>"; };
 		3A88643F1DE1D6A200DE7E46 /* UIImage+AlphaImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AlphaImage.m"; sourceTree = "<group>"; };
-		3A8C5F861E10EE8000A42543 /* show.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = show.plist; sourceTree = "<group>"; };
 		3A8C5F881E10F52900A42543 /* NewFeature.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = NewFeature.html; path = ../../../NewFeature.html; sourceTree = "<group>"; };
 		3A8C5F8E1E10F73A00A42543 /* LGNewFeatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGNewFeatureView.h; sourceTree = "<group>"; };
 		3A8C5F8F1E10F73A00A42543 /* LGNewFeatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGNewFeatureView.m; sourceTree = "<group>"; };
@@ -1124,7 +1134,7 @@
 		3A2ED26D1DEBED13002CFE88 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3A8C5F861E10EE8000A42543 /* show.plist */,
+				3A05C4411E1795850074225D /* show.plist */,
 				3A2ED2771DEBED13002CFE88 /* LGShowController.h */,
 				3A2ED2781DEBED13002CFE88 /* LGShowController.m */,
 			);
@@ -1545,6 +1555,9 @@
 				3AD696D91E10077D00F49779 /* LGTopCell.m */,
 				3AD696DE1E10089A00F49779 /* LGVideoCommentController.h */,
 				3AD696DF1E10089A00F49779 /* LGVideoCommentController.m */,
+				3A6F998D1E164BD2005F0341 /* LGJueWuCell.h */,
+				3A6F998E1E164BD2005F0341 /* LGJueWuCell.m */,
+				3A6F998F1E164BD2005F0341 /* LGJueWuCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1569,6 +1582,8 @@
 				3A52B5251DFBE87700C8C010 /* LGTopicVideoController.m */,
 				3A52B5261DFBE87700C8C010 /* LGTopicXiaoHuaController.h */,
 				3A52B5271DFBE87700C8C010 /* LGTopicXiaoHuaController.m */,
+				3A6F99921E164E11005F0341 /* LGJueWuController.h */,
+				3A6F99931E164E11005F0341 /* LGJueWuController.m */,
 			);
 			path = Topic;
 			sourceTree = "<group>";
@@ -2066,6 +2081,7 @@
 		3AE122921DDC8B6800D1A128 /* Tool-工具 */ = {
 			isa = PBXGroup;
 			children = (
+				3A6F99961E167A2F005F0341 /* ifaxian.cer */,
 				3A4082921E0658CA00FAA367 /* LWActiveIndicator */,
 				3A4B17F11DE47C210051E6C7 /* LGUpload */,
 				3A0F215F1DDEC5A7008B955F /* LWImageBrowser */,
@@ -2290,6 +2306,7 @@
 					3AE122431DDC8AEC00D1A128 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = AWE6XH2SJ9;
+						ProvisioningStyle = Automatic;
 					};
 					3AE1225C1DDC8AEC00D1A128 = {
 						CreatedOnToolsVersion = 7.2;
@@ -2339,6 +2356,7 @@
 				3AD9778F1DF2759F00244312 /* LGPlayerView.xib in Resources */,
 				3A8C5F921E10F74400A42543 /* LGNewFeatureView.xib in Resources */,
 				3A32B6801E01218C00B9FCD6 /* LGEditorInfoView.xib in Resources */,
+				3A6F99911E164BD2005F0341 /* LGJueWuCell.xib in Resources */,
 				3ABEFE3A1E0180B8008AB1D9 /* LGAboutMeController.xib in Resources */,
 				3A52B50F1DFBE1D600C8C010 /* LGHomeCell.xib in Resources */,
 				3AE122571DDC8AEC00D1A128 /* LaunchScreen.storyboard in Resources */,
@@ -2353,18 +2371,19 @@
 				3AE122AC1DDCA9B300D1A128 /* LGPhotoListCell.xib in Resources */,
 				3A32B6721E01218C00B9FCD6 /* LGMeController.storyboard in Resources */,
 				3A8C5F891E10F52900A42543 /* NewFeature.html in Resources */,
-				3A8C5F871E10EE8000A42543 /* show.plist in Resources */,
 				3AF4B61C1DDCAAC500C06419 /* LGRefreshViewFont.xib in Resources */,
 				3A5669EE1DED793700959D96 /* LGSenImageController.xib in Resources */,
 				3A52B50D1DFBE1D600C8C010 /* LGContenHeraderView.xib in Resources */,
 				3A2ED28A1DEBED13002CFE88 /* LGTagsCell.xib in Resources */,
 				3A32B6761E01218C00B9FCD6 /* LGArticleCell.xib in Resources */,
 				3A2ED2831DEBED13002CFE88 /* LGSearchCell.xib in Resources */,
+				3A6F99971E167A2F005F0341 /* ifaxian.cer in Resources */,
 				3A52B53A1DFBE8A600C8C010 /* LGXiaoHuaCell.xib in Resources */,
 				3A2ED2811DEBED13002CFE88 /* LGSearchController.xib in Resources */,
 				3A32B69E1E013AA600B9FCD6 /* LGContributeController.storyboard in Resources */,
 				3A52B5141DFBE1D600C8C010 /* LGHomeHeaderView.xib in Resources */,
 				3AEB69AD1DF1372200888B9E /* LGSendVideoController.xib in Resources */,
+				3A05C4421E1795850074225D /* show.plist in Resources */,
 				3A32B6841E01218C00B9FCD6 /* LGVisitorView.xib in Resources */,
 				3A32B68C1E0124B500B9FCD6 /* LGOtherCell.xib in Resources */,
 				3AE122541DDC8AEC00D1A128 /* Assets.xcassets in Resources */,
@@ -2525,6 +2544,7 @@
 				3A0F21471DDEB503008B955F /* LWHTMLParser.m in Sources */,
 				3A0F214C1DDEB503008B955F /* LWStorageBuilder.m in Sources */,
 				3A9617E31DDD7C91008780D5 /* LGNetWorkingManager.m in Sources */,
+				3A6F99941E164E11005F0341 /* LGJueWuController.m in Sources */,
 				3A0F214D1DDEB503008B955F /* LWTextAttachment.m in Sources */,
 				3A5138FF1DEE7932002BE232 /* LGShareViewModel.m in Sources */,
 				3A52B52B1DFBE87700C8C010 /* LGTopicXiaoHuaController.m in Sources */,
@@ -2582,6 +2602,7 @@
 				3A3C5C521DDD3D9E00818673 /* LGMainController.m in Sources */,
 				3A52B53F1DFBE8D000C8C010 /* LGRecommend.m in Sources */,
 				3A0F21481DDEB503008B955F /* LWHTMLTextConfig.m in Sources */,
+				3A6F99901E164BD2005F0341 /* LGJueWuCell.m in Sources */,
 				3AF4B6551DDCAED800C06419 /* UIView+LGAddition.m in Sources */,
 				3AF4B64E1DDCAED800C06419 /* NSString+LGBase64.m in Sources */,
 				3A32B6831E01218C00B9FCD6 /* LGVisitorView.m in Sources */,
@@ -2813,7 +2834,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2881,6 +2902,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AWE6XH2SJ9;
 				GCC_PREFIX_HEADER = /Users/ming/Desktop/ifaxan/ifaixan/ifaxian/ifaxian/Classess/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2897,12 +2920,14 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = ifaxian/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRELINK_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.faxian.me;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
@@ -2914,6 +2939,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AWE6XH2SJ9;
 				GCC_PREFIX_HEADER = /Users/ming/Desktop/ifaxan/ifaixan/ifaxian/ifaxian/Classess/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2930,7 +2957,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = ifaxian/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRELINK_FLAGS = "";
