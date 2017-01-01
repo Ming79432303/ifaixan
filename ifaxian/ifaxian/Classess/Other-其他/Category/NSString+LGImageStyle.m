@@ -18,7 +18,7 @@
 //略缩图
 -(NSString *)lg_thumbnailImageSizeImageW:(int)imageW{
     
-    return [NSString stringWithFormat:@"%@?x-oss-process=image/resize,w_400",self];
+    return [NSString stringWithFormat:@"%@?x-oss-process=style/ifa",self];
 }
 //中图
 -(NSString *)lg_mediumImage{

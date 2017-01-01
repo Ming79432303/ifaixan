@@ -11,6 +11,7 @@
 @interface NSString (LGRequestBasiPath)
 
 
-+(NSString *)requestBasiPathAppend:(NSString *)path;
++ (NSString *)requestBasiPathAppend:(NSString *)path;
 - (NSString *)lg_getuserAvatar;
+- (NSString *)requestBasiPathAppend:(NSString *)path;
 @end

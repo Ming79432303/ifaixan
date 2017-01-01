@@ -15,5 +15,6 @@
 - (void)requestRetrievePasswordUserLogin:(NSString *)userlogin completion:(LGSuccess)completion;
 - (void)requestUserIfo:(NSString *)userName completion:(LGRequestCompletion)completion;
 - (void)requestUserAvatar:(NSString *)userId copletion:(void(^)(NSString *url))completion;
+- (void)requestAuthcookie:(NSString *)userName passWord:(NSString *)passWord completion:(void(^)(BOOL isSuccess, BOOL isSuccessLogin))completion;
 
 @end

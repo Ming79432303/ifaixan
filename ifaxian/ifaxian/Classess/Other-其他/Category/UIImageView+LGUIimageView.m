@@ -24,9 +24,9 @@
     if (image == nil) {
         image = [UIImage imageNamed:@"default_placeholder_Image"];
     }
-    NSLog(@"sd开始设置图片");
+  
     [self sd_setImageWithURL:strUrl placeholderImage:image options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        NSLog(@"sd开始设置图片完毕");
+       
     }];
     
     

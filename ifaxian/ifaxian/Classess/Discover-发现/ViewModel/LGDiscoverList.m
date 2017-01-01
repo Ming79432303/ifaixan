@@ -136,7 +136,7 @@
             });
         }
          dispatch_group_notify(requestGroup, dispatch_get_main_queue(), ^{
-        #warning 缓存到磁盘
+
         
              NSString *fileName = @"show.plist";
              NSString *path = [fileName lg_appendDocumentDir];

@@ -27,11 +27,11 @@
 
 
 - (void)loadNewDataCompletion:(void(^)(BOOL isSuccess ,NSArray *array))completion{
-    NSLog(@"获取新数据");
+
     [[LGHTTPSessionManager manager] requestPostUrl:[NSString stringWithFormat:@"https://ifaxian.cc/category/%@/?json=1",self.postName] completion:^(BOOL isSuccess, id responseObject) {
         
         if (isSuccess) {
-             NSLog(@"获取新数据完毕");
+           
             index_ = 2;
         }
       self.lists = [LGRecommend mj_objectArrayWithKeyValuesArray:responseObject[@"posts"]];
@@ -44,9 +44,9 @@
 
 
 - (void)loadOldDataCompletion:(void(^)(BOOL isSuccess ,NSArray *array))completion{
-NSLog(@"获取就数据");
+
     [[LGHTTPSessionManager manager] requestPostUrl:[NSString stringWithFormat:@"https://ifaxian.cc/category/%@/?json=1&page=%zd",self.postName,index_] completion:^(BOOL isSuccess, id responseObject) {
-        NSLog(@"获取就数据完毕");
+
         //        self.images = [LGShareImage mj_objectArrayWithKeyValuesArray:responseObject[@"posts"]];
         NSMutableArray<LGRecommend *> *shareM = [NSMutableArray array];
         
@@ -112,7 +112,7 @@ NSLog(@"获取就数据");
     }
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
     
-       NSLog(@"刷新表格");
+
         completion(YES,self.lists);
         
     });

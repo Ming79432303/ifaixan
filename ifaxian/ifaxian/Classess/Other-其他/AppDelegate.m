@@ -23,11 +23,24 @@
     LGMainController *main = [[LGMainController alloc] init];
     
     self.window.rootViewController = main;
-    [[LGNetWorkingManager manager] updateUserCookie];
-    
+    if ([LGNetWorkingManager manager].isLogin) {
+        
+        [[LGNetWorkingManager manager] updateUserCookie];
+    }
+    [self additions];
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (void)additions{
+    
+    //请求授权
+    UIUserNotificationSettings *seting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:seting];
+    [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+    //[[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

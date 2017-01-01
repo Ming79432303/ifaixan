@@ -106,7 +106,7 @@
     _userIconImageView.layer.masksToBounds = YES;
 //    _tabView.image = [[UIImage imageNamed:@"1111111"] applyDarkEffect];
     
-    _nickname.text = [NSString stringWithFormat:@"昵称:%@",_author.nickname];
+    _nickname.text = [NSString stringWithFormat:@"昵称:%@",_author.name];
     
 }
 

@@ -7,7 +7,8 @@
 //
 
 #import "LGDiscoverHeaderView.h"
-
+#import "LGHeaderModel.h"
+#import <SafariServices/SafariServices.h>
 @interface LGDiscoverHeaderView()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scroView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageView;
@@ -15,6 +16,7 @@
 @property(nonatomic, weak) UIImageView *reuseView;
 @property(nonatomic, strong) NSTimer *timer;
 @property(nonatomic, assign) NSInteger curPage;
+@property(nonatomic, strong) NSArray *headerArray;
 @end
 
 #define kCount  3
@@ -25,6 +27,10 @@
     self.lg_width = [UIScreen lg_screenWidth];
     self.scroView.lg_width = [UIScreen lg_screenWidth];
     self.scroView.delegate = self;
+    LGHeaderModel *header1 = [LGHeaderModel headerImage:[UIImage imageNamed:@"tuiguang1"] url:@"https://ifaxian.cc"];
+    LGHeaderModel *header2 = [LGHeaderModel headerImage:[UIImage imageNamed:@"tuiguang2"] url:@"http://iamxcc.com/?p=143"];
+    LGHeaderModel *header3 = [LGHeaderModel headerImage:[UIImage imageNamed:@"tuiguang3"] url:@"https://ju.taobao.com/"];
+        self.headerArray = @[header1,header2,header3];
     [self setupUI];
     [self addtimer];
     
@@ -32,7 +38,11 @@
 }
 - (void)addtimer{
     
-    self.timer = [NSTimer timerWithTimeInterval:4.0 target:self selector:@selector(time) userInfo:nil repeats:YES];
+   
+    
+
+    
+    self.timer = [NSTimer timerWithTimeInterval:5.0 target:self selector:@selector(time) userInfo:nil repeats:YES];
     
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     
@@ -49,7 +59,7 @@
 }
 - (void)removeTime{
     [self.timer invalidate];
-    
+    self.timer = nil;
     
 }
 
@@ -79,22 +89,53 @@
     //创建一个重用的imageView
     UIImageView *reuseView = [[UIImageView alloc] init];
     reuseView.backgroundColor = [UIColor yellowColor];
-    reuseView.contentMode = UIViewContentModeScaleAspectFill;
+//    reuseView.contentMode = UIViewContentModeScaleAspectFill;
     reuseView.clipsToBounds = YES;
     reuseView.frame = self.scroView.bounds;
     
     [self.scroView addSubview:reuseView];
     //添加一个用来显示的imageVIew
     UIImageView *visiView = [[UIImageView alloc] init];
-    visiView.contentMode = UIViewContentModeScaleAspectFill;
+    //visiView.contentMode = UIViewContentModeScaleAspectFill;
     visiView                                                          .clipsToBounds = YES;
     visiView.tag = 0;
     visiView.backgroundColor = [UIColor redColor];
     visiView.frame = CGRectMake(w, self.scroView.frame.origin.y, w, h);
     [self.scroView addSubview:visiView];
-    visiView.image = [UIImage imageNamed:@"disvc1"];
+    LGHeaderModel *model = self.headerArray.firstObject;
+    visiView.image = model.image;
     self.visiView = visiView;
     self.reuseView = reuseView;
+    visiView.userInteractionEnabled = YES;
+    reuseView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goTo:)];
+    [self.visiView addGestureRecognizer:tap];
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goTo:)];
+    [reuseView addGestureRecognizer:tap2];
+}
+
+- (void)goTo:(UIGestureRecognizer *)tap{
+
+    UIImageView *tapView = (UIImageView *)tap.view;
+    NSLog(@"%@",tapView.image);
+  
+    for (LGHeaderModel *model in self.headerArray) {
+        if (model.image == tapView.image) {
+            UITabBarController *tabbar = (UITabBarController *)self.window.rootViewController;
+            UINavigationController *selectController = tabbar.selectedViewController;
+        SFSafariViewController *safari = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:model.url]];
+            
+                    [selectController presentViewController:safari animated:YES completion:nil];
+        }
+    }
+    
+    
+   
+    
+//    LGHeaderModel *mode = self.headerArray[index];
+    
+    
+//    NSLog(@"%zd",mode.url);
     
 }
 
@@ -130,10 +171,10 @@
     self.reuseView.frame = rect;
     _reuseView.tag = index;
     _curPage = index;
-  
-    NSString *imageName = [NSString stringWithFormat:@"disvc%zd",_curPage + 1];
-    UIImage *image = [UIImage imageNamed:imageName];
-    _reuseView.image = image;
+    LGHeaderModel *model = self.headerArray[_curPage];
+    
+
+    _reuseView.image = model.image;
 
        // 2.滚动到 最左 或者 最右 的图片
     if (offSetX <= 0 || offSetX >= w * 2) {
@@ -154,11 +195,10 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    
     [self removeTime];
 }
-
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
     [self addtimer];
 }

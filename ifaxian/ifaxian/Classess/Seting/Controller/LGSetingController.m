@@ -36,7 +36,7 @@ static NSString *setingCellID = @"setingCellID";
     
     [super viewDidLoad];
     
-    self.navigationItem.title = @"设置";
+    self.navItem.title = @"设置";
    
 }
 - (void)setupRefreshView{

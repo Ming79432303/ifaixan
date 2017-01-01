@@ -18,6 +18,7 @@
     _webView.scrollView.bounces = NO;
     _webView.scrollView.scrollEnabled = NO;
     [super awakeFromNib];
+    //获取新特性页面
     NSString *path = [[NSBundle mainBundle] pathForResource:@"NewFeature.html" ofType:nil];
     NSURL *url = [[NSURL alloc] initFileURLWithPath:path];
     

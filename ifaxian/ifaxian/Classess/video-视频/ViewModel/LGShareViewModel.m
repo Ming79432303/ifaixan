@@ -109,7 +109,7 @@
             
             completion(YES,weakSelf.shareArray);
             
-            //[weakSelf downVideoImage:weakSelf.shareArray Completion:completion];
+            [weakSelf downVideoImage:weakSelf.shareArray Completion:completion];
             
             
         });
@@ -130,7 +130,7 @@
                 dispatch_group_enter(groupVideo);
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
     
-                    [weakSelf thumbnailImageForVideo:[NSURL URLWithString:share.VideoUrl] atTime:2 completion:^(UIImage *thumbnailImage) {
+                    [NSURL thumbnailImageForVideo:[NSURL URLWithString:share.VideoUrl] atTime:1.0 completion:^(UIImage *thumbnailImage) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             if (thumbnailImage) {
     
@@ -158,29 +158,6 @@
         });
 
 }
-
-- (void)thumbnailImageForVideo:(NSURL *)videoURL atTime:(NSTimeInterval)time completion:(void(^)(UIImage *thumbnailImage))completion{
-    
-    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
-    NSParameterAssert(asset);
-    AVAssetImageGenerator *assetImageGenerator =[[AVAssetImageGenerator alloc] initWithAsset:asset];
-    assetImageGenerator.appliesPreferredTrackTransform = YES;
-    assetImageGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
-    
-    CGImageRef thumbnailImageRef = NULL;
-    CFTimeInterval thumbnailImageTime = time;
-    NSError *thumbnailImageGenerationError = nil;
-    thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 1)actualTime:NULL error:&thumbnailImageGenerationError];
-    
-    if(!thumbnailImageRef)
-        NSLog(@"thumbnailImageGenerationError %@",thumbnailImageGenerationError);
-    
-    UIImage*thumbnailImage = thumbnailImageRef ? [[UIImage alloc]initWithCGImage: thumbnailImageRef] : nil;
-    
-    completion(thumbnailImage);
-   
-}
-
 
 
 -(void)loadOldDatacompletion:(void(^)(BOOL isSuccess ,NSArray<LGShare *> *shareArray))completion{

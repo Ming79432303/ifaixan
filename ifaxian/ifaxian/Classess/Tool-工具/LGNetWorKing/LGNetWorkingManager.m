@@ -33,14 +33,6 @@ singleM(Net)
     if (self = [super initWithBaseURL:url]) {
 
       //self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
-        if (![self isLogin]) {
-            
-            //通知用户登录
-            [[NSNotificationCenter defaultCenter] postNotificationName:LGUserLoginNotification object:nil];
-        }else{
-            
-            [self.requestSerializer setValue:[NSString stringWithFormat:@"%@=%@",self.account.cookie_name,self.account.cookie] forHTTPHeaderField:@"Cookie"];
-        }
         
         
     }
@@ -107,6 +99,20 @@ singleM(Net)
     
 }
 
+- (void)request:(LGNetMethod)method urlString:(NSString *)urlString parameters:(NSDictionary *)parameters completion:(LGRequestCompletion)completion{
+    
+    if (![self isLogin]) {
+        
+        //通知用户登录
+        [[NSNotificationCenter defaultCenter] postNotificationName:LGUserLoginNotification object:nil];
+    }else{
+        
+        [self.requestSerializer setValue:[NSString stringWithFormat:@"%@=%@",self.account.cookie_name,self.account.cookie] forHTTPHeaderField:@"Cookie"];
+    }
+
+    [super request:method urlString:urlString parameters:parameters completion:completion];
+    
+}
 
 
 @end

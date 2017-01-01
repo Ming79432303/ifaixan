@@ -8,6 +8,8 @@
 
 #import "LGXiaoHuaCell.h"
 #import "LWImageBrowser.h"
+#import "LGUserController.h"
+#import "LGUserListController.h"
 @interface LGXiaoHuaCell()
 @property (weak, nonatomic) IBOutlet UILabel *nameLable;
 @property (weak, nonatomic) IBOutlet UILabel *contentLable;
@@ -21,19 +23,24 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 
+
 @end
 @implementation LGXiaoHuaCell
 
 - (void)awakeFromNib {
     // Initialization code
-    
+    [super awakeFromNib];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeImage:)];
     [self.picImageView addGestureRecognizer:tap];
+    
+    UITapGestureRecognizer *userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2userController)];
+    [_iconImageView addGestureRecognizer:userTap];
+    
 }
 
 - (void)setModel:(LGRecommend *)model{
     _model = model;
-     NSLog(@"设置模型数据");
+
     [self.iconImageView setHeader:[model.author.slug lg_getuserAvatar]];
     self.nameLable.text = model.author.name;
     self.titleLable.text = model.title;
@@ -50,7 +57,7 @@
         self.imageView.hidden = NO;
         self.contentLable.hidden = YES;
         self.contentLable.text = nil;
-        NSLog(@"%@",model.imageUrl);
+     
         [self.picImageView lg_setImageWithurl:model.imageUrl placeholderImage:nil];
     }else{
         self.contentLable.hidden = NO;
@@ -58,7 +65,7 @@
         self.contentLable.text = model.contentText;
         
     }
-NSLog(@"设置模型数据完毕");
+
 }
 - (void)setFrame:(CGRect)frame{
     
@@ -86,6 +93,35 @@ NSLog(@"设置模型数据完毕");
     
     
 }
+
+
+- (void)go2userController{
+    
+    
+    if ([[self getCurrentViewController] isKindOfClass:[LGUserListController class]]) {
+        return;
+    }
+    
+    UIStoryboard *story = [UIStoryboard storyboardWithName:NSStringFromClass([LGUserController class]) bundle:nil];
+    LGUserController *userVc = [story instantiateInitialViewController];
+    userVc.author = _model.author;
+    UITabBarController *tab = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    UINavigationController *nav = tab.selectedViewController;
+    [nav pushViewController:userVc animated:YES];
+    
+}
+-(UIViewController *)getCurrentViewController{
+    UIResponder *next = [self nextResponder];
+    do {
+        if ([next isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)next;
+        }
+        next = [next nextResponder];
+    } while (next != nil);
+    return nil;
+}
+
+
 - (IBAction)addLike:(id)sender {
     _likeButton.selected = !_likeButton.selected;
     

@@ -7,7 +7,8 @@
 //
 
 #import "LGJueWuCell.h"
-
+#import "LGUserController.h"
+#import "LGUserListController.h"
 @interface LGJueWuCell()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLable;
@@ -23,6 +24,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
+    UITapGestureRecognizer *userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2userController)];
+    [_iconImageView addGestureRecognizer:userTap];
 }
 
 - (void)setModel:(LGRecommend *)model{
@@ -34,7 +38,7 @@
     }
     [_iconImageView setHeader:[model.author.slug lg_getuserAvatar]];
     _dateLable.text = model.date;
-    _nameLable.text = model.author.nickname;
+    _nameLable.text = model.author.name;
     _titleLable.text = model.title ;
     _describeLable.text = model.descriptions;
     
@@ -51,6 +55,31 @@
     
     [super setFrame:cellFrame];
     
+}
+- (void)go2userController{
+    
+    
+    if ([[self getCurrentViewController] isKindOfClass:[LGUserListController class]]) {
+        return;
+    }
+    
+    UIStoryboard *story = [UIStoryboard storyboardWithName:NSStringFromClass([LGUserController class]) bundle:nil];
+    LGUserController *userVc = [story instantiateInitialViewController];
+    userVc.author = _model.author;
+    UITabBarController *tab = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    UINavigationController *nav = tab.selectedViewController;
+    [nav pushViewController:userVc animated:YES];
+    
+}
+-(UIViewController *)getCurrentViewController{
+    UIResponder *next = [self nextResponder];
+    do {
+        if ([next isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)next;
+        }
+        next = [next nextResponder];
+    } while (next != nil);
+    return nil;
 }
 
 @end

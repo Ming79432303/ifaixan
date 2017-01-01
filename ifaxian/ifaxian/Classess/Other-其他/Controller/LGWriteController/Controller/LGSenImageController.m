@@ -259,8 +259,8 @@
         //外部显示拍照
         BOOL showSheet = NO;
         if (showSheet) {
-            UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"去相册选择", nil];
-            [sheet showInView:self.view];
+//            UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"去相册选择", nil];
+//            [sheet showInView:self.view];
         } else {
             [self pushImagePickerController];
         }

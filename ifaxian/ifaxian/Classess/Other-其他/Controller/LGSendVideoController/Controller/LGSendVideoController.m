@@ -10,6 +10,7 @@
 #import <Photos/Photos.h>
 #import "LGAliYunOssUpload.h"
 #import "DALabeledCircularProgressView.h"
+#import "NSURL+LGGetVideoImage.h"
 @interface LGSendVideoController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,LGAliYunOssUploadDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *picVideoButton;
@@ -256,7 +257,10 @@
                  dispatch_async(dispatch_get_main_queue(), ^{
                      
                      self.outputURL = outputURL;
-                     UIImage *image = [self thumbnailImageForVideo:outputURL atTime:1];
+                   __block  UIImage *image;
+                     [NSURL thumbnailImageForVideo:outputURL atTime:1 completion:^(UIImage *thumbnailImage) {
+                         image = thumbnailImage;
+                     }];
                      [self.picVideoButton setImage:image forState:UIControlStateNormal];
                      self.playVideo.hidden = NO;
                  });
@@ -286,13 +290,15 @@
         
         return;
     }
-
+//path	NSURL *	@"file:///var/mobile/Containers/Data/Application/7743A8DE-7CB3-477D-8A47-CF1B7E26AB5E/Documents/output-2017-01-01-15:57:11.mp4"	0x000000014dd604f0
     NSString *fileName = [NSString stringWithFormat:@"video/%@",path.lastPathComponent];
     [self.upload uploadfilePath:file fileName:fileName bucketName:nil completion:^(BOOL isSuccess) {
         if (isSuccess) {
             
             
             [SVProgressHUD showSuccessWithStatus:@"上传视频成功"];
+            NSFileManager *fileManage = [NSFileManager defaultManager];
+            [fileManage removeItemAtPath:file error:nil];
             self.progressView.hidden = YES;
             [self sendVideo:fileName path:path];
             
@@ -336,26 +342,7 @@
     [self.textView resignFirstResponder];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-- (UIImage*)thumbnailImageForVideo:(NSURL *)videoURL atTime:(NSTimeInterval)time {
-    
-    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
-    NSParameterAssert(asset);
-    AVAssetImageGenerator *assetImageGenerator =[[AVAssetImageGenerator alloc] initWithAsset:asset];
-    assetImageGenerator.appliesPreferredTrackTransform = YES;
-    assetImageGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
-    
-    CGImageRef thumbnailImageRef = NULL;
-    CFTimeInterval thumbnailImageTime = time;
-    NSError *thumbnailImageGenerationError = nil;
-    thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 60)actualTime:NULL error:&thumbnailImageGenerationError];
-    
-    if(!thumbnailImageRef)
-        NSLog(@"thumbnailImageGenerationError %@",thumbnailImageGenerationError);
-    
-    UIImage*thumbnailImage = thumbnailImageRef ? [[UIImage alloc]initWithCGImage: thumbnailImageRef] : nil;
-    
-    return thumbnailImage;
-}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
     [self.view endEditing:YES];

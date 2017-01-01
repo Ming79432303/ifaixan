@@ -70,6 +70,7 @@
                         user.username = [NSString stringWithFormat:@"SINA%@",responseObject[@"open_type_sina"]];
                         user.nickname = responseObject[@"nickname"];
                         user.userAvatar = responseObject[@"open_img"];
+                        
                         accout.user = user;
                         [LGNetWorkingManager manager].account = accout;
                         [[LGNetWorkingManager manager].account accountSave];

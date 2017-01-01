@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LGLoginController">
             <connections>
-                <outlet property="avatar" destination="RFT-6y-UbB" id="kIG-cn-iIy"/>
                 <outlet property="loginButton" destination="OgG-6O-5Sc" id="NMY-lO-5Mo"/>
                 <outlet property="passWordTextField" destination="uwS-zr-0CI" id="slV-v4-p1R"/>
                 <outlet property="remenberButton" destination="DmU-aB-Lkj" id="K9t-eT-LM1"/>
@@ -235,7 +234,7 @@
         <image name="Git" width="200" height="200"/>
         <image name="QQ" width="200" height="200"/>
         <image name="Sina" width="200" height="200"/>
-        <image name="avatar" width="200" height="200"/>
+        <image name="avatar" width="963" height="618"/>
         <image name="remenber" width="19" height="19"/>
         <image name="remenber_select" width="19" height="19"/>
         <image name="关闭" width="200" height="200"/>

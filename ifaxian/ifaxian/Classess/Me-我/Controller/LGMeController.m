@@ -113,7 +113,7 @@
     [LGNetWorkingManager manager].isLogin ? [self addConView]:[self addvisitorView];
     [self setupConfigVcView];
   
-    self.titleLabel.text = [LGNetWorkingManager manager].account.user.nickname;
+    
 
     
 }
@@ -259,7 +259,7 @@
 }
 
 - (void)addConView{
-    
+    self.titleLabel.text = [LGNetWorkingManager manager].account.user.nickname;
     LGMyArticleController *article = [[LGMyArticleController alloc] init];
     article.userName = [LGNetWorkingManager manager].account.user.username;
     article.title = @"我发布的";

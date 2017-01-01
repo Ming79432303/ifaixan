@@ -22,7 +22,7 @@
                         <color key="textColor" red="0.69019607843137254" green="0.69019607843137254" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="highlightedColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QL-vI-wH5">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QL-vI-wH5">
                         <rect key="frame" x="286" y="10" width="24" height="22"/>
                         <state key="normal" image="zan_icon"/>
                     </button>
@@ -57,7 +57,7 @@
                         <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screenshot_2016-11-22-13-35-51-390_微信" translatesAutoresizingMaskIntoConstraints="NO" id="VZ2-Gu-fCT">
+                    <imageView multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VZ2-Gu-fCT">
                         <rect key="frame" x="10" y="252" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="AAl-to-Y8m"/>
@@ -124,7 +124,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Screenshot_2016-11-22-13-35-51-390_微信" width="1080" height="1068"/>
         <image name="home_comment_icon" width="17" height="17"/>
         <image name="zan_icon" width="24" height="20"/>
     </resources>

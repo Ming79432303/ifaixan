@@ -21,6 +21,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeImage:)];
     [self.picImageView addGestureRecognizer:tap];
 

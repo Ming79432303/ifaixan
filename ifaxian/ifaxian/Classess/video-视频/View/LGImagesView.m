@@ -144,6 +144,7 @@
 
         //创建图片浏览模型
          NSURL *thumbnaiUrl = [NSURL URLWithString:[url lg_thumbnailImageSizeImageW:200]];
+        NSLog(@"%@",thumbnaiUrl);
         if ([url hasSuffix:@".gif"]) {
             thumbnaiUrl = [NSURL URLWithString:[url lg_jpgReplaceGif]];
         }
@@ -158,7 +159,7 @@
         imageV.tag = page;
        // CGRect imageFrame =  [imageV convertRect:imageV.bounds toView:nil];
        // NSLog(@"%@",NSStringFromCGRect(imageFrame));
-        LWImageBrowserModel *imageModel = [[LWImageBrowserModel alloc] initWithplaceholder:[UIImage imageNamed:@"5"] thumbnailURL:thumbnaiUrl HDURL:hdUrl containerView:self positionInContainer:imageV.frame index:imageV.tag];
+        LWImageBrowserModel *imageModel = [[LWImageBrowserModel alloc] initWithplaceholder:[UIImage imageNamed:@"default_placeholder_Image"] thumbnailURL:thumbnaiUrl HDURL:hdUrl containerView:self positionInContainer:imageV.frame index:imageV.tag];
         [self.imageModels addObject:imageModel];
         index ++;
         page ++;

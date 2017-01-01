@@ -89,7 +89,7 @@
         
         
         if (completion) {
-            completion(isSuccess,responseObject[@"posts"]);
+            completion(isSuccess,responseObject);
         }
         
         

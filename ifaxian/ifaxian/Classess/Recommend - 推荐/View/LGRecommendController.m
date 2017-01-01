@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navItem.title = @"精选推荐";
-    HYPageView *pageView = [[HYPageView alloc] initWithFrame:CGRectMake(0, self.navBar.lg_height, LGScreenW, LGScreenH) withTitles:@[@"发现笑话",@"发现动漫",@"发现视频",@"排行榜"] withViewControllers:@[@"LGTopicXiaoHuaController",@"LGTopicDongManController",@"LGTopicVideoController",@"LGJueWuController"] withParameters:nil];
+    HYPageView *pageView = [[HYPageView alloc] initWithFrame:CGRectMake(0, self.navBar.lg_height, LGScreenW, LGScreenH) withTitles:@[@"发现笑话",@"发现动漫",@"发现视频",@"发现好货"] withViewControllers:@[@"LGTopicXiaoHuaController",@"LGTopicDongManController",@"LGTopicVideoController",@"LGJueWuController"] withParameters:nil];
     pageView.isTranslucent = NO;
     
     pageView.selectedColor = [UIColor blackColor];

@@ -9,11 +9,18 @@
 #import "NSString+LGRequestBasiPath.h"
 
 @implementation NSString (LGRequestBasiPath)
-+(NSString *)requestBasiPathAppend:(NSString *)path;{
++(NSString *)requestBasiPathAppend:(NSString *)path{
     
     return [NSString stringWithFormat:@"%@%@",LGBasiRequestUrl,path];
     
 }
+
+-(NSString *)requestBasiPathAppend:(NSString *)path{
+    
+    return [NSString stringWithFormat:@"%@%@",LGBasiRequestUrl,self];
+    
+}
+
 - (NSString *)lg_getuserAvatar{
     
      NSString * userAvatar = [NSString stringWithFormat:@"%@ifaxian/avatars/%@lg_user_avatar.jpg",LGbuckeUrl,self];

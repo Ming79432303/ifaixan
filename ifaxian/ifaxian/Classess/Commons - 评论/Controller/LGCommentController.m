@@ -168,10 +168,10 @@ static NSString *commentHFViewID = @"replyCellID";
             
         }];
     
-    
+   
 }
 - (void)loadNewData{
-#warning 评论分页待做
+
     NSString *url = [NSString stringWithFormat:@"%@?json=1",self.model.url];
 
     LGWeakSelf;

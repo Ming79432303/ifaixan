@@ -117,7 +117,7 @@
         imageV.tag = page;
         // CGRect imageFrame =  [imageV convertRect:imageV.bounds toView:nil];
         // NSLog(@"%@",NSStringFromCGRect(imageFrame));
-        LWImageBrowserModel *imageModel = [[LWImageBrowserModel alloc] initWithplaceholder:[UIImage imageNamed:@"5"] thumbnailURL:url HDURL:url containerView:self positionInContainer:imageV.frame index:imageV.tag];
+        LWImageBrowserModel *imageModel = [[LWImageBrowserModel alloc] initWithplaceholder:[UIImage imageNamed:@"default_placeholder_Image"] thumbnailURL:url HDURL:url containerView:self positionInContainer:imageV.frame index:imageV.tag];
         [self.imageModels addObject:imageModel];
         index ++;
         page += 1;

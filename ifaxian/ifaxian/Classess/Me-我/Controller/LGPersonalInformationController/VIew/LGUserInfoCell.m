@@ -21,6 +21,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
     self.autoresizingMask = UIViewAutoresizingNone;
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }

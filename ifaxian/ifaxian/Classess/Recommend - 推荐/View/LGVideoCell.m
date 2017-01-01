@@ -37,6 +37,7 @@
 
 - (void)awakeFromNib {
     [self layoutIfNeeded];
+    [super awakeFromNib];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playerVieo)];
     [self.starVideoButton addGestureRecognizer:tap];
     
@@ -58,6 +59,7 @@
     _dateLable.text = model.date;
     _titleLable.text = model.title;
     _nameLable.text = model.author.name;
+    [_iconImgaeView setHeader:[model.author.slug lg_getuserAvatar]];
     
     [_picImageView lg_setImageWithurl:model.thumbnail_images.full.url placeholderImage:nil];
 
@@ -88,6 +90,7 @@
     [self.playerView addSubview:plaer];
     self.videoPlayer = plaer;
     plaer.urlString = self.model.videoUrl;
+    LGLog(@"%@",self.model.videoUrl);
     [plaer starVideo:self.videoPlayer.fullStarButton];
     
 }
@@ -153,5 +156,7 @@
     }
     
 }
+
+
 
 @end

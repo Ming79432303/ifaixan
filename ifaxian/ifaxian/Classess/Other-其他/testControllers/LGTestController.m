@@ -19,9 +19,9 @@
     [super viewDidLoad];
     self.navItem.title = @"测试控制器";
     self.navItem.rightBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"下一个" fontSize:14 addTarget:self action:@selector(next) isBack:NO];
-    NSString *k = @"<p>世界你好</p>";
+
     
-NSLog(@"%@",[NSString encodeXMLCharactersIn:k]);
+
     
 }
 - (void)next{

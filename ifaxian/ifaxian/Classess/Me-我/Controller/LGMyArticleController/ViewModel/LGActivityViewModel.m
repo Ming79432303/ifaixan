@@ -17,12 +17,12 @@
     
     NSString *url = [NSString stringWithFormat:@"https://ifaxian.cc/author/%@/page/1?json=1",_userName];
     LGWeakSelf;
-    [self.manager requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {
+    [self.manager requsetUrl:url completion:^(BOOL isSuccess, id responseObject) {
         
         if (isSuccess) {
             index_ = 2;
             NSMutableArray *shareM = [NSMutableArray array];
-            for (NSDictionary *dict in json) {
+            for (NSDictionary *dict in responseObject[@"posts"]) {
                 LGShareImage *model = [LGShareImage mj_objectWithKeyValues:dict];
                 LGShare *share = [[LGShare alloc] initWithModel:model];
                 [shareM addObject:share];
@@ -44,23 +44,24 @@
     if (index_ < 2) {
         index_ = 2;
     }
-    NSString *url = [NSString stringWithFormat:@"https://ifaxian/author/%@/page/%zd?json=1",_userName,index_];
+
+    NSString *url = [NSString stringWithFormat:@"https://ifaxian.cc/author/%@/page/%zd?json=1",_userName,index_];
     
     LGWeakSelf;
-    [self.manager requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {
+    [self.manager requsetUrl:url completion:^(BOOL isSuccess, id responseObject) {
 
         NSMutableArray<LGShare *> *shareM = [NSMutableArray array];
         
         if (weakSelf.shareArray.lastObject.share.ID > weakSelf.shareArray.firstObject.share.ID) {
             
-            for (NSDictionary *dict in json) {
+            for (NSDictionary *dict in responseObject[@"posts"]) {
                 LGShareImage *model = [LGShareImage mj_objectWithKeyValues:dict];
                 LGShare *share = [[LGShare alloc] initWithModel:model];
                 [shareM addObject:share];
             }
             
         }else{
-            for (NSDictionary *dict in json) {
+            for (NSDictionary *dict in responseObject[@"posts"]) {
                 LGShareImage *model = [LGShareImage mj_objectWithKeyValues:dict];
                 LGShare *share = [[LGShare alloc] initWithModel:model];
                 [shareM addObject:share];
@@ -75,10 +76,10 @@
             }
             
         }
-//        if (index_ > [responseObject[@"pages"] integerValue]) {
-//            completion(isSuccess,nil);
-//            return ;
-//        }
+        if (index_ > [responseObject[@"pages"] integerValue]) {
+            completion(YES,nil);
+            return ;
+        }
         index_ += 1;
         [weakSelf loadImages:shareM isNew:NO Completion:completion];
         

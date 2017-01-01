@@ -44,7 +44,7 @@
     if (_bacImageView == nil) {
         _bacImageView = [[UIImageView alloc] init];
         _bacImageView.userInteractionEnabled = YES;
-        _bacImageView.backgroundColor = [UIColor yellowColor];
+        _bacImageView.backgroundColor = [UIColor darkGrayColor];
         _bacImageView.contentMode = UIViewContentModeScaleAspectFill;
         _bacImageView.clipsToBounds = YES;
         [_bacImageView addSubview:self.starImageView];

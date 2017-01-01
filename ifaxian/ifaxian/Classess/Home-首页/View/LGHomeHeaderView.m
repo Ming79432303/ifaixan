@@ -52,6 +52,7 @@
 }
 - (void)removeTime{
     [self.timer invalidate];
+    self.timer = nil;
    
     
 }
@@ -99,8 +100,8 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self removeTime];
-  
+    
+    
     CGRect rect = self.reuseView.frame;
     CGFloat offSetX = scrollView.contentOffset.x;
     CGFloat w = self.scrollView.bounds.size.width;
@@ -150,15 +151,16 @@
     
     
 }
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-    
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+
+    [self removeTime];
+}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+ 
     [self addtimer];
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-   
-    [self addtimer];
-}
+
 
 - (void)setHeaderArray:(NSArray<LGHomeModel *> *)headerArray{
     

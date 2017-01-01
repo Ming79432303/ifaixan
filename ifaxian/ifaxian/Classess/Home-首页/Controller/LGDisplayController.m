@@ -122,7 +122,7 @@
 
 - (void)commentWillChange:(NSNotification *)noti{
     
-#warning 按钮状态有问题
+
     
     self.commentSendButton.hidden = self.commentButton.hidden;
     self.commentButton.hidden = !self.commentSendButton.hidden;

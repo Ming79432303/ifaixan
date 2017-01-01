@@ -11,6 +11,12 @@
 #import "LGImageSize.h"
 #import "LGImage.h"
 #import "LGDisplayController.h"
+@interface LGScrollContenView()
+
+@property(nonatomic, copy) LGPostModel *lasModel;
+
+@end;
+
 @implementation LGScrollContenView
 
 
@@ -45,9 +51,13 @@
     
 }
 - (void)setModel:(LGHomeModel *)model{
+
     _model = model;
-    
-        
+
+    if (_lasModel == model) {
+        return;
+    }
+ 
         self.timeLable.text = model.date;
     self.titileLable.text = model.title;
     if (model.categories.firstObject.title.length) {
@@ -60,7 +70,7 @@
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnail_images.full.url] placeholderImage:nil];
     
     [self setNeedsLayout];
-    
+    _lasModel = model;
 }
 
 

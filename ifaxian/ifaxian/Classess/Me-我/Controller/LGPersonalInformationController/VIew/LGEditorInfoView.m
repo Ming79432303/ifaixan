@@ -15,7 +15,7 @@
 @implementation LGEditorInfoView
 
 - (void)awakeFromNib{
-    
+    [super awakeFromNib];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewFrameChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
       self.viewBottomMargin.constant = -150;
     [self.textField becomeFirstResponder];

@@ -58,8 +58,10 @@ static NSString *squareCellID = @"squareCellID";
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGSquareCell class]) bundle:nil] forCellReuseIdentifier:squareCellID];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-   
-    [self loadNewData];
+    if (![LGNetWorkingManager manager].isLogin){
+        
+        [self loadNewData];
+    }
     self.tableView.bounces = YES;
     
     self.tableView.contentInset = UIEdgeInsetsMake(LGBacImageViewHeight - LGstatusBarH, 0, LGtabBarH, 0);
@@ -95,12 +97,17 @@ static NSString *squareCellID = @"squareCellID";
     [self.postList loadOldDatacompletion:^(BOOL isSuccess, NSArray<LGShare *> *shareArray) {
         if (isSuccess) {
           
-            if (_lastCount == shareArray.count) {
+            if (shareArray == nil) {
                 [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
                 return ;
             }
+            
             weakSelf.postsArrayM = shareArray;
             [weakSelf.tableView reloadData];
+            
+            
+                [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+
             weakSelf.lastCount = shareArray.count;
         }
         [weakSelf.tableView.mj_footer endRefreshing];
@@ -155,7 +162,7 @@ static NSString *squareCellID = @"squareCellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
-#warning 待改
+
            LGShare *model = self.postsArrayM[indexPath.row];
     if ([model.share.categories.firstObject.title isEqualToString:@"分享"]) {
         

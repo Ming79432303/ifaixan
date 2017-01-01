@@ -67,7 +67,9 @@ static NSString *userCellID = @"userCellID";
 - (void)loadData{
     
     
-    
+    if (![LGNetWorkingManager manager].isLogin) {
+        return;
+    }
     
     
     [self.manager requestUsercompletion:^(BOOL isSuccess, NSDictionary * responseObject) {
@@ -83,7 +85,7 @@ static NSString *userCellID = @"userCellID";
           
 
            [[NSNotificationCenter defaultCenter] postNotificationName:LGUserupdataImageNotification object:nil userInfo:@{@"filePath":filePath}];
-#warning //写入到磁盘
+#warning 写入到磁盘
             
 //           
 //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

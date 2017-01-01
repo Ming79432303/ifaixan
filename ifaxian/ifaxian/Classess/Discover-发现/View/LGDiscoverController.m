@@ -74,7 +74,7 @@ static NSString  *discoverHFID = @"discoverHFID";
 
 - (void)addHeaderView{
     LGDiscoverHeaderView *headerView = [LGDiscoverHeaderView viewFromeNib];
-    headerView.frame = CGRectMake(0, 0, 200, 200);
+    headerView.frame = CGRectMake(0, 0, 200, 183);
     
     self.tableView.tableHeaderView = headerView;
     
@@ -116,7 +116,7 @@ static NSString  *discoverHFID = @"discoverHFID";
     searchView.delegate = self;
     searchView.borderStyle = UITextBorderStyleRoundedRect;
     searchView.backgroundColor = [UIColor whiteColor];
-    searchView.frame = CGRectMake(0, 0, 200, self.navBar.lg_height -  LGCommonMargin - LGstatusBarH);
+    searchView.frame = CGRectMake(0, 0, 183, self.navBar.lg_height -  LGCommonMargin - LGstatusBarH);
     searchView.placeholder = @"请输入关键字搜索";
     UIImageView *search = [[UIImageView alloc] init];
     search.image = [UIImage imageNamed:@"search_icon"];
@@ -134,12 +134,16 @@ static NSString  *discoverHFID = @"discoverHFID";
     }];
     
     //self.navItem.rightBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"云标签" fontSize:14 addTarget:self action:@selector(tag) isBack:NO];
-    self.navItem.rightBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"搜索" fontSize:14 addTarget:self action:@selector(textFieldDidBeginEditing:) isBack:NO];
+    self.navItem.rightBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"" fontSize:14 addTarget:self action:@selector(none) isBack:NO];
 
     self.searchTextField = searchView;
 }
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
+
+- (void)none{
     
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+  
      [self addSearchView];
     self.navItem.rightBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"取消" fontSize:14 addTarget:self action:@selector(canle) isBack:NO];
     
@@ -162,7 +166,7 @@ static NSString  *discoverHFID = @"discoverHFID";
     };
     
     [self.searchView pop_addAnimation:animati forKey:nil];
-     self.navItem.rightBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"搜索" fontSize:14 addTarget:self action:@selector(textFieldDidBeginEditing:) isBack:NO];
+     self.navItem.rightBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"" fontSize:14 addTarget:self action:@selector(none) isBack:NO];
     
     
     

@@ -12,8 +12,6 @@
 #import "LGForgotPasswordView.h"
 #import "LGSinaLoginController.h"
 @interface LGLoginController ()
-@property (weak, nonatomic) IBOutlet UIImageView *avatar;
-
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passWordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *remenberButton;
@@ -58,8 +56,7 @@
     leftUserImageV.frame = CGRectMake(0, 0, 25, 25);
     self.userNameTextField.leftView = leftUserImageV;
     self.userNameTextField.leftViewMode = UITextFieldViewModeAlways;
-    self.avatar.layer.cornerRadius = self.avatar.lg_width/2;
-    self.avatar.layer.masksToBounds = YES;
+   
     
     UIImage *paswImage = [UIImage imageNamed:@"passwd"];
     UIImageView *leftPaswImageV = [[UIImageView alloc] init];
@@ -116,7 +113,7 @@
     NSString *userName = [self.userNameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *password = [self.passWordTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     LGWeakSelf;
-    [[LGNetWorkingManager manager] requestAuthcookie:userName passWord:password completion:^(BOOL isSuccess, BOOL isSuccessLogin){
+    [[LGHTTPSessionManager manager] requestAuthcookie:userName passWord:password completion:^(BOOL isSuccess, BOOL isSuccessLogin){
         if (isSuccess) {
             if (isSuccessLogin) {
                 

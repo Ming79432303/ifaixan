@@ -15,49 +15,6 @@
 
 
 
-- (void)requestAuthcookie:(NSString *)userName passWord:(NSString *)passWord completion:(void(^)(BOOL isSuccess, BOOL isSuccessLogin))completion{
-    
-  
-   NSString *url = [NSString requestBasiPathAppend:@"/api/user/generate_auth_cookie"];
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"username"] = userName;
-    parameters[@"password"] = passWord;
-    parameters[@"insecure"] = @"cool";
-    
-    [self request:LGRequeTypePOST urlString:url parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
-        
-        if (responseObject[@"error"]) {
-             completion(isSuccess,NO);
-        }else{
-            if (isSuccess) {
-                
-                //字典专模型
-                LGAccount *account = [LGAccount mj_objectWithKeyValues:responseObject];
-            
-                //保存用户数据
-                [account accountSave];
-                if (completion) {
-                    
-                    completion(isSuccess,YES);
-                }
-                
-                NSHTTPCookieStorage * cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-                [cookieStorage setCookie:[[NSHTTPCookie alloc] initWithProperties:@{account.cookie_name:account.cookie}]];
-                
-            }
-
-            
-        }
-        
-        
-        
-        
-                
-    }];
-    
-    
-    
-}
 
 
 /**

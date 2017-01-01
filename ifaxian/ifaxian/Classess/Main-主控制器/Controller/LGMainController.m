@@ -15,9 +15,13 @@
 #import "LGNewFeatureView.h"
 @interface LGMainController ()<LGWriteViewDelegate>
 @property(nonatomic, strong) UIButton *writeButton;
+@property(nonatomic, strong) UINavigationController *loginNav;
 @end
 
 @implementation LGMainController
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,6 +50,13 @@
 }
 
 - (void)writeView{
+    
+    if (![LGNetWorkingManager manager].isLogin) {
+        [SVProgressHUD showInfoWithStatus:@"请先登录"];
+          [[NSNotificationCenter defaultCenter] postNotificationName:LGUserLoginNotification object:nil];
+        return;
+    }
+    
     LGWriteView *writeView = [LGWriteView viewFromeNib];
     writeView.delegate = self;
     
@@ -84,14 +95,14 @@
 //用户登录
 - (void)userLogin{
  
-        LGLoginController *login = [[LGLoginController alloc] init];
-    UINavigationController *navTab = [[UINavigationController alloc] initWithRootViewController:login];
 
-    
-    UITabBarController *tab = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    UINavigationController *nav  =  tab.selectedViewController;
-    
-    [nav presentViewController:navTab animated:YES completion:nil];
+    LGLoginController *login = [[LGLoginController alloc] init];
+    UINavigationController * loginNav = [[UINavigationController alloc] initWithRootViewController:login];
+   
+    if (self == nil) {
+        return;
+    }
+    [self presentViewController:loginNav animated:YES completion:nil];
     
 }
 //用户退出登录
@@ -104,8 +115,9 @@
     [alerView addAction: [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //处理退出登录
         [self logOut];
-        [[NSNotificationCenter defaultCenter] postNotificationName:LGUserLogoutSuccessNotification object:nil];
         
+            [[NSNotificationCenter defaultCenter] postNotificationName:LGUserLoginNotification object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:LGUserLogoutSuccessNotification object:nil];
     }]];
 
     
@@ -208,7 +220,6 @@
     NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
     if (![version isEqualToString:lastVersion]) {
         //保存到偏好设置
-       
         // 进入到新特性
         [[NSUserDefaults standardUserDefaults] setObject:version forKey:@"version"];
         

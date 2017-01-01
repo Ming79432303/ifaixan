@@ -20,7 +20,7 @@
 //
 //- (void)requsetCommentUrl:(NSString *)postUrl completion:(LGRequestCompletion)completion;
 
-- (void)requestAuthcookie:(NSString *)userName passWord:(NSString *)passWord completion:(void(^)(BOOL isSuccess, BOOL isSuccessLogin))completion;
+
 
 - (void)requestPostThearticleTitle:(NSString *)title content:(NSString *)contentText :(LGSuccess)completion;
 
