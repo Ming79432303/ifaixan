@@ -42,7 +42,10 @@
     self.bodyPlaceholderText = NSLocalizedString(@"Share your story here...", @"Placeholder for the post body.");
 
 }
-
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    
+    return UIInterfaceOrientationMaskPortrait;
+}
 - (void)dismissView{
     
     [self dismissViewControllerAnimated:YES completion:nil];

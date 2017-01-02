@@ -37,7 +37,7 @@
 //添加定时器
 - (void)addtimer{
     
-  self.timer = [NSTimer timerWithTimeInterval:4.0 target:self selector:@selector(time) userInfo:nil repeats:YES];
+  self.timer = [NSTimer timerWithTimeInterval:6.0 target:self selector:@selector(time) userInfo:nil repeats:YES];
     //添加到消息循环中
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     
