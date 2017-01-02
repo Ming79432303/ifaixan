@@ -20,12 +20,18 @@
 /**
  *  账户模型
  */
-
 @property(nonatomic, strong) LGAccountUser *user;
-
+/**
+ *  判断用户是用哪种方式否登录的
+ */
 @property(nonatomic, assign) BOOL isOtherLogin;
-
+/**
+ *  保存账户数据
+ */
 - (void)accountSave;
+/**
+ *  读取账户数据
+ */
 - (void)readAccount;
 
 @end

@@ -14,7 +14,7 @@
 
 @implementation LGTopicController
 
-
+#pragma mark - 懒加载
 - (LGRecommendViewModel *)recommend{
     if (_recommend == nil) {
         _recommend = [[LGRecommendViewModel alloc] init];
@@ -41,12 +41,8 @@
     
     
 }
-
-
-
-
-
-
+#pragma mark - RefreshView方法
+//天剑上下拉刷新
 - (void)setupRefreshView{
     
     self.tableView.mj_header = [LGRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
@@ -54,11 +50,10 @@
     self.tableView.mj_footer = [LGRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadOldData)];
     
 }
-
+//获取新数据
 - (void)loadNewData{
 #warning contentInset在这里设置才有效有问题
     UIEdgeInsets tabInset = self.tableView.contentInset;
-    
     self.tableView.contentInset = UIEdgeInsetsMake(tabInset.top, tabInset.left, 84, tabInset.right);
     LGWeakSelf;
     [self.recommend loadNewDataCompletion:^(BOOL isSuccess, NSArray *array) {
@@ -68,32 +63,22 @@
             [weakSelf.tableView.mj_footer resetNoMoreData];
             [weakSelf.tableView.mj_header endRefreshing];
         }
-        
     }];
-    
-    
 }
-
+//获取旧数据
 - (void)loadOldData{
     
     LGWeakSelf;
-
     [self.recommend loadOldDataCompletion:^(BOOL isSuccess, NSArray *array) {
-       
-        
         if (isSuccess) {
              if (array==nil) {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
                 return ;
             }
-            
             weakSelf.dateArray = array;
-           
             [weakSelf.tableView reloadData];
-            
         }
         [weakSelf.tableView.mj_footer endRefreshing];
-        
     }];
     
 }
@@ -104,7 +89,7 @@
 
 - (void)setupTableView{
     
-
+    //取出线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
 }

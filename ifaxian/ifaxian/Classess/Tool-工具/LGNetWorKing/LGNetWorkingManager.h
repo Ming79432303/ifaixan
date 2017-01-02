@@ -27,8 +27,12 @@ singleH(Net)
  *  @param completion 请求结果回调
  */
 - (void)requestPostUrl:(NSString *)url completion:(LGRequestCompletion)completion;
--(void)tokenReques:(LGNetMethod)method urlString:(NSString *)urlString parameters:(NSMutableDictionary *)parameters completion:(LGRequestCompletion)completion;
 
+/**
+ *  判断用户是否登录
+ *
+ *  @return Bool
+ */
 - (BOOL)isLogin;
 
 

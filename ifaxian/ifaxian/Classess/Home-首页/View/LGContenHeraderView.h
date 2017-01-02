@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface LGContenHeraderView : UIView
+/**
+ *  作者的头像
+ */
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
-
+/**
+ *  作者的名字
+ */
 @property (weak, nonatomic) IBOutlet UILabel *authorLable;
 @end

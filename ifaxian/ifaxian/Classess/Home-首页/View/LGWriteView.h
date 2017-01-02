@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class LGWriteView;
 @protocol LGWriteViewDelegate <NSObject>
-
+//移除当前覆盖的view代理方法
 - (void)removerConverViewWriteView:(LGWriteView *)writeView;
 
 @end

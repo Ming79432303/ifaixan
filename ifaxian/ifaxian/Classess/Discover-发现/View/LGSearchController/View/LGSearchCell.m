@@ -9,12 +9,25 @@
 #import "LGSearchCell.h"
 
 @interface LGSearchCell()
+/**
+ *  搜索的标题
+ */
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
+/**
+ *  时间
+ */
 @property (weak, nonatomic) IBOutlet UILabel *dataLable;
-
-
+/**
+ *  评论
+ */
 @property (weak, nonatomic) IBOutlet UILabel *commentCountLable;
+/**
+ *  浏览数
+ */
 @property (weak, nonatomic) IBOutlet UILabel *postViewsLable;
+/**
+ *  搜索的第一张图
+ */
 @property (weak, nonatomic) IBOutlet UIImageView *picImageView;
 
 @end
@@ -24,7 +37,7 @@
 - (void)awakeFromNib {
     // Initialization code
 }
-
+#pragma mark - 模型赋值
 - (void)setModel:(LGPostModel *)model{
     
     _model = model;
@@ -36,7 +49,7 @@
     self.commentCountLable.text = [NSString stringWithFormat:@"评论 %@",model.comment_count];
     [self.picImageView lg_setImageWithurl:model.imageUrl placeholderImage:nil];
     NSString *viewCount = model.views.length > 0 ? model.views:@"0";
-    self.postViewsLable.text = [NSString stringWithFormat:@"评论 %@",viewCount];
+    self.postViewsLable.text = [NSString stringWithFormat:@"浏览数 %@",viewCount];
    
     
     

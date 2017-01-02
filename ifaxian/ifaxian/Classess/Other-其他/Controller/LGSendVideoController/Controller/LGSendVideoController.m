@@ -46,32 +46,17 @@
 
 - (void)setupUI{
     
-    
     _textView.layer.backgroundColor = [[UIColor whiteColor] CGColor];
-    
-    
     _textView.layer.borderColor = [[UIColor lightGrayColor]CGColor];
-    
-    
     _textView.layer.borderWidth = 1.0;
-    
-    
     _textView.layer.cornerRadius = 3.0f;
-    
-    
     [_textView.layer setMasksToBounds:YES];
-    
-
-    
     //右边按钮
-    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     self.sendButton = button;
-    
     [button setBackgroundImage:[UIImage imageNamed:@"common_button_white_disable"] forState:UIControlStateNormal];
     //[button setBackgroundImage:[UIImage imageNamed:@"common_button_orange_highlighted"] forState:UIControlStateHighlighted];
     [button setBackgroundImage:[UIImage imageNamed:@"common_button_white_disable"] forState:UIControlStateDisabled];
-    
     button.frame = CGRectMake(0, 0, 45, 36);
     [button setTitle:@"发送" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(sendVideo) forControlEvents:UIControlEventTouchUpInside];
@@ -81,11 +66,7 @@
     
     self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navItem.rightBarButtonItem.enabled = NO;
-    
-    
     UIButton *leftbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-
-    
     [leftbutton setBackgroundImage:[UIImage imageNamed:@"common_button_white_disable"] forState:UIControlStateNormal];
     //[button setBackgroundImage:[UIImage imageNamed:@"common_button_orange_highlighted"] forState:UIControlStateHighlighted];
     [leftbutton setBackgroundImage:[UIImage imageNamed:@"common_button_white_disable"] forState:UIControlStateDisabled];
@@ -98,11 +79,6 @@
     leftbutton.titleLabel.font = [UIFont systemFontOfSize:14];
     
     self.navItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftbutton];
-
-
-
-    
-    
 }
 
 - (void)dealloc{

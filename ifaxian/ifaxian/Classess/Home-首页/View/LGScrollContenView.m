@@ -23,6 +23,7 @@
 - (void)awakeFromNib{
     
     [super awakeFromNib];
+    //给标题文字添加单击手势
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2:)];
     
     
@@ -30,7 +31,7 @@
     [self.titileLable addGestureRecognizer:tap];
     
 }
-
+//点击图片跳转
 - (void)go2:(UIGestureRecognizer *)tap{
    
     self.titileLable.highlighted = YES;
@@ -50,26 +51,30 @@
     
     
 }
+//设置模型数据
 - (void)setModel:(LGHomeModel *)model{
 
     _model = model;
-
+    //判断上次的模型是否与当前模型相同相同就不用再设置了
     if (_lasModel == model) {
         return;
     }
- 
-        self.timeLable.text = model.date;
+    self.timeLable.text = model.date;
     self.titileLable.text = model.title;
+    //拿到分类中的第一个标题
     if (model.categories.firstObject.title.length) {
         [self.categoryButton  setTitle:model.tags.firstObject.title forState:UIControlStateNormal];
       
     }else{
+        //如果模型中不存在分类那么就显示文章
         [self.categoryButton  setTitle:@"文章" forState:UIControlStateNormal];
         
     }
+    //设置图片
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnail_images.full.url] placeholderImage:nil];
     
     [self setNeedsLayout];
+    //赋值给上一次的模型
     _lasModel = model;
 }
 

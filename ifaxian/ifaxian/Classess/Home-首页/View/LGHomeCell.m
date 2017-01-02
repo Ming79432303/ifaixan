@@ -8,8 +8,6 @@
 
 #import "LGHomeCell.h"
 #import <UIImageView+WebCache.h>
-#import "LGHomeCommentView.h"
-#import "LGHomeTagsView.h"
 #import "LGHomeImagesView.h"
 @interface LGHomeCell()
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
@@ -17,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLable;
 
 
-@property (weak, nonatomic) IBOutlet LGHomeTagsView *tagView;
 
 @property (weak, nonatomic) IBOutlet UILabel *excerptLable;
 
@@ -47,7 +44,7 @@
     self.excerptLable.text = model.description;
     self.dateLable.text = model.date;
     self.titleLable.text = model.title;
-    self.tagView.tags = model.tags;
+   
     self.homeimagesView.images = model.images;
     if (model.comments.count > 0) {
         
@@ -112,6 +109,11 @@
 
    
 }
+/**
+ *  拦击系统的frame修改cell的大小
+ *
+ *  @param frame 系统的frame
+ */
 - (void)setFrame:(CGRect)frame{
     
     CGRect cellFrame = frame;
@@ -119,8 +121,6 @@
     cellFrame.size.width -= 2 * LGCommonSmallMargin;
     cellFrame.origin.x += LGCommonSmallMargin;
     cellFrame.origin.y += LGCommonMargin;
-    
-    
     [super setFrame:cellFrame];
     
 }

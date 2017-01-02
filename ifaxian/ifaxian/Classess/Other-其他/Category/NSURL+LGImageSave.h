@@ -9,5 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface NSURL (LGImageSave)
+/**
+ *  根据URL保存一张图片
+ *
+ *  @param completion 回调结果
+ */
 - (void)lg_saveImage:(void(^)(bool isSuccess ,NSString * info))completion;
 @end

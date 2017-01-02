@@ -27,6 +27,7 @@ static  NSCalendar *canlendar_;
 
 
 - (CGFloat)rowHeght{
+    //如果行高存在就不需要再次计算行高了
     if (_rowHeght) {
         return _rowHeght;
     }
@@ -46,7 +47,7 @@ static  NSCalendar *canlendar_;
     
     return _rowHeght;
 }
-
+//父评论的高度
 -(CGFloat)replyHeght{
     if (_replyHeght) {
         return _replyHeght;

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "LGTag.h"
 @interface LGTagView : UIView
+/**
+ *  标签
+ */
 @property(nonatomic, strong) NSArray<LGTag *> *tags;
 
 @end

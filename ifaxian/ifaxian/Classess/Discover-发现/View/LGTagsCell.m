@@ -15,19 +15,18 @@
 
 
 @implementation LGTagsCell
-
+#pragma mark - nib加载完毕添加标签View
 - (void)awakeFromNib {
     [super awakeFromNib];
     LGTagView *tagView = [[LGTagView alloc] init];
     tagView.backgroundColor = [UIColor whiteColor];
     tagView.frame = self.contentView.bounds;
-    
-    
     [self.contentView addSubview:tagView];
     self.tagView = tagView;
     
     
 }
+#pragma mark - 布局tagView的frame
 - (void)layoutSubviews{
     [super layoutSubviews];
     self.tagView.lg_y = LGCommonMargin;
@@ -37,6 +36,7 @@
     
     
 }
+#pragma mark - 模型复制
 - (void)setTags:(NSArray *)tags{
     if (_tags.count) {
         return;

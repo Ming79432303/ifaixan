@@ -35,8 +35,13 @@
  *评论者  
  */
 @property (nonatomic, strong) LGAuthor *author;
-
+/**
+ *  评论的行高
+ */
 @property(nonatomic, assign) CGFloat rowHeght;
+/**
+ *  父品论的高度
+ */
 @property(nonatomic, assign) CGFloat replyHeght;
 
 

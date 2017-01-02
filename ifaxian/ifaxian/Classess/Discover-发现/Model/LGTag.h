@@ -9,5 +9,7 @@
 #import "LGBasiModel.h"
 
 @interface LGTag : LGBasiModel
-
+/**
+ *  标签模型继承LGBasiModel
+ */
 @end

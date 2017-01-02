@@ -7,7 +7,9 @@
 //
 
 #import "LGBasiController.h"
-
+/**
+ *  点击标签跳转控制器
+ */
 @interface LGTagController : LGBasiController
 @property(nonatomic, copy) NSString *tagTitle;
 @end

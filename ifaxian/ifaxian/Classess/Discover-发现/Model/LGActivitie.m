@@ -21,7 +21,7 @@ static  NSCalendar *canlendar_;
     canlendar_ = [NSCalendar lg_calendar];
     
 }
-
+#pragma mark - 时间
 - (NSString *)time{
     
     //时间的转换
@@ -45,36 +45,11 @@ static  NSCalendar *canlendar_;
     timeZone = [NSTimeZone systemTimeZone];//获取本地时区
     interval = [timeZone secondsFromGMT];
     NSDate *localDate = [GMTDate dateByAddingTimeInterval:-interval];//localDate
-    //注意：这里是从GMT时间转换为本地时间所以interval不变号，此时localData的值为2016-06-01 10:00:00 +0000
-
-   
-//    //NSDate转回NSString时根据本地时区减去之前加上的4个小时，此时localDateString的值为2016-06-1 06:00:00
-    
-    
-    
-    
-    
-    
-  
-    
     NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    
-    //    //进行适配
-    //    if ( [NSCalendar respondsToSelector:@selector(calendarWithIdentifier:)]) {//ios7后的
-    //        canlendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    //    }else{//ios7前的
-    //        canlendar = [NSCalendar currentCalendar];
-    //    }
-    //获取传入时间的年月日小时
-    // NSDateComponents  *compsonest = [canlendar components:unit fromDate:date];
-    //获取当前时与传入时间的时间差值
+
     NSDateComponents *comps = [canlendar_ components:unit fromDate:localDate toDate:[NSDate date] options:0];
     //ios8的方法低版本无法运行
-    
-    //所以需要自己写
-    
     NSString *dateStr;
-    
     if (localDate.isThisYear) {
         if (localDate.isToday) {
             if (comps.hour >= 1) {
@@ -104,7 +79,7 @@ static  NSCalendar *canlendar_;
     return dateStr.length > 0 ? dateStr:@"";
     
 }
-
+#pragma mark - 抓取文章内容的链接 + 标题
 - (NSArray *)linkAndText{
     
     if (_linkAndText.count) {
@@ -116,6 +91,7 @@ static  NSCalendar *canlendar_;
     
     return _linkAndText;
 }
+#pragma mark - 首页的第一张图
 - (NSString *)imageUrl{
     
     if (_imageUrl.length) {
@@ -126,7 +102,7 @@ static  NSCalendar *canlendar_;
     
     return _imageUrl;
 }
-
+#pragma mark - 内容
 - (NSString *)contenText{
     
     if (_contenText.length) {
@@ -139,7 +115,7 @@ static  NSCalendar *canlendar_;
     return _contenText;
 }
 
-
+#pragma mark - 行高
 - (CGFloat )rowHeight{
     
     if (_rowHeight > 0) {
@@ -148,30 +124,20 @@ static  NSCalendar *canlendar_;
     CGFloat actionW = LGScreenW - LGCommonMargin - LGAvatarHeight - 3 * LGCommonSmallMargin;
     _rowHeight += LGAvatarHeight;
     NSString *actionStr;
+    //对发布类型进行判断
     if ([self.type isEqualToString:@"new_blog_comment"]) {
         actionStr =  @"发布了一条评论";
         _rowHeight += [self.contenText boundingRectWithSize:CGSizeMake(actionW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size.height + LGCommonMargin;
-       
     }else if([self.type isEqualToString:@"new_blog_post"]){
         //发布了一条动态
         actionStr = @"发布了一条动态";
     }
-//
-//    NSString *action = [NSString stringWithFormat:@"%@%@",_time,actionStr];
-//    
-//    
-    
-    
- // _rowHeight += [action boundingRectWithSize:CGSizeMake(actionW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size.height;
     NSString *titleStr = [NSString stringWithFormat:@"#%@",self.linkAndText.lastObject];
     _rowHeight += [titleStr boundingRectWithSize:CGSizeMake(actionW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size.height;
-    
     if (self.imageUrl.length) {
         _rowHeight += 168 + LGCommonMargin;
     }
-    
     _rowHeight += 3 * LGCommonMargin;
-   
     return _rowHeight;
 }
 

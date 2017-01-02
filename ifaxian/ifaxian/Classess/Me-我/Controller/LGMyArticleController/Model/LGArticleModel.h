@@ -7,8 +7,13 @@
 //
 
 #import "LGPostModel.h"
-
+/**
+ *  继承LGPostModel
+ */
 @interface LGArticleModel : LGPostModel
+/**
+ *  如果是文章类型的行高
+ */
 @property(nonatomic, assign) CGFloat articleCellHeight;
 
 @end

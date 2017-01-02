@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UITextField (LGTextField)
+/**
+ *  高亮颜色
+ */
 @property(nonatomic, strong) UIColor *lg_placeholderColor;
 @end

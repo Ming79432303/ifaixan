@@ -58,13 +58,24 @@
  */
 @property(nonatomic, copy) NSString *views;
 /**
- *  图片附件
+ *  分类
  */
 @property(nonatomic, strong) NSArray<LGCategories *> *categories;
-
+/**
+ *  附件
+ */
 @property(nonatomic, strong)  LGAttachment *attachment;
+/**
+ *  缩略图
+ */
 @property(nonatomic, strong) LGImage *thumbnail_images;
+/**
+ *  文章的路径
+ */
 @property(nonatomic, copy) NSString *slug;
+/**
+ *  文章中的第一张图片地址
+ */
 @property(nonatomic, copy) NSString *imageUrl;
 
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface LGImageSize : NSObject
+//图片的尺寸
 @property(nonatomic, assign) NSInteger height;
 @property(nonatomic, copy) NSString *url;
 @property(nonatomic, assign) NSInteger width;

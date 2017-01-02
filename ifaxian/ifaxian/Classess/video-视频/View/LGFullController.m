@@ -28,7 +28,7 @@
 {
     return UIInterfaceOrientationMaskLandscape;
 }
-
+//设置屏幕旋转
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     return YES;

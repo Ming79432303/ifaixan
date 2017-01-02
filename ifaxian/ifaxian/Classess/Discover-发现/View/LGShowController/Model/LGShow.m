@@ -18,8 +18,6 @@
     
     show.title = title;
     show.posts = post;
-    
-    
     return show;
     
     

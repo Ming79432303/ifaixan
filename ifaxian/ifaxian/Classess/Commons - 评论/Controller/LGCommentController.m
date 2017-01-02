@@ -87,6 +87,7 @@ static NSString *commentHFViewID = @"replyCellID";
     
     
 }
+#pragma mark - 布局UI
 - (void)setupUI{
     
     self.navItem.title = @"评论";
@@ -202,15 +203,10 @@ static NSString *commentHFViewID = @"replyCellID";
     
     
         self.tableView.mj_footer.hidden = YES;
-   
 
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    
-    
     return self.comments.count;
 }
 
@@ -245,33 +241,30 @@ static NSString *commentHFViewID = @"replyCellID";
     
     
 }
+//计算行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     LGComment *comment = self.comments[indexPath.row];
     NSUInteger index = 0;
     //CGFloat parentHeight = 0;
      LGComment *parentCommt;
+    //判断是否有父评论
     if (comment.parent.length > 0 && [comment.parent integerValue] > 0) {
         for (LGComment *subComment in self.comments) {
             if ([subComment.ID isEqualToString:comment.parent]) {
+                //拿到父评论的索引
                 index = [self.comments indexOfObject:subComment];
                
                 //parentHeight = comment.replyHeght;
             }
         }
-        
-        
+        //根据索引拿到父评论
         parentCommt = self.comments[index];
-        
-        
-        
     }
-
-    
+    //返回计算的行高
     return comment.rowHeght + parentCommt.replyHeght;
 }
-
+//点击方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     
     LGComment *comment = self.comments[indexPath.row];
     self.commentSendButton.tag = [comment.ID integerValue];
@@ -285,17 +278,22 @@ static NSString *commentHFViewID = @"replyCellID";
     self.commentSendButton.tag = 0;
     self.commentTextField.placeholder = @"我来说两句";
 }
-
+//显示组标题，显示有无评论
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-      UITableViewHeaderFooterView *hfView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:commentHFViewID];
+    //从循环池中出去HeaderFooterView
+    UITableViewHeaderFooterView *hfView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:commentHFViewID];
+    //创建一个view
     UIView *view = [[UIView alloc] init];
+    //计算view的frame
     view.frame = CGRectMake(LGCommonSmallMargin,  LGCommonMargin, self.tableView.lg_width - 2 * LGCommonSmallMargin, 40 -1);
     view.backgroundColor = [UIColor whiteColor];
+    //创建一个用来显示文字的lable
     UILabel *titleLable = [[UILabel alloc] init];
     titleLable.backgroundColor = [UIColor whiteColor];
     titleLable.font = [UIFont systemFontOfSize:13];
     titleLable.textColor = [UIColor lightGrayColor];
     titleLable.frame = CGRectMake(2 * LGCommonMargin,  0, view.lg_width/2, view.lg_height);
+    //对当前评论进行判断是否有无
     if ([self.model.comment_count integerValue] <=  0 && !self.comments.count) {
         titleLable.text = @"暂无评论";
     }else{

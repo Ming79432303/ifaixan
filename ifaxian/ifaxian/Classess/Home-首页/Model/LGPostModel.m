@@ -34,16 +34,7 @@ static  NSCalendar *canlendar_;
     fmt_.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     NSDate *date = [fmt_ dateFromString:_date];
     NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    
-    //    //进行适配
-    //    if ( [NSCalendar respondsToSelector:@selector(calendarWithIdentifier:)]) {//ios7后的
-    //        canlendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    //    }else{//ios7前的
-    //        canlendar = [NSCalendar currentCalendar];
-    //    }
-    //获取传入时间的年月日小时
-    // NSDateComponents  *compsonest = [canlendar components:unit fromDate:date];
-    //获取当前时与传入时间的时间差值
+
     NSDateComponents *comps = [canlendar_ components:unit fromDate:date toDate:[NSDate date] options:0];
     //ios8的方法低版本无法运行
     
@@ -80,6 +71,7 @@ static  NSCalendar *canlendar_;
     return dateStr.length > 0 ? dateStr:@"";
     
 }
+//获取图片中第一张图片
 - (NSString *)imageUrl{
     
         if (_imageUrl.length) {

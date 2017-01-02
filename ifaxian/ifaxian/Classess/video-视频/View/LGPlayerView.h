@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @class LGPlayerView;
-
+/**
+ *  视频播放界面
+ */
 @protocol LGPlayerViewDelegate <NSObject>
 
 - (void)playerFailuretoreplay:(LGPlayerView *)view;

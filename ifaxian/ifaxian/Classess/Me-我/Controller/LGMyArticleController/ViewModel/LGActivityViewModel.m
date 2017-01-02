@@ -11,7 +11,11 @@
 @implementation LGActivityViewModel{
     NSInteger index_;
 }
-
+/**
+ *  获取最新的数据
+ *
+ *  @param completion 最新的数据结果
+ */
 -(void)loadNewDatacompletion:(void (^)(BOOL, NSArray<LGShare *> *))completion{
     
     
@@ -22,12 +26,15 @@
         if (isSuccess) {
             index_ = 2;
             NSMutableArray *shareM = [NSMutableArray array];
+           
             for (NSDictionary *dict in responseObject[@"posts"]) {
+                //字典转模型
                 LGShareImage *model = [LGShareImage mj_objectWithKeyValues:dict];
+                //再次字典转模型
                 LGShare *share = [[LGShare alloc] initWithModel:model];
                 [shareM addObject:share];
             }
-            
+            //下载图片
             [weakSelf loadImages:shareM isNew:YES Completion:completion];
             
         }else{
@@ -39,7 +46,11 @@
         
     }];
 }
-
+/**
+ *  获取下一页
+ *
+ *  @param completion 下一页的数据结果
+ */
 - (void)loadOldDatacompletion:(void (^)(BOOL, NSArray<LGShare *> *))completion{
     if (index_ < 2) {
         index_ = 2;

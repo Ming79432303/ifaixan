@@ -27,6 +27,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    /**
+     *  设置cell1的背景
+     */
     [super awakeFromNib];
         self.autoresizingMask = UIViewAutoresizingNone;
         UIImageView *bgImageView = [[UIImageView alloc] init];
@@ -37,7 +40,11 @@
     self.backgroundView =[[UIImageView alloc] initWithImage:image];
 
 }
-
+/**
+ *  数据赋值
+ *
+ *  
+ */
 - (void)setPostModel:(LGShareImage *)postModel{
     
     _postModel = postModel;

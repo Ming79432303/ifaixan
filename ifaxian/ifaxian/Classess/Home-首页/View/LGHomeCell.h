@@ -10,7 +10,9 @@
 #import "LGHomeModel.h"
 
 @interface LGHomeCell : UITableViewCell
-
+/**
+ *  首页模型数据
+ */
 @property (nonatomic ,strong) LGHomeModel *model;
 
 

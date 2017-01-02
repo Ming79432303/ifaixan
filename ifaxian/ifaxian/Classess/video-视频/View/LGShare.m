@@ -10,10 +10,11 @@
 
 @implementation LGShare
 
+
+#pragma mark -  模型转换
 - (instancetype)initWithModel:(LGPostModel *)shareImage{
     
     if (self = [super init]) {
-        
         self.share = shareImage;
         [self setupImageArray];
         [self getAvatar];
@@ -23,6 +24,7 @@
     return self;
 }
 
+#pragma mark - 获取用户头像
 - (void)getAvatar{
 
     _userAvatar =[_share.author.slug lg_getuserAvatar];
@@ -38,8 +40,7 @@
 //    
 //    return _images;
 //}
-
-
+#pragma mark - 计算行高
 - (void)calculateHeight{
        _rowHeight = 0;
     
@@ -94,6 +95,7 @@
     
 }
 //重新计算单张图的行高
+#pragma mark - 重新计算单张图的行高
 - (void)calculateOneHeight:(CGSize)imageSize{
     
     _oneImageSize = imageSize;
@@ -140,6 +142,7 @@
 
 
 //获取图片
+#pragma mark - 获取所有的图片和视频的图片
 - (void)setupImageArray{
     
     NSString *url = [NSString lg_regularExpression:_share.content];

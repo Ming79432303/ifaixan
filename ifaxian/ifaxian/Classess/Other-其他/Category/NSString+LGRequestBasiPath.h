@@ -10,8 +10,10 @@
 
 @interface NSString (LGRequestBasiPath)
 
-
+//主url
 + (NSString *)requestBasiPathAppend:(NSString *)path;
+//用户头像
 - (NSString *)lg_getuserAvatar;
+//主url
 - (NSString *)requestBasiPathAppend:(NSString *)path;
 @end

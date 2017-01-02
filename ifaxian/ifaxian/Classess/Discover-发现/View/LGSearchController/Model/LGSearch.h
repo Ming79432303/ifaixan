@@ -9,5 +9,7 @@
 #import "LGShare.h"
 
 @interface LGSearch : LGShare
-
+/**
+ *  搜索界面的模型数据继承LGShare
+ */
 @end

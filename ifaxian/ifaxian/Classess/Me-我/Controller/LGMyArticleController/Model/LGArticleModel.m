@@ -10,6 +10,9 @@
 #import "NSString+LGStringSize.h"
 @implementation LGArticleModel
 
+/**
+ *  行高计算
+ */
 - (CGFloat)articleCellHeight{
     
     

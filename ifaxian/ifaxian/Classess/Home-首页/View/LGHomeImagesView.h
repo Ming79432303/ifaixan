@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "LGHomeModel.h"
 @interface LGHomeImagesView : UIView
+//图片数组
 @property(nonatomic, strong) NSArray *images;
 @end

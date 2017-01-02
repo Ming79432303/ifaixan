@@ -9,7 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface LGCustomFields : NSObject
-
+/**
+ *  点赞
+ */
 @property(nonatomic, strong) NSArray *bigfa_ding;
+/**
+ *  浏览数
+ */
 @property(nonatomic, strong) NSArray *post_views_count;
 @end

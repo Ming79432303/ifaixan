@@ -11,29 +11,28 @@
 @implementation LGHTTPSessionManager
 
 
-
+#pragma mark - 初始化方法
 - (instancetype)initWithBaseURL:(NSURL *)url{
     if (self = [super initWithBaseURL:url]) {
 
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
         self.securityPolicy = [self customSecurityPolicy];
-       
-            
     }
-    
     return self;
 }
-
+#pragma mark - 获取登录用户的信息
+/**
+ *  获取登录用户的信息
+ *
+ *  @param completion 完成回调
+ */
 - (void)requestUsercompletion:(LGRequestCompletion)completion{
+    
     NSString *cookie = [LGNetWorkingManager manager].account.cookie;
     NSString *url = [NSString stringWithFormat:@"https://ifaxian.cc/api/user/get_user_meta?cookie=%@",cookie];
-    
-
     if ([LGNetWorkingManager manager].account.isOtherLogin) {
         
-        
     }else{
-        
         url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
     
@@ -44,14 +43,16 @@
         }
     }];
 }
-
+#pragma mark - 新浪用户登录获取信息
+/**
+ *  新浪用户登录获取信息
+ *
+ *  @param completion 完成回调
+ */
 - (void)requestSinaUsercompletion:(LGRequestCompletion)completion{
-    
-
     
     NSString *k = [LGNetWorkingManager manager].account.cookie;
     NSString *str = [NSString stringWithFormat:@"https://ifaxian.cc/api/user/get_user_meta?cookie=%@",k];
-    
     [self request:LGRequeTypePOST urlString:str parameters:nil completion:^(BOOL isSuccess, id responseObject) {
         if (completion) {
             
@@ -59,7 +60,7 @@
         }
     }];
 }
-
+#pragma mark - 获取首页数据
 /**
  *  获取首页数据
  *
@@ -71,121 +72,110 @@
         if (completion) {
             completion(isSuccess,responseObject[@"posts"]);
         }
-        
-        
     }];
     
 }
+#pragma mark - 获取文章数据
 /**
- *  回去文章数据
+ *  获取文章数据
  *
- *  @param LGRequeTypePOSTUrl    请求地址
+ *  @param postUrl    请求地址
  *  @param completion 完成回调
  */
 - (void)requsetUrl:(NSString *)postUrl completion:(LGRequestCompletion)completion{
     
-    
     [self request:LGRequeTypePOST urlString:postUrl parameters:nil completion:^(BOOL isSuccess, id responseObject) {
-        
-        
         if (completion) {
             completion(isSuccess,responseObject);
         }
-        
-        
     }];
-    
 }
+#pragma mark - 获取评论的请求方法
 /**
  *  获取评论的请求方法
  *
- *  @param LGRequeTypePOSTUrl    请求的评论的地址
+ *  @param postUrl    请求的评论的地址
  *  @param completion 完成回调
  */
 - (void)requsetCommentUrl:(NSString *)postUrl completion:(LGRequestCompletion)completion{
     
-    
     [self request:LGRequeTypeGET urlString:postUrl parameters:nil completion:^(BOOL isSuccess, id responseObject) {
-        
         NSDictionary *post = responseObject[@"post"];
         NSArray *array = post[@"comments"];
         if (completion) {
             completion(isSuccess,array);
         }
-        
-        
     }];
-    
 }
-
-
+#pragma mark - post请求方法
+/**
+ *  post请求方法
+ *
+ *  @param url        请求地址
+ *  @param completion 完成回调
+ */
 - (void)requestPostUrl:(NSString *)url completion:(LGRequestCompletion)completion{
     
     [self request:LGRequeTypePOST urlString:url parameters:nil completion:completion];
-    
-    
 }
-
+#pragma mark - 获取分类文章的数据
+/**
+ *  获取分类文章的数据
+ *
+ *  @param category   分类的Sulg
+ *  @param page       分类的第几页
+ *  @param completion 完成回调
+ */
 - (void)requestPOstCategory:(NSString *)category page:(NSString *)page completion:(LGRequestCompletion)completion{
     NSString *url = [NSString requestBasiPathAppend:@"/api/get_category_posts"];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"slug"] = category;
     parameters[@"page"] = page;
     [self request:LGRequeTypePOST urlString:url parameters:parameters completion:completion];
-    
 }
 
-
-
+#pragma mark - 隔离AFN的请求方法
+/**
+ *  隔离AFN的请求方法
+ *
+ *  @param method     请求方法
+ *  @param urlString  请求地址
+ *  @param parameters 请求参数
+ *  @param completion 完成回调
+ */
 - (void)request:(LGNetMethod)method urlString:(NSString *)urlString parameters:(NSDictionary *)parameters completion:(LGRequestCompletion)completion{
-    
-    
     //成功回调
     void(^success)() = ^(NSURLSessionDataTask * _Nonnull task ,id  _Nullable responseObject) {
         completion(YES,responseObject);
-        
     };
     //失败回调
     void(^failure)() = ^(NSURLSessionDataTask * _Nonnull task ,NSError *error) {
-
-    
+        
         NSHTTPURLResponse *respon = (NSHTTPURLResponse *)task.response;
-        
-        
         if(respon.statusCode == 200){
             completion(YES,nil);
-            
             return ;
-            
         }
-        
-        // [SVProgressHUD showErrorWithStatus:@"请求失败"];
         completion(NO,nil);
-        
     };
     if (method == LGRequeTypeGET) {
-        
         [self GET:urlString parameters:parameters success:success failure:failure];
         
-        
     }else{
-        
         [self POST:urlString parameters:parameters success:success failure:failure];
-        
     }
-    
-    
-    
 }
-
+#pragma mark - 获取一个授权nonce
+/**
+ *  获取一个授权nonce
+ *
+ *  @param argumen    LGRequiredArgumen
+ *  @param completion 完成回调
+ */
 - (void)requestPostNonceArgument:(LGRequiredArgumen)argumen completion:(void(^)(BOOL isSuccess,NSString *nonce))completion{
     
-    
-    
-    //[self.requestSerializer setValue:self.account.cookie forHTTPHeaderField:self.account.cookie_name];
     NSString *method;
     switch (argumen) {
-            
         case LGRequiredArgumenRegister:
             method = @"register";
             break;
@@ -199,24 +189,15 @@
             method = @"delete_post";
             break;
     }
-    
     NSString *url = [NSString requestBasiPathAppend:[NSString stringWithFormat:@"/api/get_nonce/?controller=posts&method=%@",method]];
-    
     if (argumen == LGRequiredArgumenRegister) {
         url = [NSString requestBasiPathAppend:@"/api/get_nonce/?controller=user&method=register"];
     }
-    
     [self request:LGRequeTypePOST urlString:url parameters:nil completion:^(BOOL isSuccess, id responseObject) {
-       
         if (completion) {
-            
             completion(isSuccess,responseObject[@"nonce"]);
         }
-        
     }];
-    
-    
-    
 }
 - (AFSecurityPolicy *)customSecurityPolicy
 {

@@ -9,7 +9,7 @@
 #import "LGHomeModel.h"
 #import "NSString+LGRegularExpressions.h"
 @implementation LGHomeModel
-
+//首页行高
 - (CGFloat)rowHeight{
     
        
@@ -46,7 +46,7 @@
     return _rowHeight;
 }
 
-
+//首页的描述需要进行字符转换
 - (NSString *)description{
 
     return [[NSString lg_regularExpression:self.excerpt] stringByReplacingOccurrencesOfString:@" [&hellip;]" withString:@"..."];
@@ -60,6 +60,11 @@
 //    
 //    return _images;
 //}
+/**
+ *  从正文中利用正则表达式获取img标签中的图片地址
+ *
+ *  @param content <#content description#>
+ */
 - (void)setContent:(NSString *)content{
     
     [super setContent:content];

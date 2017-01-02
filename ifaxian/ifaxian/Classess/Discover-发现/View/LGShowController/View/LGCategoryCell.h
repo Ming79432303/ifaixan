@@ -10,6 +10,12 @@
 #import "LGPostModel.h"
 #import "LGCategory.h"
 #import "LGShow.h"
+/**
+ *  分类的cell
+ */
 @interface LGCategoryCell : UICollectionViewCell
+/**
+ *  分类显示的模型
+ */
 @property(nonatomic, strong) LGShow *model;
 @end

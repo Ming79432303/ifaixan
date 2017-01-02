@@ -9,5 +9,8 @@
 #import "LGBasiController.h"
 #import "LGPostModel.h"
 @interface LGCommentController : LGBasiController
+/**
+ *  文章数据
+ */
 @property (nonatomic, strong) LGPostModel *model;
 @end

@@ -10,7 +10,9 @@
 
 
 @interface LGSearchController : UIViewController
-
+/**
+ *  回调方法
+ */
 @property(nonatomic, copy) void(^search)(NSString *);
 
 @end

@@ -23,37 +23,43 @@
 @end
 static NSString *ID = @"cell";
 @implementation LGShowController
+#pragma mark - 懒加载
+//发现界面的viewModel
 - (LGDiscoverList *)list{
     
     if (_list == nil) {
         _list = [[LGDiscoverList alloc] init];
     }
-    
     return _list;
     
 }
-
+//collectionView
 - (UICollectionView *)collectionView{
     
     if (_collectionView == nil) {
          LGFlowLayout *layout = [[LGFlowLayout alloc]init];
         _collectionView =[[UICollectionView alloc] initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, self.view.lg_height * 0.4) collectionViewLayout:layout];
     }
-    
     return _collectionView;
 }
 
-
+/**
+ *  分类的请求数据
+ *
+ */
 - (NSMutableArray *)categoryposts{
     
     if (_categoryposts == nil) {
         _categoryposts = [NSMutableArray array];
     }
-    
     return _categoryposts;
 }
 
 
+/**
+ *  分类的数据
+ *
+ */
 - (NSMutableArray *)categories{
     
     if (_categories == nil) {
@@ -66,35 +72,23 @@ static NSString *ID = @"cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     //创建布局
-   
- 
-   
     self.collectionView.showsHorizontalScrollIndicator = NO;
-    
     //设置代理
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    
     //注册cell
-    
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([LGCategoryCell class]) bundle:nil] forCellWithReuseIdentifier:ID];
-    
     //添加到视图
-    
     [self.view addSubview:self.collectionView];
-    
-
 //    NSString *fileName = @"show.plist";
 //    NSString *path = [fileName lg_appendDocumentDir];
     //[NSKeyedArchiver archiveRootObject:arrM toFile:path];
     NSString *path = [[NSBundle mainBundle] pathForResource:@"show.plist" ofType:nil];
     NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     [self.categories addObjectsFromArray:array];
-    
-    
+    //设置一开始的偏移量让cell居中显示
     [self.collectionView setContentOffset:CGPointMake(self.collectionView.lg_width, 0)];
     [self.collectionView reloadData];
-
 //    LGWeakSelf;
 //    [self.list getAllCategoriesPosts:^(NSArray *categoryposts) {
 //       

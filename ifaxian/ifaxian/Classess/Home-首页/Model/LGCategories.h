@@ -21,7 +21,9 @@
  *  分类id
  */
 @property (nonatomic,copy) NSString *ID;
-
+/**
+ *  分类的描述
+ */
 @property(nonatomic, copy) NSString *describe;
 
 @end

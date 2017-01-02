@@ -21,26 +21,35 @@
 
 @interface LGUserController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+//没用
 @property (weak, nonatomic) IBOutlet UIImageView *tabView;
+//显示用户的昵称在navbar上
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
-
-@property (nonatomic, assign) CGFloat oriOffsetY;
+//一开始的偏移量
+@property (assign, nonatomic) CGFloat oriOffsetY;
+//暂时没用
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headTopCons;
+//头部图片的高度的约束
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headHeightCons;
+//用户头像
 @property (weak, nonatomic) IBOutlet UIImageView *userIconImageView;
-
-@property (nonatomic, weak) UILabel *label;
+//
+@property (weak, nonatomic) UILabel *label;
+//用户背景图
+//用户显示的view
 @property (weak, nonatomic) IBOutlet UIImageView *userBacImageView;
-@property(nonatomic, strong) UINavigationBar *navBar;
-@property(nonatomic, strong)  UINavigationItem *navItem;
-@property(nonatomic, weak)  UITableView  *userTableView;
+//
+@property (strong, nonatomic) UINavigationBar *navBar;
+@property (strong, nonatomic) UINavigationItem *navItem;
+//展示用户的tabbleView
+@property (weak, nonatomic) UITableView  *userTableView;
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
-@property(nonatomic, copy) NSString *titleText;
-@property(nonatomic, strong) LGHTTPSessionManager *manager;
+@property (nonatomic, copy) NSString *titleText;
+@property (nonatomic, strong) LGHTTPSessionManager *manager;
 @end
 
 @implementation LGUserController
-
+#pragma mark - 懒加载
 - (UINavigationBar *)navBar{
     if (_navBar == nil) {
         _navBar = [[UINavigationBar alloc] init];
@@ -78,6 +87,7 @@
     [self loadUserInfo];
 
 }
+#pragma mark - 获取用户发表的文章数
 - (void)loadUserInfo{
     LGWeakSelf;
     [self.manager requestUserIfo:self.author.slug completion:^(BOOL isSuccess, id responseObject) {
@@ -95,21 +105,19 @@
     
     
 }
+#pragma mark - headerView头部视图
 -(void)setHeaderView{
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userInfo)];
-    
     [_userIconImageView addGestureRecognizer:tap];
-    
     self.userBacImageView.image = [[UIImage imageNamed:@"screen"] applyTintEffectWithColor:[UIColor lightGrayColor]];
     _userIconImageView.layer.cornerRadius = _userIconImageView.lg_height / 2;
     _userIconImageView.layer.masksToBounds = YES;
 //    _tabView.image = [[UIImage imageNamed:@"1111111"] applyDarkEffect];
-    
     _nickname.text = [NSString stringWithFormat:@"昵称:%@",_author.name];
     
 }
-
+#pragma mark - TableView config
 - (void)setupTableView{
     // 设置tableView数据源和代理
     self.tableView.dataSource = self;
@@ -123,24 +131,18 @@
     
     // 先记录最开始偏移量
     _oriOffsetY = -(LGHeadViewH + LGTabBarH);
-
+    //添加LGUserListController的view覆盖当前tableviewView
     LGUserListController *userList = [[LGUserListController alloc] init];
     userList.userName = _author.slug;
     userList.view.frame = self.view.frame;
     userList.tableView.contentInset = UIEdgeInsetsMake(LGHeadViewH + LGTabBarH, 0, 0, 0);
     userList.tableView.lg_y = -LGnavBarH + LGstatusBarH;
     userList.tableView.lg_height -= -LGnavBarH + LGstatusBarH;
-    
-    //UIImage *bacImage = [[UIImage imageNamed:@"screen"] applyDarkEffect];
-    
-    //userList.tableView.backgroundView = [[UIImageView alloc] initWithImage:bacImage];
-    
     [userList.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     [self addChildViewController:userList];
     [self.view insertSubview:userList.tableView atIndex:0];
     _userTableView = userList.tableView;
     NSString * userAvatar = [_author.slug lg_getuserAvatar];
-
     [_userIconImageView lg_setCircularImageWithurl:userAvatar placeholderImage:[UIImage imageNamed:@"default_Avatar"]];
     
 }
@@ -148,12 +150,8 @@
 
 - (void)userInfo{
     return;
-//    LGUserInfoController *userVc = [[LGUserInfoController alloc] init];
-//    
-//    
-//    [self.navigationController pushViewController:userVc animated:YES];
-    
 }
+#pragma mark - oberserver
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(UIScrollView *)scrollView change:(NSDictionary<NSString *,id> *)change context:(void *)context{
     
     // 计算下tableView滚动了多少
@@ -205,17 +203,15 @@
     
 }
 
-
+#pragma mark - setupNavBar
 - (void)setupNavBar{
     
     self.navigationController.navigationBar.hidden = YES;
-    
     self.navBar.frame = self.navigationController.navigationBar.bounds;
     self.navBar.lg_height += 20;
     self.navBar.items = @[self.navItem];
     self.navBar.barTintColor = [UIColor lg_colorWithHex:0xF6F6F6];
     self.navBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor lg_colorWithRed:37 green:37 blue:37]};
-    
     [self.view addSubview:self.navBar];
     [self.navBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     // 清空导航条的阴影的线
@@ -225,9 +221,7 @@
 }
 
 - (void)back{
-    
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 // 滚动tableView的时候就会调用
 // 设置导航条
@@ -239,19 +233,13 @@
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     // 清空导航条的阴影的线
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    
     // 设置导航条标题为透明
     UILabel *label = [[UILabel alloc] init];
-
-    
     _label = label;
-    
     // 设置文字的颜色
     label.textColor = [UIColor colorWithWhite:1 alpha:0];
-    
     // 尺寸自适应:会自动计算文字大小
     [label sizeToFit];
-    
     [self.navigationItem setTitleView:label];
 }
 
@@ -265,15 +253,11 @@
 {
     static NSString *ID = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         cell.backgroundColor = [UIColor redColor];
     }
-    
     cell.textLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row];
-    
-    
     return cell;
 }
 

@@ -73,8 +73,6 @@ static NSString *setingCellID = @"setingCellID";
      LGSetingArrow *item2 = [LGSetingArrow setingTitle:@"关于我们" detail:nil];
     item2.className = [LGAboutController class];
     NSArray *array = @[item1,item2];
-    
-    
     [self.dataArray addObject:array];
 
 }
@@ -88,7 +86,6 @@ static NSString *setingCellID = @"setingCellID";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     NSArray *array = self.dataArray[section];
-    
     return array.count;
 
 }
@@ -98,18 +95,13 @@ static NSString *setingCellID = @"setingCellID";
     NSArray *array = self.dataArray[indexPath.section];
     LGSetingArrow *item = array[indexPath.row];
     if ([item isKindOfClass:[LGSetingArrow class]]) {
-        
         LGSetingCell *cell = [tableView dequeueReusableCellWithIdentifier:setingCellID];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
           cell.textLabel.text = item.title;
         return cell;
-      
-      
     }else{
         LGClearCell *cell = [tableView dequeueReusableCellWithIdentifier:clearCellID];
-        
         return cell;
-        
     }
 }
 
@@ -120,21 +112,12 @@ static NSString *setingCellID = @"setingCellID";
     if ([item isKindOfClass:[LGSetingArrow class]]) {
       //控制器跳转
         if (item.class) {
-            
             UIViewController *user = [[item.className alloc] init];
             [self.navigationController pushViewController:user animated:YES];
         }
-        
-        
     }else{
         //其他
-        
-        
     }
-
-    
-    
-    
 }
 
 

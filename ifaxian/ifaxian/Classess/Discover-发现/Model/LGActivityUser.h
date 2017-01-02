@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface LGActivityUser : NSObject
+/**
+ *  用户名
+ */
 @property(nonatomic, copy) NSString *username;
+/**
+ *  昵称
+ */
 @property(nonatomic, copy) NSString *display_name;
 @end

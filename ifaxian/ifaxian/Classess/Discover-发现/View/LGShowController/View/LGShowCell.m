@@ -38,6 +38,7 @@
     
     return self;
 }
+//添加首页分类的展示
 - (void)setupUI{
     
     self.showVc = _showVc;

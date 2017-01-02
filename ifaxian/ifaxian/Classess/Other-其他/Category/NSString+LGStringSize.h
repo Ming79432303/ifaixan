@@ -9,7 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @interface NSString (LGStringSize)
-
+/**
+ *  计算文字的高度
+ *
+ *  @param maxSize 文字的范围
+ *  @param font    字体的代销
+ *
+ *  @return 返回一个frame
+ */
 - (CGRect)sizeOfTextWithMaxSize:(CGSize)maxSize font:(UIFont *)font;
 + (CGRect)sizeWithText:(NSString *)text maxSize:(CGSize)maxSize font:(UIFont *)font;
 

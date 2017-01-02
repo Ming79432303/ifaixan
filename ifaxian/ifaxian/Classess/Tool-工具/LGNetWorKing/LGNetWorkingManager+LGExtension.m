@@ -16,7 +16,7 @@
 
 
 
-
+#pragma mark - 发送一篇文章
 /**
  *  发送一篇文章
  *
@@ -35,22 +35,23 @@
         parameters[@"content"] = contentText;
         parameters[@"status"] = @"publish";
         [self request:LGRequeTypePOST urlString:url parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
-       
             if (completion) {
                 
                 completion(isSuccess);
             }
-            
         }];
-
      }
-        
     }];
     
-   
 }
-
-
+#pragma mark - 发送一条分享的数据
+/**
+ *  发送一条分享的数据
+ *
+ *  @param title       帖子的标题
+ *  @param contentText 帖子的内容
+ *  @param completion  完成回调
+ */
 - (void)requestPostImageTitle:(NSString *)title content:(NSString *)contentText :(LGSuccess)completion{
     
     [self requestPostNonceArgument:LGRequiredArgumenCreate completion:^(BOOL isSuccess, NSString *nonce) {
@@ -75,15 +76,12 @@
             
             completion(isSuccess);
         }
-        
     }];
-    
-   
 }
 
 
 
-
+#pragma mark - 更新一篇文章
 /**
  *  更新一篇文章
  *
@@ -97,11 +95,7 @@
     
     [self requestPostNonceArgument:LGRequiredArgumenUpdate completion:^(BOOL isSuccess, NSString *nonce) {
         if (isSuccess) {
-        //    NSString *url = @"http://112.74.45.39/api/LGRequeTypePOSTs/update_LGRequeTypePOST";
-     //  NSString *url  =  @"http://112.74.45.39/api/LGRequeTypePOSTs/update_LGRequeTypePOST/?nonce=b80590f86e&title=7878&content=123&status=publish&id=3349&slug=123";
-
-         NSString *url = [NSString requestBasiPathAppend:@"/api/posts/update_post"];
-            
+            NSString *url = [NSString requestBasiPathAppend:@"/api/posts/update_post"];
             NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
             parameters[@"nonce"] = nonce;
             parameters[@"title"] = title;
@@ -113,18 +107,19 @@
                      completion(isSuccess);
                 }
             }];
-            
         }
-        
     }];
-    
-    
 }
 
-//http://112.74.45.39/wp-comments-LGRequeTypePOST.php
-//
-//comment=这个世界是非常大的&comment_LGRequeTypePOST_ID=3312&comment_parent=0
-
+#pragma mark - 发送一条评论
+/**
+ *  发送一条评论
+ *
+ *  @param comment       评论内容
+ *  @param postId        文章的ID
+ *  @param commentParent 父评的ID
+ *  @param completion    完成回调
+ */
 - (void)requestPostComment:(NSString *)comment commentPostId:(NSString *)postId commentParent:(NSString *)commentParent completion:(LGSuccess)completion{
    
    NSString *url = [NSString requestBasiPathAppend:@"/wp-comments-post.php"];
@@ -139,37 +134,34 @@
         }
     }];
 }
-//?search=ming&count=20&page=1
-
-
+#pragma mark - 获取搜索的数据
+/**
+ *  获取搜索的数据
+ *
+ *  @param search     搜索的内容
+ *  @param page       搜索的页码
+ *  @param completion 完成回调
+ */
 - (void)requestSearch:(NSString *)search page:(NSInteger)page completion:(LGRequestCompletion)completion{
-    
-//    NSString *url = @"http://ifaxian.cc/api/get_search_results";
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    parameters[@"search"] = search;
-//    parameters[@"count"] =@"10";
-//    parameters[@"page"] =[NSString stringWithFormat:@"%zd",page];
     //get方法不能识别中文
     //需要转码
     NSString *parame = [search stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-  
    NSString *url = [NSString requestBasiPathAppend:[NSString stringWithFormat:@"/?s=%@&json=1&page=%zd",parame,page]];
-    
-
-    
-   
     [self request:LGRequeTypeGET urlString:url parameters:nil completion:^(BOOL isSuccess, id responseObject) {
         if (completion) {
             completion(isSuccess,responseObject);
         }
-        
     }];
-    
-    
-    
 }
 
-
+#pragma mark -点赞
+/**
+ *  点赞
+ *
+ *  @param action     点赞的动作:顶和踩
+ *  @param ID         文章的ID
+ *
+ **/
 - (void)requestAddLikeAction:(NSString *)action umid:(NSString *)ID completion:(LGRequestCompletion)completion{
     [self   requestSetProfilecompletion:^(BOOL isSuccess, id responseObject) {
         
@@ -179,17 +171,12 @@
     parameters[@"action"] = action;
     parameters[@"um_id"] = ID;
     parameters[@"um_action"] = @"ding";
-    
- 
-    
     [self request:LGRequeTypePOST urlString:url parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
         if (completion) {
             completion(isSuccess,responseObject);
         }
         
     }];
-
-    
 }
 #warning 待做
 - (void)requestSetProfilecompletion:(LGRequestCompletion)completion{
@@ -204,32 +191,26 @@
     parameters[@"skills"] = @"ios开发";
     parameters[@"cookie"] = self.account.cookie;
     parameters[@"insecure"] = @"cool";
-
     [self request:LGRequeTypePOST urlString:@"https://ifaxian.cc/api/user/update_user_meta_vars" parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
         NSLog(@"%@",responseObject);
     }];
     
     
 }
+#pragma mark - 删除一篇文章
 
-/**
- *  更新一篇文章
+ /**
+ *  删除一篇文章
  *
- *  @param title       文章的标题
- *  @param contentText 文章的内容
- *  @param LGRequeTypePOST_slug   slug
- *  @param LGRequeTypePOST_id     文章的id
- *  @param completion  完成回调
+ *  @param post_slug  文章的slug
+ *  @param post_id    文章的id
+ *  @param completion 完成回调
  */
 - (void)requestDeleteArticlePost_slug:(NSString *)post_slug post_id:(NSString *)post_id completion:(LGSuccess)completion{
     
     [self requestPostNonceArgument:LGRequiredArgumenDelete completion:^(BOOL isSuccess, NSString *nonce) {
         if (isSuccess) {
-            //    NSString *url = @"http://112.74.45.39/api/LGRequeTypePOSTs/update_LGRequeTypePOST";
-            //  NSString *url  =  @"http://112.74.45.39/api/LGRequeTypePOSTs/update_LGRequeTypePOST/?nonce=b80590f86e&title=7878&content=123&status=publish&id=3349&slug=123";
-            
             NSString *url = [NSString requestBasiPathAppend:@"/api/posts/delete_post"];
-            
             NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
             parameters[@"nonce"] = nonce;
             parameters[@"id"] = post_id;
@@ -239,17 +220,16 @@
                     completion(isSuccess);
                 }
             }];
-            
         }
-        
     }];
-    
-    
 }
+#pragma mark -更新用户的cookie
+/**
+ *  更新用户的cookie
+ */
 - (void)updateUserCookie{
     
-    //自动更新cook用的
-    
+    //自动更新cookie用的
     NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"updataUserName"];
     NSString *userPas = [[NSUserDefaults standardUserDefaults] objectForKey:@"updataPassword"];
     [self requestAuthcookie:userName passWord:userPas completion:nil];

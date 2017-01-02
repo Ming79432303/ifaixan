@@ -16,7 +16,6 @@
 @property (nonatomic, assign) CGFloat lg_y;
 @property (nonatomic, assign) CGFloat lg_centerX;
 @property (nonatomic, assign) CGFloat lg_centerY;
-
 @property (nonatomic, assign) CGFloat lg_right;
 @property (nonatomic, assign) CGFloat lg_bottom;
 +(instancetype)viewFromeNib;

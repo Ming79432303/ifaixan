@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LGFullController : UIViewController
-
+/**
+ *  点击播放视频方法后跳转的界面
+ */
 @end

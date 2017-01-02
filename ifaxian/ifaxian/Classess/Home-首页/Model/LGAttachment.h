@@ -12,6 +12,9 @@
 @property(nonatomic, assign) NSInteger parent;
 @property(nonatomic, copy) NSString *title;
 @property(nonatomic, copy) NSString *url;
+/**
+ *  图片
+ */
 @property(nonatomic, strong) LGImage *images;
 @property(nonatomic, copy) NSString *mime_type;
 

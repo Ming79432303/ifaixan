@@ -10,8 +10,20 @@
 #import "NSString+LGRegularExpressions.h"
 #import "LGHomeTage.h"
 @interface LGHomeModel : LGPostModel
+/**
+ *  首页cell的行高
+ */
 @property(nonatomic, assign) CGFloat rowHeight;
+/**
+ *  文章的描述
+ */
 @property(nonatomic, copy) NSString *describe;
+/**
+ *  文章的标签
+ */
 @property(nonatomic, strong) NSArray<LGHomeTage *> *tags;
+/**
+ *  文章中的前图片
+ */
 @property(nonatomic, strong) NSArray *images;
 @end

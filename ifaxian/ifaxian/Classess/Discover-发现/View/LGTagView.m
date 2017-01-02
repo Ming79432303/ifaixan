@@ -42,6 +42,7 @@
     
     
 }
+#pragma mark - 发现界面标签展示核心算法
 - (void)layoutButn{
 
     int index = 0;
@@ -49,6 +50,7 @@
     int j = 0;
     for (UIButton *butn in self.subviews) {
         butn.lg_height = butnH;
+        //如果总宽度最大于宽度那么就换下一行
         if ([self.arrayM[index] doubleValue] + sum > (self.lg_width - 2 * LGCommonMargin)) {
             butn.lg_x = 0;
             sum = 0;
@@ -89,9 +91,10 @@
 
     
 }
-
+//按钮点击方法
+#pragma mark - 按钮点击方法
 - (void)getTags:(UIButton *)button{
-    
+    //获取按钮的标题
     NSString *tagText = [button currentTitle];
     UITabBarController *tab = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     UINavigationController *nav = tab.selectedViewController;

@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     NSString *urlStr = [NSString requestBasiPathAppend:@"/app/about.html"];
     NSURL *url = [NSURL URLWithString:urlStr];
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];

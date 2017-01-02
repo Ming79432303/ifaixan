@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LGImageSize.h"
 @interface LGImage : NSObject
-
+//大图
 @property(nonatomic, strong) LGImageSize *full;
 //@property(nonatomic, strong) LGImageSize *medium;
 //@property(nonatomic, strong) LGImageSize *thumbnail;

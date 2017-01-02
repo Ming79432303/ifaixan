@@ -13,57 +13,64 @@
 #import "LGUserActivityDisplayController.h"
 #import "LWImageBrowser.h"
 @interface LGActivityCell()
-
+/**
+ *  头像
+ */
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+/**
+ *  昵称
+ */
 @property (weak, nonatomic) IBOutlet UILabel *nameLable;
-
+/**
+ *  活动的方式
+ */
 @property (weak, nonatomic) IBOutlet UILabel *actionLable;
-
+/**
+ *  时间
+ */
 @property (weak, nonatomic) IBOutlet UILabel *timeLable;
-
+/**
+ *  文章的标题如果评论则是评论的标题
+ */
 @property (weak, nonatomic) IBOutlet UILabel *contenLable;
-
+/**
+ *  图片
+ */
 @property (weak, nonatomic) IBOutlet UIImageView *picIImageView;
+/**
+ *  评论的内容
+ */
 @property (weak, nonatomic) IBOutlet UILabel *commentText;
 
 @end
 
 @implementation LGActivityCell
-
+#pragma mark - nib加载完毕 添加手势
 - (void)awakeFromNib{
     [super awakeFromNib];
     self.contentView.backgroundColor = LGCommonColor;
-    
+    //头像点击手势跳转用户界面
     UITapGestureRecognizer *avatarTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2userVc)];
-    
     [_iconImageView addGestureRecognizer:avatarTap];
-    UITapGestureRecognizer *nameLableTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2userVc)];
     
+     //昵称点击手势跳转用户界面
+    UITapGestureRecognizer *nameLableTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2userVc)];
     [_nameLable  addGestureRecognizer:nameLableTap];
 
-    
+      //昵称点击手势跳转展示文章界面
     UITapGestureRecognizer *titleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2display)];
-    
     [_contenLable  addGestureRecognizer:titleTap];
-    UITapGestureRecognizer *picTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeImage)];
     
+     //图片点击查看手势
+    UITapGestureRecognizer *picTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeImage)];
     [_picIImageView  addGestureRecognizer:picTap];
     
 }
-
+#pragma mark - 跳转用户界面
 - (void)go2userVc{
     
     UIStoryboard *story = [UIStoryboard storyboardWithName:NSStringFromClass([LGUserController class]) bundle:nil];
     LGUserController *userVc = [story instantiateInitialViewController];
-    
-//    */
-//    @property(nonatomic, copy) NSString *nickname;
-//    @property(nonatomic, copy) NSString *name;
-//    /**
-//     *  路径
-//     */
-//    @property(nonatomic, copy) NSString *slug;
-//    @property(nonatomic, copy) NSString *ID;
     LGAuthor *author = [[LGAuthor alloc] init];
     author.nickname = _model.user.display_name;
     author.name = _model.user.username;
@@ -75,7 +82,7 @@
 
     
 }
-
+#pragma mark - 跳转文章展示界面
 - (void)go2display{
     
     NSString *url = _model.linkAndText.firstObject;
@@ -85,7 +92,7 @@
     UINavigationController *nav = tab.selectedViewController;
     [nav pushViewController:displayVc animated:YES];
 }
-
+#pragma mark - 点击图片
 - (void)seeImage{
     
     NSURL *url = [NSURL URLWithString:self.model.imageUrl];
@@ -97,7 +104,7 @@
 
     
 }
-
+#pragma mark - 模型赋值
 - (void)setModel:(LGActivitie *)model{
     
     _model = model;

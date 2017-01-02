@@ -9,5 +9,8 @@
 #import "LGShareViewModel.h"
 
 @interface LGActivityViewModel : LGShareViewModel
+/**
+ *  用户名
+ */
 @property(nonatomic, copy) NSString *userName;
 @end

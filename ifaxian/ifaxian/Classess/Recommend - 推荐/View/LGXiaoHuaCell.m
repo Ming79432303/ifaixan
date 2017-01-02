@@ -32,7 +32,6 @@
     [super awakeFromNib];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeImage:)];
     [self.picImageView addGestureRecognizer:tap];
-    
     UITapGestureRecognizer *userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2userController)];
     [_iconImageView addGestureRecognizer:userTap];
     

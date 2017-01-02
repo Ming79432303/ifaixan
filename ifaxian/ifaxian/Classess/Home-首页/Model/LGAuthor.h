@@ -19,6 +19,9 @@
  *  路径
  */
 @property(nonatomic, copy) NSString *slug;
+/**
+ *  作者的ID
+ */
 @property(nonatomic, copy) NSString *ID;
 
 @end

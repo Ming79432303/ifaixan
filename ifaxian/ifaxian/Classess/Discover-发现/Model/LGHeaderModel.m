@@ -9,6 +9,7 @@
 #import "LGHeaderModel.h"
 
 @implementation LGHeaderModel
+//创建模型的类方法
 + (instancetype)headerImage:(UIImage *)image url:(NSString *)url{
     
     LGHeaderModel *header = [[self alloc] init];

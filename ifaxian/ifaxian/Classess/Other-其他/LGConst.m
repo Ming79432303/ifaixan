@@ -10,9 +10,8 @@
 
 /** 统一的间距 */
 CGFloat const LGCommonMargin = 10;
-
-/** 统一较小的间距 */
- CGFloat const LGCommonSmallMargin = 5;
+//中等
+CGFloat const LGCommonSmallMargin = 5;
 //最小间距
 CGFloat const LGCommonMinMargin = 3;
 /********* 首页 *********/

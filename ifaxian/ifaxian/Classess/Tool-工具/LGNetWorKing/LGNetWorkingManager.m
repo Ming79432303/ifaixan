@@ -15,9 +15,9 @@
 @end
 
 @implementation LGNetWorkingManager
-
+#pragma mark - d单列
 singleM(Net)
-
+#pragma mark - 懒加载
 - (LGAccount *)account{
     
     if (_account == nil) {
@@ -51,38 +51,6 @@ singleM(Net)
     
 }
 
-//因为每次请求都依赖于token，所以创建一个带token请求的方法
-/**
- *  封装带token方法
- *
- *  @param method     请求的方法
- *  @param urlString  请求的地址
- *  @param parameters 请求的参数
- *  @param completion 请求结果回调
- */
--(void)tokenReques:(LGNetMethod)method urlString:(NSString *)urlString parameters:(NSMutableDictionary *)parameters completion:(LGRequestCompletion)completion{
-    
-    if (parameters == nil) {
-        parameters = [NSMutableDictionary dictionary];
-    }
-    
-    //token为空处理
-    if (self.account.cookie) {
-        
-        parameters[self.account.cookie_name] = self.account.cookie;
-    }else{
-        //通知登录
-        //[[NSNotificationCenter defaultCenter] postNotificationName:UserLoginNitification object:nil];
-        
-    }
-    
-    
-    
-    
-    [self request:(LGNetMethod)method urlString:(NSString *)urlString parameters:(NSDictionary *)parameters completion:completion];
-}
-
-//
 /**
  *  封装afn方法
  *
@@ -98,18 +66,24 @@ singleM(Net)
     
     
 }
-
+/**
+ *  网络请求方法
+ *
+ *  @param method     方法类型get/post
+ *  @param urlString  请求的地址
+ *  @param parameters 请求的参数
+ *  @param completion 完成回调
+ */
 - (void)request:(LGNetMethod)method urlString:(NSString *)urlString parameters:(NSDictionary *)parameters completion:(LGRequestCompletion)completion{
     
     if (![self isLogin]) {
-        
         //通知用户登录
         [[NSNotificationCenter defaultCenter] postNotificationName:LGUserLoginNotification object:nil];
     }else{
-        
+        //添加cookie到请求中
         [self.requestSerializer setValue:[NSString stringWithFormat:@"%@=%@",self.account.cookie_name,self.account.cookie] forHTTPHeaderField:@"Cookie"];
     }
-
+    //执行父类方法
     [super request:method urlString:urlString parameters:parameters completion:completion];
     
 }

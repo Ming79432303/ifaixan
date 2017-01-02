@@ -27,6 +27,7 @@
 
 static NSString *userCellID = @"userCellID";
 
+#pragma mark - 懒加载
 - (LGHTTPSessionManager *)manager{
     
     if (_manager == nil) {
@@ -50,40 +51,30 @@ static NSString *userCellID = @"userCellID";
 
     [self setupTableView];
     [self loadData];
-
-    
     // Do any additional setup after loading the view.
 }
+#pragma mark - tableViewConfig
 - (void)setupTableView{
-    
- 
     self.tableView.backgroundColor = LGCommonColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.rowHeight = 50;
     self.tableView.showsVerticalScrollIndicator = NO;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGUserInfoCell class])  bundle:nil] forCellReuseIdentifier:userCellID];
 }
-
+#pragma mark - 加载数据
 - (void)loadData{
     
     
     if (![LGNetWorkingManager manager].isLogin) {
         return;
     }
-    
-    
     [self.manager requestUsercompletion:^(BOOL isSuccess, NSDictionary * responseObject) {
         if (isSuccess) {
-            
             NSString *userInfo = @"userinfo.plist";
             NSString *filePath = [userInfo lg_appendDocumentDir];
             [responseObject writeToFile:filePath atomically:YES];
-            
             [self configeList:responseObject];
-
             [self.tableView reloadData];
-          
-
            [[NSNotificationCenter defaultCenter] postNotificationName:LGUserupdataImageNotification object:nil userInfo:@{@"filePath":filePath}];
 #warning 写入到磁盘
             
@@ -122,19 +113,20 @@ static NSString *userCellID = @"userCellID";
         
     }];
 }
+#pragma mark - 创建模型分配
 - (void)configeList:(NSDictionary *)responseObject{
     //个人信息
-    
     //**** 第一组 ***//
-    
     NSArray *user_info = @[@"lg_user_avatar",@"bac",@"nickname",@"wp_capabilities",@"city",@"website",@"signature"];
     NSArray *user_infoTitle = @[@"更换头像",@"更换背景图",@"昵称",@"用户身份",@"居住地",@"我的站点",@"个人说明"];
+    //得到个人信息模型数组
     NSArray *groupUserInfo = [self userinfo:responseObject userinfoKeys:user_info userTitle:user_infoTitle];
        LGUserItem *item1 = [LGUserItem userGruopTitle:@"个人基本信息" userInfo:groupUserInfo];
     //**** 第二组 ***//
     NSArray *user_contact = @[@"user_email",@"user_phone_number"];
     //对应标题
     NSArray *user_contactTitle = @[@"邮箱",@"电话号码"];
+    //得到个人信息模型数组
     NSArray *groupUserContact = [self userinfo:responseObject userinfoKeys:user_contact userTitle:user_contactTitle];
        LGUserItem *item2 = [LGUserItem userGruopTitle:@"联系方式" userInfo:groupUserContact];
     //组合标题
@@ -142,7 +134,15 @@ static NSString *userCellID = @"userCellID";
     self.userList = userList;
 }
 
-
+/**
+ *
+ *
+ *  @param userinfo  请求得到服务器返回的数据
+ *  @param userKeys  字典对应的建值
+ *  @param userTitle 对应的标题
+ *
+ *  @return 返回个人信息模型数组
+ */
 - (NSArray *)userinfo:(NSDictionary *)userinfo userinfoKeys:(NSArray *)userKeys userTitle:(NSArray *)userTitle{
     
     NSMutableArray *arrayM = [NSMutableArray array];
@@ -243,9 +243,7 @@ static NSString *userCellID = @"userCellID";
     LGUserList *model = item.userInfos[indexPath.row];
     _userItem = model;
     if ([model.parameter isEqualToString:@"lg_user_avatar"]) {
-        
         [self upadataAvatar:model];
-
     }else if ([model.parameter isEqualToString:@"bac"]) {
          [self upadataAvatar:model];
     }else if ([model.parameter containsString:@"capabilities"]){
@@ -255,18 +253,14 @@ static NSString *userCellID = @"userCellID";
         self.editorInfoView.frame = [UIScreen mainScreen].bounds;
         self.editorInfoView.textField.text = model.content;
         self.editorInfoView.titleLable.text = model.title;
-        
         [[UIApplication sharedApplication].keyWindow addSubview:self.editorInfoView];
         [self.editorInfoView.textField becomeFirstResponder];
     }
     
   
 }
-/**
- *  弹出提示框
- *
- *
- */
+
+#pragma mark - 更新用户头像
 - (void)upadataAvatar:(LGUserList *)model{
     UIAlertController *alerView = [UIAlertController alertControllerWithTitle:model.title message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -282,6 +276,7 @@ static NSString *userCellID = @"userCellID";
     [self presentViewController:alerView animated:YES completion:nil];
     
 }
+#pragma mark - 背景图片
 - (void)upadataImage{
     
     
@@ -374,7 +369,7 @@ static NSString *userCellID = @"userCellID";
     }];
     
 }
-
+#pragma mark - 图片上传进度方法
 - (void)aliyunOssUploa:(LGAliYunOssUpload *)upload Progress:(CGFloat)progress{
     
     dispatch_async(dispatch_get_main_queue(), ^{

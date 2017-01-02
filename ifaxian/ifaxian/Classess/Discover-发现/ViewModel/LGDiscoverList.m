@@ -29,6 +29,7 @@
 
 @implementation LGDiscoverList
 
+#pragma mark - 懒加载
 - (LGHTTPSessionManager *)manager{
     if (_manager == nil) {
         _manager = [LGHTTPSessionManager manager];
@@ -85,7 +86,12 @@
         
     }];
 }
-
+/**
+ *  获取单个分类数据的前4条数据
+ *
+ *  @param categoryID 分类的id
+ *  @param completion 完成回调
+ */
 - (void)requestGetcategoryID:(NSString *)categoryID posts:(void(^)(NSArray *categoryposts))completion{
 //    get_category_posts?id=1
     
@@ -104,10 +110,13 @@
     }];
 
 }
+/**
+ *  获取所有分类的前4条数据
+ *
+ *  @param completion 完成回调
+ */
 - (void)getAllCategoriesPosts:(void(^)(NSArray *categoryposts))completion{
     
-
-
     //@weakify(self);
     [self requestCategroie:^(NSArray *categories) {
         
@@ -119,10 +128,8 @@
             dispatch_group_enter(requestGroup);
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
                 if ([category.title isEqualToString:@"首页"]||[category.title isEqualToString:@"文章"] || [category.title isEqualToString:@"早报"] || [category.title isEqualToString:@"分享"]) {
-                    
                      dispatch_group_leave(requestGroup);
                     return ;
-                    
                 }
                 [self requestGetcategoryID:category.ID posts:^(NSArray *categoryposts) {
                     
@@ -136,16 +143,10 @@
             });
         }
          dispatch_group_notify(requestGroup, dispatch_get_main_queue(), ^{
-
-        
              NSString *fileName = @"show.plist";
              NSString *path = [fileName lg_appendDocumentDir];
              [NSKeyedArchiver archiveRootObject:arrM toFile:path];
-             
-          
-                completion(arrM);
-             
-             
+             completion(arrM);
             });
 
     }];
@@ -153,7 +154,11 @@
     
     
 }
-
+/**
+ *  或去全站动态
+ *
+ *  @param completion 回调数据
+ */
 - (void)getActivity_get_activities:(void(^)(BOOL isSuccess , NSArray *activities))completion{
     NSString *url = [NSString requestBasiPathAppend:@"/api/buddypressread/activity_get_activities"];
     LGWeakSelf;

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ *  反馈界面
+ */
 @interface LGFeedbackController : UIViewController
 
 @end

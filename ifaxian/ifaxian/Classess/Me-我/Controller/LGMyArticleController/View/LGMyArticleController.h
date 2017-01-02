@@ -14,9 +14,21 @@
 #import "LGShare.h"
 #import "LGActivityViewModel.h"
 #import "LGShareController.h"
+/**
+ *  用来显示用户已经发布的数据的数据
+ */
 @interface LGMyArticleController : UITableViewController
+/**
+ *  用户的数据
+ */
 @property (nonatomic, strong) NSArray<LGShare *> *postsArrayM;
+/**
+ *  viewModel
+ */
 @property (nonatomic, strong) LGActivityViewModel *postList;
+/**
+ *  用户的名字
+ */
 @property(nonatomic, copy) NSString *userName;
 - (void)setupTableView;
 @end

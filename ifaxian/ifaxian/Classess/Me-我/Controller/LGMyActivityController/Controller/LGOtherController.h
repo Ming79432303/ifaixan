@@ -7,7 +7,9 @@
 //
 
 #import "LGBasiController.h"
-
+/**
+ *  其他界面
+ */
 @interface LGOtherController : UITableViewController
 
 @end

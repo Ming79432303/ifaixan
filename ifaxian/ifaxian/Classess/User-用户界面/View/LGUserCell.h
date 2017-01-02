@@ -9,5 +9,8 @@
 #import "LGSquareCell.h"
 
 @interface LGUserCell : LGSquareCell
-
+/**
+ *待改
+ *  继承LGSquareCell
+ */
 @end

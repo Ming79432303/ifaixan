@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LGAboutMeController : UIViewController
-
+/**
+ *  关于界面
+ */
 @end

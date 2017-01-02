@@ -9,8 +9,17 @@
 #import <Foundation/Foundation.h>
 
 @interface LGUserList : NSObject
+/**
+ *  标题
+ */
 @property(nonatomic, copy) NSString *title;
+/**
+ *  内容
+ */
 @property(nonatomic, copy) NSString *content;
+/**
+ *  对应的参数，更新用户数据需要的请求参数
+ */
 @property(nonatomic, copy) NSString *parameter;
 + (instancetype)userTitle:(NSString *)title content:(NSString *)content parameter:(NSString *)parameter;
 @end

@@ -11,11 +11,7 @@
 
 @implementation LGRecommend
 
-
-
-
-
-
+//获取视频的地址
 - (NSString *)videoUrl{
     
     if (_videoUrl.length) {
@@ -27,14 +23,13 @@
     return _videoUrl;
 }
 
-
+//根据原始图片获取等比例缩放后的地址
 - (void)setOriginalImageSize:(CGSize)originalImageSize{
     
     _originalImageSize = originalImageSize;
     /**
      *  等比例缩放
      */
-    
     CGFloat imageW = LGScreenW - 2 * LGCommonMargin;
     CGFloat imageH = 0;
     if (originalImageSize.width <= 0) {
@@ -42,12 +37,11 @@
         return;
     }
     imageH   = imageW * (originalImageSize.height/originalImageSize.width);
-  
-    
     _imageSize = CGSizeMake(imageW, imageH);
 }
+#pragma mark - 计算推荐界面的行高
+//计算行高
 - (CGFloat)xhCellHeght{
-    
     if (_xhCellHeght) {
         return _xhCellHeght;
     }
@@ -57,49 +51,28 @@
     if (self.imageUrl.length) {
         _xhCellHeght += self.imageSize.height;
     }else{
-       
         _xhCellHeght += [self.contentText boundingRectWithSize:CGSizeMake(LGScreenW - 3*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
-        
     }
-    
- 
-   
-    
-    
-    
     CGFloat toolViewH = 35;
-    
     _xhCellHeght += toolViewH;
-    
     return _xhCellHeght;
-    
 }
 - (NSString *)contentText{
     if (self.imageUrl.length) {
         return _contentText;
     }
-
-  _contentText = [NSString lg_regularExpression:self.content];
-   _contentText = [_contentText stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n"];
-    
-    
+    _contentText = [NSString lg_regularExpression:self.content];
+    _contentText = [_contentText stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n"];
     return _contentText;
 }
 - (CGFloat)dmCellHeght{
     
-
-        
-        if (_dmCellHeght) {
+    if (_dmCellHeght) {
             return _dmCellHeght;
         }
-        
         _dmCellHeght += [self.title boundingRectWithSize:CGSizeMake(LGScreenW - 3*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:17]} context:nil].size.height + LGCommonMargin * 3;
-        
         _dmCellHeght += self.imageSize.height;
         return _dmCellHeght;
-        
- 
-    
 }
 
 - (CGFloat)VideoCellHeght{

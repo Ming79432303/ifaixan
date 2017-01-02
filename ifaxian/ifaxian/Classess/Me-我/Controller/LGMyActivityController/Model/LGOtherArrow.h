@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "LGOther.h"
 @interface LGOtherArrow : LGOther
+/**
+ *  带箭头模型
+ */
 @property(nonatomic, assign) Class className;
 @end

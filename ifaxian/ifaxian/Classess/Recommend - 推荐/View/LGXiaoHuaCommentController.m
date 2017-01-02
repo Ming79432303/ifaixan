@@ -25,13 +25,10 @@
 - (void)more{
     
     UIAlertController *alerVc = [UIAlertController alertControllerWithTitle:@"提示" message:@"您要要？" preferredStyle:UIAlertControllerStyleActionSheet];
-    
     [alerVc addAction:[UIAlertAction actionWithTitle:@"复制链接地址" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         [pasteboard setString:[NSString stringWithFormat:@"%@ %@",self.share.title,self.model.url]];
         [SVProgressHUD showSuccessWithStatus:@"复制成功"];
-        
     }]];
     LGWeakSelf;
     if ([self.model.author.slug isEqualToString:[LGNetWorkingManager manager].account.user.username] || [[LGNetWorkingManager manager].account.user.ID isEqualToString:@"1"]) {
@@ -67,32 +64,17 @@
 - (void)setupTableView{
     
     [super setupTableView];
-    
-    
     UIView *headerView = [[UIView alloc] init];
-    
     headerView.frame = CGRectMake(0, 0, LGScreenW, self.share.xhCellHeght);
     LGXiaoHuaCell *cellView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([LGXiaoHuaCell class]) owner:nil options:nil] firstObject];
-
     cellView.backgroundColor = [UIColor whiteColor];
     cellView.model = self.share;
     cellView.frame = headerView.bounds;
     [headerView addSubview:cellView];
-
     self.tableView.tableHeaderView = headerView;
-    
-    
 }
 
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

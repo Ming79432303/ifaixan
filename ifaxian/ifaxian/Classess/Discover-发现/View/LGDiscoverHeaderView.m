@@ -70,22 +70,14 @@
 
 
 - (void)setupUI{
-    //    _currentPageImage _pageImage
-    
-    
-    
-    
     CGFloat w = self.scroView.bounds.size.width;
     CGFloat h = self.scroView.bounds.size.height;
-    
     //初始化scroview
     self.scroView.contentOffset = CGPointMake(w, 0);
     self.scroView.contentSize = CGSizeMake(3 * w, 0);
     self.scroView.pagingEnabled = YES;
     self.scroView.delegate = self;
     self.scroView.showsHorizontalScrollIndicator = NO;
-    
-    
     //创建一个重用的imageView
     UIImageView *reuseView = [[UIImageView alloc] init];
     reuseView.backgroundColor = [UIColor yellowColor];
@@ -115,28 +107,20 @@
 }
 
 - (void)goTo:(UIGestureRecognizer *)tap{
-
+    //获取点击的view
     UIImageView *tapView = (UIImageView *)tap.view;
-    NSLog(@"%@",tapView.image);
-  
+    //循环遍历
     for (LGHeaderModel *model in self.headerArray) {
+        //判断当前数组中的image是否与当前点击的image是否一样
         if (model.image == tapView.image) {
+            //一样就跳转控制器
             UITabBarController *tabbar = (UITabBarController *)self.window.rootViewController;
             UINavigationController *selectController = tabbar.selectedViewController;
+            //调用系统safari跳转网页
         SFSafariViewController *safari = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:model.url]];
-            
-                    [selectController presentViewController:safari animated:YES completion:nil];
+        [selectController presentViewController:safari animated:YES completion:nil];
         }
     }
-    
-    
-   
-    
-//    LGHeaderModel *mode = self.headerArray[index];
-    
-    
-//    NSLog(@"%zd",mode.url);
-    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

@@ -32,6 +32,7 @@ static NSString *squareCellID = @"squareCellID";
     self.tableView.rowHeight = 600;
     
 }
+#pragma mark - 懒加载
 - (LGShareViewModel *)shareViewModel{
     
     if (_shareViewModel == nil) {
@@ -52,7 +53,7 @@ static NSString *squareCellID = @"squareCellID";
     
     
 }
-
+#pragma mark - tableView Config
 - (void)setupTableView{
   
     [super setupTableView];
@@ -63,12 +64,10 @@ static NSString *squareCellID = @"squareCellID";
     
     
 }
-
+#pragma mark - 获取数据
 - (void)loadNewData{
-    
-    
+
     [self.shareViewModel loadNewDatacompletion:^(BOOL isSuccess, NSArray<LGShare *> *shareArray) {
-        
         if (isSuccess) {
              self.tableView.mj_footer.hidden = NO;
             self.shares = shareArray;
@@ -78,12 +77,7 @@ static NSString *squareCellID = @"squareCellID";
             
             [self.tableView.mj_header endRefreshing];
         }
-        
-        
-        
     }];
-
-    
 }
 
 - (void)loadOldData{
@@ -108,47 +102,40 @@ static NSString *squareCellID = @"squareCellID";
     }];
 
 }
-
+#pragma mark - tableview Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.shares.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-   LGShare *share = self.shares[indexPath.row];
-    
-        LGSquareCell *cell = [tableView dequeueReusableCellWithIdentifier:squareCellID];
-        cell.model = share;
-        return cell;
+    LGShare *share = self.shares[indexPath.row];
+    LGSquareCell *cell = [tableView dequeueReusableCellWithIdentifier:squareCellID];
+    cell.model = share;
+    return cell;
 
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
+
     return self.shares[indexPath.row].rowHeight;
     
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     LGShareController *shareVc = [[LGShareController alloc] init];
-
     LGShare *share = self.shares[indexPath.row];
-    
     shareVc.share = share;
-    
-
     [self.navigationController pushViewController:shareVc animated:YES];
     
 }
 
 
-//cell离开
+//cell离开移除播放器
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     LGSquareCell *videoCell = [tableView cellForRowAtIndexPath:indexPath];
     if (videoCell.playerView) {
-        
         [videoCell.playerView.subviews.firstObject removeFromSuperview];
         [videoCell.playerView removeFromSuperview];
     }

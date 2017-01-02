@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LGBasiController.h"
 @interface LGContributeController :UITableViewController
-
+/**
+ *  投稿界面
+ */
 @end

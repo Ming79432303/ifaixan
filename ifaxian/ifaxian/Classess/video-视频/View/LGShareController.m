@@ -17,15 +17,15 @@
 @end
 
 @implementation LGShareController
-
+#pragma mark - viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
   
     self.navItem.title = @"评论";
-      self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"more_icon" highImage:@"" target:self action:@selector(more)];
+    self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"more_icon" highImage:@"" target:self action:@selector(more)];
 
 }
-
+#pragma mark - 点击更多方法
 - (void)more{
     
     UIAlertController *alerVc = [UIAlertController alertControllerWithTitle:@"提示" message:@"您要要？" preferredStyle:UIAlertControllerStyleActionSheet];
@@ -69,26 +69,23 @@
     
 }
 
-
+#pragma mark - 添加一个头部的view
 - (void)setupTableView{
     
     [super setupTableView];
    
-  
+    //先创建一个view在添加一个cell
     UIView *headerView = [[UIView alloc] init];
+    //头部view的frame
     headerView.frame = CGRectMake(0, 0, LGScreenW, self.share.rowHeight);
+    //获取头部的view
     LGSquareCell *cellView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([LGSquareCell class]) owner:nil options:nil] firstObject];
     cellView.backgroundColor = [UIColor whiteColor];
     self.cellView = cellView;
-  
     cellView.model = self.share;
     cellView.frame = headerView.bounds;
     self.model = _share.share;
     [headerView addSubview:cellView];
-    
-    
-   
-    
     self.tableView.tableHeaderView = headerView;
     
     

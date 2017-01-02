@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "LGAuthor.h"
 @interface LGUserController : UIViewController
-
+/**
+ *  传入一个用户信息
+ */
 @property(nonatomic, strong) LGAuthor *author;
 @end
 

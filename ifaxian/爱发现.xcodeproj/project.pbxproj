@@ -148,13 +148,9 @@
 		3A52B50D1DFBE1D600C8C010 /* LGContenHeraderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A52B4F61DFBE1D600C8C010 /* LGContenHeraderView.xib */; };
 		3A52B50E1DFBE1D600C8C010 /* LGHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A52B4F81DFBE1D600C8C010 /* LGHomeCell.m */; };
 		3A52B50F1DFBE1D600C8C010 /* LGHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A52B4F91DFBE1D600C8C010 /* LGHomeCell.xib */; };
-		3A52B5101DFBE1D600C8C010 /* LGHomeCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A52B4FB1DFBE1D600C8C010 /* LGHomeCommentView.m */; };
-		3A52B5111DFBE1D600C8C010 /* LGHomeCommntContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A52B4FD1DFBE1D600C8C010 /* LGHomeCommntContentView.m */; };
-		3A52B5121DFBE1D600C8C010 /* LGHomeCommntContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A52B4FE1DFBE1D600C8C010 /* LGHomeCommntContentView.xib */; };
 		3A52B5131DFBE1D600C8C010 /* LGHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A52B5001DFBE1D600C8C010 /* LGHomeHeaderView.m */; };
 		3A52B5141DFBE1D600C8C010 /* LGHomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A52B5011DFBE1D600C8C010 /* LGHomeHeaderView.xib */; };
 		3A52B5151DFBE1D600C8C010 /* LGHomeImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A52B5031DFBE1D600C8C010 /* LGHomeImagesView.m */; };
-		3A52B5161DFBE1D600C8C010 /* LGHomeTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A52B5051DFBE1D600C8C010 /* LGHomeTagsView.m */; };
 		3A52B5171DFBE1D600C8C010 /* LGScrollContenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A52B5071DFBE1D600C8C010 /* LGScrollContenView.m */; };
 		3A52B5181DFBE1D600C8C010 /* LGScrollContenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A52B5081DFBE1D600C8C010 /* LGScrollContenView.xib */; };
 		3A52B5191DFBE1D600C8C010 /* LGWriteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A52B50A1DFBE1D600C8C010 /* LGWriteView.m */; };
@@ -579,18 +575,11 @@
 		3A52B4F71DFBE1D600C8C010 /* LGHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGHomeCell.h; sourceTree = "<group>"; };
 		3A52B4F81DFBE1D600C8C010 /* LGHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGHomeCell.m; sourceTree = "<group>"; };
 		3A52B4F91DFBE1D600C8C010 /* LGHomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGHomeCell.xib; sourceTree = "<group>"; };
-		3A52B4FA1DFBE1D600C8C010 /* LGHomeCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGHomeCommentView.h; sourceTree = "<group>"; };
-		3A52B4FB1DFBE1D600C8C010 /* LGHomeCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGHomeCommentView.m; sourceTree = "<group>"; };
-		3A52B4FC1DFBE1D600C8C010 /* LGHomeCommntContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGHomeCommntContentView.h; sourceTree = "<group>"; };
-		3A52B4FD1DFBE1D600C8C010 /* LGHomeCommntContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGHomeCommntContentView.m; sourceTree = "<group>"; };
-		3A52B4FE1DFBE1D600C8C010 /* LGHomeCommntContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGHomeCommntContentView.xib; sourceTree = "<group>"; };
 		3A52B4FF1DFBE1D600C8C010 /* LGHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGHomeHeaderView.h; sourceTree = "<group>"; };
 		3A52B5001DFBE1D600C8C010 /* LGHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGHomeHeaderView.m; sourceTree = "<group>"; };
 		3A52B5011DFBE1D600C8C010 /* LGHomeHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGHomeHeaderView.xib; sourceTree = "<group>"; };
 		3A52B5021DFBE1D600C8C010 /* LGHomeImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGHomeImagesView.h; sourceTree = "<group>"; };
 		3A52B5031DFBE1D600C8C010 /* LGHomeImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGHomeImagesView.m; sourceTree = "<group>"; };
-		3A52B5041DFBE1D600C8C010 /* LGHomeTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGHomeTagsView.h; sourceTree = "<group>"; };
-		3A52B5051DFBE1D600C8C010 /* LGHomeTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGHomeTagsView.m; sourceTree = "<group>"; };
 		3A52B5061DFBE1D600C8C010 /* LGScrollContenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGScrollContenView.h; sourceTree = "<group>"; };
 		3A52B5071DFBE1D600C8C010 /* LGScrollContenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGScrollContenView.m; sourceTree = "<group>"; };
 		3A52B5081DFBE1D600C8C010 /* LGScrollContenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGScrollContenView.xib; sourceTree = "<group>"; };
@@ -1496,18 +1485,11 @@
 				3A52B4F71DFBE1D600C8C010 /* LGHomeCell.h */,
 				3A52B4F81DFBE1D600C8C010 /* LGHomeCell.m */,
 				3A52B4F91DFBE1D600C8C010 /* LGHomeCell.xib */,
-				3A52B4FA1DFBE1D600C8C010 /* LGHomeCommentView.h */,
-				3A52B4FB1DFBE1D600C8C010 /* LGHomeCommentView.m */,
-				3A52B4FC1DFBE1D600C8C010 /* LGHomeCommntContentView.h */,
-				3A52B4FD1DFBE1D600C8C010 /* LGHomeCommntContentView.m */,
-				3A52B4FE1DFBE1D600C8C010 /* LGHomeCommntContentView.xib */,
 				3A52B4FF1DFBE1D600C8C010 /* LGHomeHeaderView.h */,
 				3A52B5001DFBE1D600C8C010 /* LGHomeHeaderView.m */,
 				3A52B5011DFBE1D600C8C010 /* LGHomeHeaderView.xib */,
 				3A52B5021DFBE1D600C8C010 /* LGHomeImagesView.h */,
 				3A52B5031DFBE1D600C8C010 /* LGHomeImagesView.m */,
-				3A52B5041DFBE1D600C8C010 /* LGHomeTagsView.h */,
-				3A52B5051DFBE1D600C8C010 /* LGHomeTagsView.m */,
 				3A52B5061DFBE1D600C8C010 /* LGScrollContenView.h */,
 				3A52B5071DFBE1D600C8C010 /* LGScrollContenView.m */,
 				3A52B5081DFBE1D600C8C010 /* LGScrollContenView.xib */,
@@ -2305,7 +2287,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = LG;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = ming;
 				TargetAttributes = {
 					3AE122431DDC8AEC00D1A128 = {
@@ -2371,7 +2353,6 @@
 				3A52B5381DFBE8A600C8C010 /* LGVideoCell.xib in Resources */,
 				3A32B6971E0129EB00B9FCD6 /* LGFeedbackController.xib in Resources */,
 				3A5669E61DED78D300959D96 /* LGRegisterView.xib in Resources */,
-				3A52B5121DFBE1D600C8C010 /* LGHomeCommntContentView.xib in Resources */,
 				3AF4B61A1DDCAAC500C06419 /* LGRefreshGif.xib in Resources */,
 				3AE122AC1DDCA9B300D1A128 /* LGPhotoListCell.xib in Resources */,
 				3A32B6721E01218C00B9FCD6 /* LGMeController.storyboard in Resources */,
@@ -2566,7 +2547,6 @@
 				3A0F21511DDEB503008B955F /* LWTextLine.m in Sources */,
 				3A52B4DE1DFBE16E00C8C010 /* LGAttachment.m in Sources */,
 				3A3436A81E0511A300EE4311 /* LGActivityUser.m in Sources */,
-				3A52B5111DFBE1D600C8C010 /* LGHomeCommntContentView.m in Sources */,
 				48DAD6E81DDFEB4200CD33A4 /* LGRefreshHeader.m in Sources */,
 				3A2ED27F1DEBED13002CFE88 /* LGDiscoverController.m in Sources */,
 				3A52B5561DFBF00F00C8C010 /* LGSetingArrow.m in Sources */,
@@ -2668,7 +2648,6 @@
 				3ADD2C971DEC8B6600314B19 /* LGShow.m in Sources */,
 				3A27F3571DEECE450051786D /* LGShare.m in Sources */,
 				3A52B5461DFBE97D00C8C010 /* LGRecommendViewModel.m in Sources */,
-				3A52B5101DFBE1D600C8C010 /* LGHomeCommentView.m in Sources */,
 				3A52B55C1DFBF02A00C8C010 /* LGSetingController.m in Sources */,
 				3A8DF1B41E037EA100ADD735 /* LGHTTPSessionManager+LGUserRequest.m in Sources */,
 				3A27F35A1DEEE1070051786D /* LGImagesView.m in Sources */,
@@ -2694,7 +2673,6 @@
 				3AD696E31E101A1700F49779 /* NSURL+LGImageSave.m in Sources */,
 				3AD84B1C1E02A82600CE44B5 /* LGUserInfoController.m in Sources */,
 				3A0F21551DDEB503008B955F /* LWTransaction.m in Sources */,
-				3A52B5161DFBE1D600C8C010 /* LGHomeTagsView.m in Sources */,
 				3A0F214E1DDEB503008B955F /* LWTextContainer.m in Sources */,
 				3A5669ED1DED793700959D96 /* LGSenImageController.m in Sources */,
 				3A0F21541DDEB503008B955F /* LWTextStorage.m in Sources */,
@@ -2834,8 +2812,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2857,7 +2837,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2877,8 +2857,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2894,7 +2876,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

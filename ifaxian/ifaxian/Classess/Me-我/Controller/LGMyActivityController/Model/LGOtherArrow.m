@@ -9,5 +9,7 @@
 #import "LGOtherArrow.h"
 
 @implementation LGOtherArrow
-
+/**
+ *  带箭头的模型
+ */
 @end

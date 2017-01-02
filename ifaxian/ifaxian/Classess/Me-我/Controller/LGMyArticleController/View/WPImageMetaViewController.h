@@ -2,7 +2,9 @@
 
 @class WPImageMeta;
 @class WPImageMetaViewController;
-
+/**
+ *  父文本编辑器点击图片之后跳转的界面
+ */
 @protocol WPImageMetaViewControllerDelegate <NSObject>
 
 - (void)imageMetaViewController:(WPImageMetaViewController *)controller didFinishEditingImageMeta:(WPImageMeta *)imageMeta;

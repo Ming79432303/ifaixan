@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "LGActivitie.h"
 @interface LGActivityCell : UITableViewCell
+/**
+ *  全站动态模型
+ */
 @property(nonatomic, strong) LGActivitie *model;
 @end

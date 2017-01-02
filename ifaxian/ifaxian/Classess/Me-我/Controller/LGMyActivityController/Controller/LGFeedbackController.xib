@@ -104,7 +104,7 @@
         </view>
     </objects>
     <resources>
-        <image name="back_nomar" width="45" height="39"/>
+        <image name="back_nomar" width="15" height="25"/>
         <image name="send" width="60" height="30"/>
     </resources>
 </document>

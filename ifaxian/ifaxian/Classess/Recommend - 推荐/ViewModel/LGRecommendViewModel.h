@@ -9,7 +9,20 @@
 #import <Foundation/Foundation.h>
 
 @interface LGRecommendViewModel : NSObject
-@property(nonatomic, copy) NSString *postName;;
+/**
+ *  请求数据的路径(后台规定)
+ */
+@property(nonatomic, copy) NSString *postName;
+/**
+ *  加载新数据
+ *
+ *  @param completion 完成回调
+ */
 - (void)loadNewDataCompletion:(void(^)(BOOL isSuccess ,NSArray *array))completion;
+/**
+ *  加载下一页的数据
+ *
+ *  @param completion 完成回调
+ */
 - (void)loadOldDataCompletion:(void(^)(BOOL isSuccess ,NSArray *array))completion;
 @end

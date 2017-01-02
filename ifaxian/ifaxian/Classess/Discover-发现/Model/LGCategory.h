@@ -9,5 +9,7 @@
 #import "LGBasiModel.h"
 
 @interface LGCategory : LGBasiModel
-
+/**
+ *  分类模型继承LGBasiModel
+ */
 @end

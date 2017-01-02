@@ -38,44 +38,53 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self loadNewData];
+}
+#pragma mark - 加载数据
+- (void)loadNewData{
     
-   
     // initialize CWNotification
+    //添加波形动画
     [LWActiveIncator showInView:self.tableView];
-    
-   self.navItem.title = @"动态详情";
+    //设置标题
+    self.navItem.title = @"动态详情";
+    //点击更多
     self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"more_icon" highImage:@"" target:self action:@selector(more)];
-   
+    //根据点击的ur获取数据
     NSString *postId= [_postUrl substringFromIndex:@"https://ifaxian.cc/?p=".length];
-  NSString * requestUrl = [NSString requestBasiPathAppend:[NSString stringWithFormat:@"/api/get_post/?post_id=%@",postId]];
-    
+    //字符串拼接
+    NSString * requestUrl = [NSString requestBasiPathAppend:[NSString stringWithFormat:@"/api/get_post/?post_id=%@",postId]];
     LGWeakSelf;
+    //获取url的数据
     [self.manager requestPostUrl:requestUrl completion:^(BOOL isSuccess, id responseObject) {
+        //获取完毕
+        //关闭波形动画
         [LWActiveIncator hideInViwe:weakSelf.view];
-     
-        
-   LGPostModel *model = [LGPostModel mj_objectWithKeyValues:responseObject[@"post"]];
-         _model = model;
+        //数组转模型
+        LGPostModel *model = [LGPostModel mj_objectWithKeyValues:responseObject[@"post"]];
+        _model = model;
+        //判断需要展示哪种样式
+        //分享界面样式
         if ([model.categories.firstObject.title isEqualToString:@"分享"]) {
-            
-         LGShare *share = [[LGShare alloc] initWithModel:model];
+            LGShare *share = [[LGShare alloc] initWithModel:model];
             LGShareController *shareVc = [[LGShareController alloc] init];
             shareVc.share = share;
             //[self.navigationController pushViewController:shareVc animated:YES];
             [weakSelf addChildViewController:shareVc];
             [weakSelf.view insertSubview:shareVc.view atIndex:1];
         }else{
+            //文章展示样式
             LGDisplayController *disVc = [[LGDisplayController alloc] init];
-            
             disVc.model = model;
-
             [weakSelf addChildViewController:disVc];
             [weakSelf.view insertSubview:disVc.view atIndex:1];
             
         }
-        
     }];
+
 }
+
+#pragma mark - 点击更多
 - (void)more{
     
     UIAlertController *alerVc = [UIAlertController alertControllerWithTitle:@"提示" message:@"您要要？" preferredStyle:UIAlertControllerStyleActionSheet];
@@ -108,8 +117,6 @@
         }]];
         
     }
-    
-    
     [self presentViewController:alerVc animated:YES completion:nil];
     
 }

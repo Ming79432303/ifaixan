@@ -12,6 +12,9 @@
 #import "LGEditorController.h"
 #import <WPEditorViewController.h>
 @interface LGDisplayController :  WPEditorViewController <WPEditorViewControllerDelegate>
+/**
+ *  文章的模型
+ */
 @property(nonatomic, strong) LGPostModel *model;
 @property(nonatomic, strong) NSMutableDictionary *mediaAdded;
 @property(nonatomic, strong) NSString *selectedMediaID;

@@ -39,7 +39,8 @@ static NSString  *showCellID = @"showCellID";
 static NSString  *tagCellID = @"tagCellID";
 static NSString  *activitieCellID = @"activitieCellID";
 static NSString  *discoverHFID = @"discoverHFID";
-
+#pragma mark - 懒加载
+//发现界面的viewModel
 - (LGDiscoverList *)list{
     
     if (_list == nil) {
@@ -48,7 +49,7 @@ static NSString  *discoverHFID = @"discoverHFID";
     
     return _list;
 }
-
+//搜索界面
 - (LGSearchController *)searchVc{
     
     if (_searchVc == nil) {
@@ -58,11 +59,11 @@ static NSString  *discoverHFID = @"discoverHFID";
     return _searchVc;
 }
 
-
+#pragma mark - viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNav];
-    
+    //监听文字的改变方法
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextFieldTextDidChangeNotification object:self.searchTextField];
     [self addHeaderView];
     [self addShowView];
@@ -70,43 +71,49 @@ static NSString  *discoverHFID = @"discoverHFID";
     
     
 }
-
-
-- (void)addHeaderView{
-    LGDiscoverHeaderView *headerView = [LGDiscoverHeaderView viewFromeNib];
-    headerView.frame = CGRectMake(0, 0, 200, 183);
+#pragma mark - tableview config
+- (void)setupTableView{
     
-    self.tableView.tableHeaderView = headerView;
-    
-    
-    
-}
-- (void)addShowView{
-    LGWeakSelf;
-    [self.list requestTags:^(NSArray *tags) {
-        
-        weakSelf.tags = tags;
-        [weakSelf.tableView reloadData];
-    }];
+    [super setupTableView];
     [self.tableView registerClass:[LGShowCell class] forCellReuseIdentifier:showCellID];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGTagsCell class]) bundle:nil] forCellReuseIdentifier:tagCellID];
-   
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LGActivityCell class]) bundle:nil] forCellReuseIdentifier:activitieCellID];
     [self.tableView registerClass:[LGDIscoverHeaderFooterView class] forHeaderFooterViewReuseIdentifier:discoverHFID];
     self.tableView.sectionFooterHeight = 50;
     self.tableView.sectionHeaderHeight = 40;
     self.tableView.backgroundColor = LGCommonColor;
     self.tableView.mj_footer.hidden = YES;
+
 }
 
+#pragma mark - 添加HeaderView
+- (void)addHeaderView{
+    
+    LGDiscoverHeaderView *headerView = [LGDiscoverHeaderView viewFromeNib];
+    headerView.frame = CGRectMake(0, 0, 200, 183);
+    self.tableView.tableHeaderView = headerView;
+    
+    
+    
+}
+#pragma mark - 添加显示标签界面
+- (void)addShowView{
+    LGWeakSelf;
+    //获取所有标签
+    [self.list requestTags:^(NSArray *tags) {
+        weakSelf.tags = tags;
+        [weakSelf.tableView reloadData];
+    }];
+}
+#pragma mark - 监听文字的改变
 - (void)textChange:(NSNotification *)noti{
     NSString *serch = [self.searchTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
+    //回调block
          _searchVc.search(serch);
 }
 
 
-
+#pragma mark - navBar布局添加搜索框
 - (void)setNav{
     
     [self.navBar setTintColor:[UIColor redColor]];
@@ -138,16 +145,19 @@ static NSString  *discoverHFID = @"discoverHFID";
 
     self.searchTextField = searchView;
 }
-
+//什么都不做
 - (void)none{
     
 }
+//监听文本框开始编辑
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
   
      [self addSearchView];
     self.navItem.rightBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"取消" fontSize:14 addTarget:self action:@selector(canle) isBack:NO];
     
 }
+
+#pragma mark - 搜索界面点击取消按钮事件
 - (void)canle{
     
     [self.searchTextField resignFirstResponder];
@@ -167,18 +177,13 @@ static NSString  *discoverHFID = @"discoverHFID";
     
     [self.searchView pop_addAnimation:animati forKey:nil];
      self.navItem.rightBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"" fontSize:14 addTarget:self action:@selector(none) isBack:NO];
-    
-    
-    
-    
 }
+
+#pragma mark - 搜索界面调整布局添加动画
 - (void)addSearchView{
     
     self.tabBarController.tabBar.hidden = YES;
- 
- 
     [self addChildViewController: self.searchVc];
-   
      self.searchVc.view.backgroundColor = [UIColor whiteColor];
      self.searchVc.view.frame = self.tableView.frame;
      self.searchVc.view.lg_y = self.navBar.lg_bottom;
@@ -188,11 +193,9 @@ static NSString  *discoverHFID = @"discoverHFID";
     self.searchView =  self.searchVc.view;
     
     POPBasicAnimation *animati = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
-    
     animati.fromValue = @(1);
     animati.toValue = @(1);
     animati.duration = 0.15;
-    
     [ self.searchVc.view pop_addAnimation:animati forKey:nil];
     
     
@@ -206,8 +209,6 @@ static NSString  *discoverHFID = @"discoverHFID";
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
-    
-   
     return YES;
     
 }
@@ -215,11 +216,10 @@ static NSString  *discoverHFID = @"discoverHFID";
     
     
 }
-
+//滑动取消第一响应者
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     [self.view endEditing:YES];
-   
-    
+
 }
 
 - (void)loadNewData{
@@ -235,12 +235,13 @@ static NSString  *discoverHFID = @"discoverHFID";
     }];
 }
 
-
+#pragma mark - 发现界面表格delegate
+//三种样式三种cell三组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     return 3;
 }
-
+//返回个数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == LGCategoryCell) {
         return 1;
@@ -252,6 +253,7 @@ static NSString  *discoverHFID = @"discoverHFID";
     }
     
 }
+//返回三种cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == LGCategoryCell) {
@@ -272,6 +274,7 @@ static NSString  *discoverHFID = @"discoverHFID";
    
     
 }
+//返回三种行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     LGActivitie *activiti = self.activities[indexPath.row];
     if (indexPath.section == LGCategoryCell) {
@@ -284,7 +287,7 @@ static NSString  *discoverHFID = @"discoverHFID";
     }
     
 }
-
+//返回三种组标题
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
     UITableViewHeaderFooterView *hfView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:discoverHFID];
