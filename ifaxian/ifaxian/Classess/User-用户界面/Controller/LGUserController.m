@@ -110,7 +110,7 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userInfo)];
     [_userIconImageView addGestureRecognizer:tap];
-    self.userBacImageView.image = [[UIImage imageNamed:@"screen"] applyTintEffectWithColor:[UIColor lightGrayColor]];
+    self.userBacImageView.image = [UIImage imageNamed:@"default_user_bac"] ;
     _userIconImageView.layer.cornerRadius = _userIconImageView.lg_height / 2;
     _userIconImageView.layer.masksToBounds = YES;
 //    _tabView.image = [[UIImage imageNamed:@"1111111"] applyDarkEffect];

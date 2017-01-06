@@ -70,7 +70,7 @@
     if (_dmCellHeght) {
             return _dmCellHeght;
         }
-        _dmCellHeght += [self.title boundingRectWithSize:CGSizeMake(LGScreenW - 3*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:17]} context:nil].size.height + LGCommonMargin * 3;
+        _dmCellHeght += [self.title boundingRectWithSize:CGSizeMake(LGScreenW - 5*LGCommonMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:17]} context:nil].size.height + LGCommonMargin * 3;
         _dmCellHeght += self.imageSize.height;
         return _dmCellHeght;
 }

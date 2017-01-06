@@ -158,7 +158,7 @@
     }
     
     if (!bcUrl.length) {
-        self.iconImageView.image = [UIImage imageNamed:@"screen"];
+        self.iconImageView.image = [UIImage imageNamed:@"default_user_bac"];
     }
     if ([LGNetWorkingManager manager].account.isOtherLogin) {
         
@@ -185,7 +185,7 @@
                         dispatch_async(dispatch_get_main_queue(), ^{
                             UIImage *image = [UIImage imageWithData:imageData];
                             if (!image) {
-                                weakSelf.converView.image = [UIImage imageNamed:@"screen"];
+                                weakSelf.converView.image = [UIImage imageNamed:@"default_user_bac"];
                             }else{
                                 
                                 weakSelf.converView.image = image;
@@ -367,7 +367,7 @@
 - (void)setupBacImageView{
     //headerView
     //背景图片
-    self.converView.image = [UIImage imageNamed:@"screen"];
+    self.converView.image = [UIImage imageNamed:@"default_user_bac"];
     UIView *headView = [[UIView alloc] init];
     CGSize screen = [UIScreen mainScreen].bounds.size;
     headView.backgroundColor = [UIColor whiteColor];

@@ -22,7 +22,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66S-Q4-T9B" userLabel="头部视图">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="264"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="screen" translatesAutoresizingMaskIntoConstraints="NO" id="00I-cg-MZk">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_user_bac" translatesAutoresizingMaskIntoConstraints="NO" id="00I-cg-MZk">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="264"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </imageView>
@@ -122,7 +122,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="screen" width="800" height="534"/>
+        <image name="default_user_bac" width="764" height="499"/>
         <image name="手机app-个人默认头像" width="64" height="64"/>
     </resources>
 </document>
