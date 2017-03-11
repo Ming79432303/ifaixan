@@ -57,13 +57,16 @@
         _videoViewFrame = CGRectMake(LGCommonMargin, _rowHeight, LGScreenW - 4 * LGCommonMargin, 200);
         _rowHeight += 200;
     }
+    
     if (self.images.count > 0) {
     switch (self.images.count) {
           //一张图片
         case LGOnePictures:{
             
-            
-            imageH = _oneImageSize.height;
+            if (_oneImageSize.height > 0) {
+               
+                imageH = _oneImageSize.height;
+            }
             
         }break;
                  //两张图片
@@ -90,7 +93,6 @@
     _rowHeight += imageH;
     
     CGFloat toolBarH = 44;
-    
     _rowHeight += toolBarH + 2 * LGCommonMargin;
     
 }

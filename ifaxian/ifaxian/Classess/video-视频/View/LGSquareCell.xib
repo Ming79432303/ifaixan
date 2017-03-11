@@ -22,13 +22,6 @@
                             <constraint firstAttribute="height" constant="35" id="fIP-RX-0xb"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_icon" translatesAutoresizingMaskIntoConstraints="NO" id="1jy-9F-9HU">
-                        <rect key="frame" x="290" y="10" width="20" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="20" id="VSJ-kS-ODp"/>
-                            <constraint firstAttribute="height" constant="20" id="kj7-vA-wuF"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwV-Cy-Akf">
                         <rect key="frame" x="10" y="55" width="300" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -100,16 +93,31 @@
                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_icon" translatesAutoresizingMaskIntoConstraints="NO" id="1jy-9F-9HU">
+                        <rect key="frame" x="260" y="10" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="VSJ-kS-ODp"/>
+                            <constraint firstAttribute="height" constant="20" id="kj7-vA-wuF"/>
+                        </constraints>
+                    </imageView>
+                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jubao_iocn" translatesAutoresizingMaskIntoConstraints="NO" id="Dzb-jg-zKb">
+                        <rect key="frame" x="290" y="10" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="LPc-2w-k4H"/>
+                            <constraint firstAttribute="width" constant="20" id="dUh-9U-aJ2"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Y8D-Ay-rJc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1a7-e9-cNl"/>
+                    <constraint firstItem="Dzb-jg-zKb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="4Gv-T7-4bV"/>
+                    <constraint firstItem="Dzb-jg-zKb" firstAttribute="leading" secondItem="1jy-9F-9HU" secondAttribute="trailing" constant="10" id="6cj-hp-c3T"/>
                     <constraint firstItem="Y8D-Ay-rJc" firstAttribute="top" secondItem="qIr-Ck-ZiS" secondAttribute="bottom" id="BT9-dE-Jak"/>
                     <constraint firstItem="Bfa-Ol-c1e" firstAttribute="leading" secondItem="yto-zj-2Oe" secondAttribute="trailing" constant="10" id="CYK-30-2VS"/>
                     <constraint firstItem="NLH-Et-6Id" firstAttribute="top" secondItem="Bfa-Ol-c1e" secondAttribute="bottom" constant="5" id="DGz-1x-TbZ"/>
                     <constraint firstItem="1jy-9F-9HU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Eel-cV-FD4"/>
                     <constraint firstItem="qIr-Ck-ZiS" firstAttribute="top" secondItem="YwV-Cy-Akf" secondAttribute="bottom" constant="10" id="Gs8-Fv-lqQ"/>
                     <constraint firstItem="Bfa-Ol-c1e" firstAttribute="centerY" secondItem="yto-zj-2Oe" secondAttribute="centerY" constant="-10" id="Iws-eW-F74"/>
-                    <constraint firstAttribute="trailing" secondItem="1jy-9F-9HU" secondAttribute="trailing" constant="10" id="LFB-u0-3QE"/>
                     <constraint firstItem="NLH-Et-6Id" firstAttribute="leading" secondItem="Bfa-Ol-c1e" secondAttribute="leading" id="ObZ-sf-7HX"/>
                     <constraint firstItem="YwV-Cy-Akf" firstAttribute="top" secondItem="yto-zj-2Oe" secondAttribute="bottom" constant="10" id="PUQ-YZ-hDD"/>
                     <constraint firstAttribute="trailing" secondItem="qIr-Ck-ZiS" secondAttribute="trailing" constant="10" id="QH1-0g-NP5"/>
@@ -118,6 +126,7 @@
                     <constraint firstItem="yto-zj-2Oe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Ykw-zT-iAA"/>
                     <constraint firstItem="qIr-Ck-ZiS" firstAttribute="leading" secondItem="YwV-Cy-Akf" secondAttribute="leading" id="d4e-B7-7sE"/>
                     <constraint firstItem="yto-zj-2Oe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="j3L-w2-gxw"/>
+                    <constraint firstAttribute="trailing" secondItem="Dzb-jg-zKb" secondAttribute="trailing" constant="10" id="kde-z7-SvD"/>
                     <constraint firstAttribute="bottom" secondItem="Y8D-Ay-rJc" secondAttribute="bottom" id="nZU-bT-MUz"/>
                     <constraint firstAttribute="trailing" secondItem="Y8D-Ay-rJc" secondAttribute="trailing" id="rhs-f3-HSz"/>
                 </constraints>
@@ -129,16 +138,18 @@
                 <outlet property="iconImage" destination="yto-zj-2Oe" id="7y3-aG-fRh"/>
                 <outlet property="imagesView" destination="qIr-Ck-ZiS" id="XVK-Dh-A7J"/>
                 <outlet property="imagev" destination="1jy-9F-9HU" id="Jze-BY-IJ7"/>
+                <outlet property="jubao" destination="Dzb-jg-zKb" id="dNa-ad-TlI"/>
                 <outlet property="likeButton" destination="cSf-sL-thh" id="FUt-TM-S4A"/>
                 <outlet property="nameLable" destination="Bfa-Ol-c1e" id="Ig7-yl-N9H"/>
                 <outlet property="toolView" destination="Y8D-Ay-rJc" id="Kn9-xN-J2f"/>
             </connections>
-            <point key="canvasLocation" x="591" y="520.5"/>
+            <point key="canvasLocation" x="364" y="584.5"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="comment_icon" width="30" height="30"/>
         <image name="image_icon" width="88" height="88"/>
+        <image name="jubao_iocn" width="16" height="8"/>
         <image name="zan_icon" width="24" height="20"/>
         <image name="喜欢" width="20" height="20"/>
     </resources>

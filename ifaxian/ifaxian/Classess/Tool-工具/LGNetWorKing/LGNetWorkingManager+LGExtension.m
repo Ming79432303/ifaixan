@@ -128,6 +128,7 @@
     parameters[@"comment"] = comment;
     parameters[@"comment_post_ID"] = postId;
     parameters[@"comment_parent"] = commentParent;
+    parameters[@"submit"] = @"确定";
     [self request:LGRequeTypePOST urlString:url parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
         if (completion) {
             completion(isSuccess);

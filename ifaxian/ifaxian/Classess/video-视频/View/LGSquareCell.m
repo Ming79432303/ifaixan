@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dataLable;
 //背景图片用来显示视频的第一张图
 @property(nonatomic, strong) UIImageView *bacImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *jubao;
 //开始图片
 @property(nonatomic, strong) UIImageView *starImageView;
 @end
@@ -82,6 +83,10 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2userController)];
     [self.iconImage addGestureRecognizer:tap];
     _commentButton.imageView.contentMode  = UIViewContentModeScaleAspectFit;
+    
+    UITapGestureRecognizer *jubaoTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(jubaoUser)];
+    [self.jubao addGestureRecognizer:jubaoTap];
+    
     [self layoutIfNeeded];
 }
 #pragma mark - 跳转控制器
@@ -239,6 +244,13 @@
     
      LGLog(@"评论");
 }
-
+//举报
+- (void)jubaoUser{
+    
+    [LGJubaoView showView];
+    
+    
+    
+}
 
 @end

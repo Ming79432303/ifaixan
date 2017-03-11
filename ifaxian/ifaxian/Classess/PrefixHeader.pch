@@ -29,6 +29,8 @@
 #import "UIImageView+LGUIimageView.h"
 #import "LGHTTPSessionManager+LGUserRequest.h"
 #import "CWStatusBarNotification.h"
+#import "LGJubaoView.h"
+#import "LGSqliteManager.h"
 
 // 日志输出
 #ifdef DEBUG // 开发阶段-DEBUG阶段:使用Log

@@ -137,7 +137,7 @@
     parameters[@"username"] = userName;
     parameters[@"password"] = passWord;
     parameters[@"insecure"] = @"cool";
-    [self request:LGRequeTypePOST urlString:url parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
+    [self request:LGRequeTypeGET urlString:url parameters:parameters completion:^(BOOL isSuccess, id responseObject) {
         if (responseObject[@"error"]) {
             completion(isSuccess,NO);
         }else{

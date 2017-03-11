@@ -81,5 +81,8 @@
     } while (next != nil);
     return nil;
 }
+- (IBAction)jubao:(id)sender {
+    [LGJubaoView showView];
+}
 
 @end

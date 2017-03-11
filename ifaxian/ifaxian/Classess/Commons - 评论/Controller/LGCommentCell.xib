@@ -51,6 +51,13 @@
                             <constraint firstAttribute="width" constant="35" id="nBB-ad-K1K"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0D-Ci-Scy">
+                        <rect key="frame" x="294" y="10" width="16" height="22"/>
+                        <state key="normal" image="jubao_iocn"/>
+                        <connections>
+                            <action selector="jubao:" destination="wa1-uv-Y5e" eventType="touchUpInside" id="OtX-nq-vb3"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="hse-dF-psd" secondAttribute="trailing" id="2cp-aY-0k2"/>
@@ -58,6 +65,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="BuX-0S-pgL" secondAttribute="trailing" constant="10" id="6uG-mj-9CA"/>
                     <constraint firstItem="91W-eS-61S" firstAttribute="leading" secondItem="UAy-bk-1KJ" secondAttribute="leadingMargin" id="8hv-AZ-rzd"/>
                     <constraint firstAttribute="trailing" secondItem="W2H-fc-A86" secondAttribute="trailing" constant="8" id="D35-yC-wX7"/>
+                    <constraint firstItem="i0D-Ci-Scy" firstAttribute="top" secondItem="UAy-bk-1KJ" secondAttribute="top" constant="10" id="GmF-cy-SWg"/>
                     <constraint firstItem="edg-4Q-CPR" firstAttribute="top" secondItem="hse-dF-psd" secondAttribute="bottom" constant="10" id="ZDz-sl-P1A"/>
                     <constraint firstItem="hse-dF-psd" firstAttribute="leading" secondItem="BuX-0S-pgL" secondAttribute="leading" id="dru-0V-rkr"/>
                     <constraint firstItem="BuX-0S-pgL" firstAttribute="leading" secondItem="91W-eS-61S" secondAttribute="trailing" constant="10" id="eH1-D1-VqF"/>
@@ -65,6 +73,7 @@
                     <constraint firstItem="edg-4Q-CPR" firstAttribute="leading" secondItem="BuX-0S-pgL" secondAttribute="leading" id="lrc-Pr-3BV"/>
                     <constraint firstItem="W2H-fc-A86" firstAttribute="top" secondItem="hse-dF-psd" secondAttribute="bottom" constant="10" id="md2-K9-KkB"/>
                     <constraint firstItem="hse-dF-psd" firstAttribute="top" secondItem="BuX-0S-pgL" secondAttribute="bottom" constant="10" id="sZ3-fd-8I8"/>
+                    <constraint firstAttribute="trailing" secondItem="i0D-Ci-Scy" secondAttribute="trailing" constant="10" id="tYA-Pl-9YT"/>
                 </constraints>
             </tableViewCellContentView>
             <gestureRecognizers/>
@@ -79,6 +88,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="jubao_iocn" width="16" height="8"/>
         <image name="reply" width="30" height="30"/>
     </resources>
 </document>

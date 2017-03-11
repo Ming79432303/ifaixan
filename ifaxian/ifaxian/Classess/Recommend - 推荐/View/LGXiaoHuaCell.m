@@ -170,5 +170,8 @@
     }
     
 }
+- (IBAction)jubao:(id)sender {
+    [LGJubaoView showView];
+}
 
 @end

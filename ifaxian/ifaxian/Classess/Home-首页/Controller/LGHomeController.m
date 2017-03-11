@@ -90,9 +90,10 @@ NSString *url = [NSString requestBasiPathAppend:@"/?json=1&count=1"];
     LGWeakSelf;
     [self.manager requestPostUrl:url completion:^(BOOL isSuccess, id responseObject) {
          NSArray *headerList = [LGHomeModel mj_objectArrayWithKeyValuesArray:responseObject[@"posts"] context:nil];
-        if (headerList.count > 3) {
+        NSInteger count = [responseObject[@"count"] integerValue] - 1               ;
+        if (headerList.count > count) {
             
-            headerList = [headerList subarrayWithRange:NSMakeRange(0, 3)];
+            headerList = [headerList subarrayWithRange:NSMakeRange(0, count)];
             
         }
         weakSelf.headerView.headerArray = headerList;
@@ -106,20 +107,23 @@ NSString *url = [NSString requestBasiPathAppend:@"/?json=1&count=1"];
 //    http://ifaxian.cc/page/1?json=1
     // Do any additional setup after loading the view.
     LGWeakSelf;
+     NSArray *dataArray = [[LGSqliteManager shareSqlite] loadDataDbNmae:@"t_home" limit:10 curentCount:0];
+    self.postsArrayM =  [LGHomeModel mj_objectArrayWithKeyValuesArray:dataArray context:nil];
+    if (dataArray.count) {
+          [self.tableView reloadData];
+    }
     [self.manager requsetHomelist:^(BOOL isSuccess, NSArray *json) {
         if (isSuccess) {
             [self.tableView.mj_footer resetNoMoreData];
             index_ = 2;
+          
+            [[LGSqliteManager shareSqlite] updateDataTableName:@"t_home" dataArray:json];
             weakSelf.postsArrayM =  [LGHomeModel mj_objectArrayWithKeyValuesArray:json context:nil];
-            
-            
             [weakSelf.postsArrayM removeObjectsInArray:self.headerArray];
-            
             [weakSelf.tableView reloadData];
             [weakSelf.refresh endRefreshing];
         }else{
-            
-             [weakSelf.refresh endRefreshing];
+            [weakSelf.refresh endRefreshing];
         }
         
     }];
@@ -131,14 +135,14 @@ NSString *url = [NSString requestBasiPathAppend:@"/?json=1&count=1"];
     NSString *url = [NSString stringWithFormat:@"https://ifaxian.cc/category/home/page/%zd?json=1",index_];
     
     LGWeakSelf;
-    [self.manager requsetUrl:url completion:^(BOOL isSuccess, NSArray *json) {
+    [self.manager requsetUrl:url completion:^(BOOL isSuccess, id json) {
        
         if (json == nil) {
             [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
             return ;
         }
         if (isSuccess) {
-            NSArray<LGHomeModel *> *posts =  [LGHomeModel mj_objectArrayWithKeyValuesArray:json context:nil];
+            NSArray<LGHomeModel *> *posts =  [LGHomeModel mj_objectArrayWithKeyValuesArray:json[@"posts"] context:nil];
             
             if (weakSelf.postsArrayM.lastObject.ID > posts.firstObject.ID) {
                  [weakSelf.postsArrayM addObjectsFromArray:posts];

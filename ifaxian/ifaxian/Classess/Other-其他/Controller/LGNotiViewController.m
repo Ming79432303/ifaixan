@@ -1,23 +1,23 @@
 //
-//  LGUserActivityDisplayController.m
-//  ifaxian
+//  LGNotiViewController.m
+//  爱发现
 //
-//  Created by ming on 16/12/18.
-//  Copyright © 2016年 ming. All rights reserved.
+//  Created by ming on 17/2/8.
+//  Copyright © 2017年 ming. All rights reserved.
 //
 
-#import "LGUserActivityDisplayController.h"
+#import "LGNotiViewController.h"
 #import "LGPostModel.h"
 #import "LGShare.h"
 #import "LGShareController.h"
 #import "LGDisplayController.h"
 #import "LWActiveIncator.h"
-@interface LGUserActivityDisplayController ()
+@interface LGNotiViewController ()
 @property(nonatomic, strong) LGPostModel *model;
 @property(nonatomic, strong) LGHTTPSessionManager *manager;
 @end
 
-@implementation LGUserActivityDisplayController
+@implementation LGNotiViewController
 
 - (LGHTTPSessionManager *)manager{
     
@@ -31,14 +31,18 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-   
     
-  
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navItem.leftBarButtonItem = [UIBarButtonItem lg_barButtonCustButton:@"关闭" fontSize:14 addTarget:self action:@selector(close) isBack:YES];
     [self loadNewData];
+}
+
+- (void)close{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark - 加载数据
 - (void)loadNewData{
@@ -47,13 +51,13 @@
     //添加波形动画
     [LWActiveIncator showInView:self.tableView];
     //设置标题
-    self.navItem.title = @"动态详情";
+    self.navItem.title = @"推送详情";
     //点击更多
     self.navItem.rightBarButtonItem = [UIBarButtonItem lg_itemWithImage:@"more_icon" highImage:@"" target:self action:@selector(more)];
     //根据点击的ur获取数据
-    NSString *postId= [_postUrl substringFromIndex:@"https://ifaxian.cc/?p=".length];
-    //字符串拼接
-    NSString * requestUrl = [NSString requestBasiPathAppend:[NSString stringWithFormat:@"/api/get_post/?post_id=%@",postId]];
+//    NSString *postId= [_postUrl substringFromIndex:@"https://ifaxian.cc/?p=".length];
+//    //字符串拼接
+    NSString * requestUrl =[NSString stringWithFormat:@"%@/?json=1",self.postUrl];
     LGWeakSelf;
     //获取url的数据
     [self.manager requestPostUrl:requestUrl completion:^(BOOL isSuccess, id responseObject) {
@@ -81,7 +85,7 @@
             
         }
     }];
-
+    
 }
 
 #pragma mark - 点击更多
@@ -101,7 +105,7 @@
         [LGJubaoView showView];
         
     }]];
-
+    
     LGWeakSelf;
     if ([self.model.author.slug isEqualToString:[LGNetWorkingManager manager].account.user.username] || [[LGNetWorkingManager manager].account.user.ID isEqualToString:@"2"]) {
         [alerVc addAction:[UIAlertAction actionWithTitle:@"删除该文章" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -126,8 +130,6 @@
     [self presentViewController:alerVc animated:YES completion:nil];
     
 }
-
-
 
 
 @end

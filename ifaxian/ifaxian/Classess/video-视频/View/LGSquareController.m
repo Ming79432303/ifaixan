@@ -30,6 +30,7 @@ static NSString *squareCellID = @"squareCellID";
     self.navItem.title = @"用户分享";
     [self.tableView.mj_header beginRefreshing];
     self.tableView.rowHeight = 600;
+    [self loadDbData];
     
 }
 #pragma mark - 懒加载
@@ -65,7 +66,23 @@ static NSString *squareCellID = @"squareCellID";
     
 }
 #pragma mark - 获取数据
+
+- (void)loadDbData{
+    NSArray *dataArray = [[LGSqliteManager shareSqlite] loadDataDbNmae:@"t_share" limit:10 curentCount:0];
+    NSMutableArray *shareM = [NSMutableArray array];
+    for (NSDictionary *dict in dataArray) {
+        LGShareImage *model = [LGShareImage mj_objectWithKeyValues:dict];
+        LGShare *share = [[LGShare alloc] initWithModel:model];
+        [shareM addObject:share];
+    }
+    if (shareM.count) {
+        
+        self.shares = shareM;
+    }
+}
 - (void)loadNewData{
+    
+    [[LGSqliteManager shareSqlite] loadDataDbNmae:@"t_share" limit:10 curentCount:0];
 
     [self.shareViewModel loadNewDatacompletion:^(BOOL isSuccess, NSArray<LGShare *> *shareArray) {
         if (isSuccess) {

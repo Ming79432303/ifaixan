@@ -61,7 +61,7 @@
     _nameLable.text = model.author.name;
     [_iconImgaeView setHeader:[model.author.slug lg_getuserAvatar]];
     
-    [_picImageView lg_setImageWithurl:model.thumbnail_images.full.url placeholderImage:nil];
+    [_picImageView lg_setImageWithurl:model.imageUrl placeholderImage:[UIImage imageNamed:@"default_placeholder_Image"]];
 
 }
 
@@ -157,6 +157,9 @@
     
 }
 
+- (IBAction)jubao:(id)sender {
+    [LGJubaoView showView];
+}
 
 
 @end

@@ -60,8 +60,12 @@
 -(void)loadNewDatacompletion:(void(^)(BOOL isSuccess ,NSArray<LGShare *> *shareArray))completion{
     LGWeakSelf;
     [self.manager requestPOstCategory:@"share" page:nil completion:^(BOOL isSuccess, id responseObject) {
+        
+        
         if (isSuccess) {
             index_ = 2;
+            //缓存到磁盘
+            [[LGSqliteManager shareSqlite] updateDataTableName:@"t_share" dataArray:responseObject[@"posts"]];
         NSMutableArray *shareM = [NSMutableArray array];
         for (NSDictionary *dict in responseObject[@"posts"]) {
          LGShareImage *model = [LGShareImage mj_objectWithKeyValues:dict];

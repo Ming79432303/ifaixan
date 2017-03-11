@@ -89,6 +89,12 @@
         [SVProgressHUD showSuccessWithStatus:@"复制成功"];
         
     }]];
+    [alerVc addAction:[UIAlertAction actionWithTitle:@"举报" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    
+        [LGJubaoView showView];
+        
+    }]];
+
     
     LGWeakSelf;
     if ([self.model.author.slug isEqualToString:[LGNetWorkingManager manager].account.user.username] || [[LGNetWorkingManager manager].account.user.ID isEqualToString:@"1"]) {

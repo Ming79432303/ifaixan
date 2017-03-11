@@ -65,9 +65,17 @@ static NSString *userCellID = @"userCellID";
 - (void)loadData{
     
     
+    
+    
     if (![LGNetWorkingManager manager].isLogin) {
         return;
     }
+    
+    NSString *userInfo = @"userinfo.plist";
+    NSString *filePath = [userInfo lg_appendDocumentDir];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:filePath];
+     [self configeList:dict];
+    
     [self.manager requestUsercompletion:^(BOOL isSuccess, NSDictionary * responseObject) {
         if (isSuccess) {
             NSString *userInfo = @"userinfo.plist";

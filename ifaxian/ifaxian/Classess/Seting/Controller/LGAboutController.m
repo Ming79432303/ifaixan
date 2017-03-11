@@ -18,7 +18,7 @@
     [super viewDidLoad];
         self.navItem.title = @"关于我们";
      UIWebView *weBview = [[UIWebView alloc] init];
-    [weBview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://ming.tf"]]];
+    [weBview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://ifaxian.cc"]]];
     
     weBview.frame = self.tableView.frame;
     weBview.lg_height -= 64;

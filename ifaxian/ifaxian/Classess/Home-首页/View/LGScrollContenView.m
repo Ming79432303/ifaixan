@@ -71,7 +71,7 @@
         
     }
     //设置图片
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnail_images.full.url] placeholderImage:nil];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.images.firstObject] placeholderImage:nil];
     
     [self setNeedsLayout];
     //赋值给上一次的模型

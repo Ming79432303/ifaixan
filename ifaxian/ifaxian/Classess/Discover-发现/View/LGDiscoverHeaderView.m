@@ -28,7 +28,7 @@
     self.scroView.lg_width = [UIScreen lg_screenWidth];
     self.scroView.delegate = self;
     LGHeaderModel *header1 = [LGHeaderModel headerImage:[UIImage imageNamed:@"tuiguang1"] url:@"https://ifaxian.cc"];
-    LGHeaderModel *header2 = [LGHeaderModel headerImage:[UIImage imageNamed:@"tuiguang2"] url:@"http://iamxcc.com/?p=143"];
+    LGHeaderModel *header2 = [LGHeaderModel headerImage:[UIImage imageNamed:@"tuiguang2"] url:@"https://iamxcc.com/?p=143"];
     LGHeaderModel *header3 = [LGHeaderModel headerImage:[UIImage imageNamed:@"tuiguang3"] url:@"https://ju.taobao.com/"];
         self.headerArray = @[header1,header2,header3];
     [self setupUI];

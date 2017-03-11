@@ -108,13 +108,16 @@
 - (IBAction)login:(id)sender {
    
         self.loginButton.enabled = YES;
-    
+      [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     [SVProgressHUD showWithStatus:@"正在登陆..."];
     NSString *userName = [self.userNameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *password = [self.passWordTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     LGWeakSelf;
     [[LGHTTPSessionManager manager] requestAuthcookie:userName passWord:password completion:^(BOOL isSuccess, BOOL isSuccessLogin){
+         [SVProgressHUD dismiss];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
         if (isSuccess) {
+           
             if (isSuccessLogin) {
                 
                  weakSelf.loginButton.enabled = NO;

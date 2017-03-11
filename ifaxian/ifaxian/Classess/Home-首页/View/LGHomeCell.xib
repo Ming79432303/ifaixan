@@ -23,7 +23,7 @@
                         <color key="highlightedColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QL-vI-wH5">
-                        <rect key="frame" x="286" y="10" width="24" height="22"/>
+                        <rect key="frame" x="256" y="10" width="24" height="22"/>
                         <state key="normal" image="zan_icon"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIk-5H-wjW">
@@ -80,12 +80,24 @@
                             <color key="titleColor" red="0.72336632013320923" green="0.72336632013320923" blue="0.72336632013320923" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXV-oN-qn9">
+                        <rect key="frame" x="290" y="10" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="Jd9-Kp-9ae"/>
+                            <constraint firstAttribute="height" constant="20" id="bwg-6K-sPr"/>
+                        </constraints>
+                        <state key="normal" image="jubao_iocn"/>
+                        <connections>
+                            <action selector="jubao:" destination="NTm-ED-Y9b" eventType="touchUpInside" id="gAU-fQ-A5z"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Ufo-cN-6LD" firstAttribute="top" secondItem="giF-md-HEO" secondAttribute="bottom" id="0Ka-rT-Ola"/>
                     <constraint firstItem="eIk-5H-wjW" firstAttribute="top" secondItem="FSH-32-hdb" secondAttribute="bottom" constant="10" id="1o7-SQ-QTq"/>
                     <constraint firstItem="FSH-32-hdb" firstAttribute="top" secondItem="Wni-dE-TeJ" secondAttribute="top" constant="10" id="6Sr-LJ-Vlz"/>
                     <constraint firstItem="uo8-5i-CKK" firstAttribute="bottom" secondItem="Ufo-cN-6LD" secondAttribute="bottom" id="7pO-Pm-c8G"/>
+                    <constraint firstItem="tXV-oN-qn9" firstAttribute="top" secondItem="Wni-dE-TeJ" secondAttribute="top" constant="10" id="BzZ-VA-0Ii"/>
                     <constraint firstItem="VZ2-Gu-fCT" firstAttribute="leading" secondItem="Wni-dE-TeJ" secondAttribute="leading" constant="10" id="FtY-sZ-Zy3"/>
                     <constraint firstItem="T2c-vU-fNJ" firstAttribute="top" secondItem="eIk-5H-wjW" secondAttribute="bottom" constant="10" id="HD5-07-jZh"/>
                     <constraint firstItem="Ufo-cN-6LD" firstAttribute="leading" secondItem="giF-md-HEO" secondAttribute="leading" id="IJv-HZ-hIt"/>
@@ -96,9 +108,10 @@
                     <constraint firstItem="VZ2-Gu-fCT" firstAttribute="top" secondItem="aLk-1t-nl7" secondAttribute="bottom" constant="10" id="V5w-Dz-g12"/>
                     <constraint firstAttribute="trailingMargin" secondItem="KaH-93-GaO" secondAttribute="trailing" id="XfU-XA-kdd"/>
                     <constraint firstItem="0QL-vI-wH5" firstAttribute="top" secondItem="Wni-dE-TeJ" secondAttribute="top" constant="10" id="Y5w-s7-HWs"/>
-                    <constraint firstAttribute="trailing" secondItem="0QL-vI-wH5" secondAttribute="trailing" constant="10" id="cD0-h6-bnW"/>
                     <constraint firstItem="T2c-vU-fNJ" firstAttribute="leading" secondItem="Wni-dE-TeJ" secondAttribute="leading" constant="10" id="g8r-4e-VAt"/>
                     <constraint firstItem="eIk-5H-wjW" firstAttribute="leading" secondItem="Wni-dE-TeJ" secondAttribute="leading" constant="10" id="grK-EU-zh6"/>
+                    <constraint firstAttribute="trailing" secondItem="tXV-oN-qn9" secondAttribute="trailing" constant="10" id="mVI-ew-D0G"/>
+                    <constraint firstItem="tXV-oN-qn9" firstAttribute="leading" secondItem="0QL-vI-wH5" secondAttribute="trailing" constant="10" id="oug-Lv-dlq"/>
                     <constraint firstAttribute="trailing" secondItem="T2c-vU-fNJ" secondAttribute="trailing" constant="10" id="q1P-Uy-Q4h"/>
                     <constraint firstAttribute="trailing" secondItem="eIk-5H-wjW" secondAttribute="trailing" constant="10" id="r7x-Jw-CwQ"/>
                     <constraint firstAttribute="trailing" secondItem="aLk-1t-nl7" secondAttribute="trailing" constant="10" id="rtY-QZ-3Al"/>
@@ -120,11 +133,12 @@
                 <outlet property="tagLable" destination="KaH-93-GaO" id="twb-Bd-LPb"/>
                 <outlet property="titleLable" destination="eIk-5H-wjW" id="F8U-bV-NcW"/>
             </connections>
-            <point key="canvasLocation" x="366" y="206"/>
+            <point key="canvasLocation" x="237" y="197"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="home_comment_icon" width="17" height="17"/>
+        <image name="jubao_iocn" width="16" height="8"/>
         <image name="zan_icon" width="24" height="20"/>
     </resources>
 </document>

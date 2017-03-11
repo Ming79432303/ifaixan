@@ -89,11 +89,18 @@
                         <rect key="frame" x="118" y="134" width="100" height="100"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVt-RY-RLK">
-                        <rect key="frame" x="290" y="17" width="36" height="17"/>
+                        <rect key="frame" x="264" y="17" width="36" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omq-5R-z7Z">
+                        <rect key="frame" x="310" y="15" width="16" height="22"/>
+                        <state key="normal" image="jubao_iocn"/>
+                        <connections>
+                            <action selector="jubao:" destination="L4S-mY-4pH" eventType="touchUpInside" id="oTi-bk-m8l"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="nf1-1F-k3x" firstAttribute="centerY" secondItem="Y44-Zi-rln" secondAttribute="centerY" id="1B2-Tg-2F5"/>
@@ -103,13 +110,15 @@
                     <constraint firstItem="RUf-DA-7yV" firstAttribute="top" secondItem="BSl-f1-zSk" secondAttribute="bottom" constant="10" id="DdW-Te-QyR"/>
                     <constraint firstItem="qL6-mV-0IF" firstAttribute="top" secondItem="RUf-DA-7yV" secondAttribute="bottom" constant="10" id="EHZ-fA-KET"/>
                     <constraint firstItem="Y44-Zi-rln" firstAttribute="leading" secondItem="fLl-N8-vlA" secondAttribute="leadingMargin" id="HSR-wO-EmL"/>
+                    <constraint firstItem="omq-5R-z7Z" firstAttribute="centerY" secondItem="IVt-RY-RLK" secondAttribute="centerY" id="HXd-Uy-dy1"/>
                     <constraint firstItem="nf1-1F-k3x" firstAttribute="leading" secondItem="Y44-Zi-rln" secondAttribute="trailing" constant="10" id="LUb-If-tW8"/>
-                    <constraint firstAttribute="trailing" secondItem="IVt-RY-RLK" secondAttribute="trailing" constant="10" id="Tpq-HS-bVo"/>
                     <constraint firstItem="IVt-RY-RLK" firstAttribute="centerY" secondItem="nf1-1F-k3x" secondAttribute="centerY" id="Vqt-kL-tCZ"/>
+                    <constraint firstItem="omq-5R-z7Z" firstAttribute="leading" secondItem="IVt-RY-RLK" secondAttribute="trailing" constant="10" id="YMG-Fc-hFA"/>
                     <constraint firstItem="mgm-lR-LJW" firstAttribute="leading" secondItem="fLl-N8-vlA" secondAttribute="leading" id="ZeZ-Pf-HYJ"/>
                     <constraint firstAttribute="trailing" secondItem="qL6-mV-0IF" secondAttribute="trailing" id="aQq-rc-K7x"/>
                     <constraint firstItem="Y44-Zi-rln" firstAttribute="top" secondItem="fLl-N8-vlA" secondAttribute="topMargin" id="bZV-X2-eph"/>
                     <constraint firstItem="BSl-f1-zSk" firstAttribute="top" secondItem="Y44-Zi-rln" secondAttribute="bottom" constant="10" id="fTL-Z5-si1"/>
+                    <constraint firstAttribute="trailing" secondItem="omq-5R-z7Z" secondAttribute="trailing" constant="10" id="gh6-Lt-fEP"/>
                     <constraint firstItem="BSl-f1-zSk" firstAttribute="leading" secondItem="fLl-N8-vlA" secondAttribute="leading" constant="10" id="kxW-yj-FBV"/>
                     <constraint firstAttribute="trailing" secondItem="BSl-f1-zSk" secondAttribute="trailing" constant="10" id="mmc-NU-qhE"/>
                     <constraint firstItem="WrP-Qt-aeA" firstAttribute="centerX" secondItem="fLl-N8-vlA" secondAttribute="centerX" id="tih-Ki-g3i"/>
@@ -128,10 +137,11 @@
                 <outlet property="starVideoButton" destination="WrP-Qt-aeA" id="5im-NE-YBG"/>
                 <outlet property="titleLable" destination="BSl-f1-zSk" id="fRh-fw-yBT"/>
             </connections>
-            <point key="canvasLocation" x="237" y="319"/>
+            <point key="canvasLocation" x="113" y="326"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="jubao_iocn" width="16" height="8"/>
         <image name="recommend_comment_icon" width="20" height="18"/>
         <image name="zan" width="18" height="20"/>
         <image name="视频播放" width="100" height="100"/>

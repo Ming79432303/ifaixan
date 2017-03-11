@@ -83,13 +83,22 @@
                             <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OW7-Qi-r60">
+                        <rect key="frame" x="294" y="6" width="16" height="22"/>
+                        <state key="normal" image="jubao_iocn"/>
+                        <connections>
+                            <action selector="jubao:" destination="viy-rg-IT4" eventType="touchUpInside" id="Nrf-27-M6i"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="KfS-zz-5tc" firstAttribute="leading" secondItem="HFg-8z-8Ig" secondAttribute="leading" id="0KM-6j-zMi"/>
                     <constraint firstItem="HFg-8z-8Ig" firstAttribute="leading" secondItem="Y6d-P4-cZW" secondAttribute="leading" id="2Rt-Py-y4C"/>
                     <constraint firstAttribute="trailing" secondItem="KfS-zz-5tc" secondAttribute="trailing" constant="10" id="4Fb-1b-uu5"/>
+                    <constraint firstAttribute="trailing" secondItem="OW7-Qi-r60" secondAttribute="trailing" constant="10" id="6lF-rg-1tC"/>
                     <constraint firstItem="Y6d-P4-cZW" firstAttribute="top" secondItem="Vpb-Tb-pQv" secondAttribute="top" id="7eN-eW-mbk"/>
                     <constraint firstItem="KfS-zz-5tc" firstAttribute="top" secondItem="HFg-8z-8Ig" secondAttribute="bottom" constant="10" id="DsM-bU-hVv"/>
+                    <constraint firstItem="OW7-Qi-r60" firstAttribute="centerY" secondItem="Y6d-P4-cZW" secondAttribute="centerY" id="MzI-CQ-ciq"/>
                     <constraint firstItem="Y6d-P4-cZW" firstAttribute="leading" secondItem="Vpb-Tb-pQv" secondAttribute="trailing" constant="10" id="OM8-as-W5t"/>
                     <constraint firstItem="Vpb-Tb-pQv" firstAttribute="leading" secondItem="fwS-WP-yUg" secondAttribute="leadingMargin" id="Qwk-8u-vvn"/>
                     <constraint firstAttribute="trailing" secondItem="HFg-8z-8Ig" secondAttribute="trailing" constant="10" id="U3d-Ut-tjf"/>
@@ -114,6 +123,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="jubao_iocn" width="16" height="8"/>
         <image name="reply" width="30" height="30"/>
     </resources>
 </document>

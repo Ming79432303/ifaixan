@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="3Jm-E6-WSX" customClass="LGJubaoView">
+            <rect key="frame" x="0.0" y="0.0" width="321" height="463"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="moF-gd-oh1">
+                    <rect key="frame" x="25" y="181" width="271" height="102"/>
+                    <subviews>
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="取消" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73o-D2-X3F">
+                            <rect key="frame" x="0.0" y="61" width="271" height="21"/>
+                            <gestureRecognizers/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="举报" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXG-ah-eF1">
+                            <rect key="frame" x="0.0" y="20" width="271" height="21"/>
+                            <gestureRecognizers/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="73o-D2-X3F" firstAttribute="top" secondItem="pXG-ah-eF1" secondAttribute="bottom" constant="20" id="EC7-NM-Gz8"/>
+                        <constraint firstItem="pXG-ah-eF1" firstAttribute="centerX" secondItem="moF-gd-oh1" secondAttribute="centerX" id="RQ3-TA-0o5"/>
+                        <constraint firstItem="pXG-ah-eF1" firstAttribute="top" secondItem="moF-gd-oh1" secondAttribute="top" constant="20" id="UQQ-8T-fNj"/>
+                        <constraint firstAttribute="bottom" secondItem="73o-D2-X3F" secondAttribute="bottom" constant="20" id="Xhb-5a-Cuj"/>
+                        <constraint firstItem="73o-D2-X3F" firstAttribute="width" secondItem="moF-gd-oh1" secondAttribute="width" id="pYg-ex-dCq"/>
+                        <constraint firstItem="73o-D2-X3F" firstAttribute="centerX" secondItem="pXG-ah-eF1" secondAttribute="centerX" id="sDS-go-REA"/>
+                        <constraint firstItem="pXG-ah-eF1" firstAttribute="width" secondItem="73o-D2-X3F" secondAttribute="width" id="suY-k3-DLz"/>
+                    </constraints>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="44u-Hx-msY">
+                    <rect key="frame" x="25" y="77" width="271" height="310"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01m-MN-9eH">
+                            <rect key="frame" x="0.0" y="20" width="271" height="30"/>
+                            <state key="normal" title="举报原因">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0l-YQ-sNN">
+                            <rect key="frame" x="0.0" y="70" width="271" height="30"/>
+                            <state key="normal" title="恶意攻击辱骂">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="jubaoContent:" destination="3Jm-E6-WSX" eventType="touchUpInside" id="rLf-aX-NyY"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tL-cV-k4b">
+                            <rect key="frame" x="0.0" y="120" width="271" height="30"/>
+                            <state key="normal" title="政治反动">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="jubaoContent:" destination="3Jm-E6-WSX" eventType="touchUpInside" id="WDj-1h-278"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzb-Cj-YwZ">
+                            <rect key="frame" x="0.0" y="170" width="271" height="30"/>
+                            <state key="normal" title="淫秽色情">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="jubaoContent:" destination="3Jm-E6-WSX" eventType="touchUpInside" id="MJU-1E-xyc"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MhK-Ix-uJT">
+                            <rect key="frame" x="0.0" y="260" width="271" height="30"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelView:" destination="3Jm-E6-WSX" eventType="touchUpInside" id="MXt-kP-Twg"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPZ-EY-jHx">
+                            <rect key="frame" x="0.0" y="220" width="271" height="30"/>
+                            <state key="normal" title="其他原因">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="jubaoContent:" destination="3Jm-E6-WSX" eventType="touchUpInside" id="mRd-C8-dVD"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="9tL-cV-k4b" firstAttribute="width" secondItem="P0l-YQ-sNN" secondAttribute="width" id="22X-D7-hSK"/>
+                        <constraint firstItem="9tL-cV-k4b" firstAttribute="centerX" secondItem="44u-Hx-msY" secondAttribute="centerX" id="5Ou-td-oGS"/>
+                        <constraint firstItem="P0l-YQ-sNN" firstAttribute="top" secondItem="01m-MN-9eH" secondAttribute="bottom" constant="20" id="8N3-qH-ne3"/>
+                        <constraint firstItem="wzb-Cj-YwZ" firstAttribute="width" secondItem="9tL-cV-k4b" secondAttribute="width" id="CTA-8n-Ucz"/>
+                        <constraint firstItem="zPZ-EY-jHx" firstAttribute="width" secondItem="wzb-Cj-YwZ" secondAttribute="width" id="DrK-9M-NQe"/>
+                        <constraint firstItem="zPZ-EY-jHx" firstAttribute="top" secondItem="wzb-Cj-YwZ" secondAttribute="bottom" constant="20" id="I3t-YT-fec"/>
+                        <constraint firstItem="MhK-Ix-uJT" firstAttribute="top" secondItem="zPZ-EY-jHx" secondAttribute="bottom" constant="10" id="INX-Yd-Isv"/>
+                        <constraint firstItem="01m-MN-9eH" firstAttribute="centerX" secondItem="44u-Hx-msY" secondAttribute="centerX" id="KRt-i2-AGF"/>
+                        <constraint firstItem="P0l-YQ-sNN" firstAttribute="width" secondItem="01m-MN-9eH" secondAttribute="width" id="Ndd-gS-sfi"/>
+                        <constraint firstItem="MhK-Ix-uJT" firstAttribute="centerX" secondItem="44u-Hx-msY" secondAttribute="centerX" id="ODc-oZ-Bf2"/>
+                        <constraint firstAttribute="bottom" secondItem="MhK-Ix-uJT" secondAttribute="bottom" constant="20" id="RLe-oN-5Dc"/>
+                        <constraint firstItem="wzb-Cj-YwZ" firstAttribute="width" secondItem="9tL-cV-k4b" secondAttribute="width" id="RZb-NV-gHV"/>
+                        <constraint firstItem="zPZ-EY-jHx" firstAttribute="centerX" secondItem="44u-Hx-msY" secondAttribute="centerX" id="Sb3-ma-uu4"/>
+                        <constraint firstItem="9tL-cV-k4b" firstAttribute="top" secondItem="P0l-YQ-sNN" secondAttribute="bottom" constant="20" id="V6g-W3-tb5"/>
+                        <constraint firstItem="wzb-Cj-YwZ" firstAttribute="centerX" secondItem="44u-Hx-msY" secondAttribute="centerX" id="bl9-KH-XdJ"/>
+                        <constraint firstItem="MhK-Ix-uJT" firstAttribute="width" secondItem="zPZ-EY-jHx" secondAttribute="width" id="crX-OH-AWe"/>
+                        <constraint firstItem="wzb-Cj-YwZ" firstAttribute="top" secondItem="9tL-cV-k4b" secondAttribute="bottom" constant="20" id="rwA-hx-20D"/>
+                        <constraint firstItem="01m-MN-9eH" firstAttribute="top" secondItem="44u-Hx-msY" secondAttribute="top" constant="20" id="vTR-cq-VNq"/>
+                        <constraint firstItem="P0l-YQ-sNN" firstAttribute="centerX" secondItem="44u-Hx-msY" secondAttribute="centerX" id="yYu-m7-bzB"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.25861458333333331" green="0.25861458333333331" blue="0.25861458333333331" alpha="0.44080528846153844" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="01m-MN-9eH" firstAttribute="width" secondItem="moF-gd-oh1" secondAttribute="width" id="EWq-2L-fak"/>
+                <constraint firstItem="44u-Hx-msY" firstAttribute="width" secondItem="moF-gd-oh1" secondAttribute="width" id="H5z-a3-PJa"/>
+                <constraint firstItem="moF-gd-oh1" firstAttribute="leading" secondItem="3Jm-E6-WSX" secondAttribute="leading" constant="25" id="X6i-Pt-gSg"/>
+                <constraint firstItem="moF-gd-oh1" firstAttribute="centerX" secondItem="3Jm-E6-WSX" secondAttribute="centerX" id="cXw-Zj-d6Q"/>
+                <constraint firstItem="moF-gd-oh1" firstAttribute="centerY" secondItem="3Jm-E6-WSX" secondAttribute="centerY" id="ffy-Vu-rRK"/>
+                <constraint firstItem="9tL-cV-k4b" firstAttribute="width" secondItem="moF-gd-oh1" secondAttribute="width" id="ogz-sC-vcU"/>
+                <constraint firstItem="44u-Hx-msY" firstAttribute="centerX" secondItem="3Jm-E6-WSX" secondAttribute="centerX" id="qFA-gB-s1o"/>
+                <constraint firstItem="44u-Hx-msY" firstAttribute="centerY" secondItem="3Jm-E6-WSX" secondAttribute="centerY" id="rx8-ay-jAU"/>
+                <constraint firstAttribute="trailing" secondItem="moF-gd-oh1" secondAttribute="trailing" constant="25" id="yNJ-7s-q6D"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cancel" destination="73o-D2-X3F" id="9c8-4Q-9Sh"/>
+                <outlet property="jubaoLable" destination="pXG-ah-eF1" id="pc8-B1-Ld3"/>
+                <outlet property="jubaoView" destination="44u-Hx-msY" id="IM8-XQ-GyF"/>
+            </connections>
+            <point key="canvasLocation" x="195.5" y="-113.5"/>
+        </view>
+    </objects>
+</document>

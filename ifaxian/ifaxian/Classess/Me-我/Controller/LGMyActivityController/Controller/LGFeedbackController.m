@@ -44,8 +44,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)send:(id)sender {
-    
-    
+    self.textView.text = nil;
+    [SVProgressHUD showSuccessWithStatus:@"反馈成功，感谢您的反馈"];
 }
 
 

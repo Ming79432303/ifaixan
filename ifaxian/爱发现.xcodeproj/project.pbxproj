@@ -60,6 +60,8 @@
 		3A0F21A01DDF4BE1008B955F /* LGCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F219F1DDF4BE1008B955F /* LGCommentController.m */; };
 		3A0F21A21DDF4CE7008B955F /* LGCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0F21A11DDF4CE7008B955F /* LGCommentCell.xib */; };
 		3A0F21A51DDF4F2A008B955F /* LGCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F21A41DDF4F2A008B955F /* LGCommentCell.m */; };
+		3A21E99B1E4B18B70093DE83 /* libUMessage_Sdk_1.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A21E9991E4B18B70093DE83 /* libUMessage_Sdk_1.4.0.a */; };
+		3A21E99D1E4B18CE0093DE83 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A21E99C1E4B18CE0093DE83 /* UserNotifications.framework */; };
 		3A27F3571DEECE450051786D /* LGShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A27F3561DEECE450051786D /* LGShare.m */; };
 		3A27F35A1DEEE1070051786D /* LGImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A27F3591DEEE1070051786D /* LGImagesView.m */; };
 		3A27F35D1DEF13780051786D /* UIImageView+LGUIimageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A27F35C1DEF13780051786D /* UIImageView+LGUIimageView.m */; };
@@ -197,6 +199,9 @@
 		3A6F99911E164BD2005F0341 /* LGJueWuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6F998F1E164BD2005F0341 /* LGJueWuCell.xib */; };
 		3A6F99941E164E11005F0341 /* LGJueWuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F99931E164E11005F0341 /* LGJueWuController.m */; };
 		3A6F99971E167A2F005F0341 /* ifaxian.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3A6F99961E167A2F005F0341 /* ifaxian.cer */; };
+		3A732FD91E4B1FD4002C3600 /* LGNotiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A732FD81E4B1FD4002C3600 /* LGNotiViewController.m */; };
+		3A794F381E4AB58500FC0D8C /* LGJubaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A794F371E4AB58500FC0D8C /* LGJubaoView.m */; };
+		3A794F3A1E4AB59400FC0D8C /* LGJubaoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A794F391E4AB59400FC0D8C /* LGJubaoView.xib */; };
 		3A79B4DF1DE55287009B50F2 /* LGAliYunOssUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A79B4DE1DE55287009B50F2 /* LGAliYunOssUpload.m */; };
 		3A7F69F31DE72BC700E4EEDA /* NSString+LGRegularExpressions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7F69F21DE72BC700E4EEDA /* NSString+LGRegularExpressions.m */; };
 		3A8864361DE14B8B00DE7E46 /* LGTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8864351DE14B8B00DE7E46 /* LGTextField.m */; };
@@ -253,6 +258,7 @@
 		3AEB69AD1DF1372200888B9E /* LGSendVideoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AEB69AB1DF1372200888B9E /* LGSendVideoController.xib */; };
 		3AEC2B761DF4768E00BF0364 /* PHAsset+LGPHAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC2B751DF4768E00BF0364 /* PHAsset+LGPHAsset.m */; };
 		3AED5DAD1DF41204006452BD /* NSString+LGImageStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AED5DAC1DF41204006452BD /* NSString+LGImageStyle.m */; };
+		3AF180E71E5452D100F7356B /* LGSqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF180E61E5452D100F7356B /* LGSqliteManager.m */; };
 		3AF4B6191DDCAAC500C06419 /* LGRefreshGif.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF4B6101DDCAAC500C06419 /* LGRefreshGif.m */; };
 		3AF4B61A1DDCAAC500C06419 /* LGRefreshGif.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF4B6111DDCAAC500C06419 /* LGRefreshGif.xib */; };
 		3AF4B61B1DDCAAC500C06419 /* LGRefreshViewFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF4B6131DDCAAC500C06419 /* LGRefreshViewFont.m */; };
@@ -412,6 +418,9 @@
 		3A0F21A11DDF4CE7008B955F /* LGCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGCommentCell.xib; sourceTree = "<group>"; };
 		3A0F21A31DDF4F2A008B955F /* LGCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCommentCell.h; sourceTree = "<group>"; };
 		3A0F21A41DDF4F2A008B955F /* LGCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCommentCell.m; sourceTree = "<group>"; };
+		3A21E9991E4B18B70093DE83 /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
+		3A21E99A1E4B18B70093DE83 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		3A21E99C1E4B18CE0093DE83 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		3A27F3551DEECE450051786D /* LGShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGShare.h; path = ../View/LGShare.h; sourceTree = "<group>"; };
 		3A27F3561DEECE450051786D /* LGShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LGShare.m; path = ../View/LGShare.m; sourceTree = "<group>"; };
 		3A27F3581DEEE1070051786D /* LGImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGImagesView.h; sourceTree = "<group>"; };
@@ -664,6 +673,11 @@
 		3A6F99921E164E11005F0341 /* LGJueWuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGJueWuController.h; sourceTree = "<group>"; };
 		3A6F99931E164E11005F0341 /* LGJueWuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGJueWuController.m; sourceTree = "<group>"; };
 		3A6F99961E167A2F005F0341 /* ifaxian.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = ifaxian.cer; sourceTree = "<group>"; };
+		3A732FD71E4B1FD4002C3600 /* LGNotiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGNotiViewController.h; sourceTree = "<group>"; };
+		3A732FD81E4B1FD4002C3600 /* LGNotiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGNotiViewController.m; sourceTree = "<group>"; };
+		3A794F361E4AB58500FC0D8C /* LGJubaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGJubaoView.h; sourceTree = "<group>"; };
+		3A794F371E4AB58500FC0D8C /* LGJubaoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGJubaoView.m; sourceTree = "<group>"; };
+		3A794F391E4AB59400FC0D8C /* LGJubaoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGJubaoView.xib; sourceTree = "<group>"; };
 		3A79B4DD1DE55287009B50F2 /* LGAliYunOssUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAliYunOssUpload.h; sourceTree = "<group>"; };
 		3A79B4DE1DE55287009B50F2 /* LGAliYunOssUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAliYunOssUpload.m; sourceTree = "<group>"; };
 		3A7F69F11DE72BC700E4EEDA /* NSString+LGRegularExpressions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LGRegularExpressions.h"; sourceTree = "<group>"; };
@@ -767,6 +781,8 @@
 		3AEC2B751DF4768E00BF0364 /* PHAsset+LGPHAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+LGPHAsset.m"; sourceTree = "<group>"; };
 		3AED5DAB1DF41204006452BD /* NSString+LGImageStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LGImageStyle.h"; sourceTree = "<group>"; };
 		3AED5DAC1DF41204006452BD /* NSString+LGImageStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LGImageStyle.m"; sourceTree = "<group>"; };
+		3AF180E51E5452D100F7356B /* LGSqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSqliteManager.h; sourceTree = "<group>"; };
+		3AF180E61E5452D100F7356B /* LGSqliteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSqliteManager.m; sourceTree = "<group>"; };
 		3AF4B60F1DDCAAC500C06419 /* LGRefreshGif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGRefreshGif.h; sourceTree = "<group>"; };
 		3AF4B6101DDCAAC500C06419 /* LGRefreshGif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGRefreshGif.m; sourceTree = "<group>"; };
 		3AF4B6111DDCAAC500C06419 /* LGRefreshGif.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LGRefreshGif.xib; sourceTree = "<group>"; };
@@ -844,6 +860,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A21E99D1E4B18CE0093DE83 /* UserNotifications.framework in Frameworks */,
+				3A21E99B1E4B18B70093DE83 /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 				3A0F20F71DDEB411008B955F /* libxml2.tbd in Frameworks */,
 				C57C195580839E855F81E537 /* libPods-ifaxian.a in Frameworks */,
 			);
@@ -1025,6 +1043,15 @@
 				3A8DF1B61E04191000ADD735 /* LGCommentHeaderFooterView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3A21E9981E4B18B70093DE83 /* UMessage_Sdk_1.4.0 */ = {
+			isa = PBXGroup;
+			children = (
+				3A21E9991E4B18B70093DE83 /* libUMessage_Sdk_1.4.0.a */,
+				3A21E99A1E4B18B70093DE83 /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.4.0;
 			sourceTree = "<group>";
 		};
 		3A2ED25E1DEBED13002CFE88 /* Model */ = {
@@ -1719,6 +1746,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3A794F351E4AB55400FC0D8C /* LGJubaoView */ = {
+			isa = PBXGroup;
+			children = (
+				3A794F361E4AB58500FC0D8C /* LGJubaoView.h */,
+				3A794F371E4AB58500FC0D8C /* LGJubaoView.m */,
+				3A794F391E4AB59400FC0D8C /* LGJubaoView.xib */,
+			);
+			path = LGJubaoView;
+			sourceTree = "<group>";
+		};
 		3A8864371DE1C46800DE7E46 /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -2041,6 +2078,8 @@
 				3AEB69A01DF1349500888B9E /* LGSendVideoController */,
 				3A5669E71DED790200959D96 /* LGSendIMageController */,
 				3A5669D51DED78D300959D96 /* LGLoginController */,
+				3A732FD71E4B1FD4002C3600 /* LGNotiViewController.h */,
+				3A732FD81E4B1FD4002C3600 /* LGNotiViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2068,6 +2107,9 @@
 		3AE122921DDC8B6800D1A128 /* Tool-工具 */ = {
 			isa = PBXGroup;
 			children = (
+				3AF180E41E5452C000F7356B /* LGSqlite */,
+				3A21E9981E4B18B70093DE83 /* UMessage_Sdk_1.4.0 */,
+				3A794F351E4AB55400FC0D8C /* LGJubaoView */,
 				3A6F99961E167A2F005F0341 /* ifaxian.cer */,
 				3A4082921E0658CA00FAA367 /* LWActiveIndicator */,
 				3A4B17F11DE47C210051E6C7 /* LGUpload */,
@@ -2155,6 +2197,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3AF180E41E5452C000F7356B /* LGSqlite */ = {
+			isa = PBXGroup;
+			children = (
+				3AF180E51E5452D100F7356B /* LGSqliteManager.h */,
+				3AF180E61E5452D100F7356B /* LGSqliteManager.m */,
+			);
+			path = LGSqlite;
+			sourceTree = "<group>";
+		};
 		3AF4B60E1DDCAAC500C06419 /* LGRefrshView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2208,6 +2259,7 @@
 		B41A641C7A5426BB980ABDFF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A21E99C1E4B18CE0093DE83 /* UserNotifications.framework */,
 				3A0F20F61DDEB411008B955F /* libxml2.tbd */,
 				E5DB1CD205D4627C6F49CF22 /* libPods-ifaxian.a */,
 				7714545E22244450175205AD /* libPods-ifaxianTests.a */,
@@ -2292,8 +2344,13 @@
 				TargetAttributes = {
 					3AE122431DDC8AEC00D1A128 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = AWE6XH2SJ9;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = X2NDPJ4E6B;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					3AE1225C1DDC8AEC00D1A128 = {
 						CreatedOnToolsVersion = 7.2;
@@ -2357,6 +2414,7 @@
 				3AE122AC1DDCA9B300D1A128 /* LGPhotoListCell.xib in Resources */,
 				3A32B6721E01218C00B9FCD6 /* LGMeController.storyboard in Resources */,
 				3A8C5F891E10F52900A42543 /* NewFeature.html in Resources */,
+				3A794F3A1E4AB59400FC0D8C /* LGJubaoView.xib in Resources */,
 				3AF4B61C1DDCAAC500C06419 /* LGRefreshViewFont.xib in Resources */,
 				3A5669EE1DED793700959D96 /* LGSenImageController.xib in Resources */,
 				3A52B50D1DFBE1D600C8C010 /* LGContenHeraderView.xib in Resources */,
@@ -2616,6 +2674,7 @@
 				3A3436A51E05111D00EE4311 /* LGActivitie.m in Sources */,
 				3A32B6711E01218C00B9FCD6 /* LGMecontroller.m in Sources */,
 				480265E51DDDA0EF009549DD /* LGModelConfig.m in Sources */,
+				3AF180E71E5452D100F7356B /* LGSqliteManager.m in Sources */,
 				3AD84B1F1E02AE9400CE44B5 /* LGUserHeaderFooterView.m in Sources */,
 				3A2ED2881DEBED13002CFE88 /* LGShowController.m in Sources */,
 				3AF4B6191DDCAAC500C06419 /* LGRefreshGif.m in Sources */,
@@ -2650,7 +2709,9 @@
 				3A52B5461DFBE97D00C8C010 /* LGRecommendViewModel.m in Sources */,
 				3A52B55C1DFBF02A00C8C010 /* LGSetingController.m in Sources */,
 				3A8DF1B41E037EA100ADD735 /* LGHTTPSessionManager+LGUserRequest.m in Sources */,
+				3A794F381E4AB58500FC0D8C /* LGJubaoView.m in Sources */,
 				3A27F35A1DEEE1070051786D /* LGImagesView.m in Sources */,
+				3A732FD91E4B1FD4002C3600 /* LGNotiViewController.m in Sources */,
 				3A32B67E1E01218C00B9FCD6 /* LGUserList.m in Sources */,
 				3A88643D1DE1C58200DE7E46 /* LGAccountUser.m in Sources */,
 				3A0F215B1DDEB503008B955F /* UIImage+Gallop.m in Sources */,
@@ -2818,6 +2879,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: guiming Liang (X2NDPJ4E6B)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2840,6 +2902,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "7f072c9d-9095-4100-8a47-16e9e2fc68d8";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2863,6 +2926,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: guiming Liang (X2NDPJ4E6B)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2878,6 +2942,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "7f072c9d-9095-4100-8a47-16e9e2fc68d8";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2888,10 +2953,10 @@
 			baseConfigurationReference = A33DEF1A738C09BCC9304529 /* Pods-ifaxian.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = AWE6XH2SJ9;
-				GCC_PREFIX_HEADER = /Users/ming/Desktop/ifaxan/ifaixan/ifaxian/ifaxian/Classess/PrefixHeader.pch;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: guiming Liang (X2NDPJ4E6B)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: guiming Liang (X2NDPJ4E6B)";
+				DEVELOPMENT_TEAM = X2NDPJ4E6B;
+				GCC_PREFIX_HEADER = "/Users/ming/Desktop/ifaxan(上架)/ifaixan/ifaxian/ifaxian/Classess/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -2907,14 +2972,18 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = ifaxian/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ifaxian/Classess/Tool-工具/UMessage_Sdk_1.4.0",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRELINK_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = cc.faxian.me;
+				PRODUCT_BUNDLE_IDENTIFIER = cc.ifaxian.ifaxian;
 				PRODUCT_NAME = "爱发现";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "7f072c9d-9095-4100-8a47-16e9e2fc68d8";
+				PROVISIONING_PROFILE_SPECIFIER = ifaxianappstore;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
@@ -2924,10 +2993,10 @@
 			baseConfigurationReference = 9A2E783B691CBF573F690F3D /* Pods-ifaxian.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = AWE6XH2SJ9;
-				GCC_PREFIX_HEADER = /Users/ming/Desktop/ifaxan/ifaixan/ifaxian/ifaxian/Classess/PrefixHeader.pch;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: guiming Liang (X2NDPJ4E6B)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: guiming Liang (X2NDPJ4E6B)";
+				DEVELOPMENT_TEAM = X2NDPJ4E6B;
+				GCC_PREFIX_HEADER = "/Users/ming/Desktop/ifaxan(上架)/ifaixan/ifaxian/ifaxian/Classess/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -2943,12 +3012,18 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = ifaxian/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ifaxian/Classess/Tool-工具/UMessage_Sdk_1.4.0",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRELINK_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = cc.faxian.me;
+				PRODUCT_BUNDLE_IDENTIFIER = cc.ifaxian.ifaxian;
 				PRODUCT_NAME = "爱发现";
+				PROVISIONING_PROFILE = "7f072c9d-9095-4100-8a47-16e9e2fc68d8";
+				PROVISIONING_PROFILE_SPECIFIER = ifaxianappstore;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
